@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Island Mailer - Support Local. Live Hawaii.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Root Variables - Brand Colors */
+        :root {
+            --navy-dark: #1F2735;
+            --navy-secondary: #323846;
+            --gold: #A37C4F;
+            --sand: #D5C1AA;
+            --cream: #D5CFC9;
+            --tan-land: #81746D;
+            --white: #FFFFFF;
+            --black: #000000;
+            
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--white);
+            color: var(--navy-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            line-height: 1.6;
+            color: var(--navy-secondary);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(163, 124, 79, 0.1);
+            padding: 1.25rem 1.5rem;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.7;
+        }
+
+        .logo-accent {
+            color: var(--gold);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--navy-dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .cta-button {
+            background-color: var(--navy-dark);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--navy-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background-color: var(--white);
+            color: var(--navy-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(31, 39, 53, 0.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M50,20 Q100,20 100,70 Q100,20 150,20 Q150,70 100,70 Q150,70 150,120 Q100,120 100,70 Q100,120 50,120 Q50,70 100,70 Q50,70 50,20' fill='%23A37C4F' opacity='0.1'/%3E%3C/svg%3E") no-repeat center;
+            background-size: contain;
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 1), transparent);
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            color: var(--navy-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--tan-land);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-accent {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .hero-cta {
+            background: var(--navy-dark);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--navy-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .hero-cta:hover {
+            background-color: var(--white);
+            color: var(--navy-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(31, 39, 53, 0.2);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background-color: var(--white);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            color: var(--navy-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--tan-land);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(163, 124, 79, 0.05) 0%, rgba(213, 193, 170, 0.1) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(163, 124, 79, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 16px 40px rgba(163, 124, 79, 0.15);
+            background: linear-gradient(135deg, rgba(163, 124, 79, 0.1) 0%, rgba(213, 193, 170, 0.15) 100%);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--tan-land);
+            font-size: 0.95rem;
+        }
+
+        /* Chat/Contact Section */
+        .contact-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-secondary) 100%);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section p {
+            color: var(--cream);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.125rem;
+        }
+
+        .contact-cta {
+            background-color: var(--gold);
+            color: var(--navy-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .contact-cta:hover {
+            background-color: var(--white);
+            color: var(--navy-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy-dark);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(163, 124, 79, 0.2);
+        }
+
+        footer p {
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-accent {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .header-container {
+                gap: 1rem;
+            }
+
+            nav {
+                gap: 0.75rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+                margin-top: 60px;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .hero-cta {
+                padding: 0.875rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .services {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .services-grid {
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .contact-section {
+                padding: 4rem 1.5rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            nav {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                display: none;
+            }
+
+            nav a:first-child {
+                display: inline;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Island<span class="logo-accent">Mailer</span></a>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Support Local.<br><span class="hero-accent">Live Hawaii.</span></h1>
+            <p class="hero-subtitle">Beautiful 9×12 postcards designed to connect your business with the heart of Maui. Perfect for local restaurants, shops, and services.</p>
+            <a href="#contact" class="hero-cta">Start Chatting</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Why Island Mailer?</h2>
+            <p>Thoughtfully crafted mailers that celebrate local business and island community.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌺</div>
+                <h3>Local Focus</h3>
+                <p>Designed specifically for Maui businesses. Every mailer celebrates your local story and connects with community members who value supporting local.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Premium Quality</h3>
+                <p>High-quality 9×12 postcards with beautiful finishes. Your brand deserves to stand out in mailboxes across the island.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>Personal Touch</h3>
+                <p>Work directly with our team to craft mailers that reflect your business personality. We're here to help your message resonate.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏝️</div>
+                <h3>Island Vibes</h3>
+                <p>Thoughtful design that captures the warmth and beauty of Hawaii. Every mailer tells a story of community and connection.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Ready to Share Your Story?</h2>
+        <p>Let's create something beautiful together. Chat with our team to get started with your Island Mailer campaign.</p>
+        <a href="mailto:hello@islandmailer.com" class="contact-cta">Start Chatting</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Island Mailer. <span class="footer-accent">Support Local. Live Hawaii.</span></p>
+        <p style="font-size: 0.85rem; margin-top: 1rem;">Based in Maui • Made with Aloha</p>
+    </footer>
+</body>
+</html>
