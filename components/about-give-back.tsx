@@ -48,7 +48,7 @@ export default function AboutGiveBack() {
               />
             </svg>
           </div>
-          <h3 className="text-3xl sm:text-4xl font-bold text-gold mb-6">Island Mailer Give-Back</h3>
+          <h3 className="text-3xl sm:text-4xl font-bold text-gold mb-6">Island Mailer Gives-Back</h3>
           <p className="text-lg sm:text-xl text-sand leading-relaxed">
             A portion of profits from each Island Mailer is set aside to support local Maui causes. As we grow, so does
             the impact we can make together.
