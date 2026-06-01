@@ -66,7 +66,6 @@ export default function WhoItsFor() {
         </div>
 
         <p className="text-xl sm:text-2xl text-center text-sand max-w-4xl mx-auto">
-          check
         </p>
       </div>
     </section>

@@ -102,7 +102,7 @@ export default function BenefitsGrid() {
           {benefits.map((benefit, idx) => (
             <div
               key={idx}
-              className="gradient-navy-warm rounded-3xl p-8 lg:p-10 border-gradient-gold transition-smooth hover:shadow-2xl hover:shadow-gold/20 hover:-translate-y-2"
+              className="gradient-navy-warm rounded-2xl p-8 lg:p-10 border-gradient-gold transition-smooth hover:shadow-2xl hover:shadow-gold/20 hover:-translate-y-2"
             >
               <div className="w-20 h-20 rounded-2xl gradient-gold-shine text-white flex items-center justify-center mb-6 shadow-lg shadow-gold/30">
                 <div className="scale-125">{benefit.icon}</div>
