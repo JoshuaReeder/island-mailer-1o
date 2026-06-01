@@ -48,8 +48,8 @@ export default function PostcardShowcase() {
         {/* Campaign Timeline */}
         <div className="mt-20 text-center bg-secondary-navy rounded-3xl p-10 lg:p-14 border border-white/10">
           <div className="max-w-2xl mx-auto">
-            <p className="text-sand text-lg mb-3">Next Campaign</p>
-            <p className="text-4xl sm:text-5xl font-bold text-gold mb-6">Summer, 2026</p>
+            <p className="text-sand text-lg mb-3">Next Mailer</p>
+            <p className="text-4xl sm:text-5xl font-bold text-gold mb-6">July 1st</p>
             <p className="text-xl text-cream mb-8">
               Limited spots available for maximum exclusivity. Reserve your space on the most visible mail in the
               neighborhood.
