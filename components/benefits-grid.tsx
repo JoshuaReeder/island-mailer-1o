@@ -3,8 +3,8 @@
 export default function BenefitsGrid() {
   const benefits = [
     {
-      title: "Only One Per Industry",
-      description: "Lock out your direct competitors on the card—your category gets one exclusive ad space.",
+      title: "One Business Per Industry",
+      description: "your category gets one exclusive ad space.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -18,7 +18,7 @@ export default function BenefitsGrid() {
     },
     {
       title: "Mailbox Billboard",
-      description: "A huge 9×12 postcard that lands in every hale—easy to see, easy to keep on the fridge.",
+      description: "A huge 9×12 postcard that lands in every home in your surrounding area.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -32,7 +32,7 @@ export default function BenefitsGrid() {
     },
     {
       title: "No Pages to Flip Through",
-      description: "No coupon book, no envelope; just one big, bright card with your offer front and center.",
+      description: "No coupon book, no envelope; just one big, premium card with your offer front and center.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -45,24 +45,9 @@ export default function BenefitsGrid() {
       ),
     },
     {
-      title: "Double the Exposure",
+      title: "Premium Designs",
       description:
-        "Your ad appears on the physical Island Mailer and on our online Maui business hub for extra visibility.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Done-For-You Design",
-      description: "Send a logo and a rough idea; our team creates an island-style ad that matches your brand.",
+        "Customized to enhance your business and exclusive offer ",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -90,38 +75,9 @@ export default function BenefitsGrid() {
       ),
     },
     {
-      title: "Targeted Maui Routes",
-      description: "Choose the island neighborhoods you care about most—Upcountry, Central, South, West, North Shore.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-          />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Premium Quality",
-      description: "Thick, full-color, glossy stock built to stand out and get saved, not tossed with junk mail.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-          />
-        </svg>
-      ),
-    },
-    {
       title: "Locals Supporting Locals",
       description:
-        "Island Mailer is Maui-based and focused on keeping marketing dollars circulating right here at home.",
+        "Focused on keeping our local economy circulating right here.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
@@ -139,7 +95,7 @@ export default function BenefitsGrid() {
     <section className="py-28 sm:py-36 px-6 sm:px-12 bg-cream/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream text-center mb-16">
-          Why Maui businesses love Island Mailer
+          Why local businesses love Island Mailer
         </h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-12">

@@ -32,20 +32,6 @@ export default function ResultsTestimonials() {
   return (
     <section className="py-28 sm:py-36 px-6 sm:px-12 gradient-navy-subtle">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream text-center mb-16">
-          Real-world results for local businesses
-        </h2>
-
-        {/* Stats */}
-        <div className="grid sm:grid-cols-3 gap-8 mb-20">
-          {stats.map((stat, idx) => (
-            <div key={idx} className="text-center">
-              <div className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gradient-gold mb-3">{stat.number}</div>
-              <p className="text-lg sm:text-xl text-sand">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
         {/* Testimonials */}
         <div className="grid md:grid-cols-3 gap-8 lg:gap-10 mb-12">
           {testimonials.map((testimonial, idx) => (
@@ -68,8 +54,6 @@ export default function ResultsTestimonials() {
             </div>
           ))}
         </div>
-
-        <p className="text-center text-xl text-sand">More Island Mailer success stories coming soon.</p>
       </div>
     </section>
   )

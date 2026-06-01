@@ -66,22 +66,20 @@ export default function Home() {
             </h1>
 
             <p className="text-xl sm:text-2xl lg:text-3xl text-sand max-w-4xl mx-auto leading-relaxed mb-8 animate-fade-up delay-100">
-              While your competitors get sent to spam, your ad dominates up to 10,000 mailboxes across Hawaiʻi. Island
-              Mailer puts your business on a giant 9×12 "mailbox billboard" mailed to up to 10,000 local homes, so you
-              can reach Maui residents for just a few cents per household.
+              Your business on a premium 9&quot;×12&quot; -mailbox billboard- mailed up to 10,000 local homes, so you can reach Maui residents for just a few cents per household.
             </p>
 
             {/* Stat Strip */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12 animate-fade-up delay-200">
               {[
                 { label: "16 premium ad spaces", sublabel: "(8 front, 8 back)" },
-                { label: "Up to 10,000", sublabel: "local homes per mailing" },
-                { label: "One business", sublabel: "per industry" },
-                { label: "Design, printing", sublabel: "& postage included" },
+                { label: "Up to 10,000 local homes", sublabel: "per mailing" },
+                { label: "One local business", sublabel: "per industry" },
+                { label: "Design, printing & postage", sublabel: "all included" },
               ].map((stat, idx) => (
                 <div key={idx} className="gradient-navy-warm rounded-2xl p-6 lg:p-8 border-gradient-gold">
                   <p className="text-lg sm:text-xl font-bold text-gold mb-1">{stat.label}</p>
-                  <p className="text-base text-sand">{stat.sublabel}</p>
+                  <p className="text-base text-sand" style={{ color: "rgb(163, 124, 79)" }}>{stat.sublabel}</p>
                 </div>
               ))}
             </div>
@@ -92,7 +90,7 @@ export default function Home() {
                 onClick={scrollToContact}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-12 py-6 rounded-full font-bold text-xl gradient-gold-shine text-white transition-smooth hover:shadow-2xl hover:shadow-gold/50 hover:-translate-y-1 active:translate-y-0 min-h-[64px]"
               >
-                Reserve Your Island Spot
+                Claim Your Spot
               </button>
               <button
                 onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}

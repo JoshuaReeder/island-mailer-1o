@@ -10,7 +10,7 @@ export default function PricingSpaces({ onReserve }: PricingSpacesProps) {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream mb-6">
-            Simple, flat-rate pricing for every ad space
+            Simple, flat-rate pricing
           </h2>
           <p className="text-2xl sm:text-3xl text-gold">16 ad spaces. Up to 10,000 homes. One flat price.</p>
         </div>
@@ -24,11 +24,11 @@ export default function PricingSpaces({ onReserve }: PricingSpacesProps) {
 
           <div className="space-y-4 mb-10">
             {[
-              "16 total ad spaces (8 on the front, 8 on the back of the 9×12 card)",
+              "16 total ad spaces (8 per side of the 9×12 card)",
               "One business per industry per mailing",
-              "Custom island-style ad design included",
+              "Custom island mailer ad design included",
               "Print, postage, and USPS handling included",
-              "Listing on our online Maui business hub",
+              "Targeted local advertisement ",
               "No long-term contracts—book a single mailer or multiple in a row",
             ].map((item, idx) => (
               <div key={idx} className="flex items-start gap-4">

@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react"
 const steps = [
   {
     number: 1,
-    title: "Inquiry",
-    description: "Tell us about your business and campaign goals",
+    title: "Apply",
+    description: "Tell us about your business",
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -21,7 +21,7 @@ const steps = [
   {
     number: 2,
     title: "Design",
-    description: "We create beautiful, custom postcard designs",
+    description: "We create premium, custom mailer designs",
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -51,7 +51,7 @@ const steps = [
   {
     number: 4,
     title: "Deliver",
-    description: "Postcards reach your Hawaii community",
+    description: "Postcards reach your local community",
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
@@ -95,7 +95,7 @@ export default function HowItWorks() {
     <div ref={sectionRef} className="max-w-6xl mx-auto">
       <div className="text-center mb-16">
         <h2 className="font-bold mb-4 text-primary text-8xl">How It Works</h2>
-        <p className="text-lg text-tan max-w-2xl mx-auto">A simple, streamlined process from idea to delivery</p>
+        <p className="text-lg text-tan max-w-2xl mx-auto">A simple, streamlined process with real results</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">

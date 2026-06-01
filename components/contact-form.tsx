@@ -36,7 +36,7 @@ export default function ContactForm() {
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-cream mb-6 sm:text-8xl">
-          Ready to get your business in Maui mailboxes?
+          Ready to get your business in local mailboxes?
         </h2>
         <p className="text-xl sm:text-2xl text-sand">Fill out the form below to reserve your ad space</p>
       </div>
@@ -182,7 +182,7 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label className="block text-lg font-semibold text-gold mb-3">Anything else we should know?</label>
+            <label className="block text-lg font-semibold text-gold mb-3">Anything else we should know? </label>
             <textarea
               rows={5}
               value={formData.notes}
@@ -194,8 +194,9 @@ export default function ContactForm() {
           <button
             type="submit"
             className="w-full px-12 py-6 rounded-full font-bold text-xl gradient-gold-shine text-white transition-smooth hover:shadow-2xl hover:shadow-gold/50 hover:-translate-y-1 min-h-[64px]"
+            style={{ borderRadius: "48px" }}
           >
-            Check Availability & Reserve My Spot
+            Submit
           </button>
         </form>
 
@@ -204,7 +205,7 @@ export default function ContactForm() {
           <p className="text-lg text-sand">{"Call or text us at 808-M A I L    🤙🏾    (808) 808-6245"}</p>
           <p className="text-lg text-sand">Email: aloha@islandmailer.com</p>
           <p className="text-base text-sand/80 italic max-w-2xl mx-auto">
-            No pressure, no hard sell—just local advice on whether Island Mailer is a good fit for your business.
+            No pressure, no hard sell - just advice on whether Island Mailer is a good fit for you.
           </p>
         </div>
       </div>

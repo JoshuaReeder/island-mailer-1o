@@ -25,7 +25,7 @@ export default function WhoItsFor() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-12">
           {/* Perfect For */}
           <div className="gradient-navy-warm rounded-3xl p-10 lg:p-12 border-gradient-gold">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gold mb-8">Perfect for Maui businesses like:</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-gold mb-8">Perfect for businesses like:</h3>
             <ul className="space-y-4">
               {perfectFor.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-4">
@@ -45,7 +45,7 @@ export default function WhoItsFor() {
           {/* Pain Points */}
           <div className="gradient-navy-warm rounded-3xl p-10 lg:p-12 border-gradient-gold">
             <h3 className="text-2xl sm:text-3xl font-bold text-gold mb-8">
-              If this sounds familiar, Island Mailer can help:
+              If this sounds familiar, we can help:
             </h3>
             <ul className="space-y-4">
               {painPoints.map((item, idx) => (
@@ -66,7 +66,7 @@ export default function WhoItsFor() {
         </div>
 
         <p className="text-xl sm:text-2xl text-center text-sand max-w-4xl mx-auto">
-          Island Mailer was designed to make effective marketing affordable for Maui small businesses.
+          check
         </p>
       </div>
     </section>

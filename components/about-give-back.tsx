@@ -13,18 +13,14 @@ export default function AboutGiveBack() {
             </p>
             <p className="text-lg sm:text-xl text-sand leading-relaxed">
               After years of seeing Maui shops, services, and ʻohana-owned businesses struggle to afford effective
-              advertising, we set out to build something better—a way to share the cost of a big, beautiful postcard so
+              advertising, we set out to build something better - a way to share the cost of a big, beautiful postcard so
               everyone could reach more local homes without burning their entire budget.
             </p>
             <p className="text-lg sm:text-xl text-sand leading-relaxed">
-              Island Mailer connects Maui businesses with Maui residents—no guessing with online algorithms, no fighting
-              for attention in an endless feed. Just a giant "mailbox billboard" that lands in every hale and an online
-              hub that makes it easy for locals to find and support you.
+              Island Mailer connects Maui businesses with Maui residents - no guessing with online algorithms, no fighting for attention in an endless feed. Just a giant "mailbox billboard" that lands in every hale that makes it easy for locals to find and support you.
             </p>
             <p className="text-lg sm:text-xl text-sand leading-relaxed">
-              When you join Island Mailer, you're not just buying an ad. You're joining a local movement to support
-              small businesses, keep marketing dollars in Hawaiʻi, and make it easier for neighbors to discover the
-              people and places that make this island special.
+              When you join Island Mailer, you're not just buying ad space. You're joining a local movement to support small businesses while discovering the people and places that make this island special.
             </p>
           </div>
 
