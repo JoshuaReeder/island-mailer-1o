@@ -25,9 +25,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "Home", href: "#" },
-                { label: "How It Works", href: "#how-it-works" },
+                { label: "Pricing", href: "#pricing" },
                 { label: "FAQ", href: "#faq" },
-                { label: "Contact", href: "#chat" },
+                { label: "Apply", href: "#contact" },
               ].map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-cream/70 hover:text-gold transition-smooth text-sm">
@@ -70,7 +70,7 @@ export default function Footer() {
 
         {/* Divider & Copyright */}
         <div className="border-t border-cream/10 pt-8">
-          <p className="text-center text-sm text-cream/50">© Island Mailer 2025 | Support Local. Live Hawaii.</p>
+          <p className="text-center text-sm text-cream/50">© Island Mailer 2026 | Support Local. Live Hawaii.</p>
         </div>
       </div>
     </footer>

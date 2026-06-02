@@ -8,9 +8,9 @@ export default function FloatingMenu() {
 
   const menuItems = [
     { icon: Home, label: "Home", href: "#" },
-    { icon: MessageCircle, label: "Chat", href: "#chat" },
     { icon: DollarSign, label: "Pricing", href: "#pricing" },
     { icon: HelpCircle, label: "FAQ", href: "#faq" },
+    { icon: MessageCircle, label: "Apply", href: "#contact" },
   ]
 
   const handleMenuClick = (href: string) => {

@@ -13,7 +13,6 @@ export default function ContactForm() {
     website: "",
     businessType: "",
     industryCategory: "",
-    adSpace: "",
     mailings: "",
     areas: [] as string[],
     notes: "",
@@ -131,35 +130,19 @@ export default function ContactForm() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-lg font-semibold text-gold mb-3">Preferred Ad Space</label>
-              <select
-                required
-                value={formData.adSpace}
-                onChange={(e) => setFormData({ ...formData, adSpace: e.target.value })}
-                className="w-full px-6 py-4 rounded-2xl border-2 border-gold/20 bg-navy text-cream text-lg focus:border-gold focus:ring-4 focus:ring-gold/20 outline-none transition-smooth"
-              >
-                <option value="">Select preference...</option>
-                <option value="front">Front</option>
-                <option value="back">Back</option>
-                <option value="no-preference">No preference</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-lg font-semibold text-gold mb-3">How many mailings?</label>
-              <select
-                required
-                value={formData.mailings}
-                onChange={(e) => setFormData({ ...formData, mailings: e.target.value })}
-                className="w-full px-6 py-4 rounded-2xl border-2 border-gold/20 bg-navy text-cream text-lg focus:border-gold focus:ring-4 focus:ring-gold/20 outline-none transition-smooth"
-              >
-                <option value="">Select option...</option>
-                <option value="one">Just the next one</option>
-                <option value="multiple">2-3 in a row</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
-            </div>
+          <div>
+            <label className="block text-lg font-semibold text-gold mb-3">How many mailings?</label>
+            <select
+              required
+              value={formData.mailings}
+              onChange={(e) => setFormData({ ...formData, mailings: e.target.value })}
+              className="w-full px-6 py-4 rounded-2xl border-2 border-gold/20 bg-navy text-cream text-lg focus:border-gold focus:ring-4 focus:ring-gold/20 outline-none transition-smooth"
+            >
+              <option value="">Select option...</option>
+              <option value="one">Just the next one</option>
+              <option value="multiple">2-3 in a row</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
           </div>
 
           <div>
@@ -196,7 +179,7 @@ export default function ContactForm() {
             className="w-full px-12 py-6 rounded-full font-bold text-xl gradient-gold-shine text-white transition-smooth hover:shadow-2xl hover:shadow-gold/50 hover:-translate-y-1 min-h-[64px]"
             style={{ borderRadius: "48px" }}
           >
-            Submit
+            Check Availability & Reserve My Ad Space
           </button>
         </form>
 

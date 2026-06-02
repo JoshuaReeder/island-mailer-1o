@@ -2,28 +2,19 @@
 
 import { useRef } from "react"
 import Image from "next/image"
-import ChatInterface from "@/components/chat-interface"
 import HowItWorks from "@/components/how-it-works"
 import FAQSection from "@/components/faq-section"
 import Footer from "@/components/footer"
-import StatsSection from "@/components/stats-section"
 import PostcardShowcase from "@/components/postcard-showcase"
 import FloatingMenu from "@/components/floating-menu"
 import WhoItsFor from "@/components/who-its-for"
 import BenefitsGrid from "@/components/benefits-grid"
 import PricingSpaces from "@/components/pricing-spaces"
-import CardPreview from "@/components/card-preview"
-import ResultsTestimonials from "@/components/results-testimonials"
 import AboutGiveBack from "@/components/about-give-back"
 import ContactForm from "@/components/contact-form"
 
 export default function Home() {
-  const chatRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
-
-  const scrollToChat = () => {
-    chatRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -126,9 +117,6 @@ export default function Home() {
       {/* Benefits Grid Section */}
       <BenefitsGrid />
 
-      {/* Stats Section */}
-      <StatsSection />
-
       {/* Postcard Showcase Section */}
       <PostcardShowcase />
 
@@ -140,12 +128,6 @@ export default function Home() {
       {/* Pricing & Ad Spaces Section */}
       <PricingSpaces onReserve={scrollToContact} />
 
-      {/* Live Card Preview Section */}
-      <CardPreview />
-
-      {/* Results & Testimonials Section */}
-      <ResultsTestimonials />
-
       {/* FAQ Section */}
       <section id="faq" className="py-28 sm:py-36 px-6 sm:px-12 gradient-navy-subtle scroll-mt-20">
         <FAQSection />
@@ -153,11 +135,6 @@ export default function Home() {
 
       {/* About & Give-Back Section */}
       <AboutGiveBack />
-
-      {/* Chat Section */}
-      <section ref={chatRef} id="chat" className="py-28 sm:py-36 px-6 sm:px-12 bg-cream/5 scroll-mt-24">
-        <ChatInterface />
-      </section>
 
       {/* Contact & Reservation Form Section */}
       <section ref={contactRef} id="contact" className="py-28 sm:py-36 px-6 sm:px-12 gradient-navy-subtle scroll-mt-24">

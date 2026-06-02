@@ -44,13 +44,7 @@ export default function PricingSpaces({ onReserve }: PricingSpacesProps) {
             ))}
           </div>
 
-          <div className="bg-sand/10 rounded-2xl p-6 lg:p-8 border border-sand/20">
-            <p className="text-base sm:text-lg text-sand leading-relaxed">
-              For smaller campaigns (for example, up to ~5,000 homes
-              in one market), pricing may be adjusted for that mailing (e.g., around $600 per ad space). Ask about
-              current routes and pricing when you reserve.
-            </p>
-          </div>
+
         </div>
 
         <div className="text-center">
