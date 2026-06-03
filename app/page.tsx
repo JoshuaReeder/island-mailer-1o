@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef } from "react"
-import Image from "next/image"
 import HowItWorks from "@/components/how-it-works"
 import FAQSection from "@/components/faq-section"
 import Footer from "@/components/footer"
@@ -12,6 +11,7 @@ import BenefitsGrid from "@/components/benefits-grid"
 import PricingSpaces from "@/components/pricing-spaces"
 import AboutGiveBack from "@/components/about-give-back"
 import ContactForm from "@/components/contact-form"
+import SiteHeader from "@/components/site-header"
 
 export default function Home() {
   const contactRef = useRef<HTMLDivElement>(null)
@@ -22,25 +22,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 gradient-navy-subtle backdrop-blur-md border-b border-gold/20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 py-6 flex items-center justify-between">
-          <Image
-            src="/images/horizontal-20im-20logo.svg"
-            alt="Island Mailer"
-            width={200}
-            height={50}
-            className="h-28 sm:h-36 w-auto"
-            priority
-          />
-          <button
-            onClick={scrollToContact}
-            className="px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold sm:text-lg gradient-gold-shine text-white transition-smooth hover:shadow-2xl hover:shadow-gold/40 hover:-translate-y-0.5 active:translate-y-0 min-h-[56px] text-xs"
-          >
-            Reserve Your Spot
-          </button>
-        </div>
-      </header>
+      <SiteHeader onReserve={scrollToContact} />
 
       {/* Hero Section */}
       <section className="relative py-28 sm:py-40 lg:py-52 px-6 sm:px-12 overflow-hidden">
@@ -53,7 +35,8 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover -z-20"
           aria-hidden="true"
         >
-          <source src="https://videos.pexels.com/video-files/2169880/2169880-hd_1280_720_30fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/3015539/3015539-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/1448735/1448735-hd_1920_1080_30fps.mp4" type="video/mp4" />
         </video>
         {/* Dark navy overlay so text stays legible */}
         <div className="absolute inset-0 -z-10 bg-navy/80" />
@@ -112,11 +95,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section 2 — 9×12 Postcard Mockup (immediately after Hero) */}
+      <PostcardShowcase />
+
       {/* Who It's For Section */}
       <WhoItsFor />
-
-      {/* Postcard Showcase — Section 2, right after Who It's For */}
-      <PostcardShowcase />
 
       {/* Benefits Grid Section */}
       <BenefitsGrid />
