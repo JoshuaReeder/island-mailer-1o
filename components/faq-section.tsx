@@ -85,7 +85,7 @@ export default function FAQSection() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-10">
-        <h2 className="font-bold mb-4 text-primary leading-7 text-5xl">Frequently Asked Questions</h2>
+        <h2 className="font-bold mb-4 text-primary text-5xl" style={{ lineHeight: "1.98em", letterSpacing: "0.03em" }}>Frequently Asked Questions</h2>
       </div>
 
       {/* Expand / Collapse all */}
