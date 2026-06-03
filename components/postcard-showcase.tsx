@@ -47,7 +47,7 @@ export default function PostcardShowcase() {
         </div>
 
         {/* Postcard image */}
-        <div className="relative rounded-3xl overflow-hidden border border-gold/20 shadow-2xl shadow-black/40 max-w-5xl mx-auto">
+        <div className="relative rounded-3xl overflow-hidden border border-gold/20 shadow-2xl shadow-black/40 max-w-5xl mx-auto" style={{ lineHeight: "2em", fontSize: "25px" }}>
           <Image
             key={side}
             src={images[side]}
