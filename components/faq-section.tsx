@@ -62,44 +62,80 @@ const faqs = [
 ]
 
 export default function FAQSection() {
-  const [expandedIdx, setExpandedIdx] = useState<number | null>(null)
+  const [openIndexes, setOpenIndexes] = useState<Set<number>>(new Set())
+
+  const allOpen = openIndexes.size === faqs.length
+
+  const toggleOne = (idx: number) => {
+    setOpenIndexes((prev) => {
+      const next = new Set(prev)
+      next.has(idx) ? next.delete(idx) : next.add(idx)
+      return next
+    })
+  }
+
+  const toggleAll = () => {
+    if (allOpen) {
+      setOpenIndexes(new Set())
+    } else {
+      setOpenIndexes(new Set(faqs.map((_, i) => i)))
+    }
+  }
 
   return (
     <div className="max-w-3xl mx-auto">
-      <div className="text-center mb-12">
+      <div className="text-center mb-10">
         <h2 className="font-bold mb-4 text-primary leading-7 text-5xl">Frequently Asked Questions</h2>
       </div>
 
-      <div className="space-y-3">
-        {faqs.map((faq, idx) => (
-          <div
-            key={idx}
-            className={`rounded-xl border overflow-hidden transition-smooth ${
-              expandedIdx === idx ? "bg-card shadow-md" : "bg-card/50"
-            }`}
-            style={{ borderColor: expandedIdx === idx ? "#A37C4F" : "#e8e3dd" }}
-          >
-            <button
-              onClick={() => setExpandedIdx(expandedIdx === idx ? null : idx)}
-              className="w-full px-6 py-5 flex items-center justify-between text-left transition-smooth hover:bg-muted min-h-[64px]"
-            >
-              <h3 className="text-base sm:text-lg font-semibold pr-4 text-primary">{faq.question}</h3>
-              <ChevronDown
-                className={`w-5 h-5 text-gold flex-shrink-0 transition-transform duration-300 ${
-                  expandedIdx === idx ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+      {/* Expand / Collapse all */}
+      <div className="flex justify-end mb-4">
+        <button
+          onClick={toggleAll}
+          className="text-sm font-semibold text-gold border border-gold/40 hover:border-gold hover:bg-gold/10 px-5 py-2 rounded-full transition-smooth"
+        >
+          {allOpen ? "Collapse All" : "Expand All"}
+        </button>
+      </div>
 
+      <div className="space-y-3">
+        {faqs.map((faq, idx) => {
+          const isOpen = openIndexes.has(idx)
+          return (
             <div
-              className={`overflow-hidden transition-all duration-300 ${expandedIdx === idx ? "max-h-96" : "max-h-0"}`}
+              key={idx}
+              className={`rounded-xl border overflow-hidden transition-smooth ${
+                isOpen ? "bg-card shadow-md" : "bg-card/50"
+              }`}
+              style={{ borderColor: isOpen ? "#A37C4F" : "#e8e3dd" }}
             >
-              <div className="px-6 pb-5 pt-0">
-                <p className="text-tan leading-relaxed">{faq.answer}</p>
+              <button
+                onClick={() => toggleOne(idx)}
+                className="w-full px-6 py-5 flex items-center justify-between text-left transition-smooth hover:bg-muted min-h-[64px]"
+                aria-expanded={isOpen}
+              >
+                <h3 className="text-base sm:text-lg font-semibold pr-4 text-primary">{faq.question}</h3>
+                <ChevronDown
+                  className={`w-5 h-5 text-gold flex-shrink-0 transition-transform duration-300 ${
+                    isOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[500px]" : "max-h-0"}`}
+              >
+                <div className="px-6 pb-5 pt-0">
+                  {faq.answer.split("\n").map((line, i) => (
+                    <p key={i} className={`text-tan leading-relaxed ${i > 0 ? "mt-3" : ""}`}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )

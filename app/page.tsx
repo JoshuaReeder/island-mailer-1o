@@ -43,11 +43,24 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-28 sm:py-40 lg:py-52 px-6 sm:px-12 overflow-hidden gradient-navy-subtle">
-        {/* Enhanced background accents with island-inspired elements */}
+      <section className="relative py-28 sm:py-40 lg:py-52 px-6 sm:px-12 overflow-hidden">
+        {/* Waterfall background video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover -z-20"
+          aria-hidden="true"
+        >
+          <source src="https://videos.pexels.com/video-files/2169880/2169880-hd_1280_720_30fps.mp4" type="video/mp4" />
+        </video>
+        {/* Dark navy overlay so text stays legible */}
+        <div className="absolute inset-0 -z-10 bg-navy/80" />
+        {/* Subtle gold accent glows */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-gold/20 blur-3xl animate-float" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sand/15 blur-3xl animate-float delay-500" />
+          <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-gold/10 blur-3xl animate-float" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sand/10 blur-3xl animate-float delay-500" />
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -96,29 +109,17 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Visual Mockup */}
-          <div className="max-w-3xl mx-auto animate-fade-up delay-500">
-            <div className="gradient-navy-warm rounded-3xl p-8 lg:p-12 border-gradient-gold shadow-2xl">
-              <div className="aspect-[3/2] bg-navy/50 rounded-2xl flex items-center justify-center">
-                <p className="text-sand text-xl sm:text-2xl text-center px-6">
-                  9×12 Postcard Mockup
-                  <br />
-                  <span className="text-base text-sand/60">(Front & Back Preview)</span>
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Who It's For Section */}
       <WhoItsFor />
 
+      {/* Postcard Showcase — Section 2, right after Who It's For */}
+      <PostcardShowcase />
+
       {/* Benefits Grid Section */}
       <BenefitsGrid />
-
-      {/* Postcard Showcase Section */}
-      <PostcardShowcase />
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-28 sm:py-36 px-6 sm:px-12 bg-cream/5 scroll-mt-20">

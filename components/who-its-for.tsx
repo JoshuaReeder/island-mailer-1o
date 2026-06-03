@@ -50,15 +50,11 @@ export default function WhoItsFor() {
             <ul className="space-y-4">
               {painPoints.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-4">
-                  <svg
-                    className="w-7 h-7 text-sand/60 flex-shrink-0 mt-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                  <span className="text-lg sm:text-xl text-sand leading-relaxed italic">"{item}"</span>
+                  {/* Gold question mark — signals "sound familiar?" rather than a negative */}
+                  <span className="flex-shrink-0 w-7 h-7 mt-0.5 rounded-full border-2 border-gold text-gold text-sm font-bold flex items-center justify-center leading-none">
+                    ?
+                  </span>
+                  <span className="text-lg sm:text-xl text-sand leading-relaxed italic">&ldquo;{item}&rdquo;</span>
                 </li>
               ))}
             </ul>
