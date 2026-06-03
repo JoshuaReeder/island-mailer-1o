@@ -72,7 +72,7 @@ export default function PostcardShowcase() {
             <p className="text-sand text-lg mb-3">Next Mailer</p>
             <p className="text-4xl sm:text-5xl font-bold text-gold mb-6">July 1st</p>
             <p className="text-xl text-cream mb-8">
-              Limited spots available. Reserve your space on the most visible mail in local mailboxes.
+              Limited spots available. Reserve your space on the most visible mail in local neighborhoods.
             </p>
             <button
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
