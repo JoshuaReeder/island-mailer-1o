@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 
 export default function ContactForm() {
@@ -18,17 +17,68 @@ export default function ContactForm() {
     notes: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("[v0] Form submitted:", formData)
-    // Handle form submission
-  }
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
 
   const handleCheckboxChange = (area: string) => {
     setFormData((prev) => ({
       ...prev,
       areas: prev.areas.includes(area) ? prev.areas.filter((a) => a !== area) : [...prev.areas, area],
     }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setMessage(null)
+
+    try {
+      console.log("[v0] Submitting form data:", formData)
+      
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+      console.log("[v0] API response:", result)
+
+      if (response.ok && result.success) {
+        setMessage({
+          type: "success",
+          text: "Thank you! Your application has been submitted. We'll review your information and get back to you soon.",
+        })
+        // Reset form
+        setFormData({
+          name: "",
+          businessName: "",
+          phone: "",
+          email: "",
+          website: "",
+          businessType: "",
+          industryCategory: "",
+          mailings: "",
+          areas: [],
+          notes: "",
+        })
+      } else {
+        setMessage({
+          type: "error",
+          text: result.error || "Something went wrong. Please try again.",
+        })
+      }
+    } catch (error) {
+      console.error("[v0] Form submission error:", error)
+      setMessage({
+        type: "error",
+        text: "Failed to submit form. Please check your connection and try again.",
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -41,6 +91,19 @@ export default function ContactForm() {
       </div>
 
       <div className="gradient-navy-warm rounded-3xl p-10 lg:p-12 border-gradient-gold">
+        {/* Success/Error Messages */}
+        {message && (
+          <div
+            className={`mb-8 p-6 rounded-2xl ${
+              message.type === "success"
+                ? "bg-green-600/20 border-2 border-green-500 text-green-100"
+                : "bg-red-600/20 border-2 border-red-500 text-red-100"
+            }`}
+          >
+            <p className="text-lg font-semibold">{message.text}</p>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-8">
           <div className="grid md:grid-cols-2 gap-6">
             <div>
@@ -108,13 +171,13 @@ export default function ContactForm() {
                 className="w-full px-6 py-4 rounded-2xl border-2 border-gold/20 bg-navy text-cream text-lg focus:border-gold focus:ring-4 focus:ring-gold/20 outline-none transition-smooth"
               >
                 <option value="">Select type...</option>
-                <option value="restaurant">Restaurant / Food</option>
-                <option value="wellness">Wellness / Beauty</option>
-                <option value="trades">Trades / Services</option>
-                <option value="auto">Auto / Transportation</option>
-                <option value="professional">Professional Services</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="other">Other</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Retail">Retail</option>
+                <option value="Service">Service</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Professional">Professional</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <div>
@@ -139,53 +202,53 @@ export default function ContactForm() {
               className="w-full px-6 py-4 rounded-2xl border-2 border-gold/20 bg-navy text-cream text-lg focus:border-gold focus:ring-4 focus:ring-gold/20 outline-none transition-smooth"
             >
               <option value="">Select option...</option>
-              <option value="one">Just the next one</option>
-              <option value="multiple">2-3 in a row</option>
-              <option value="unsure">Not sure yet</option>
+              <option value="Just the next one">Just the next one</option>
+              <option value="2-3 in a row">2-3 in a row</option>
+              <option value="Not sure yet">Not sure yet</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-lg font-semibold text-gold mb-4">
-              Preferred Areas (select all that apply)
-            </label>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <label className="block text-lg font-semibold text-gold mb-4">Preferred Areas (select all that apply)</label>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {["Central", "Upcountry", "South", "West", "North Shore"].map((area) => (
-                <label key={area} className="flex items-center gap-3 cursor-pointer group">
+                <label key={area} className="flex items-center gap-3 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={formData.areas.includes(area)}
                     onChange={() => handleCheckboxChange(area)}
-                    className="w-6 h-6 rounded border-2 border-gold/20 bg-navy text-gold focus:ring-4 focus:ring-gold/20"
+                    className="w-6 h-6 rounded border-2 border-gold/20 bg-navy cursor-pointer accent-gold"
                   />
-                  <span className="text-lg text-sand group-hover:text-gold transition-smooth">{area}</span>
+                  <span className="text-lg text-sand hover:text-gold transition-smooth">{area}</span>
                 </label>
               ))}
             </div>
           </div>
 
           <div>
-            <label className="block text-lg font-semibold text-gold mb-3">Anything else we should know? </label>
+            <label className="block text-lg font-semibold text-gold mb-3">Anything else we should know?</label>
             <textarea
-              rows={5}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               className="w-full px-6 py-4 rounded-2xl border-2 border-gold/20 bg-navy text-cream text-lg focus:border-gold focus:ring-4 focus:ring-gold/20 outline-none transition-smooth resize-none"
+              rows={6}
+              placeholder="Tell us more about your business, your goals, or anything else we should know..."
             />
           </div>
 
           <button
             type="submit"
-            className="w-full px-12 py-6 rounded-full font-bold text-xl gradient-gold-shine text-white transition-smooth hover:shadow-2xl hover:shadow-gold/50 hover:-translate-y-1 min-h-[64px]"
+            disabled={isLoading}
+            className="w-full px-12 py-6 rounded-full font-bold text-xl gradient-gold-shine text-white transition-smooth hover:shadow-2xl hover:shadow-gold/50 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed min-h-[64px]"
             style={{ borderRadius: "48px" }}
           >
-            Check Availability & Reserve My Ad Space
+            {isLoading ? "Submitting..." : "Check Availability & Reserve My Ad Space"}
           </button>
         </form>
 
-        <div className="mt-10 pt-10 border-t border-gold/20 text-center space-y-4">
-          <p className="text-xl text-gold font-semibold">Prefer to talk story first?</p>
-          <p className="text-lg text-sand">
+        <div className="mt-12 pt-8 border-t border-gold/20">
+          <p className="text-center text-sand mb-6">Prefer to talk story first?</p>
+          <p className="text-lg text-sand text-center">
             Call or text us at{" "}
             <a
               href="tel:+18088086245"
@@ -194,7 +257,7 @@ export default function ContactForm() {
               (808) 808-6245
             </a>
           </p>
-          <p className="text-lg text-sand">
+          <p className="text-lg text-sand text-center">
             Email:{" "}
             <a
               href="mailto:aloha@islandmailer.com"
@@ -203,7 +266,7 @@ export default function ContactForm() {
               aloha@islandmailer.com
             </a>
           </p>
-          <p className="text-base text-sand/80 italic max-w-2xl mx-auto">
+          <p className="text-center text-sand/80 text-sm mt-6">
             No pressure, no hard sell - just advice on whether Island Mailer is a good fit for you.
           </p>
         </div>
