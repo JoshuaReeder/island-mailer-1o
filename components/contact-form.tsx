@@ -185,8 +185,24 @@ export default function ContactForm() {
 
         <div className="mt-10 pt-10 border-t border-gold/20 text-center space-y-4">
           <p className="text-xl text-gold font-semibold">Prefer to talk story first?</p>
-          <p className="text-lg text-sand">{"Call or text us at 808-M A I L    🤙🏾    (808) 808-6245"}</p>
-          <p className="text-lg text-sand">Email: aloha@islandmailer.com</p>
+          <p className="text-lg text-sand">
+            Call or text us at{" "}
+            <a
+              href="tel:+18088086245"
+              className="text-gold hover:text-gold/80 underline underline-offset-2 transition-smooth"
+            >
+              (808) 808-6245
+            </a>
+          </p>
+          <p className="text-lg text-sand">
+            Email:{" "}
+            <a
+              href="mailto:aloha@islandmailer.com"
+              className="text-gold hover:text-gold/80 underline underline-offset-2 transition-smooth"
+            >
+              aloha@islandmailer.com
+            </a>
+          </p>
           <p className="text-base text-sand/80 italic max-w-2xl mx-auto">
             No pressure, no hard sell - just advice on whether Island Mailer is a good fit for you.
           </p>

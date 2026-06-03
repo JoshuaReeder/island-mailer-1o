@@ -40,11 +40,6 @@ const faqs = [
       "You can reserve a spot by filling out the contact form on our website or contacting us directly.\nOnce we confirm availability, we'll review your business category, mailing area, ad materials, and campaign timing. Your spot is reserved once availability is confirmed and payment is completed.",
   },
   {
-    question: "How many businesses are featured on each mailer?",
-    answer:
-      "Each Island Mailer campaign features a limited number of local businesses, with up to 16 total ad spaces available across the front and back of the 9x12 postcard.\nThis keeps the mailer clean, readable, and valuable for both residents and advertisers.",
-  },
-  {
     question: "How many homes will receive the mailer?",
     answer:
       "Each campaign is designed to reach thousands of local households within the selected mailing area. Some campaigns may reach up to 10,000 homes depending on the market and mailing route.\nWe'll confirm the estimated household count before each campaign.",
@@ -55,16 +50,6 @@ const faqs = [
       "Island Mailer is a great fit for local restaurants, cafés, service businesses, contractors, health and wellness providers, retail shops, family services, home services, auto services, and other businesses that want more local visibility.\nThe goal is to help residents discover and support businesses in their own community.",
   },
   {
-    question: "Can I include a coupon or special offer?",
-    answer:
-      "Yes. Coupons, special offers, QR codes, and limited-time promotions work very well on direct mail.\nWe recommend including a simple offer or clear call-to-action so residents know exactly what to do next.",
-  },
-  {
-    question: "Do I need to provide a finished ad?",
-    answer:
-      "No. You do not need to provide a finished ad.\nYou can send us your logo, photos, business details, offer, and contact information. We'll help put the ad together for you.",
-  },
-  {
     question: "Can I advertise in more than one area?",
     answer:
       "Yes, depending on availability.\nIf your business serves multiple parts of Maui or multiple islands, we can discuss options for placing your ad in more than one market area or future campaign.",
@@ -73,16 +58,6 @@ const faqs = [
     question: "When will the mailer go out?",
     answer:
       "Mailer dates depend on the campaign schedule, design deadlines, print production, and mailing route timing.\nOnce your spot is reserved, we'll let you know the expected timeline and any important deadlines for submitting your business information, logo, photos, and offer.",
-  },
-  {
-    question: "Why should I use Island Mailer instead of mailing my own postcard?",
-    answer:
-      "Mailing your own postcard can be expensive and time-consuming when you factor in design, printing, postage, route planning, and mailing logistics.\nIsland Mailer allows multiple local businesses to share the cost of a large, professional postcard campaign while still getting direct exposure to local homes.",
-  },
-  {
-    question: "Is Island Mailer only for Maui businesses?",
-    answer:
-      "Island Mailer is starting with Maui markets first, with plans to expand into other Hawaiʻi communities over time.\nIf you are located outside Maui but interested in future campaigns, you can contact us to join the interest list.",
   },
 ]
 

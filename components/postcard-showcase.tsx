@@ -1,49 +1,106 @@
 "use client"
 
+import { useState } from "react"
+import Image from "next/image"
+
+type Side = "front" | "back"
+type ColorScheme = "navy" | "cream"
+
+const images: Record<Side, Record<ColorScheme, string>> = {
+  front: {
+    navy: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FRONT%208%20Gold%20on%20Navy-EdKtbmAI0oK519d63uOWFOq9Unh3bw.png",
+    cream:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FRONT%208%20Gold%20on%20Cream-1OZvxbI6SAe3TQBgCa07kmYAFd8KLQ.png",
+  },
+  back: {
+    navy: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BACK%208%20Gold%20on%20Navy-8WHj3r4qC3gDGxhD2zJKTU0IFGHEid.png",
+    cream:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BACK%208%20Gold%20on%20Cream-lbcf07LM4RgelaeA9DgYhaMys6TuJ4.png",
+  },
+}
+
 export default function PostcardShowcase() {
+  const [side, setSide] = useState<Side>("front")
+  const [color, setColor] = useState<ColorScheme>("navy")
+
   return (
     <section className="py-28 sm:py-36 px-6 sm:px-12 bg-navy">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream mb-6">
-            <span className="text-gold">Massive Impact</span>
-            <br />
-            Every Piece Gets Maximum Visibility
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream mb-4">
+            The 9&times;12 Postcard
           </h2>
-          <p className="text-xl sm:text-2xl text-sand max-w-3xl mx-auto leading-relaxed">
-            No competition. No getting buried. Grab their attention, and a spot on their fridge too.
+          <p className="text-xl sm:text-2xl text-sand max-w-2xl mx-auto leading-relaxed">
+            Front &amp; back — see what lands in every mailbox.
           </p>
         </div>
 
-        {/* Postcard Examples Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((num) => (
-            <div
-              key={num}
-              className="group relative rounded-3xl overflow-hidden bg-secondary-navy border border-white/10 transition-smooth hover:shadow-2xl hover:-translate-y-2"
+        {/* Controls */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+          {/* Side toggle */}
+          <div className="flex items-center gap-1 bg-secondary-navy rounded-full p-1 border border-white/10">
+            {(["front", "back"] as Side[]).map((s) => (
+              <button
+                key={s}
+                onClick={() => setSide(s)}
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold capitalize transition-smooth ${
+                  side === s
+                    ? "bg-gold text-white shadow-md"
+                    : "text-sand hover:text-gold"
+                }`}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+
+          {/* Color toggle */}
+          <div className="flex items-center gap-1 bg-secondary-navy rounded-full p-1 border border-white/10">
+            <button
+              onClick={() => setColor("navy")}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-smooth ${
+                color === "navy"
+                  ? "bg-gold text-white shadow-md"
+                  : "text-sand hover:text-gold"
+              }`}
             >
-              <div className="aspect-[3/4] bg-gradient-to-br from-gold/20 to-sand/20 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 rounded-2xl bg-gold/20 text-gold flex items-center justify-center mx-auto mb-6">
-                    <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <p className="text-lg text-gold font-semibold">PREMIUM DESIGN</p>
-                  <p className="text-sm text-sand mt-2">Example {num}</p>
-                </div>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-smooth flex items-end p-6">
-                <p className="text-cream font-semibold">9×12 Postcard Design</p>
-              </div>
-            </div>
-          ))}
+              <span className="w-3 h-3 rounded-full bg-[#1e2d4a] border border-gold/40 inline-block" />
+              Navy
+            </button>
+            <button
+              onClick={() => setColor("cream")}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-smooth ${
+                color === "cream"
+                  ? "bg-gold text-white shadow-md"
+                  : "text-sand hover:text-gold"
+              }`}
+            >
+              <span className="w-3 h-3 rounded-full bg-[#f5f0e8] border border-gold/40 inline-block" />
+              Cream
+            </button>
+          </div>
         </div>
+
+        {/* Postcard image */}
+        <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 max-w-5xl mx-auto">
+          <Image
+            key={`${side}-${color}`}
+            src={images[side][color]}
+            alt={`Island Mailer ${side} — ${color} background`}
+            width={1280}
+            height={960}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
+
+        {/* Caption */}
+        <p className="text-center text-sand/60 text-sm mt-4">
+          {side === "front" ? "Front — 8 ad spaces (A–H)" : "Back — 8 ad spaces (I–P)"}
+          {" · "}
+          {color === "navy" ? "Navy background" : "Cream background"}
+        </p>
 
         {/* Campaign Timeline */}
         <div className="mt-20 text-center bg-secondary-navy rounded-3xl p-10 lg:p-14 border border-white/10">
@@ -51,8 +108,7 @@ export default function PostcardShowcase() {
             <p className="text-sand text-lg mb-3">Next Mailer</p>
             <p className="text-4xl sm:text-5xl font-bold text-gold mb-6">July 1st</p>
             <p className="text-xl text-cream mb-8">
-              Limited spots available for maximum exclusivity. Reserve your space on the most visible mail in the
-              neighborhood.
+              Limited spots available. Reserve your space on the most visible mail in local mailboxes.
             </p>
             <button className="px-10 py-5 rounded-full font-bold text-xl bg-gold text-white transition-smooth hover:shadow-2xl hover:shadow-gold/30 hover:-translate-y-1 active:translate-y-0 min-h-[64px]">
               Reserve Your Spot

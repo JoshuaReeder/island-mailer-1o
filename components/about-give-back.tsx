@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export default function AboutGiveBack() {
   return (
     <section className="py-28 sm:py-36 px-6 sm:px-12 bg-cream/5">
@@ -24,14 +26,16 @@ export default function AboutGiveBack() {
             </p>
           </div>
 
-          {/* Image Placeholder */}
-          <div className="gradient-navy-warm rounded-3xl p-8 lg:p-10 border-gradient-gold">
-            <div className="aspect-square bg-navy/50 rounded-2xl flex items-center justify-center">
-              <p className="text-sand text-xl text-center px-6">
-                Island Community
-                <br />
-                <span className="text-base text-sand/60">(Photo)</span>
-              </p>
+          {/* Pā'ia Town photo */}
+          <div className="gradient-navy-warm rounded-3xl p-3 border-gradient-gold overflow-hidden">
+            <div className="rounded-2xl overflow-hidden aspect-square">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-giDBybwI37gwn0qdjSDN7dZhdT7yvC.png"
+                alt="Aerial view of Pā'ia Town, Maui — a charming North Shore community with colorful rooftops and turquoise ocean"
+                width={800}
+                height={800}
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
