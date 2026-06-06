@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Island Mailer",
     images: [
       {
-        url: "/og-image.png",
+        url: "/images/website%20OG%20Logo%20Image%20for%20share%20preview.png",
         width: 1200,
         height: 630,
         alt: "Island Mailer – Support Local. Live Hawaii.",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Island Mailer | Support Local. Live Hawaii.",
     description:
       "Reach up to 10,000 Maui households with a premium 9×12 postcard mailer. One local business per industry.",
-    images: ["/og-image.png"],
+    images: ["/images/website%20OG%20Logo%20Image%20for%20share%20preview.png"],
   },
   icons: {
     icon: [
