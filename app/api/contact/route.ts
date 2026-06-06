@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
       // ── 1. Notify YOU of the new lead ──────────────────────────────────
       await resend.emails.send({
-        from: "Island Mailer <aloha@islandmailer.com>",
+        from: "Island Mailer <aloha@mail.islandmailer.com>",
         to: [process.env.NOTIFICATION_EMAIL || "aloha@islandmailer.com"],
         replyTo: email,
         subject: `🔔 New Lead: ${businessName} — ${industryCategory}`,
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
 
       // ── 2. Send confirmation to the LEAD ───────────────────────────────
       await resend.emails.send({
-        from: "Island Mailer <aloha@islandmailer.com>",
+        from: "Island Mailer <aloha@mail.islandmailer.com>",
         to: [email],
         subject: `Mahalo! We got your request 🤙 — Island Mailer`,
         html: `
