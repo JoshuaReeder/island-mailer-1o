@@ -96,7 +96,8 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: "Island Mailer <aloha@mail.islandmailer.com>",
         to: [email],
-        subject: `Mahalo! We got your request 🤙 — Island Mailer`,
+        replyTo: "aloha@islandmailer.com",
+        subject: `Mahalo! We got your request 🤙🏾 — Island Mailer`,
         html: `<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
@@ -106,7 +107,7 @@ export async function POST(request: Request) {
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
         <tr><td style="background:linear-gradient(135deg,#1F2735 0%,#2a3547 100%);border-radius:16px 16px 0 0;padding:40px 32px;text-align:center;border-bottom:2px solid #A37C4F;">
           <p style="margin:0 0 4px;color:#A37C4F;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;">Island Mailer</p>
-          <h1 style="margin:12px 0 8px;color:#F5F4EF;font-size:28px;font-weight:700;">Mahalo, ${name}! 🤙</h1>
+          <h1 style="margin:12px 0 8px;color:#F5F4EF;font-size:28px;font-weight:700;">Mahalo, ${name}! 🤙🏾</h1>
           <p style="margin:0;color:#D5C1AA;font-size:16px;">Your application has been received.</p>
         </td></tr>
         <tr><td style="background:#A37C4F;padding:14px 32px;text-align:center;">
