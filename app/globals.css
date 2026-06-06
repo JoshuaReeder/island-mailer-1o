@@ -325,3 +325,16 @@
 .animate-bounce-dot {
   animation: bounce-dot 1.4s infinite ease-in-out;
 }
+
+/* Hero animated gradient background */
+@keyframes hero-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-hero-gradient {
+  background: linear-gradient(-45deg, #0d1520, #1F2735, #162236, #1a2a3e, #111d2a);
+  background-size: 400% 400%;
+  animation: hero-gradient 20s ease infinite;
+}
