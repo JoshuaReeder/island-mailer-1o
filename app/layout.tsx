@@ -12,6 +12,30 @@ export const metadata: Metadata = {
   description:
     "Connect with your Hawaii community through beautiful postcard mailers. Reach up to 10,000 homes across Maui, Oahu, Hawaii Island, and Kauai.",
   generator: "v0.app",
+  metadataBase: new URL("https://islandmailer.com"),
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com",
+    title: "Island Mailer | Support Local. Live Hawaii.",
+    description:
+      "Reach up to 10,000 Maui households with a premium 9×12 postcard mailer. One local business per industry. Design, print & postage included.",
+    siteName: "Island Mailer",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Island Mailer – Support Local. Live Hawaii.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Island Mailer | Support Local. Live Hawaii.",
+    description:
+      "Reach up to 10,000 Maui households with a premium 9×12 postcard mailer. One local business per industry.",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: [
       {
