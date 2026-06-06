@@ -1,26 +1,36 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: black; }
-      .foreground { fill: white; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: white; }
-      .foreground { fill: black; }
-    }
-  </style>
-  <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" />
-    <g style="transform: scale(95%); transform-origin: center">
-      <path class="foreground"
-        d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z" />
-      <path class="foreground"
-        d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z" />
-    </g>
-  </g>
-  <defs>
-    <clipPath id="clip0_7960_43945">
-      <rect width="180" height="180" fill="white" />
-    </clipPath>
-  </defs>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Navy background -->
+  <rect width="100" height="100" fill="#1F2735"/>
+  
+  <!-- Palm tree (scaled/positioned from original, centered in square) -->
+  <!-- Trunk -->
+  <path d="M50,85 C49,73 48,61 48.5,52 C49,44 50.2,38 50,33" 
+        stroke="#a37c4f" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M50,85 C51,73 52,61 51.5,52 C51,44 49.8,38 50,33" 
+        stroke="#c9a870" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  
+  <!-- Fronds -->
+  <path d="M50,33 C44,28 36,24 29,26" stroke="#a37c4f" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M50,33 C56,28 64,24 71,26" stroke="#a37c4f" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M50,33 C50,24 49.5,16 49,10" stroke="#a37c4f" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M50,37 C43,32 36,30 29,33" stroke="#a37c4f" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M50,37 C57,32 64,30 71,33" stroke="#a37c4f" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M50,30 C44,24 38,20 32,19" stroke="#a37c4f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M50,30 C56,24 62,20 68,19" stroke="#a37c4f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Frond leaf tips -->
+  <ellipse cx="31" cy="25" rx="7" ry="2.5" fill="#a37c4f" opacity="0.95" transform="rotate(-15,31,25)"/>
+  <ellipse cx="69" cy="25" rx="7" ry="2.5" fill="#a37c4f" opacity="0.95" transform="rotate(15,69,25)"/>
+  <ellipse cx="49.5" cy="11" rx="5" ry="2" fill="#a37c4f" opacity="0.95" transform="rotate(-5,49.5,11)"/>
+  <ellipse cx="30" cy="32" rx="6" ry="2" fill="#a37c4f" opacity="0.9" transform="rotate(-25,30,32)"/>
+  <ellipse cx="70" cy="32" rx="6" ry="2" fill="#a37c4f" opacity="0.9" transform="rotate(25,70,32)"/>
+  <ellipse cx="33" cy="19" rx="5" ry="1.8" fill="#a37c4f" opacity="0.85" transform="rotate(-35,33,19)"/>
+  <ellipse cx="67" cy="19" rx="5" ry="1.8" fill="#a37c4f" opacity="0.85" transform="rotate(35,67,19)"/>
+
+  <!-- Wave lines -->
+  <path d="M28,74 C32,71 37,77 42,74 C47,71 52,77 57,74 C62,71 67,77 72,74" 
+        stroke="#a37c4f" stroke-width="1.8" fill="none" opacity="0.95"/>
+  <path d="M28,80 C32,77 37,83 42,80 C47,77 52,83 57,80 C62,77 67,83 72,80" 
+        stroke="#a37c4f" stroke-width="1.8" fill="none" opacity="0.75"/>
 </svg>
