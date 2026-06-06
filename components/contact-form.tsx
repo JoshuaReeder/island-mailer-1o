@@ -105,7 +105,7 @@ export default function ContactForm() {
             </div>
 
             <h2 style={{ margin: "0 0 10px", color: "#D5C1AA", fontSize: 32, fontWeight: 700, lineHeight: 1.2 }}>
-              Mahalo, {successData.name}! 🤙
+              Mahalo, {successData.name}! 🤙🏾
             </h2>
             <p style={{ margin: "0 0 8px", color: "#A37C4F", fontSize: 20, fontWeight: 600 }}>
               {successData.businessName}
