@@ -104,13 +104,13 @@ export default function ContactForm() {
               </svg>
             </div>
 
-            <h2 style={{ margin: "0 0 10px", color: "#D5C1AA", fontSize: 32, fontWeight: 700, lineHeight: 1.2 }}>
+            <h2 style={{ margin: "0 0 10px", color: "#D5C1AA", fontSize: 40, fontWeight: 700, lineHeight: 1.2 }}>
               Mahalo, {successData.name}! 🤙🏾
             </h2>
-            <p style={{ margin: "0 0 8px", color: "#A37C4F", fontSize: 20, fontWeight: 600 }}>
+            <p style={{ margin: "0 0 8px", color: "#A37C4F", fontSize: 24, fontWeight: 600 }}>
               {successData.businessName}
             </p>
-            <p style={{ margin: "0 0 36px", color: "rgba(213,193,170,0.75)", fontSize: 16, lineHeight: 1.7, maxWidth: 440, marginLeft: "auto", marginRight: "auto" }}>
+            <p style={{ margin: "0 0 36px", color: "rgba(213,193,170,0.75)", fontSize: 18, lineHeight: 1.7, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
               Your application is in. We&apos;ll review your info and reach out within 1–2 business days to lock in your spot.
             </p>
 
@@ -126,7 +126,7 @@ export default function ContactForm() {
                 margin: "0 auto 32px",
               }}
             >
-              <p style={{ margin: "0 0 20px", color: "#A37C4F", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+              <p style={{ margin: "0 0 20px", color: "#A37C4F", fontSize: 13, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
                 What Happens Next
               </p>
               {[
@@ -134,21 +134,21 @@ export default function ContactForm() {
                 "We reach out to confirm your spot, pricing, and mailing schedule",
                 "We finalize your ad design — then you're in the next Island Mailer!",
               ].map((step, i) => (
-                <div key={i} style={{ display: "flex", gap: 14, marginBottom: i < 2 ? 16 : 0, alignItems: "flex-start" }}>
-                  <span style={{ color: "#A37C4F", fontWeight: 700, fontSize: 18, flexShrink: 0, lineHeight: 1.4 }}>
+                <div key={i} style={{ display: "flex", gap: 14, marginBottom: i < 2 ? 18 : 0, alignItems: "flex-start" }}>
+                  <span style={{ color: "#A37C4F", fontWeight: 700, fontSize: 20, flexShrink: 0, lineHeight: 1.4 }}>
                     {["①", "②", "③"][i]}
                   </span>
-                  <span style={{ color: "rgba(213,193,170,0.85)", fontSize: 15, lineHeight: 1.6 }}>{step}</span>
+                  <span style={{ color: "rgba(213,193,170,0.85)", fontSize: 17, lineHeight: 1.6 }}>{step}</span>
                 </div>
               ))}
             </div>
 
             {/* Divider */}
             <div style={{ borderTop: "1px solid rgba(163,124,79,0.2)", paddingTop: 24, maxWidth: 420, margin: "0 auto" }}>
-              <p style={{ margin: "0 0 6px", color: "rgba(213,193,170,0.5)", fontSize: 14 }}>
+              <p style={{ margin: "0 0 6px", color: "rgba(213,193,170,0.5)", fontSize: 16 }}>
                 Questions in the meantime?
               </p>
-              <p style={{ margin: 0, fontSize: 15 }}>
+              <p style={{ margin: 0, fontSize: 17 }}>
                 <a href="tel:+18088086245" style={{ color: "#A37C4F", textDecoration: "none" }}>
                   (808) 808-6245
                 </a>
