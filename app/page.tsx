@@ -26,7 +26,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative py-28 sm:py-40 lg:py-52 px-6 sm:px-12 overflow-hidden">
-        {/* Waterfall background video */}
+        {/* Animated gradient — always visible as base layer */}
+        <div className="absolute inset-0 -z-30 animate-hero-gradient" />
+        {/* Background video — upload /public/videos/hero-video.mp4 to activate */}
         <video
           autoPlay
           muted
@@ -35,11 +37,10 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover -z-20"
           aria-hidden="true"
         >
-          <source src="https://videos.pexels.com/video-files/6405064/6405064-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/6405064/6405064-hd_1920_1080_25fps.mp4" type="video/mp4" />
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Dark navy overlay so text stays legible */}
-        <div className="absolute inset-0 -z-10 bg-navy/55" />
+        <div className="absolute inset-0 -z-10 bg-navy/40" />
         {/* Subtle gold accent glows */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-gold/10 blur-3xl animate-float" />
