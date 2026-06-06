@@ -35,11 +35,11 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover -z-20"
           aria-hidden="true"
         >
-          <source src="https://videos.pexels.com/video-files/3015539/3015539-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/1448735/1448735-hd_1920_1080_30fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/6405064/6405064-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/6405064/6405064-hd_1920_1080_25fps.mp4" type="video/mp4" />
         </video>
         {/* Dark navy overlay so text stays legible */}
-        <div className="absolute inset-0 -z-10 bg-navy/80" />
+        <div className="absolute inset-0 -z-10 bg-navy/55" />
         {/* Subtle gold accent glows */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-gold/10 blur-3xl animate-float" />
@@ -65,7 +65,7 @@ export default function Home() {
                 { label: "Design, printing & postage", sublabel: "all included" },
               ].map((stat, idx) => (
                 <div key={idx} className="gradient-navy-warm rounded-2xl p-6 lg:p-8 border-gradient-gold">
-                  <p className="text-lg sm:text-xl font-bold text-gold mb-1">{stat.label}</p>
+                  <p className="text-lg sm:text-xl font-bold tex-gold mb-1">{stat.label}</p>
                   <p className="text-base text-sand" style={{ color: "rgb(163, 124, 79)" }}>{stat.sublabel}</p>
                 </div>
               ))}
