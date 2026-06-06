@@ -84,33 +84,33 @@ export default function ContactForm() {
       <div className="gradient-navy-warm rounded-3xl p-10 lg:p-12 border-gradient-gold">
         {successData ? (
           /* ── Full branded success takeover ── */
-          <div className="text-center py-10 px-4">
+          <div className="text-center py-12 px-4">
             {/* Check icon */}
             <div
               style={{
-                width: 80,
-                height: 80,
+                width: 88,
+                height: 88,
                 borderRadius: "50%",
                 background: "rgba(163,124,79,0.15)",
                 border: "2px solid #A37C4F",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                margin: "0 auto 28px",
+                margin: "0 auto 32px",
               }}
             >
-              <svg width="40" height="40" fill="none" stroke="#A37C4F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <svg width="44" height="44" fill="none" stroke="#A37C4F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M5 13l4 4L19 7" />
               </svg>
             </div>
 
-            <h2 style={{ margin: "0 0 10px", color: "#D5C1AA", fontSize: 40, fontWeight: 700, lineHeight: 1.2 }}>
+            <h2 style={{ margin: "0 0 12px", color: "#D5C1AA", fontSize: 46, fontWeight: 700, lineHeight: 1.15 }}>
               Mahalo, {successData.name}! 🤙🏾
             </h2>
-            <p style={{ margin: "0 0 8px", color: "#A37C4F", fontSize: 24, fontWeight: 600 }}>
+            <p style={{ margin: "0 0 12px", color: "#A37C4F", fontSize: 26, fontWeight: 600 }}>
               {successData.businessName}
             </p>
-            <p style={{ margin: "0 0 36px", color: "rgba(213,193,170,0.75)", fontSize: 18, lineHeight: 1.7, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
+            <p style={{ margin: "0 0 40px", color: "rgba(213,193,170,0.75)", fontSize: 20, lineHeight: 1.7, maxWidth: 480, marginLeft: "auto", marginRight: "auto" }}>
               Your application is in. We&apos;ll review your info and reach out within 1–2 business days to lock in your spot.
             </p>
 
@@ -120,13 +120,13 @@ export default function ContactForm() {
                 background: "rgba(15,25,35,0.6)",
                 border: "1px solid rgba(163,124,79,0.25)",
                 borderRadius: 20,
-                padding: "28px 32px",
+                padding: "32px 36px",
                 textAlign: "left",
-                maxWidth: 420,
-                margin: "0 auto 32px",
+                maxWidth: 460,
+                margin: "0 auto 36px",
               }}
             >
-              <p style={{ margin: "0 0 20px", color: "#A37C4F", fontSize: 13, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+              <p style={{ margin: "0 0 22px", color: "#A37C4F", fontSize: 14, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>
                 What Happens Next
               </p>
               {[
@@ -134,29 +134,49 @@ export default function ContactForm() {
                 "We reach out to confirm your spot, pricing, and mailing schedule",
                 "We finalize your ad design — then you're in the next Island Mailer!",
               ].map((step, i) => (
-                <div key={i} style={{ display: "flex", gap: 14, marginBottom: i < 2 ? 18 : 0, alignItems: "flex-start" }}>
-                  <span style={{ color: "#A37C4F", fontWeight: 700, fontSize: 20, flexShrink: 0, lineHeight: 1.4 }}>
+                <div key={i} style={{ display: "flex", gap: 16, marginBottom: i < 2 ? 22 : 0, alignItems: "flex-start" }}>
+                  <span style={{ color: "#A37C4F", fontWeight: 700, fontSize: 22, flexShrink: 0, lineHeight: 1.4 }}>
                     {["①", "②", "③"][i]}
                   </span>
-                  <span style={{ color: "rgba(213,193,170,0.85)", fontSize: 17, lineHeight: 1.6 }}>{step}</span>
+                  <span style={{ color: "rgba(213,193,170,0.85)", fontSize: 19, lineHeight: 1.6 }}>{step}</span>
                 </div>
               ))}
             </div>
 
-            {/* Divider */}
-            <div style={{ borderTop: "1px solid rgba(163,124,79,0.2)", paddingTop: 24, maxWidth: 420, margin: "0 auto" }}>
-              <p style={{ margin: "0 0 6px", color: "rgba(213,193,170,0.5)", fontSize: 16 }}>
+            {/* Contact section */}
+            <div style={{ borderTop: "1px solid rgba(163,124,79,0.2)", paddingTop: 32, maxWidth: 460, margin: "0 auto" }}>
+              <p style={{ margin: "0 0 20px", color: "rgba(213,193,170,0.5)", fontSize: 18 }}>
                 Questions in the meantime?
               </p>
-              <p style={{ margin: 0, fontSize: 17 }}>
-                <a href="tel:+18088086245" style={{ color: "#A37C4F", textDecoration: "none" }}>
-                  (808) 808-6245
-                </a>
-                <span style={{ color: "rgba(213,193,170,0.3)", margin: "0 10px" }}>·</span>
-                <a href="mailto:aloha@islandmailer.com" style={{ color: "#A37C4F", textDecoration: "none" }}>
-                  aloha@islandmailer.com
-                </a>
-              </p>
+
+              {/* Tap-to-call block — full width, easy to tap on mobile */}
+              <a
+                href="tel:+18088086245"
+                style={{
+                  display: "block",
+                  background: "rgba(163,124,79,0.12)",
+                  border: "1px solid rgba(163,124,79,0.35)",
+                  borderRadius: 16,
+                  padding: "18px 24px",
+                  textDecoration: "none",
+                  marginBottom: 14,
+                }}
+              >
+                <span style={{ color: "#A37C4F", fontSize: 28, fontWeight: 700, display: "block", letterSpacing: "0.03em" }}>
+                  808-808-6245
+                </span>
+                <span style={{ color: "rgba(163,124,79,0.55)", fontSize: 16, letterSpacing: "0.15em", display: "block", marginTop: 4 }}>
+                  808-808-MAIL
+                </span>
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:aloha@islandmailer.com"
+                style={{ color: "#A37C4F", fontSize: 19, textDecoration: "none", display: "block" }}
+              >
+                aloha@islandmailer.com
+              </a>
             </div>
           </div>
         ) : (
