@@ -12,6 +12,7 @@ import PricingSpaces from "@/components/pricing-spaces"
 import AboutGiveBack from "@/components/about-give-back"
 import ContactForm from "@/components/contact-form"
 import SiteHeader from "@/components/site-header"
+import CursorGlow from "@/components/cursor-glow"
 
 export default function Home() {
   const contactRef = useRef<HTMLDivElement>(null)
@@ -21,11 +22,12 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen animate-page-gradient">
       <SiteHeader onReserve={scrollToContact} />
+      <CursorGlow />
 
       {/* Hero Section */}
-      <section className="relative min-h-[110vh] flex items-center px-6 sm:px-12 overflow-hidden animate-hero-gradient">
+      <section className="relative min-h-[165vh] flex items-center px-6 sm:px-12 overflow-hidden animate-hero-gradient">
         {/* Background video layers on top of gradient */}
         <video
           autoPlay
@@ -45,7 +47,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sand/10 blur-3xl animate-float delay-500" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto w-full py-44 sm:py-56 lg:py-64">
+        <div className="relative z-10 max-w-6xl mx-auto w-full py-[22rem] sm:py-[28rem] lg:py-[32rem]">
           <div className="text-center mb-16">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-cream mb-8 sm:mb-10 animate-fade-up">
               Island Mailer – Local Postcard Advertising Across Maui
@@ -56,14 +58,14 @@ export default function Home() {
             </p>
 
             {/* Stat Strip */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto mb-12 sm:mb-14 animate-fade-up delay-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-5 max-w-5xl mx-auto mb-12 sm:mb-14 animate-fade-up delay-200">
               {[
                 { label: "16 premium ad spaces", sublabel: "(8 front, 8 back)" },
                 { label: "Up to 10,000 local homes", sublabel: "per mailing" },
                 { label: "One local business", sublabel: "per industry" },
                 { label: "Design, printing & postage", sublabel: "all included" },
               ].map((stat, idx) => (
-                <div key={idx} className="gradient-navy-warm rounded-2xl p-4 sm:p-6 lg:p-8 border-gradient-gold text-center">
+                <div key={idx} className="gradient-navy-warm rounded-2xl p-8 sm:p-6 lg:p-8 border-gradient-gold text-center">
                   <p className="text-lg sm:text-xl font-bold text-cream mb-1">{stat.label}</p>
                   <p className="text-base" style={{ color: "rgb(163, 124, 79)" }}>{stat.sublabel}</p>
                 </div>
