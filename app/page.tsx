@@ -12,7 +12,6 @@ import PricingSpaces from "@/components/pricing-spaces"
 import AboutGiveBack from "@/components/about-give-back"
 import ContactForm from "@/components/contact-form"
 import SiteHeader from "@/components/site-header"
-import CursorGlow from "@/components/cursor-glow"
 
 export default function Home() {
   const contactRef = useRef<HTMLDivElement>(null)
@@ -24,7 +23,6 @@ export default function Home() {
   return (
     <div className="min-h-screen animate-page-gradient">
       <SiteHeader onReserve={scrollToContact} />
-      <CursorGlow />
 
       {/* Hero Section */}
       <section className="relative min-h-[165vh] flex items-center px-6 sm:px-12 overflow-hidden animate-hero-gradient">
@@ -106,7 +104,7 @@ export default function Home() {
       <BenefitsGrid />
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-24 sm:py-36 lg:py-44 px-6 sm:px-12 bg-cream/5 scroll-mt-20">
+      <section id="how-it-works" className="py-24 sm:py-36 lg:py-44 px-6 sm:px-12 animate-section-shimmer scroll-mt-20">
         <HowItWorks />
       </section>
 
