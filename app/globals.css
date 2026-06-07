@@ -358,3 +358,18 @@
   50% { background-position: 100% 100%; }
   100% { background-position: 0% 0%; }
 }
+
+/* Subtle animated gradient for the whole page root */
+.animate-page-gradient {
+  background: linear-gradient(-45deg, #1F2735, #1a2230, #1e2a3c, #1b2535, #1F2735);
+  background-size: 400% 400%;
+  animation: hero-gradient 45s ease infinite;
+}
+
+/* Section-level shimmer — slightly different rhythm than hero */
+.animate-section-shimmer {
+  background: linear-gradient(-45deg, #1a2230, #1f2940, #232e3e, #192033, #1a2230);
+  background-size: 400% 400%;
+  animation: hero-gradient 25s ease infinite;
+}
+
