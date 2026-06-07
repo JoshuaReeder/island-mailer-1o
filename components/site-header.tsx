@@ -25,26 +25,28 @@ export default function SiteHeader({ onReserve }: SiteHeaderProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrollState === "top"
-          ? "bg-transparent border-b border-transparent py-4"
+          ? "bg-transparent border-b border-transparent"
           : scrollState === "mid"
           ? "bg-[#1F2735]/85 backdrop-blur-md border-b border-[#A37C4F]/20 py-2"
           : "bg-[#141C28]/70 backdrop-blur-sm border-b border-[#A37C4F]/10 py-1"
       }`}
     >
       {scrollState === "top" ? (
-        /* TOP STATE: large centered logo with CTA button absolutely right */
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 relative flex items-center justify-center py-4">
+        /* TOP STATE:
+           Mobile  — flex-col: logo centered, button below
+           Desktop — logo centered, button absolutely right */
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col sm:flex-row sm:relative items-center justify-center gap-5 sm:gap-0 py-6 sm:py-5">
           <Image
             src="/images/logo-transparent.svg"
             alt="Island Mailer"
-            width={160}
-            height={160}
-            className="h-32 sm:h-44 w-auto transition-all duration-700"
+            width={220}
+            height={220}
+            className="h-52 sm:h-56 w-auto transition-all duration-700"
             priority
           />
           <button
             onClick={onReserve}
-            className="absolute right-6 sm:right-12 gradient-gold-shine text-white px-7 sm:px-10 py-3 sm:py-5 rounded-full font-bold text-xs sm:text-base min-h-[48px] hover:shadow-2xl hover:shadow-[#A37C4F]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-500 whitespace-nowrap"
+            className="gradient-gold-shine text-white px-9 py-4 rounded-full font-bold text-base sm:absolute sm:right-6 sm:top-1/2 sm:-translate-y-1/2 min-h-[52px] hover:opacity-95 hover:shadow-2xl hover:shadow-[#A37C4F]/40 active:scale-95 transition-all duration-300 whitespace-nowrap"
           >
             Reserve Your Spot
           </button>
