@@ -110,6 +110,11 @@ export default function Home() {
         <ContactForm />
       </section>
 
+      import SMSContactForm from "@/components/SMSContactForm";
+
+// Then inside your JSX:
+<SMSContactForm />
+      
       <Footer />
       <FloatingMenu />
     </div>
