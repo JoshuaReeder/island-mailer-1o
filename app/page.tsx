@@ -109,11 +109,6 @@ export default function Home() {
       <section ref={contactRef} id="contact" className="py-24 sm:py-32 px-6 sm:px-12 gradient-navy-subtle scroll-mt-24">
         <ContactForm />
       </section>
-
-      import SMSContactForm from "@/components/SMSContactForm";
-
-// Then inside your JSX:
-<SMSContactForm />
       
       <Footer />
       <FloatingMenu />
