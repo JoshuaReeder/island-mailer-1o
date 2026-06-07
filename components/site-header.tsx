@@ -35,16 +35,16 @@ export default function SiteHeader({ onReserve }: SiteHeaderProps) {
 
         {/* Logo — shrinks dramatically on scroll */}
         <Image
-          src="/images/horizontal-20im-20logo.svg"
+          src="/images/logo-transparent.svg"
           alt="Island Mailer"
-          width={200}
-          height={50}
-          className={`w-auto transition-all duration-500 mix-blend-screen ${
+          width={100}
+          height={100}
+          className={`w-auto transition-all duration-500 ${
             scrollState === "top"
-              ? "h-14 sm:h-20"
+              ? "h-16 sm:h-20"
               : scrollState === "mid"
-              ? "h-9 sm:h-11"
-              : "h-6 sm:h-7 opacity-75"
+              ? "h-10 sm:h-12"
+              : "h-7 sm:h-8 opacity-75"
           }`}
           priority
         />
