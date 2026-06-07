@@ -25,7 +25,7 @@ export default function Home() {
       <SiteHeader onReserve={scrollToContact} />
 
       {/* Hero Section */}
-      <section className="relative py-28 sm:py-40 lg:py-52 px-6 sm:px-12 overflow-hidden animate-hero-gradient">
+      <section className="relative min-h-screen flex items-center px-6 sm:px-12 overflow-hidden animate-hero-gradient">
         {/* Background video layers on top of gradient */}
         <video
           autoPlay
@@ -45,27 +45,27 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sand/10 blur-3xl animate-float delay-500" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto">
+        <div className="relative z-10 max-w-6xl mx-auto w-full py-36 sm:py-44">
           <div className="text-center mb-16">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-cream mb-8 animate-fade-up">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-cream mb-8 sm:mb-10 animate-fade-up">
               Island Mailer – Local Postcard Advertising Across Maui
             </h1>
 
-            <p className="text-xl sm:text-2xl lg:text-3xl text-sand max-w-4xl mx-auto leading-relaxed mb-8 animate-fade-up delay-100">
+            <p className="text-lg sm:text-2xl lg:text-3xl text-sand max-w-4xl mx-auto leading-relaxed mb-10 sm:mb-12 animate-fade-up delay-100">
               Your business on a premium 9&quot;×12&quot; -mailbox billboard- mailed up to 10,000 local homes, so you can reach Maui residents for just a few cents per household.
             </p>
 
             {/* Stat Strip */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12 animate-fade-up delay-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-5xl mx-auto mb-12 sm:mb-14 animate-fade-up delay-200">
               {[
                 { label: "16 premium ad spaces", sublabel: "(8 front, 8 back)" },
                 { label: "Up to 10,000 local homes", sublabel: "per mailing" },
                 { label: "One local business", sublabel: "per industry" },
                 { label: "Design, printing & postage", sublabel: "all included" },
               ].map((stat, idx) => (
-                <div key={idx} className="gradient-navy-warm rounded-2xl p-6 lg:p-8 border-gradient-gold">
-                  <p className="text-lg sm:text-xl font-bold tex-gold mb-1">{stat.label}</p>
-                  <p className="text-base text-sand" style={{ color: "rgb(163, 124, 79)" }}>{stat.sublabel}</p>
+                <div key={idx} className="gradient-navy-warm rounded-2xl p-4 sm:p-6 lg:p-8 border-gradient-gold text-center">
+                  <p className="text-sm sm:text-lg font-bold text-cream mb-1 leading-snug">{stat.label}</p>
+                  <p className="text-xs sm:text-base" style={{ color: "rgb(163, 124, 79)" }}>{stat.sublabel}</p>
                 </div>
               ))}
             </div>
@@ -104,7 +104,7 @@ export default function Home() {
       <BenefitsGrid />
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-28 sm:py-36 px-6 sm:px-12 bg-cream/5 scroll-mt-20">
+      <section id="how-it-works" className="py-24 sm:py-36 lg:py-44 px-6 sm:px-12 bg-cream/5 scroll-mt-20">
         <HowItWorks />
       </section>
 
@@ -112,7 +112,7 @@ export default function Home() {
       <PricingSpaces onReserve={scrollToContact} />
 
       {/* FAQ Section */}
-      <section id="faq" className="py-28 sm:py-36 px-6 sm:px-12 gradient-navy-subtle scroll-mt-20">
+      <section id="faq" className="py-24 sm:py-36 lg:py-44 px-6 sm:px-12 gradient-navy-subtle scroll-mt-20">
         <FAQSection />
       </section>
 
@@ -120,7 +120,7 @@ export default function Home() {
       <AboutGiveBack />
 
       {/* Contact & Reservation Form Section */}
-      <section ref={contactRef} id="contact" className="py-28 sm:py-36 px-6 sm:px-12 gradient-navy-subtle scroll-mt-24">
+      <section ref={contactRef} id="contact" className="py-24 sm:py-36 lg:py-44 px-6 sm:px-12 gradient-navy-subtle scroll-mt-24">
         <ContactForm />
       </section>
 
