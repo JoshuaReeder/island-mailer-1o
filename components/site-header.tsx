@@ -41,7 +41,7 @@ export default function SiteHeader({ onReserve }: SiteHeaderProps) {
             alt="Island Mailer"
             width={220}
             height={220}
-            className="h-52 sm:h-56 w-auto transition-all duration-700"
+            className="h-[55vh] sm:h-60 w-auto transition-all duration-700"
             priority
           />
           <button
