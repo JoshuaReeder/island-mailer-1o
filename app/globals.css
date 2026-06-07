@@ -156,16 +156,22 @@
   }
 
   .gradient-gold-shine {
-    background: linear-gradient(135deg, #d4a566 0%, #c9975b 25%, #a37c4f 50%, #8b6a42 75%, #7a5d3a 100%);
+    background: linear-gradient(135deg, #e0b87a 0%, #d4a566 20%, #c9975b 40%, #a37c4f 60%, #8b6a42 80%, #7a5d3a 100%);
+    background-size: 300% 300%;
     box-shadow: 0 4px 20px rgba(163, 124, 79, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    animation: gold-shimmer 4s ease-in-out infinite;
   }
 
   .gradient-navy-subtle {
-    background: linear-gradient(180deg, #1f2735 0%, #252d3d 50%, #1f2735 100%);
+    background: linear-gradient(135deg, #1f2735 0%, #252d3d 50%, #1a2230 75%, #1f2735 100%);
+    background-size: 200% 200%;
+    animation: navy-breathe 14s ease-in-out infinite;
   }
 
   .gradient-navy-warm {
     background: linear-gradient(135deg, #323846 0%, #1f2735 50%, #2a3240 100%);
+    background-size: 200% 200%;
+    animation: navy-breathe 8s ease-in-out infinite;
   }
 
   .text-gradient-gold {
@@ -337,4 +343,18 @@
   background: linear-gradient(-45deg, #0d1520, #1F2735, #162236, #1a2a3e, #111d2a);
   background-size: 400% 400%;
   animation: hero-gradient 20s ease infinite;
+}
+
+/* Gold shimmer for CTA button */
+@keyframes gold-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Navy breathing for card/section backgrounds */
+@keyframes navy-breathe {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
 }
