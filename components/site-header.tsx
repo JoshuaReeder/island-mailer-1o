@@ -13,7 +13,7 @@ export default function SiteHeader({ onReserve }: SiteHeaderProps) {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY
-      if (y < 50) setScrollState("top")
+      if (y < 60) setScrollState("top")
       else if (y < 400) setScrollState("mid")
       else setScrollState("deep")
     }
@@ -31,48 +31,56 @@ export default function SiteHeader({ onReserve }: SiteHeaderProps) {
           : "bg-[#141C28]/70 backdrop-blur-sm border-b border-[#A37C4F]/10 py-1"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
-
-        {/* Logo — shrinks dramatically on scroll */}
-        <Image
-          src="/images/logo-transparent.svg"
-          alt="Island Mailer"
-          width={100}
-          height={100}
-          className={`w-auto transition-all duration-500 ${
-            scrollState === "top"
-              ? "h-16 sm:h-20"
-              : scrollState === "mid"
-              ? "h-10 sm:h-12"
-              : "h-7 sm:h-8 opacity-75"
-          }`}
-          priority
-        />
-
-        {/* Deep scroll only: subtle gold dots as a spacer */}
-        {scrollState === "deep" && (
-          <div className="flex gap-1.5 items-center flex-1 justify-center" aria-hidden>
-            <span className="w-1 h-1 rounded-full bg-[#A37C4F]/60" />
-            <span className="w-1 h-1 rounded-full bg-[#A37C4F]/60" />
-            <span className="w-1 h-1 rounded-full bg-[#A37C4F]/60" />
-          </div>
-        )}
-
-        {/* CTA Button — scales down, goes ghost at deep scroll */}
-        <button
-          onClick={onReserve}
-          className={`rounded-full font-bold transition-all duration-500 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap ${
-            scrollState === "top"
-              ? "gradient-gold-shine text-white px-8 sm:px-10 py-4 sm:py-5 text-xs sm:text-lg min-h-[56px] hover:shadow-2xl hover:shadow-gold/40"
-              : scrollState === "mid"
-              ? "gradient-gold-shine text-white px-5 py-2 text-sm min-h-[36px] hover:shadow-lg"
-              : "border border-[#A37C4F]/50 text-[#A37C4F] bg-transparent px-4 py-1.5 text-xs"
-          }`}
-        >
-          {scrollState === "deep" ? "Reserve" : "Reserve Your Spot"}
-        </button>
-
-      </div>
+      {scrollState === "top" ? (
+        /* TOP STATE: large centered logo with CTA button absolutely right */
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 relative flex items-center justify-center py-4">
+          <Image
+            src="/images/logo-transparent.svg"
+            alt="Island Mailer"
+            width={160}
+            height={160}
+            className="h-32 sm:h-44 w-auto transition-all duration-700"
+            priority
+          />
+          <button
+            onClick={onReserve}
+            className="absolute right-6 sm:right-12 gradient-gold-shine text-white px-7 sm:px-10 py-3 sm:py-5 rounded-full font-bold text-xs sm:text-base min-h-[48px] hover:shadow-2xl hover:shadow-[#A37C4F]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-500 whitespace-nowrap"
+          >
+            Reserve Your Spot
+          </button>
+        </div>
+      ) : (
+        /* SCROLLED STATE: small left-aligned logo */
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
+          <Image
+            src="/images/logo-transparent.svg"
+            alt="Island Mailer"
+            width={100}
+            height={100}
+            className={`w-auto transition-all duration-500 ${
+              scrollState === "mid" ? "h-10 sm:h-12" : "h-7 sm:h-8 opacity-75"
+            }`}
+            priority
+          />
+          {scrollState === "deep" && (
+            <div className="flex gap-1.5 items-center flex-1 justify-center" aria-hidden>
+              <span className="w-1 h-1 rounded-full bg-[#A37C4F]/60" />
+              <span className="w-1 h-1 rounded-full bg-[#A37C4F]/60" />
+              <span className="w-1 h-1 rounded-full bg-[#A37C4F]/60" />
+            </div>
+          )}
+          <button
+            onClick={onReserve}
+            className={`rounded-full font-bold transition-all duration-500 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap ${
+              scrollState === "mid"
+                ? "gradient-gold-shine text-white px-5 py-2 text-sm min-h-[36px] hover:shadow-lg"
+                : "border border-[#A37C4F]/50 text-[#A37C4F] bg-transparent px-4 py-1.5 text-xs"
+            }`}
+          >
+            {scrollState === "deep" ? "Reserve" : "Reserve Your Spot"}
+          </button>
+        </div>
+      )}
     </header>
   )
 }
