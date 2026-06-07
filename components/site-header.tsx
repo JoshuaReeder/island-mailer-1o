@@ -39,9 +39,9 @@ export default function SiteHeader({ onReserve }: SiteHeaderProps) {
           alt="Island Mailer"
           width={200}
           height={50}
-          className={`w-auto transition-all duration-500 ${
+          className={`w-auto transition-all duration-500 mix-blend-screen ${
             scrollState === "top"
-              ? "h-20 sm:h-28"
+              ? "h-14 sm:h-20"
               : scrollState === "mid"
               ? "h-9 sm:h-11"
               : "h-6 sm:h-7 opacity-75"
