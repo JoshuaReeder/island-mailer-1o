@@ -25,29 +25,27 @@ export default function Home() {
       <SiteHeader onReserve={scrollToContact} />
 
       {/* Hero Section */}
-      <section className="relative py-28 sm:py-40 lg:py-52 px-6 sm:px-12 overflow-hidden">
-        {/* Animated gradient — always visible as base layer */}
-        <div className="absolute inset-0 -z-30 animate-hero-gradient" />
-        {/* Background video — upload /public/videos/hero-video.mp4 to activate */}
+      <section className="relative py-28 sm:py-40 lg:py-52 px-6 sm:px-12 overflow-hidden animate-hero-gradient">
+        {/* Background video layers on top of gradient */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover -z-20"
+          className="absolute inset-0 w-full h-full object-cover z-0"
           aria-hidden="true"
         >
           <source src="/videos/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Dark navy overlay so text stays legible */}
-        <div className="absolute inset-0 -z-10 bg-navy/40" />
+        <div className="absolute inset-0 z-[1] bg-navy/40" />
         {/* Subtle gold accent glows */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 z-[2] overflow-hidden">
           <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-gold/10 blur-3xl animate-float" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sand/10 blur-3xl animate-float delay-500" />
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-cream mb-8 animate-fade-up">
               Island Mailer – Local Postcard Advertising Across Maui
