@@ -81,7 +81,7 @@ export default function Home() {
                 </button>
               </div>
               <p className="text-base sm:text-lg text-sand/80 animate-fade-up delay-400">
-                No long-term contracts. First-come, first-served by industry. $800 per ad space for up to 10,000 homes.
+                No long-term contracts. First-come, first-served by industry.
               </p>
             </div>
           </div>
