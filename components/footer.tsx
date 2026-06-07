@@ -2,11 +2,18 @@
 
 import Image from "next/image"
 import { Instagram, Facebook } from "lucide-react"
+import PhoneFlip from "@/components/phone-flip"
 
 export default function Footer() {
   return (
     <footer className="bg-navy text-cream">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
+
+        {/* Animated phone number — centered above grid */}
+        <div className="flex justify-center mb-14 pb-12 border-b border-cream/10">
+          <PhoneFlip />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
