@@ -43,7 +43,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sand/10 blur-3xl animate-float delay-500" />
         </div>
 
-        <section className="relative z-10 min-h-[180vh] flex items-start px-6 sm:px-12">
+        <section className="relative z-10 min-h-[200vh] flex items-start px-6 sm:px-12">
           <div className="max-w-6xl mx-auto w-full pt-[80vh] sm:pt-380 lg:pt-450 pb-20 sm:pb-28">
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-cream mb-6 sm:mb-8 animate-fade-up">
