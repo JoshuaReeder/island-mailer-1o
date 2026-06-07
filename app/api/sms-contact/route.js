@@ -4,16 +4,15 @@ import { NextResponse } from "next/server";
 const OPENPHONE_API_KEY = process.env.OPENPHONE_API_KEY;
 const OPENPHONE_FROM_NUMBER = process.env.OPENPHONE_FROM_NUMBER;
 
-const SMS_MESSAGE = `Hi! This is Island Mailer — Maui's local direct mail network. 🌺
+const SMS_MESSAGE = `Aloha! This is Island Mailer — 🌺
 
-We'd love to get your business in front of thousands of Maui households.
+We'd love to feature your business in front of thousands of local Maui households.
 
 Just reply with:
 1. Your business name
-2. What you do
-3. Your area (North Shore, Central, West, South, or Upcountry Maui)
+2. Your preferred method of communication
 
-We'll send you rates and availability. Reply STOP to opt out.`;
+We'll check availability and can send you more info. Reply STOP to opt out.`;
 
 function isValidUSPhone(digits) {
   return /^[2-9]\d{9}$/.test(digits);
