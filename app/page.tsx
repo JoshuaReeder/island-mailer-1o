@@ -44,7 +44,7 @@ export default function Home() {
         </div>
 
         <section className="relative z-10 min-h-[180vh] flex items-start px-6 sm:px-12">
-          <div className="max-w-6xl mx-auto w-full pt-[72vh] sm:pt-80 lg:pt-96 pb-20 sm:pb-28">
+          <div className="max-w-6xl mx-auto w-full pt-[80vh] sm:pt-380 lg:pt-450 pb-20 sm:pb-28">
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-cream mb-6 sm:mb-8 animate-fade-up">
                 Island Mailer – Local Postcard Advertising Across Maui
