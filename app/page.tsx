@@ -25,7 +25,7 @@ export default function Home() {
       <SiteHeader onReserve={scrollToContact} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center px-6 sm:px-12 overflow-hidden animate-hero-gradient">
+      <section className="relative min-h-[110vh] flex items-center px-6 sm:px-12 overflow-hidden animate-hero-gradient">
         {/* Background video layers on top of gradient */}
         <video
           autoPlay
@@ -38,14 +38,14 @@ export default function Home() {
           <source src="/videos/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Dark navy overlay so text stays legible */}
-        <div className="absolute inset-0 z-[1] bg-navy/40" />
+        <div className="absolute inset-0 z-[1] bg-navy/65" />
         {/* Subtle gold accent glows */}
         <div className="absolute inset-0 z-[2] overflow-hidden">
           <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-gold/10 blur-3xl animate-float" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-sand/10 blur-3xl animate-float delay-500" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto w-full py-36 sm:py-44">
+        <div className="relative z-10 max-w-6xl mx-auto w-full py-44 sm:py-56 lg:py-64">
           <div className="text-center mb-16">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight text-cream mb-8 sm:mb-10 animate-fade-up">
               Island Mailer – Local Postcard Advertising Across Maui
@@ -56,7 +56,7 @@ export default function Home() {
             </p>
 
             {/* Stat Strip */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-5xl mx-auto mb-12 sm:mb-14 animate-fade-up delay-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto mb-12 sm:mb-14 animate-fade-up delay-200">
               {[
                 { label: "16 premium ad spaces", sublabel: "(8 front, 8 back)" },
                 { label: "Up to 10,000 local homes", sublabel: "per mailing" },
@@ -64,8 +64,8 @@ export default function Home() {
                 { label: "Design, printing & postage", sublabel: "all included" },
               ].map((stat, idx) => (
                 <div key={idx} className="gradient-navy-warm rounded-2xl p-4 sm:p-6 lg:p-8 border-gradient-gold text-center">
-                  <p className="text-sm sm:text-lg font-bold text-cream mb-1 leading-snug">{stat.label}</p>
-                  <p className="text-xs sm:text-base" style={{ color: "rgb(163, 124, 79)" }}>{stat.sublabel}</p>
+                  <p className="text-lg sm:text-xl font-bold text-cream mb-1">{stat.label}</p>
+                  <p className="text-base" style={{ color: "rgb(163, 124, 79)" }}>{stat.sublabel}</p>
                 </div>
               ))}
             </div>
