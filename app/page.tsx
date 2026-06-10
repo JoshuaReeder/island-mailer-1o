@@ -35,7 +35,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover z-0"
           aria-hidden="true"
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          <source src="/videos/IM%20Website%20Background%20video%20of%20Hawaii%20Waterfall.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 z-[1] bg-navy/70" />
         <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
