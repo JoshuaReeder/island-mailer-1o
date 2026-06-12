@@ -1,17 +1,16 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-
 export const metadata: Metadata = {
   title: "Island Mailer | Support Local. Live Hawaii.",
   description:
-    "Connect with your Hawaii community through beautiful postcard mailers. Reach up to 10,000 homes across Maui, Oahu, Hawaii Island, and Kauai.",
+    "Island Mailer puts your business on a premium 9×12 postcard mailed to up to 10,000 Maui homes. One business per industry. Design, print & postage included for $800.",
+  formatDetection: {
+    telephone: false,
+  },
   generator: "v0.app",
   metadataBase: new URL("https://islandmailer.com"),
   openGraph: {

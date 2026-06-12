@@ -1,84 +1,115 @@
 "use client"
 
-import Image from "next/image"
-import { Instagram, Facebook } from "lucide-react"
-import PhoneFlip from "@/components/phone-flip"
+import { useState, type CSSProperties } from "react"
 
-export default function Footer() {
+const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
+
+const AREA_LINKS = [
+  { label: "North Shore - Maui", href: "/north-shore-maui-advertising" },
+  { label: "Central - Maui", href: "/central-maui-advertising" },
+  { label: "West Side - Maui", href: "/west-maui-advertising" },
+  { label: "South Side - Maui", href: "/south-maui-advertising" },
+  { label: "Upcountry - Maui", href: "/upcountry-maui-advertising" },
+]
+
+/* 808-808-MAIL ⇄ 808-808-6245 vanity flip */
+function Vanity({ style }: { style?: CSSProperties }) {
   return (
-    <footer className="bg-navy text-cream">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-16">
+    <div className="vanity" style={style}>
+      <span className="numwrap">
+        808-808-
+        <span className="flip"><b>M</b><i>6</i></span>
+        <span className="flip"><b>A</b><i>2</i></span>
+        <span className="flip"><b>I</b><i>4</i></span>
+        <span className="flip"><b>L</b><i>5</i></span>
+      </span>
+      <small>808-808-MAIL · Call or Text</small>
+    </div>
+  )
+}
 
-        {/* Animated phone number — centered above grid */}
-        <div className="flex justify-center mb-14 pb-12 border-b border-cream/10">
-          <PhoneFlip />
+function LogoLockupSmall() {
+  return (
+    <div className="logo-lockup small">
+      <img src={LOGO} alt="Island Mailer" />
+      <span className="tag-fix" />
+    </div>
+  )
+}
+
+interface FooterProps {
+  variant?: "full" | "simple"
+  showMauiAreasLink?: boolean
+}
+
+export default function Footer({ variant = "full", showMauiAreasLink = false }: FooterProps) {
+  const [areasOpen, setAreasOpen] = useState(false)
+
+  if (variant === "simple") {
+    return (
+      <footer>
+        <div className="container" style={{ textAlign: "center" }}>
+          <LogoLockupSmall />
+          <Vanity style={{ marginTop: 24 }} />
+          <p className="copyright">
+            © Island Mailer 2026 | Support Local. Live Hawaii. ·{" "}
+            <a href="/" style={{ color: "var(--gold-bright)", textDecoration: "none" }}>Home</a>
+            {showMauiAreasLink && (
+              <>
+                {" "}·{" "}
+                <a href="/maui" style={{ color: "var(--gold-bright)", textDecoration: "none" }}>Maui Areas</a>
+              </>
+            )}
+          </p>
         </div>
+      </footer>
+    )
+  }
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <Image
-              src="/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
-              alt="Island Mailer"
-              width={140}
-              height={140}
-              className="h-28 w-auto mb-4"
-            />
-          </div>
-
-          {/* Quick Links */}
+  return (
+    <footer>
+      <div className="container">
+        <div className="foot-grid">
           <div>
-            <h4 className="font-semibold text-sand mb-4 text-sm uppercase tracking-wider">Navigation</h4>
-            <ul className="space-y-3">
-              {[
-                { label: "Home", href: "#" },
-                { label: "Pricing", href: "#pricing" },
-                { label: "FAQ", href: "#faq" },
-                { label: "Apply", href: "#contact" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-cream/70 hover:text-gold transition-smooth text-sm">
-                    {link.label}
-                  </a>
-                </li>
+            <LogoLockupSmall />
+            <Vanity />
+          </div>
+          <div>
+            <h4>Navigation</h4>
+            <a href="/">Home</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#contact">Apply</a>
+          </div>
+          <div>
+            <h4>Areas We Serve</h4>
+            <div className="foot-maui-row">
+              <a href="/maui">MAUI</a>
+              <button
+                className={`foot-caret${areasOpen ? " open" : ""}`}
+                onClick={() => setAreasOpen((o) => !o)}
+                aria-label="Show Maui areas"
+              >
+                ⌄
+              </button>
+            </div>
+            <div className={`foot-areas${areasOpen ? " open" : ""}`}>
+              {AREA_LINKS.map((a) => (
+                <a key={a.href} href={a.href}>
+                  {a.label}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
-
-          {/* Social Links */}
           <div>
-            <h4 className="font-semibold text-sand mb-4 text-sm uppercase tracking-wider">Connect</h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="https://instagram.com/islandmailer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cream/70 hover:text-gold transition-smooth text-sm inline-flex items-center gap-2"
-                >
-                  <Instagram className="w-4 h-4" />
-                  @islandmailer
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://facebook.com/islandmailer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cream/70 hover:text-gold transition-smooth text-sm inline-flex items-center gap-2"
-                >
-                  <Facebook className="w-4 h-4" />
-                  Island Mailer
-                </a>
-              </li>
-            </ul>
+            <h4>Connect</h4>
+            <a href="https://instagram.com/islandmailer" target="_blank" rel="noopener noreferrer">
+              @islandmailer
+            </a>
+            <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a>
           </div>
         </div>
-
-        {/* Divider & Copyright */}
-        <div className="border-t border-cream/10 pt-8">
-          <p className="text-center text-sm text-cream/50">© Island Mailer 2026 | Support Local. Live Hawaii.</p>
-        </div>
+        <p className="copyright">© Island Mailer 2026 | Support Local. Live Hawaii.</p>
       </div>
     </footer>
   )

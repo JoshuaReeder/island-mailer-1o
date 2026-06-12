@@ -2,13 +2,6 @@
 
 import { useState } from "react";
 
-const brand = {
-  navy: "#1F2735",
-  gold: "#A37C4F",
-  sand: "#D5C1AA",
-  cream: "#F5F4EF",
-};
-
 function formatPhoneNumber(value) {
   const digits = value.replace(/\D/g, "").slice(0, 10);
   if (digits.length <= 3) return digits;
@@ -55,73 +48,67 @@ export default function SMSContactForm() {
   }
 
   return (
-    <section style={{ backgroundColor: brand.navy, padding: "64px 24px", fontFamily: "'Georgia', serif" }}>
-      <div style={{ maxWidth: 520, margin: "0 auto", textAlign: "center" }}>
-        <p style={{ color: brand.gold, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12, fontFamily: "sans-serif" }}>
-          Advertise with Us
-        </p>
-        <h2 style={{ color: brand.cream, fontSize: 28, fontWeight: 600, lineHeight: 1.3, marginBottom: 12 }}>
-          Get your business in front of Maui.
-        </h2>
-        <p style={{ color: brand.sand, fontSize: 15, lineHeight: 1.6, marginBottom: 32, fontFamily: "sans-serif" }}>
-          Drop your number and we'll text you details on ad space, pricing, and your next mailing date — no pressure, just aloha.
+    <div className="textme shimmer">
+      <div className="container narrow">
+        <div className="label">Advertise With Us</div>
+        <h2>Get your business in front of Maui.</h2>
+        <p>
+          Drop your number and we'll text you details on ad space, pricing, and your next mailing date — no pressure,
+          just aloha.
         </p>
         {status === "success" ? (
           <SuccessState />
         ) : (
-          <form onSubmit={handleSubmit} noValidate>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
+          <>
+            <form className="phone-row" onSubmit={handleSubmit} noValidate>
               <input
                 type="tel"
                 value={phone}
                 onChange={handlePhoneChange}
-                placeholder="(808) 555-1234"
+                placeholder="(808) 555-0123"
                 aria-label="Your phone number"
                 inputMode="numeric"
-                style={{
-                  flex: "1 1 200px", maxWidth: 260, padding: "14px 18px", fontSize: 16,
-                  borderRadius: 6, border: errorMsg ? "2px solid #e05252" : `2px solid ${brand.sand}`,
-                  backgroundColor: "#ffffff", color: brand.navy, outline: "none", fontFamily: "sans-serif",
-                }}
+                style={errorMsg ? { borderColor: "#e05252" } : undefined}
               />
-              <button
-                type="submit"
-                disabled={status === "loading"}
-                style={{
-                  flex: "0 0 auto", padding: "14px 28px", fontSize: 15, fontWeight: 600,
-                  fontFamily: "sans-serif", letterSpacing: "0.04em", borderRadius: 6, border: "none",
-                  backgroundColor: status === "loading" ? brand.sand : brand.gold,
-                  color: "#ffffff", cursor: status === "loading" ? "default" : "pointer", whiteSpace: "nowrap",
-                }}
-              >
+              <button className="btn" type="submit" disabled={status === "loading"}>
                 {status === "loading" ? "Sending…" : "Text Me Details"}
               </button>
-            </div>
+            </form>
             {errorMsg && (
-              <p role="alert" style={{ color: "#e88", fontSize: 13, marginTop: 10, fontFamily: "sans-serif" }}>
+              <p role="alert" style={{ color: "#e88899", marginTop: 16 }}>
                 {errorMsg}
               </p>
             )}
-            <p style={{ color: brand.sand, fontSize: 11, marginTop: 14, opacity: 0.7, fontFamily: "sans-serif" }}>
-              US numbers only. Reply STOP to opt out anytime.
-            </p>
-          </form>
+          </>
         )}
+        <p className="micro2">US numbers only. Reply STOP to opt out anytime.</p>
       </div>
-    </section>
+    </div>
   );
 }
 
 function SuccessState() {
   return (
-    <div>
-      <div style={{ width: 52, height: 52, borderRadius: "50%", backgroundColor: "#2d6a4f22", border: "2px solid #52b788", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: 22 }}>
+    <div style={{ marginTop: "var(--gap-xs)" }}>
+      <div
+        style={{
+          width: 64,
+          height: 64,
+          borderRadius: "50%",
+          background: "rgba(163,124,79,0.15)",
+          border: "2px solid var(--gold-bright)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "0 auto 20px",
+          fontSize: 26,
+          color: "var(--gold-bright)",
+        }}
+      >
         ✓
       </div>
-      <p style={{ color: "#52b788", fontSize: 17, fontWeight: 600, fontFamily: "sans-serif", marginBottom: 8 }}>
-        Check your phone!
-      </p>
-      <p style={{ color: brand.sand, fontSize: 14, fontFamily: "sans-serif", lineHeight: 1.6 }}>
+      <p style={{ color: "var(--gold-bright)", fontWeight: 800 }}>Check your phone!</p>
+      <p>
         We just sent you a text. Reply with your business name and what you do — we'll take it from there. 🌺
       </p>
     </div>
