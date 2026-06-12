@@ -32,25 +32,8 @@ export default function SiteHeader({ onReserve }: SiteHeaderProps) {
       }`}
     >
       {scrollState === "top" ? (
-        /* TOP STATE:
-           Mobile  — flex-col: logo centered, button below
-           Desktop — logo centered, button absolutely right */
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 flex flex-col sm:flex-row sm:relative items-center justify-center gap-5 sm:gap-0 py-6 sm:py-5">
-          <Image
-            src="/images/logo-transparent.svg"
-            alt="Island Mailer"
-            width={220}
-            height={220}
-            className="h-[55vh] sm:h-60 w-auto transition-all duration-700"
-            priority
-          />
-          <button
-            onClick={onReserve}
-            className="gradient-gold-shine text-white px-9 py-4 rounded-full font-bold text-base sm:absolute sm:right-6 sm:top-1/2 sm:-translate-y-1/2 min-h-[52px] hover:opacity-95 hover:shadow-2xl hover:shadow-[#A37C4F]/40 active:scale-95 transition-all duration-300 whitespace-nowrap"
-          >
-            Reserve Your Spot
-          </button>
-        </div>
+        /* TOP STATE hidden — the hero logo lockup owns the top of the page in the redesign */
+        null
       ) : (
         /* SCROLLED STATE: small left-aligned logo */
         <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
