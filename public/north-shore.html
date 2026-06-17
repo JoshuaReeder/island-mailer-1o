@@ -1,0 +1,378 @@
+<!-- ISLAND MAILER — North Shore Maui · Targeted Mailing Routes (INTERACTIVE)
+     Interactive Leaflet map. Pulls the exact USPS ZIP route areas (96779, 96708, 96768) live from
+     US Census TIGERweb and shades them gold over a zoomable street basemap (the streets ARE the routes).
+     Data: USPS EDDM order Ref #50313 (06.16.2026). Stamp price: 78¢ (as of June 2026, rises to 82¢ July 12).
+     Use as the North Shore area page or an unlisted page to send to leads. -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Island Mailer — North Shore Maui Targeted Mailing Routes</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+:root{--navy:#1F2735;--navy2:#262F40;--gold:#A37C4F;--sand:#D5C1AA;--cream:#F5F4EF;--paper:#FEFEFC;--line:#E8E6E1;--muted:#6E7687}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--navy);font-family:'Inter',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+.serif{font-family:'Fraunces',Georgia,serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.section{padding:88px 0}
+.hero{text-align:center;padding:96px 0 56px}
+.eyebrow{letter-spacing:5px;font-size:13px;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(38px,6vw,64px);line-height:1.08;margin:24px 0 22px;letter-spacing:-.5px}
+.lede{font-size:20px;color:#3a4456;max-width:680px;margin:0 auto}
+.places{margin:26px auto 0;max-width:760px;font-size:14px;color:var(--muted);line-height:2}
+.places b{color:var(--navy);font-weight:500}
+.rule{width:64px;height:3px;background:var(--gold);border-radius:2px;margin:36px auto 0}
+/* map */
+.mapcard{background:var(--navy);border-radius:28px;padding:34px 28px 26px;box-shadow:0 26px 70px rgba(31,39,53,.22)}
+.maptitle{text-align:center;color:var(--cream);font-family:'Fraunces',Georgia,serif;font-size:24px;margin-bottom:6px}
+.mapsub{text-align:center;color:#aeb6c4;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+#map{width:100%;height:560px;border-radius:18px;background:#e9e7e1}
+.leaflet-container{font-family:'Inter',Helvetica,Arial,sans-serif}
+.townlbl{background:rgba(31,39,53,.86);color:#F5F4EF;font-size:11px;font-weight:600;letter-spacing:.4px;
+  padding:3px 8px;border-radius:6px;border:1px solid rgba(163,124,79,.7);white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.legend{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:18px;color:#cdd3dd;font-size:13px}
+.legend span{display:inline-flex;align-items:center;gap:9px}
+.swatch{width:24px;height:12px;border-radius:4px;display:inline-block;border:1px solid rgba(245,244,239,.25)}
+.maphint{text-align:center;color:#8b93a3;font-size:12px;margin-top:12px}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.stat{text-align:center;padding:14px 8px}
+.stat .n{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,4vw,42px);color:var(--navy);line-height:1}
+.stat .l{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:10px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+/* cost */
+.cost{background:var(--paper);border:2px solid var(--gold);border-radius:24px;padding:56px 40px;text-align:center}
+.cost .big{font-family:'Fraunces',Georgia,serif;font-size:clamp(34px,5vw,52px);line-height:1.1}
+.cost .big b{color:var(--gold)}
+.cost p{font-size:19px;color:#3a4456;max-width:640px;margin:22px auto 0}
+.cost .stamp{margin-top:20px;display:inline-block;background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:12px 24px;font-size:15px}
+h2{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:34px;text-align:center;margin-bottom:10px}
+.h2sub{text-align:center;color:var(--muted);font-size:16px;margin-bottom:42px}
+.areagrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px}
+.area{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px 24px;text-align:center}
+.area .z{font-size:13px;letter-spacing:1px;color:var(--gold);text-transform:uppercase}
+.area .t{font-family:'Fraunces',Georgia,serif;font-size:22px;margin:8px 0 14px}
+.area .h{font-family:'Fraunces',Georgia,serif;font-size:38px;color:var(--navy)}
+.area .hl{font-size:12px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.area .meta{margin-top:14px;font-size:13px;color:var(--muted)}
+@media(max-width:760px){.areagrid{grid-template-columns:1fr}}
+table.routes{width:100%;border-collapse:collapse;font-size:14px;background:var(--paper);border-radius:16px;overflow:hidden}
+table.routes th{background:var(--navy);color:var(--cream);font-weight:500;text-align:left;padding:14px 16px;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+table.routes td{padding:12px 16px;border-bottom:1px solid var(--line)}
+table.routes tr:last-child td{border-bottom:none}
+table.routes tr:nth-child(even) td{background:#faf9f6}
+.tot{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:24px}
+.chip{background:var(--navy);color:#fff;border-radius:999px;padding:12px 22px;font-size:14px}
+.chip b{color:var(--sand)}
+.qr{background:var(--navy);color:var(--cream);border-radius:24px;padding:56px 40px;text-align:center}
+.qr h2{color:var(--cream)}
+.qr p{max-width:680px;margin:0 auto;font-size:18px;color:#cdd3dd}
+footer{text-align:center;padding:64px 0 80px}
+footer .bn{font-family:'Fraunces',Georgia,serif;letter-spacing:5px;font-size:16px}
+footer .tg{letter-spacing:3px;font-size:11px;text-transform:uppercase;color:var(--gold);margin-top:8px}
+footer .lk{margin-top:18px;font-size:14px} footer a{color:var(--gold);text-decoration:none}
+footer .fine{margin-top:18px;font-size:12px;color:var(--muted)}
+.topbar,.botbar{height:7px;background:var(--gold)}
+
+.mapwrap{position:relative;width:100%;height:560px}
+#map{position:absolute;inset:0;height:100%;border-radius:18px}
+#mapfallback-box{position:absolute;inset:0;border-radius:18px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#1F2735;z-index:500}
+#mapfallback-box svg{width:100%;height:100%}
+.chartgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:760px){.chartgrid{grid-template-columns:1fr}}
+.chartcard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:26px}
+.chartcard h3{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:18px;text-align:center;margin-bottom:16px}
+.roi{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:start}
+@media(max-width:820px){.roi{grid-template-columns:1fr}}
+.roi-inputs{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px}
+.roi-field{margin-bottom:22px}
+.roi-field label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+.roi-field .rowf{display:flex;align-items:center;gap:12px}
+.roi-field input[type=number]{width:104px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+.roi-field input[type=range]{flex:1;accent-color:var(--gold)}
+.roi-out{display:flex;flex-direction:column;gap:18px}
+.roi-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rcard{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+.rcard.g{border:2px solid var(--gold)}
+.rcard .rn{font-family:'Fraunces',Georgia,serif;font-size:30px;color:var(--navy)}
+.rcard .rl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.roi-be{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px;text-align:center;margin-top:4px}
+.roi-be b{color:var(--gold)}
+.roi-note{max-width:780px;margin:26px auto 0;text-align:center;font-size:13px;color:var(--muted);line-height:1.7}
+.claim{background:var(--navy);color:#fff;border-radius:28px;padding:64px 40px;text-align:center}
+.claim h2{color:#fff}
+.claim p{max-width:560px;margin:0 auto 28px;font-size:19px;color:#cdd3dd}
+.cta{display:inline-block;background:var(--gold);color:#fff;font-weight:600;font-size:19px;text-decoration:none;padding:20px 48px;border-radius:999px;box-shadow:0 12px 30px rgba(163,124,79,.35);transition:transform .15s}
+.cta:hover{transform:translateY(-2px)}
+.claim-sub{margin-top:20px;font-size:14px;color:#aeb6c4}
+.claim-sub a{color:var(--gold);text-decoration:none}
+
+.tablescroll{border-radius:16px}
+.roi-field label .hint{font-weight:400;color:var(--muted);font-size:12px}
+.roi-eg{background:var(--cream);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;font-size:14.5px;line-height:1.6;color:#3a4456}
+.roi-eg b{color:var(--navy)}
+@media(max-width:600px){
+ .wrap{padding:0 18px}
+ .section{padding:54px 0}
+ .hero{padding:60px 0 36px}
+ .lede{font-size:17px}
+ .mapwrap{height:430px}
+ .mapcard{padding:18px 12px 16px;border-radius:22px}
+ .legend{gap:14px;font-size:12px}
+ .cost{padding:40px 22px}
+ .cost p{font-size:16px}
+ .qr,.claim{padding:46px 22px}
+ .qr p,.claim p{font-size:16px}
+ h2{font-size:27px}
+ .areagrid{gap:14px}
+ .roi-cards{gap:10px}
+ .rcard{padding:16px}
+ .rcard .rn{font-size:24px}
+ .roi-inputs{padding:22px}
+ .cta{font-size:17px;padding:18px 34px;width:100%;max-width:340px}
+ .tablescroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table.routes{min-width:540px}
+ .places{font-size:13px;line-height:1.9}
+}
+</style></head><body>
+<div class="topbar"></div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">North Shore &middot; Maui, Hawaiʻi</div>
+    <h1>Targeted Mailing Routes</h1>
+    <p class="lede">One premium 9&times;12 postcard, hand-delivered by USPS to every mailbox across the North Shore — Pāʻia, Haʻikū, Makawao &amp; Haliimaile.</p>
+    <p class="places">Reaching every neighborhood on the route, including:<br>
+      <b>Pāʻia</b> · <b>Lower Pāʻia</b> · <b>Kūʻau</b> · <b>Spreckelsville</b> · <b>Baldwin Beach</b> · <b>Haʻikū</b> · <b>Haʻikū Town</b> · <b>Pāʻuwela</b> · <b>Kokomo</b> · <b>Kaupakalua</b> · <b>Peʻahi (Jaws)</b> · <b>Huelo</b> · <b>Ulumalu</b> · <b>Maliko</b> · <b>Makawao</b> · <b>Makawao Town</b> · <b>Pukalani</b> · <b>Hāliʻimaile</b> · <b>Olinda</b> · <b>Piʻiholo</b></p>
+    <div class="rule"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="mapcard">
+    <div class="maptitle serif">North Shore — Targeted Mailing Routes</div>
+    <div class="mapsub">About 10,000 mailboxes &middot; 18 carrier routes</div>
+    <div class="mapwrap">
+      <div id="map"></div>
+      <div id="mapfallback-box"><svg id="mapfallback" viewBox="0 0 1000 690" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of Maui with North Shore mailing regions highlighted">
+<rect x="0" y="0" width="1000" height="690" fill="#1F2735"/>
+<path d="M 454.2,241.1 L 456.8,237.5 L 465.8,235.0 L 468.7,227.9 L 478.2,231.6 L 476.8,230.7 L 478.7,222.7 L 476.4,220.5 L 484.1,206.9 L 481.8,189.3 L 488.8,185.3 L 491.1,177.0 L 501.0,179.7 L 502.5,181.9 L 501.3,188.2 L 507.7,191.7 L 505.9,194.4 L 507.8,196.9 L 508.6,207.9 L 510.6,208.6 L 514.3,220.9 L 516.4,222.0 L 515.8,235.0 L 513.4,240.3 L 521.1,250.6 L 526.7,252.9 L 528.2,255.9 L 527.7,251.8 L 529.7,252.0 L 529.1,255.1 L 533.3,256.4 L 534.6,259.3 L 537.7,258.7 L 549.3,267.0 L 555.9,268.1 L 559.4,278.4 L 565.1,281.9 L 571.1,281.4 L 582.5,285.8 L 582.7,291.4 L 590.7,295.7 L 600.2,297.0 L 603.0,302.0 L 618.4,300.6 L 627.8,302.9 L 629.2,289.2 L 633.9,287.5 L 634.7,299.1 L 632.9,303.8 L 651.3,309.8 L 637.6,324.0 L 635.3,329.4 L 634.8,334.8 L 637.6,340.2 L 636.0,342.9 L 635.5,354.1 L 632.2,359.6 L 630.0,381.9 L 632.9,384.4 L 631.8,387.6 L 636.2,400.1 L 616.9,389.2 L 608.6,406.5 L 606.8,405.5 L 602.4,401.5 L 598.5,401.2 L 586.3,394.6 L 568.8,379.9 L 561.7,370.3 L 555.6,368.5 L 548.8,362.1 L 532.1,353.0 L 508.5,343.6 L 506.4,340.3 L 501.0,338.6 L 501.2,335.7 L 493.9,329.7 L 494.8,327.6 L 491.8,324.5 L 465.3,311.2 L 464.4,305.7 L 471.7,310.8 L 476.2,299.9 L 474.4,288.8 L 481.1,283.0 L 465.5,274.5 L 476.1,267.4 L 483.5,265.7 L 475.7,259.0 L 462.9,254.0 L 456.4,247.3 L 454.2,241.1 Z" fill="#A37C4F" fill-opacity="0.30" stroke="#A37C4F" stroke-width="2"/>
+<path d="M 490.2,152.5 L 497.2,149.4 L 509.6,138.9 L 519.4,137.8 L 525.2,139.1 L 532.2,144.9 L 538.4,146.6 L 564.6,143.1 L 573.1,147.0 L 574.9,150.9 L 586.9,151.9 L 589.4,150.5 L 600.5,154.1 L 609.2,153.3 L 622.9,156.1 L 630.5,163.8 L 639.1,166.3 L 643.4,182.2 L 654.7,185.7 L 657.4,190.3 L 659.5,200.4 L 675.7,211.5 L 680.1,212.8 L 705.3,238.8 L 714.0,238.5 L 713.9,242.5 L 717.6,246.5 L 721.2,255.7 L 734.1,261.4 L 737.3,260.4 L 741.8,253.9 L 744.7,253.7 L 749.9,255.5 L 750.7,262.4 L 755.8,264.0 L 769.0,260.6 L 768.3,274.0 L 770.3,276.1 L 772.2,290.2 L 773.5,292.0 L 778.2,292.3 L 788.0,310.4 L 794.2,312.1 L 802.5,307.1 L 807.9,308.6 L 810.9,306.4 L 824.5,305.8 L 827.3,309.4 L 842.1,318.4 L 848.9,319.8 L 861.0,334.4 L 867.9,335.8 L 871.4,333.6 L 879.1,337.9 L 886.8,336.5 L 898.3,339.6 L 913.9,348.2 L 924.6,349.8 L 935.6,356.5 L 938.1,361.4 L 937.7,365.6 L 936.6,362.8 L 930.4,361.0 L 926.3,356.2 L 918.6,356.2 L 899.8,346.0 L 887.1,342.4 L 884.9,345.2 L 880.7,344.9 L 873.8,340.3 L 870.8,343.1 L 866.7,340.4 L 863.7,342.2 L 856.9,335.0 L 858.1,339.9 L 868.7,348.2 L 881.0,350.6 L 889.1,355.0 L 889.6,357.2 L 883.2,366.0 L 878.4,364.2 L 876.1,361.0 L 870.1,360.7 L 861.9,355.2 L 852.4,352.4 L 841.2,353.8 L 828.5,343.8 L 817.3,342.1 L 814.7,343.9 L 813.2,341.4 L 800.8,337.4 L 794.8,339.3 L 795.5,337.2 L 792.6,335.0 L 788.2,336.9 L 778.6,329.5 L 770.7,326.6 L 762.5,328.6 L 763.8,323.5 L 760.4,324.4 L 760.1,320.5 L 757.2,321.3 L 761.9,313.9 L 761.5,305.1 L 756.8,306.8 L 758.0,301.9 L 754.5,293.9 L 756.1,288.6 L 760.1,285.7 L 759.3,282.2 L 755.5,279.1 L 751.9,281.1 L 752.9,278.4 L 748.9,272.6 L 746.4,271.7 L 745.9,273.5 L 743.8,270.6 L 743.0,272.1 L 743.0,269.5 L 734.8,270.3 L 731.1,274.9 L 728.1,275.8 L 730.6,269.2 L 729.6,266.1 L 725.8,264.5 L 716.6,276.1 L 717.3,266.3 L 715.9,265.7 L 718.9,262.2 L 719.4,256.1 L 716.0,251.5 L 708.6,257.8 L 710.1,273.4 L 698.0,279.4 L 698.6,277.6 L 695.0,275.6 L 692.2,263.3 L 683.9,269.1 L 687.9,265.4 L 688.6,258.9 L 679.7,272.4 L 669.9,279.7 L 665.6,286.4 L 665.9,291.4 L 654.3,300.6 L 651.3,309.4 L 632.9,303.8 L 634.7,299.1 L 633.9,287.5 L 629.2,289.2 L 627.8,302.9 L 618.4,300.6 L 603.0,302.0 L 600.2,297.0 L 590.7,295.7 L 582.7,291.4 L 582.5,285.8 L 571.1,281.4 L 565.1,281.9 L 559.4,278.4 L 555.9,268.1 L 549.3,267.0 L 537.7,258.7 L 534.6,259.3 L 533.3,256.4 L 529.1,255.1 L 529.7,252.0 L 527.8,251.6 L 528.2,255.9 L 526.7,252.9 L 517.7,247.6 L 518.1,244.9 L 513.4,240.3 L 515.8,235.0 L 516.4,222.0 L 514.3,220.9 L 510.6,208.6 L 508.6,207.9 L 507.8,196.9 L 505.9,194.4 L 507.7,191.7 L 501.3,188.2 L 502.5,181.9 L 501.0,179.7 L 491.1,177.0 L 492.8,162.8 L 489.7,159.7 L 495.3,165.2 L 488.6,152.5 L 490.2,152.5 Z" fill="#A37C4F" fill-opacity="0.30" stroke="#A37C4F" stroke-width="2"/>
+<path d="M 353.7,205.3 L 372.5,192.4 L 378.2,190.6 L 392.7,191.0 L 421.8,184.3 L 422.2,182.1 L 437.3,173.4 L 456.1,158.6 L 458.2,160.6 L 468.7,155.0 L 484.1,151.9 L 488.6,152.5 L 494.9,162.5 L 495.3,165.2 L 489.7,159.7 L 492.8,162.8 L 489.5,183.3 L 481.8,189.3 L 484.1,206.9 L 476.4,220.5 L 478.7,222.7 L 476.8,230.7 L 478.2,231.6 L 468.7,227.9 L 465.8,235.0 L 456.8,237.5 L 454.2,241.1 L 449.5,237.7 L 445.3,229.4 L 442.2,227.5 L 437.9,217.8 L 431.2,214.2 L 417.0,217.5 L 418.5,220.5 L 414.9,223.3 L 406.3,220.3 L 401.1,221.5 L 397.9,234.0 L 370.4,257.5 L 367.3,252.7 L 371.3,251.9 L 369.5,249.1 L 378.2,236.4 L 377.0,232.8 L 381.1,230.5 L 379.3,224.8 L 377.3,224.9 L 377.6,222.6 L 382.3,217.1 L 383.7,212.5 L 382.3,211.4 L 388.4,206.5 L 384.7,201.8 L 381.4,205.1 L 355.2,217.1 L 354.3,213.8 L 347.8,206.9 L 353.7,205.3 Z" fill="#A37C4F" fill-opacity="0.42" stroke="#A37C4F" stroke-width="2"/>
+<path d="M 63.2,59.6 L 62.4,76.3 L 29.9,142.5 L 29.1,165.7 L 24.0,170.8 L 24.0,188.9 L 38.8,206.4 L 36.6,236.2 L 89.0,302.4 L 107.4,313.2 L 121.4,340.1 L 142.0,337.9 L 167.2,355.4 L 201.9,364.1 L 235.0,386.6 L 254.9,382.9 L 267.5,365.6 L 283.8,355.4 L 308.9,359.8 L 334.7,377.9 L 335.5,416.4 L 343.6,444.8 L 353.2,458.6 L 360.5,538.5 L 359.8,563.2 L 346.5,580.6 L 364.2,598.8 L 366.4,611.2 L 362.0,622.8 L 377.5,636.6 L 395.2,634.5 L 400.3,654.1 L 411.5,654.7 L 415.1,659.9 L 440.3,659.9 L 449.8,665.7 L 485.2,654.1 L 497.8,658.4 L 508.9,652.6 L 553.2,654.7 L 574.5,639.5 L 600.4,633.0 L 644.0,611.8 L 652.8,602.5 L 688.2,590.8 L 709.6,593.7 L 719.2,601.7 L 749.4,594.5 L 761.2,605.4 L 775.3,598.8 L 781.9,588.7 L 790.8,587.2 L 800.4,574.8 L 821.7,573.4 L 839.5,561.0 L 861.7,565.4 L 884.5,558.1 L 893.4,533.4 L 911.8,518.1 L 934.0,513.1 L 949.4,497.1 L 951.7,486.9 L 963.5,478.2 L 962.8,467.3 L 969.4,458.6 L 969.4,420.1 L 976.0,413.5 L 974.6,398.2 L 945.8,366.2 L 945.0,358.3 L 906.6,340.8 L 870.5,336.5 L 835.1,308.8 L 820.3,309.6 L 818.1,313.2 L 796.7,311.7 L 795.9,305.9 L 779.7,293.6 L 773.1,265.3 L 759.8,266.7 L 755.3,257.2 L 745.8,263.8 L 727.3,259.5 L 721.4,242.0 L 708.8,239.1 L 695.6,228.2 L 691.1,212.9 L 683.0,214.4 L 664.5,202.7 L 663.1,191.2 L 648.3,186.8 L 645.4,167.9 L 635.8,167.2 L 629.9,159.8 L 603.4,158.4 L 600.4,152.6 L 592.2,159.8 L 584.1,160.6 L 572.3,145.4 L 544.3,152.6 L 529.5,145.4 L 511.1,145.4 L 500.0,155.5 L 483.0,154.8 L 458.0,167.9 L 439.5,186.8 L 411.5,189.7 L 400.3,198.4 L 386.3,194.7 L 353.2,213.7 L 326.6,210.0 L 324.4,220.9 L 317.7,221.7 L 308.1,197.0 L 295.6,188.3 L 290.4,166.4 L 275.6,159.2 L 275.0,144.6 L 252.0,119.2 L 252.0,85.1 L 238.0,90.9 L 225.5,65.5 L 215.1,66.9 L 206.3,50.2 L 197.4,50.9 L 190.1,43.6 L 176.1,43.6 L 169.4,37.0 L 168.6,26.2 L 149.5,24.0 L 139.9,34.9 L 123.7,36.4 L 105.9,30.6 L 96.3,37.8 L 97.8,49.4 L 86.0,59.6 L 77.8,56.0 L 75.6,61.8 Z" fill="none" stroke="#A37C4F" stroke-width="2.4" stroke-linejoin="round"/>
+<g font-family="Inter,Helvetica,Arial,sans-serif" font-size="16" fill="#F5F4EF" font-weight="600"><text x="456.0" y="202.3" text-anchor="middle">Pāʻia</text><text x="523.9" y="190.2" text-anchor="middle">Haʻikū</text><text x="530.4" y="286.6" text-anchor="middle">Makawao</text></g>
+<text x="500.0" y="674" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#aeb6c4">North Shore Maui · Targeted Mailing Routes</text>
+</svg></div>
+    </div>
+    <div class="legend">
+      <span><i class="swatch" style="background:rgba(163,124,79,.30)"></i> Targeted mailing area</span>
+      <span><i class="swatch" style="background:#A37C4F"></i> Route boundary</span>
+      <span>Every street inside the gold area receives the card</span>
+    </div>
+    <div class="maphint">Scroll to zoom · drag to explore · click an area for details</div>
+  </div>
+</div>
+
+<div class="wrap section">
+  <div class="stats">
+    <div class="stat"><div class="n">~10K</div><div class="l">Mailboxes</div></div>
+    <div class="stat"><div class="n">9,471</div><div class="l">Homes</div></div>
+    <div class="stat"><div class="n">364</div><div class="l">Businesses</div></div>
+    <div class="stat"><div class="n">18</div><div class="l">Mail Routes</div></div>
+    <div class="stat"><div class="n">~$100K</div><div class="l">Median Income</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cost">
+    <div class="big">Less than <b>10&cent; per mailbox</b></div>
+    <p>$800 flat — design, printing &amp; mailing included — reaches all 9,835 North Shore mailboxes. That’s about <b>8&cent; a mailbox</b>, with nothing else for you to do.</p>
+    <div class="stamp">✉️ A single Forever stamp costs <b>82&cent;</b> as of July 12 — your ad reaches a household for a fraction of that.</div>
+  </div>
+</div>
+
+<div class="wrap section">
+  <h2 class="serif">Coverage by area</h2>
+  <p class="h2sub">Every occupied mailbox on these USPS carrier routes receives the card.</p>
+  <div class="areagrid">
+    <div class="area"><div class="z">96768</div><div class="t serif">Makawao · Pukalani · Hāliʻimaile</div><div class="h">5,473</div><div class="hl">Homes</div><div class="meta">10 routes &middot; 270 businesses</div></div>
+    <div class="area"><div class="z">96708</div><div class="t serif">Haʻikū · Pāʻuwela</div><div class="h">3,170</div><div class="hl">Homes</div><div class="meta">6 routes &middot; 77 businesses</div></div>
+    <div class="area"><div class="z">96779</div><div class="t serif">Pāʻia · Kūʻau · Spreckelsville</div><div class="h">828</div><div class="hl">Homes</div><div class="meta">2 routes &middot; 17 businesses</div></div>
+  </div>
+  <div class="tablescroll"><table class="routes">
+    <thead><tr><th>Zip / Route ID</th><th>Businesses</th><th>Residential</th><th>Total</th><th>Median Income</th></tr></thead>
+    <tbody>
+<tr><td>96708-H001</td><td>0</td><td>213</td><td>213</td><td>$76,408</td></tr>
+<tr><td>96708-R001</td><td>1</td><td>628</td><td>629</td><td>$81,147</td></tr>
+<tr><td>96708-R002</td><td>1</td><td>590</td><td>591</td><td>$51,501</td></tr>
+<tr><td>96708-R003</td><td>3</td><td>648</td><td>651</td><td>$51,501</td></tr>
+<tr><td>96708-R004</td><td>33</td><td>570</td><td>603</td><td>$94,388</td></tr>
+<tr><td>96708-R005</td><td>39</td><td>521</td><td>560</td><td>$94,388</td></tr>
+<tr><td>96768-R001</td><td>20</td><td>531</td><td>551</td><td>$96,896</td></tr>
+<tr><td>96768-R002</td><td>1</td><td>537</td><td>538</td><td>$115,664</td></tr>
+<tr><td>96768-R003</td><td>35</td><td>574</td><td>609</td><td>$86,202</td></tr>
+<tr><td>96768-R004</td><td>2</td><td>590</td><td>592</td><td>$148,654</td></tr>
+<tr><td>96768-R005</td><td>117</td><td>420</td><td>537</td><td>$100,000</td></tr>
+<tr><td>96768-R006</td><td>1</td><td>607</td><td>608</td><td>$86,202</td></tr>
+<tr><td>96768-R007</td><td>0</td><td>579</td><td>579</td><td>$148,654</td></tr>
+<tr><td>96768-R008</td><td>87</td><td>484</td><td>571</td><td>$148,654</td></tr>
+<tr><td>96768-R010</td><td>2</td><td>586</td><td>588</td><td>$96,896</td></tr>
+<tr><td>96768-R011</td><td>5</td><td>565</td><td>570</td><td>$105,406</td></tr>
+<tr><td>96779-R001</td><td>5</td><td>493</td><td>498</td><td>$117,180</td></tr>
+<tr><td>96779-R002</td><td>12</td><td>335</td><td>347</td><td>$104,268</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tot">
+    <div class="chip"><b>18</b> routes</div>
+    <div class="chip"><b>364</b> businesses</div>
+    <div class="chip"><b>9,471</b> residential</div>
+    <div class="chip"><b>9,835</b> total mailboxes</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="qr">
+    <h2 class="serif">Trackable results, not guesswork</h2>
+    <p>Each Mailer has a Trackable QR Code that links every mailer campaign to a digital campaign landing page — trackable and tied to your website or a landing page you choose. You see the scans, the traffic, and the customers it brings in. Real numbers, not guesswork.</p>
+  </div>
+</div>
+
+
+<div class="wrap section">
+  <h2 class="serif">By the numbers</h2>
+  <p class="h2sub">A premium, affluent North Shore audience — at a glance.</p>
+  <div class="chartgrid">
+    <div class="chartcard"><h3>Homes by area</h3><canvas id="cHomes" height="220"></canvas></div>
+    <div class="chartcard"><h3>Median household income by area</h3><canvas id="cIncome" height="220"></canvas></div>
+  </div>
+</div>
+
+<div class="wrap section">
+  <h2 class="serif">What could it mean for your business?</h2>
+  <p class="h2sub">Only you know your numbers — plug them in. We build the vehicle and bring the gas to reach ~10,000 mailboxes; your offer and follow-through drive the return.</p>
+  <div class="roi">
+    <div class="roi-inputs">
+      <div class="roi-field"><label>Monthly value per customer <span class="hint">(one-time sale? enter it &amp; set months to 1)</span></label><div class="rowf"><input type="number" id="mVal" value="150" min="0"><input type="range" id="mValR" value="150" min="0" max="1000" step="5"></div></div>
+      <div class="roi-field"><label>Profit margin (%)</label><div class="rowf"><input type="number" id="margin" value="70" min="0" max="100"><input type="range" id="marginR" value="70" min="0" max="100" step="1"></div></div>
+      <div class="roi-field"><label>Avg. months a customer stays <span class="hint" id="yrsHint">(3.0 yrs)</span></label><div class="rowf"><input type="number" id="months" value="36" min="1" max="120"><input type="range" id="monthsR" value="36" min="1" max="120" step="1"></div></div>
+      <div class="roi-field"><label>New customers from the mailer</label><div class="rowf"><input type="number" id="custs" value="15" min="0"><input type="range" id="custsR" value="15" min="0" max="300" step="1"></div></div>
+      <div class="roi-be">A <b id="oResp">0.16%</b> response from 9,471 homes — you&rsquo;d break even at <b id="oBe">1</b> new customer in year one.</div>
+    </div>
+    <div class="roi-out">
+      <div class="roi-cards">
+        <div class="rcard"><div class="rn" id="oAnnualPer">$1,800</div><div class="rl">Annual value / customer</div></div>
+        <div class="rcard"><div class="rn" id="oLifePer">$5,400</div><div class="rl" id="oLifeLbl">Lifetime value (3 yrs)</div></div>
+        <div class="rcard g"><div class="rn" id="oNet">$0</div><div class="rl">Year-1 net after $800</div></div>
+        <div class="rcard g"><div class="rn" id="oRoiLife">0%</div><div class="rl">Lifetime return</div></div>
+      </div>
+      <div class="roi-eg">Example: one new student at <b>$150/mo</b> is worth <b>$1,800</b> in year one — and <b>$5,400</b> over 3 years. The mailer is a one-time <b>$800</b>.</div>
+      <div class="chartcard"><canvas id="cRoi" height="150"></canvas></div>
+    </div>
+  </div>
+  <p class="roi-note">For illustration only — not a guarantee. We can&rsquo;t control every business outcome; results depend on your offer, pricing, customer experience, and how you follow up with the people the mailer sends your way. What we guarantee is the vehicle and the reach: a premium 9&times;12 card in front of ~10,000 local mailboxes.</p>
+</div>
+
+<div class="wrap">
+  <div class="claim">
+    <h2 class="serif">Claim your spot</h2>
+    <p>One business per category — once yours is taken, it&rsquo;s gone for this edition. Lock in your place on the North Shore card before someone in your category does.</p>
+    <a class="cta" href="mailto:aloha@islandmailer.com?subject=Claim%20my%20North%20Shore%20Island%20Mailer%20spot&body=Aloha%20Joshua%2C%0A%0AI%27d%20like%20to%20claim%20a%20spot%20on%20the%20North%20Shore%20mailer.%0A%0ABusiness%20name%3A%0ACategory%3A%0ABest%20phone%3A%0A">Claim Your Spot &rarr;</a>
+    <div class="claim-sub">or call / text <a href="tel:8088086245">808-808-MAIL (6245)</a> &nbsp;&middot;&nbsp; <a href="mailto:aloha@islandmailer.com?subject=Claim%20my%20North%20Shore%20Island%20Mailer%20spot">aloha@islandmailer.com</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="bn serif">ISLAND MAILER</div>
+  <div class="tg">Support Local &middot; Live Hawaiʻi</div>
+  <div class="lk"><a href="https://islandmailer.com">islandmailer.com</a> &nbsp;&middot;&nbsp; <a href="tel:8088086245">808-808-MAIL</a> &nbsp;&middot;&nbsp; <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></div>
+</footer>
+<div class="botbar"></div>
+
+<script>
+(function(){
+  var GOLD='#A37C4F';
+  var map = L.map('map',{scrollWheelZoom:true, zoomControl:true}).setView([20.892,-156.330], 12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+    maxZoom:19, attribution:'&copy; OpenStreetMap &copy; CARTO'
+  }).addTo(map);
+
+  // Town / neighborhood labels (approx coords)
+  var towns=[
+    ['Pāʻia',20.9027,-156.3686],['Kūʻau',20.9123,-156.3585],['Spreckelsville',20.9165,-156.3790],
+    ['Haʻikū',20.9163,-156.3175],['Pāʻuwela',20.9320,-156.3010],['Kokomo',20.8640,-156.3110],
+    ['Kaupakalua',20.8830,-156.2960],['Peʻahi (Jaws)',20.9430,-156.2960],['Huelo',20.9150,-156.2530],
+    ['Makawao',20.8570,-156.3120],['Pukalani',20.8370,-156.3370],['Hāliʻimaile',20.8730,-156.3430],
+    ['Olinda',20.8300,-156.3030]
+  ];
+  towns.forEach(function(t){
+    L.marker([t[1],t[2]],{icon:L.divIcon({className:'',html:'<div class="townlbl">'+t[0]+'</div>',iconSize:[0,0]})}).addTo(map);
+  });
+
+  // Exact ZIP route areas (US Census TIGERweb boundaries), baked in for reliability
+  var ZIPS={"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"zip": "96779", "area": "Pāʻia · Kūʻau · Spreckelsville", "homes": "828", "routes": "2"}, "geometry": {"type": "Polygon", "coordinates": [[[-156.4474, 20.9052], [-156.433, 20.9144], [-156.4286, 20.9157], [-156.4175, 20.9154], [-156.3952, 20.9202], [-156.3949, 20.9218], [-156.3833, 20.928], [-156.3689, 20.9386], [-156.3673, 20.9372], [-156.3593, 20.9412], [-156.3475, 20.9434], [-156.344, 20.943], [-156.3392, 20.9358], [-156.3389, 20.9339], [-156.3432, 20.9378], [-156.3408, 20.9356], [-156.3433, 20.9209], [-156.3492, 20.9166], [-156.3475, 20.904], [-156.3534, 20.8943], [-156.3516, 20.8927], [-156.3531, 20.887], [-156.352, 20.8863], [-156.3593, 20.889], [-156.3615, 20.8839], [-156.3684, 20.8821], [-156.3704, 20.8795], [-156.374, 20.882], [-156.3772, 20.8879], [-156.3796, 20.8893], [-156.3829, 20.8962], [-156.388, 20.8988], [-156.3989, 20.8964], [-156.3977, 20.8943], [-156.4005, 20.8923], [-156.4071, 20.8944], [-156.4111, 20.8936], [-156.4135, 20.8846], [-156.4346, 20.8678], [-156.437, 20.8712], [-156.4339, 20.8718], [-156.4353, 20.8738], [-156.4286, 20.8829], [-156.4295, 20.8855], [-156.4264, 20.8871], [-156.4278, 20.8912], [-156.4293, 20.8911], [-156.4291, 20.8928], [-156.4255, 20.8967], [-156.4244, 20.9], [-156.4255, 20.9008], [-156.4208, 20.9043], [-156.4236, 20.9077], [-156.4262, 20.9053], [-156.4462, 20.8967], [-156.4469, 20.8991], [-156.4519, 20.904], [-156.4474, 20.9052]]]}}, {"type": "Feature", "properties": {"zip": "96708", "area": "Haʻikū · Pāʻuwela", "homes": "3,170", "routes": "6"}, "geometry": {"type": "Polygon", "coordinates": [[[-156.3428, 20.943], [-156.3374, 20.9452], [-156.3279, 20.9527], [-156.3204, 20.9535], [-156.316, 20.9526], [-156.3106, 20.9484], [-156.3059, 20.9472], [-156.2858, 20.9497], [-156.2793, 20.9469], [-156.2779, 20.9441], [-156.2687, 20.9434], [-156.2668, 20.9444], [-156.2583, 20.9418], [-156.2516, 20.9424], [-156.2411, 20.9404], [-156.2353, 20.9349], [-156.2287, 20.9331], [-156.2254, 20.9217], [-156.2168, 20.9192], [-156.2147, 20.9159], [-156.2131, 20.9087], [-156.2007, 20.9007], [-156.1973, 20.8998], [-156.178, 20.8812], [-156.1713, 20.8814], [-156.1714, 20.8785], [-156.1686, 20.8757], [-156.1658, 20.8691], [-156.1559, 20.865], [-156.1535, 20.8657], [-156.15, 20.8704], [-156.1478, 20.8705], [-156.1438, 20.8692], [-156.1432, 20.8643], [-156.1393, 20.8631], [-156.1292, 20.8656], [-156.1297, 20.856], [-156.1282, 20.8545], [-156.1267, 20.8444], [-156.1257, 20.8431], [-156.1221, 20.8429], [-156.1146, 20.8299], [-156.1099, 20.8287], [-156.1035, 20.8323], [-156.0994, 20.8312], [-156.0971, 20.8328], [-156.0867, 20.8332], [-156.0845, 20.8306], [-156.0732, 20.8242], [-156.068, 20.8232], [-156.0587, 20.8127], [-156.0534, 20.8117], [-156.0507, 20.8133], [-156.0448, 20.8102], [-156.0389, 20.8112], [-156.0301, 20.809], [-156.0182, 20.8028], [-156.01, 20.8017], [-156.0015, 20.7969], [-155.9996, 20.7934], [-155.9999, 20.7904], [-156.0008, 20.7924], [-156.0055, 20.7937], [-156.0087, 20.7971], [-156.0146, 20.7971], [-156.029, 20.8044], [-156.0387, 20.807], [-156.0404, 20.805], [-156.0436, 20.8052], [-156.0489, 20.8085], [-156.0512, 20.8065], [-156.0543, 20.8084], [-156.0566, 20.8071], [-156.0618, 20.8123], [-156.0609, 20.8088], [-156.0528, 20.8028], [-156.0434, 20.8011], [-156.0372, 20.798], [-156.0368, 20.7964], [-156.0417, 20.7901], [-156.0454, 20.7914], [-156.0471, 20.7937], [-156.0517, 20.7939], [-156.058, 20.7978], [-156.0653, 20.7998], [-156.0739, 20.7988], [-156.0836, 20.806], [-156.0922, 20.8072], [-156.0942, 20.8059], [-156.0953, 20.8077], [-156.1048, 20.8106], [-156.1094, 20.8092], [-156.1089, 20.8107], [-156.1111, 20.8123], [-156.1145, 20.8109], [-156.1218, 20.8162], [-156.1279, 20.8183], [-156.1342, 20.8169], [-156.1332, 20.8205], [-156.1358, 20.8199], [-156.136, 20.8227], [-156.1382, 20.8221], [-156.1346, 20.8274], [-156.1349, 20.8337], [-156.1385, 20.8325], [-156.1376, 20.836], [-156.1403, 20.8417], [-156.1391, 20.8455], [-156.136, 20.8476], [-156.1366, 20.8501], [-156.1395, 20.8523], [-156.1423, 20.8509], [-156.1415, 20.8528], [-156.1446, 20.857], [-156.1465, 20.8576], [-156.1469, 20.8563], [-156.1485, 20.8584], [-156.1491, 20.8573], [-156.1491, 20.8592], [-156.1554, 20.8586], [-156.1582, 20.8553], [-156.1605, 20.8547], [-156.1586, 20.8594], [-156.1594, 20.8616], [-156.1623, 20.8628], [-156.1693, 20.8545], [-156.1688, 20.8615], [-156.1699, 20.8619], [-156.1676, 20.8644], [-156.1672, 20.8688], [-156.1698, 20.8721], [-156.1755, 20.8676], [-156.1743, 20.8564], [-156.1836, 20.8521], [-156.1831, 20.8534], [-156.1859, 20.8548], [-156.188, 20.8636], [-156.1944, 20.8595], [-156.1913, 20.8621], [-156.1908, 20.8668], [-156.1976, 20.8571], [-156.2051, 20.8519], [-156.2084, 20.8471], [-156.2082, 20.8435], [-156.2171, 20.8369], [-156.2194, 20.8306], [-156.2335, 20.8346], [-156.2321, 20.838], [-156.2327, 20.8463], [-156.2363, 20.8451], [-156.2374, 20.8353], [-156.2446, 20.8369], [-156.2564, 20.8359], [-156.2585, 20.8395], [-156.2658, 20.8404], [-156.2719, 20.8435], [-156.2721, 20.8475], [-156.2808, 20.8507], [-156.2854, 20.8503], [-156.2898, 20.8528], [-156.2925, 20.8602], [-156.2975, 20.861], [-156.3064, 20.8669], [-156.3088, 20.8665], [-156.3098, 20.8686], [-156.313, 20.8695], [-156.3125, 20.8717], [-156.314, 20.872], [-156.3137, 20.8689], [-156.3148, 20.8711], [-156.3217, 20.8749], [-156.3214, 20.8768], [-156.325, 20.8801], [-156.3232, 20.8839], [-156.3227, 20.8932], [-156.3243, 20.894], [-156.3272, 20.9028], [-156.3287, 20.9033], [-156.3293, 20.9112], [-156.3308, 20.913], [-156.3294, 20.9149], [-156.3343, 20.9174], [-156.3334, 20.9219], [-156.3345, 20.9235], [-156.3421, 20.9254], [-156.3408, 20.9356], [-156.3432, 20.9378], [-156.3389, 20.9339], [-156.344, 20.943], [-156.3428, 20.943]]]}}, {"type": "Feature", "properties": {"zip": "96768", "area": "Makawao · Pukalani · Hāliʻimaile", "homes": "5,473", "routes": "10"}, "geometry": {"type": "Polygon", "coordinates": [[[-156.3704, 20.8795], [-156.3684, 20.8821], [-156.3615, 20.8839], [-156.3593, 20.889], [-156.352, 20.8863], [-156.3531, 20.887], [-156.3516, 20.8927], [-156.3534, 20.8943], [-156.3475, 20.904], [-156.3492, 20.9166], [-156.3439, 20.9195], [-156.3421, 20.9254], [-156.3345, 20.9235], [-156.3334, 20.9219], [-156.3343, 20.9174], [-156.3294, 20.9149], [-156.3308, 20.913], [-156.3293, 20.9112], [-156.3287, 20.9033], [-156.3272, 20.9028], [-156.3243, 20.894], [-156.3227, 20.8932], [-156.3232, 20.8839], [-156.325, 20.8801], [-156.3191, 20.8727], [-156.3148, 20.8711], [-156.3137, 20.8689], [-156.3141, 20.8719], [-156.3125, 20.8717], [-156.313, 20.8695], [-156.3098, 20.8686], [-156.3088, 20.8665], [-156.3064, 20.8669], [-156.2975, 20.861], [-156.2925, 20.8602], [-156.2898, 20.8528], [-156.2854, 20.8503], [-156.2808, 20.8507], [-156.2721, 20.8475], [-156.2719, 20.8435], [-156.2658, 20.8404], [-156.2585, 20.8395], [-156.2564, 20.8359], [-156.2446, 20.8369], [-156.2374, 20.8353], [-156.2363, 20.8451], [-156.2327, 20.8463], [-156.2321, 20.838], [-156.2335, 20.8346], [-156.2194, 20.8303], [-156.2299, 20.8202], [-156.2316, 20.8163], [-156.232, 20.8124], [-156.2299, 20.8086], [-156.2311, 20.8066], [-156.2315, 20.7986], [-156.234, 20.7947], [-156.2357, 20.7787], [-156.2335, 20.7769], [-156.2343, 20.7746], [-156.2309, 20.7657], [-156.2457, 20.7735], [-156.2521, 20.7611], [-156.2535, 20.7618], [-156.2568, 20.7647], [-156.2598, 20.7649], [-156.2692, 20.7696], [-156.2826, 20.7801], [-156.288, 20.787], [-156.2927, 20.7883], [-156.2979, 20.7929], [-156.3107, 20.7994], [-156.3288, 20.8061], [-156.3304, 20.8085], [-156.3345, 20.8097], [-156.3344, 20.8118], [-156.34, 20.8161], [-156.3393, 20.8176], [-156.3416, 20.8198], [-156.3619, 20.8293], [-156.3626, 20.8333], [-156.357, 20.8296], [-156.3535, 20.8374], [-156.3549, 20.8454], [-156.3498, 20.8495], [-156.3617, 20.8556], [-156.3536, 20.8607], [-156.3479, 20.8619], [-156.3539, 20.8667], [-156.3637, 20.8703], [-156.3687, 20.8751], [-156.3704, 20.8795]]]}}]};
+  var style={color:GOLD, weight:2.6, opacity:0.95, fillColor:GOLD, fillOpacity:0.17};
+  var group=L.geoJSON(ZIPS,{style:style, onEachFeature:function(f,layer){
+    var p=f.properties;
+    layer.bindPopup('<b>ZIP '+p.zip+'</b><br>'+p.area+'<br>'+p.homes+' homes · '+p.routes+' routes');
+    layer.on('mouseover',function(){this.setStyle({fillOpacity:0.30})});
+    layer.on('mouseout',function(){this.setStyle({fillOpacity:0.17})});
+  }}).addTo(map);
+  map.fitBounds(group.getBounds().pad(0.06));
+  var __fb=document.getElementById("mapfallback-box"); if(__fb){__fb.style.display="none";}
+})();
+</script>
+<script>
+(function(){
+  var navy='#1F2735',gold='#A37C4F',sand='#D5C1AA';
+  if(window.Chart){
+    Chart.defaults.font.family="Inter,Helvetica,Arial,sans-serif";
+    Chart.defaults.color='#6E7687';
+    new Chart(document.getElementById('cHomes'),{type:'doughnut',
+      data:{labels:['Makawao · Pukalani · Hāliʻimaile','Haʻikū · Pāʻuwela','Pāʻia · Kūʻau · Spreckelsville'],
+        datasets:[{data:[5473,3170,828],backgroundColor:[gold,navy,sand],borderColor:'#FEFEFC',borderWidth:2}]},
+      options:{cutout:'60%',plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:14,font:{size:11}}}}}});
+    new Chart(document.getElementById('cIncome'),{type:'bar',
+      data:{labels:['Makawao 96768','Pāʻia 96779','Haʻikū 96708'],
+        datasets:[{data:[113182,111956,73808],backgroundColor:[gold,sand,navy],borderRadius:8}]},
+      options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '$'+c.raw.toLocaleString()}}}},
+        scales:{y:{ticks:{callback:function(v){return '$'+(v/1000)+'K'}}}}}});
+  }
+  var fmt=function(n){return '$'+Math.round(n).toLocaleString()};
+  function bind(n){var num=document.getElementById(n),rng=document.getElementById(n+'R');if(!num||!rng)return;
+    num.addEventListener('input',function(){rng.value=num.value;calc()});
+    rng.addEventListener('input',function(){num.value=rng.value;calc()});}
+  var roiChart=null;
+  function yrsTxt(y){return (y%1===0?y:y.toFixed(1))+' yrs';}
+  function calc(){
+    var v=+document.getElementById('mVal').value||0;
+    var m=(+document.getElementById('margin').value||0)/100;
+    var mo=+document.getElementById('months').value||1; if(mo<1)mo=1;
+    var c=+document.getElementById('custs').value||0;
+    var yrs=mo/12, moCap=Math.min(12,mo);
+    var annualPer=v*12, lifePer=v*mo;
+    var y1Rev=c*v*moCap, lifeRev=c*v*mo, y1Profit=y1Rev*m, lifeProfit=lifeRev*m;
+    var y1Net=y1Profit-800, roiLife=(lifeProfit-800)/800*100;
+    var be=(v*moCap*m>0)?Math.ceil(800/(v*moCap*m)):0, resp=c/9471*100;
+    document.getElementById('oAnnualPer').textContent=fmt(annualPer);
+    document.getElementById('oLifePer').textContent=fmt(lifePer);
+    document.getElementById('oLifeLbl').textContent='Lifetime value ('+yrsTxt(yrs)+')';
+    document.getElementById('yrsHint').textContent='('+yrsTxt(yrs)+')';
+    document.getElementById('oNet').textContent=(y1Net>=0?'+':'')+fmt(y1Net);
+    document.getElementById('oRoiLife').textContent=(isFinite(roiLife)?Math.round(roiLife):0).toLocaleString()+'%';
+    document.getElementById('oBe').textContent=be;
+    document.getElementById('oResp').textContent=resp.toFixed(2)+'%';
+    if(window.Chart){
+      var d=[800,y1Profit,lifeProfit];
+      if(!roiChart){roiChart=new Chart(document.getElementById('cRoi'),{type:'bar',
+        data:{labels:['Mailer cost','Year-1 profit','Lifetime profit'],datasets:[{data:d,backgroundColor:['#262F40',gold,sand],borderRadius:8}]},
+        options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return fmt(x.raw)}}}},
+          scales:{x:{ticks:{callback:function(val){return '$'+(val>=1000?Math.round(val/1000)+'K':val)}}}}}});}
+      else{roiChart.data.datasets[0].data=d;roiChart.update();}
+    }
+  }
+  ['mVal','margin','months','custs'].forEach(bind); calc();
+})();
+</script>
+</body></html>
