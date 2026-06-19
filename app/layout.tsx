@@ -72,6 +72,18 @@ export default function RootLayout({
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
+                <Script
+                            src="https://www.googletagmanager.com/gtag/js?id=G-TQFPZ3K0JK"
+                            strategy="afterInteractive"
+                          />
+                <Script id="ga4-init" strategy="afterInteractive">
+                  {`
+                              window.dataLayer = window.dataLayer || [];
+                                          function gtag(){dataLayer.push(arguments);}
+                                                      gtag('js', new Date());
+                                                                  gtag('config', 'G-TQFPZ3K0JK');
+                                                                            `}
+                </Script>
         <Script
           id="hs-script-loader"
           strategy="afterInteractive"
