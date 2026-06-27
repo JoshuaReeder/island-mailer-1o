@@ -16,7 +16,7 @@ export default function PostcardShowcase() {
 
   return (
     <section className="py-28 sm:py-36 px-6 sm:px-12 bg-navy">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto"
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream mb-4">
@@ -70,7 +70,7 @@ export default function PostcardShowcase() {
         <div className="mt-20 text-center bg-navy/60 rounded-3xl p-10 lg:p-14 border border-gold/20">
           <div className="max-w-2xl mx-auto">
             <p className="text-sand text-lg mb-3">Next Mailer</p>
-            <p className="text-4xl sm:text-5xl font-bold text-gold mb-6">July 1st</p>
+            <p className="text-4xl sm:text-5xl font-bold text-gold mb-6">July</p>
             <p className="text-xl text-cream mb-8">
               Limited spots available. Reserve your space on the most visible mail in local neighborhoods.
             </p>
