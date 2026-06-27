@@ -35,11 +35,6 @@ function PostcardTabs() {
           </div>
         </div>
       </div>
-      <p className="caption">
-        {side === "front"
-          ? "Front side — 8 ad spaces (A–H) + Island Mailer logo and mailing address area"
-          : "Back side — 8 ad spaces (I–P)"}
-      </p>
     </>
   )
 }
@@ -271,12 +266,19 @@ export default function Home() {
         <div className="container">
           <div className="sec-divider">◆</div>
           <h2>The 9×12 Postcard</h2>
-          <p className="sec-sub">Front &amp; back — see what lands in every mailbox.</p>
           <div className="sec-body narrow container">
             <PostcardTabs />
-            <div className="next-mailer">
-              <div className="label">Next Mailer</div>
-              <div className="date">July 1st</div>
+            <div className="next-mailer plain">
+              <div className="month-deck" aria-label="Upcoming Island Mailer campaigns">
+                <div className="deck-card peek c3"><span className="deck-month">September</span></div>
+                <div className="deck-card peek c2"><span className="deck-month">August</span></div>
+                <div className="deck-card front c1">
+                  <div className="label">Next Mailer</div>
+                  <div className="date">July</div>
+                  <div className="deck-when">Reserving now — in mailboxes late July</div>
+                </div>
+              </div>
+              <p className="deck-cadence">A fresh Island Mailer every month.</p>
               <p>Limited spots available. Reserve your space on the most visible mail in local neighborhoods.</p>
               <a className="btn" href="#contact">Reserve Your Spot</a>
             </div>
