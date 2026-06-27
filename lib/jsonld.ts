@@ -175,6 +175,114 @@ export function articleJsonLd(opts: {
   return { "@context": "https://schema.org", "@graph": [ORGANIZATION, ...graph] }
 }
 
+
+/* ============================================================
+   MULTI-ISLAND EXPANSION JSON-LD (Kauai, Oahu, Big Island)
+   ============================================================ */
+
+export function expansionAreaJsonLd(opts: {
+  slug: string
+  region: string
+  title: string
+  description: string
+  islandName: string
+  islandSlug: string
+}) {
+  const url = `${BASE}/${opts.slug}`
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      ORGANIZATION,
+      {
+        "@type": "Service",
+        "@id": `${url}#service`,
+        name: opts.title,
+        description: opts.description,
+        url,
+        serviceType: "Local direct mail advertising",
+        provider: { "@id": `${BASE}/#organization` },
+        areaServed: { "@type": "Place", name: opts.region },
+        offers: {
+          "@type": "Offer",
+          price: "800",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+        },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: opts.title,
+        description: opts.description,
+        isPartOf: { "@type": "WebSite", name: "Island Mailer", url: BASE },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+          { "@type": "ListItem", position: 2, name: opts.islandName, item: `${BASE}/${opts.islandSlug}` },
+          { "@type": "ListItem", position: 3, name: opts.region, item: url },
+        ],
+      },
+    ],
+  }
+}
+
+export function islandHubJsonLd(opts: {
+  islandName: string
+  islandSlug: string
+  title: string
+  description: string
+  regions: string[]
+}) {
+  const url = `${BASE}/${opts.islandSlug}`
+  const areaServed = [
+    { "@type": "AdministrativeArea", name: `${opts.islandName}, Hawaii` },
+    ...opts.regions.map((r) => ({ "@type": "Place", name: r })),
+  ]
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      ORGANIZATION,
+      {
+        "@type": "Service",
+        "@id": `${url}#service`,
+        name: opts.title,
+        description: opts.description,
+        url,
+        serviceType: "Local direct mail advertising",
+        provider: { "@id": `${BASE}/#organization` },
+        areaServed,
+        offers: {
+          "@type": "Offer",
+          price: "800",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+        },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name: opts.title,
+        description: opts.description,
+        isPartOf: { "@type": "WebSite", name: "Island Mailer", url: BASE },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+          { "@type": "ListItem", position: 2, name: "Areas We Serve", item: `${BASE}/maui` },
+          { "@type": "ListItem", position: 3, name: opts.islandName, item: url },
+        ],
+      },
+    ],
+  }
+}
+
 export function jsonLdScript(data: unknown) {
   return { __html: JSON.stringify(data) }
 }
