@@ -4,12 +4,11 @@ import { useState, type CSSProperties } from "react"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
-const AREA_LINKS = [
-  { label: "North Shore - Maui", href: "/north-shore-maui-advertising" },
-  { label: "Central - Maui", href: "/central-maui-advertising" },
-  { label: "West Side - Maui", href: "/west-maui-advertising" },
-  { label: "South Side - Maui", href: "/south-maui-advertising" },
-  { label: "Upcountry - Maui", href: "/upcountry-maui-advertising" },
+const ISLAND_LINKS = [
+  { label: "Maui — All Areas", href: "/maui" },
+  { label: "Kauai — All Areas", href: "/kauai" },
+  { label: "Oahu — All Areas", href: "/oahu" },
+  { label: "Big Island — All Areas", href: "/hawaii" },
 ]
 
 /* 808-808-MAIL ⇄ 808-808-6245 vanity flip */
@@ -90,17 +89,17 @@ export default function Footer({ variant = "full", showMauiAreasLink = false }: 
           <div>
             <h4>Areas We Serve</h4>
             <div className="foot-maui-row">
-              <a href="/maui">MAUI</a>
+              <a href="/maui">ISLANDS</a>
               <button
                 className={`foot-caret${areasOpen ? " open" : ""}`}
                 onClick={() => setAreasOpen((o) => !o)}
-                aria-label="Show Maui areas"
+                aria-label="Show island hubs"
               >
                 ⌄
               </button>
             </div>
             <div className={`foot-areas${areasOpen ? " open" : ""}`}>
-              {AREA_LINKS.map((a) => (
+              {ISLAND_LINKS.map((a) => (
                 <a key={a.href} href={a.href}>
                   {a.label}
                 </a>

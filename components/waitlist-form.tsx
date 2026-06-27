@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const ISLANDS = [
   "Maui",
@@ -29,6 +29,44 @@ export default function WaitlistForm({ defaultIsland = "", defaultArea = "" }: W
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState<{ type: "error"; text: string } | null>(null)
   const [done, setDone] = useState(false)
+
+  // Map shorthand island values (from ?island= or defaultIsland) to a chip label.
+  const resolveIsland = (val: string): string => {
+    const v = val.trim().toLowerCase()
+    if (!v) return ""
+    if (v.startsWith("kaua")) return "Kauaʻi"
+    if (v.startsWith("oahu") || v.startsWith("oʻahu") || v.startsWith("o'ahu")) return "Oʻahu"
+    if (v.startsWith("big") || v.startsWith("hawai")) return "Hawaiʻi Island (Big Island)"
+    if (v.startsWith("maui")) return "Maui"
+    if (v.startsWith("moloka")) return "Molokaʻi"
+    if (v.startsWith("lana") || v.startsWith("lāna")) return "Lānaʻi"
+    const match = ISLANDS.find((i) => i.toLowerCase() === v)
+    return match ?? ""
+  }
+
+  // Resolve an initial defaultIsland prop value through the alias map on first render.
+  useEffect(() => {
+    if (defaultIsland) {
+      const resolved = resolveIsland(defaultIsland)
+      if (resolved) setFormData((d) => (d.island ? d : { ...d, island: resolved }))
+    }
+    // Read ?island= and ?area= from the URL (Suspense-safe via window).
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search)
+      const islandParam = params.get("island")
+      const areaParam = params.get("area")
+      setFormData((d) => {
+        const next = { ...d }
+        if (islandParam) {
+          const resolved = resolveIsland(islandParam)
+          if (resolved) next.island = resolved
+        }
+        if (areaParam && !next.area) next.area = areaParam
+        return next
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
