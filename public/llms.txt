@@ -25,18 +25,29 @@
   own community.
 
 ## Areas Served
-- Maui (active): North Shore (Pāʻia, Haʻikū, Kuʻau), Central (Kahului, Wailuku),
-  West Side (Lahaina, Kāʻanapali, Nāpili), South Side (Kīhei, Wailea, Mākena),
-  and Upcountry (Makawao, Kula, Pukalani).
-- Expanding to the other Hawaiian Islands (Oʻahu, Hawaiʻi Island, Kauaʻi, Molokaʻi,
-  Lānaʻi) — businesses can join the waitlist to be notified when a mailer is
-  scheduled in their area.
+- Maui (active — mailing now): North Shore (Pāʻia, Haʻikū, Kuʻau), Central (Kahului,
+  Wailuku), West Side (Lahaina, Kāʻanapali, Nāpili), South Side (Kīhei, Wailea,
+  Mākena), and Upcountry (Makawao, Kula, Pukalani).
+- Kauai (waitlist — coming soon): East Side (Kapaa, Wailua), North Shore (Hanalei,
+  Princeville), South Shore (Poipu, Koloa), West Side (Waimea, Hanapepe), and Lihue.
+- Oahu (waitlist — coming soon): North Shore (Haleiwa, Kahuku), Windward (Kailua,
+  Kaneohe), Central (Mililani, Wahiawa), Leeward (Kapolei, Ewa Beach), and Honolulu.
+- Big Island / Hawaiʻi Island (waitlist — coming soon): Hilo, Hamakua, South Kohala
+  (Waimea, Kohala Coast), North Kona (Kailua-Kona), South Kona, Puna (Pahoa), and Ka'u.
+- Molokaʻi and Lānaʻi — businesses can join the waitlist to be notified when a mailer
+  is scheduled in their area.
+- On the new islands (Kauai, Oahu, Big Island) Island Mailer is not mailing yet:
+  area pages route to the waitlist (e.g. /waitlist?island=Kauai) instead of the
+  Maui reservation form.
 
 ## Key Pages
 - Home / overview & application: https://islandmailer.com/
 - Pricing & details: https://islandmailer.com/#pricing
 - FAQ: https://islandmailer.com/#faq
 - All Maui areas: https://islandmailer.com/maui
+- All Kauai areas: https://islandmailer.com/kauai
+- All Oahu areas: https://islandmailer.com/oahu
+- All Big Island areas: https://islandmailer.com/hawaii
 - North Shore Maui: https://islandmailer.com/north-shore-maui-advertising
 - Central Maui: https://islandmailer.com/central-maui-advertising
 - West Maui: https://islandmailer.com/west-maui-advertising
