@@ -681,7 +681,7 @@ footer small a, .vanity a { color: inherit !important; text-decoration: none !im
 .fgroup input:focus, .fgroup select:focus, .fgroup textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); box-shadow: 0 0 24px rgba(163,124,79,.25); }
 .areas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (min-width: 640px) { .areas { grid-template-columns: repeat(3, 1fr); } }
-.area-chip { display: flex; align-items: center; justify-content: center; text-align: center; min-height: var(--input-h); padding: 8px 12px; border: 1.5px solid rgba(213,193,170,.35); border-radius: 999px; cursor: pointer; font-weight: 700; font-size: calc(var(--text) * 0.85); letter-spacing: .3px; line-height: 1.25; color: var(--sand); user-select: none; transition: all .2s; white-space: nowrap; }
+.area-chip { display: flex; align-items: center; justify-content: center; text-align: center; min-height: var(--input-h); padding: 8px 12px; border: 1.5px solid rgba(213,193,170,.35); border-radius: 999px; cursor: pointer; font-weight: 700; font-size: calc(var(--text) * 0.85); letter-spacing: .3px; line-height: 1.25; color: var(--sand); user-select: none; transition: all .2s; white-space: normal; overflow-wrap: break-word; }
 .area-chip:hover { border-color: var(--gold-bright); color: var(--gold-bright); }
 .area-chip input { display: none; }
 .area-chip:has(input:checked) { background: var(--gold); border-color: var(--gold); color: #fff; box-shadow: 0 6px 20px rgba(163,124,79,.4); }
