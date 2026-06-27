@@ -60,6 +60,10 @@ export default function Footer({ variant = "full", showMauiAreasLink = false }: 
                 <a href="/maui" style={{ color: "var(--gold-bright)", textDecoration: "none" }}>Maui Areas</a>
               </>
             )}
+            {" "}·{" "}
+            <a href="/waitlist" style={{ color: "var(--gold-bright)", textDecoration: "none" }}>Waitlist</a>
+            {" "}·{" "}
+            <a href="/resources" style={{ color: "var(--gold-bright)", textDecoration: "none" }}>Resources</a>
           </p>
         </div>
       </footer>
@@ -80,6 +84,8 @@ export default function Footer({ variant = "full", showMauiAreasLink = false }: 
             <a href="/#pricing">Pricing</a>
             <a href="/#faq">FAQ</a>
             <a href="/#contact">Apply</a>
+            <a href="/waitlist">Waitlist</a>
+            <a href="/resources">Resources</a>
           </div>
           <div>
             <h4>Areas We Serve</h4>

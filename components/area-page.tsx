@@ -1,12 +1,24 @@
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import type { AreaData } from "@/lib/area-data"
+import { areaJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export default function AreaPage({ area }: { area: AreaData }) {
   const contactHref = `/?area=${encodeURIComponent(area.query)}#contact`
 
   return (
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(
+          areaJsonLd({
+            slug: area.slug,
+            region: area.region,
+            title: area.title,
+            description: area.description,
+          }),
+        )}
+      />
       {/* ================= AREA HERO ================= */}
       <div className="hero area">
         <img className="hero-bg" src={area.heroImg} alt={area.heroAlt} />
@@ -110,6 +122,13 @@ export default function AreaPage({ area }: { area: AreaData }) {
             ))}
             <a href="/#pricing">Pricing &amp; Details</a>
           </div>
+          <p className="map-note" style={{ marginTop: "var(--gap-s)" }}>
+            Outside this area?{" "}
+            <a href="/waitlist" style={{ color: "var(--gold-bright)", fontWeight: 700, textDecoration: "none" }}>
+              Join the waitlist
+            </a>{" "}
+            and we&apos;ll let you know when Island Mailer reaches your town.
+          </p>
         </div>
       </section>
 

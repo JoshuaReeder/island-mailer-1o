@@ -44,6 +44,7 @@ export default function FloatingMenu() {
           <a href="/#pricing" onClick={close}>Pricing</a>
           <a href="/#faq" onClick={close}>FAQ</a>
           <a href="/#contact" onClick={close}>Apply</a>
+          <a href="/waitlist" onClick={close}>Waitlist</a>
           <div className="nav-sub">Areas We Serve</div>
           <div className="maui-row">
             <a href="/maui" onClick={close}>MAUI</a>
