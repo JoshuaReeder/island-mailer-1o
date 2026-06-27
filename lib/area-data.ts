@@ -4,6 +4,8 @@ export interface AreaData {
   description: string
   /** Short value used for /?area=<query>#contact and the form chip pre-select */
   query: string
+  /** Human region name used for schema.org areaServed (e.g. "North Shore Maui") */
+  region: string
   heroImg: string
   heroAlt: string
   tag: string
@@ -38,6 +40,7 @@ export const areas: Record<string, AreaData> = {
     description:
       "Reach up to 10,000 North Shore Maui homes with a premium 9×12 postcard. Island Mailer puts your Pā'ia or Haʻikū business in front of local residents - design, print & postage included for $800.",
     query: "North Shore",
+    region: "North Shore Maui",
     heroImg: PAIA_IMG,
     heroAlt: "North Shore - Maui",
     tag: "North Shore - Maui",
@@ -76,6 +79,7 @@ export const areas: Record<string, AreaData> = {
     description:
       "Advertise your Central Maui business to thousands of local homes. Island Mailer delivers a premium 9×12 postcard to Kahului and Wailuku residents - $800 flat, design and postage included.",
     query: "Central",
+    region: "Central Maui",
     heroImg: "https://images.unsplash.com/photo-1636760475389-5ddb8253095f?auto=format&fit=crop&w=1600&q=70",
     heroAlt: "Central - Maui",
     tag: "Central - Maui",
@@ -117,6 +121,7 @@ export const areas: Record<string, AreaData> = {
     description:
       "Advertise your West Maui business to local residents in Lahaina, Kāʻanapali, and Nāpili. Island Mailer's 9×12 postcard reaches up to 10,000 homes - $800 flat, everything included.",
     query: "West",
+    region: "West Maui",
     heroImg: "https://images.unsplash.com/photo-1563121625-969780a24e77?auto=format&fit=crop&w=1600&q=70",
     heroAlt: "West Side - Maui",
     tag: "West Side - Maui",
@@ -158,6 +163,7 @@ export const areas: Record<string, AreaData> = {
     description:
       "Reach Kīhei, Wailea, and Mākena residents with your ad on a premium 9×12 postcard. Island Mailer delivers direct mail advertising for South Maui businesses - $800 flat, everything included.",
     query: "South",
+    region: "South Maui",
     heroImg: "https://images.unsplash.com/photo-1678156913491-d9a6b5f33db1?auto=format&fit=crop&w=1600&q=70",
     heroAlt: "South Side - Maui",
     tag: "South Side - Maui",
@@ -199,6 +205,7 @@ export const areas: Record<string, AreaData> = {
     description:
       "Reach Makawao, Kula, and Pukalani residents with Island Mailer's premium 9×12 postcard. Local advertising for Upcountry Maui businesses - $800 flat, design, print & postage included.",
     query: "Upcountry",
+    region: "Upcountry Maui",
     heroImg: "https://images.unsplash.com/photo-1507032336878-13f159192baa?auto=format&fit=crop&w=1600&q=70",
     heroAlt: "Upcountry - Maui",
     tag: "Upcountry - Maui",

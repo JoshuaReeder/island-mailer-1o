@@ -6,6 +6,7 @@ import SMSContactForm from "@/components/SMSContactForm"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import SiteHeader from "@/components/site-header"
+import { homeJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
@@ -228,6 +229,7 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
       <SiteHeader onReserve={scrollToContact} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(homeJsonLd(FAQ_ITEMS))} />
 
       {/* ================= HERO ================= */}
       <div className="hero" id="top">

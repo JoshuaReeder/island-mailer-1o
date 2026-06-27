@@ -192,6 +192,16 @@ export default function ContactForm() {
                   aloha@islandmailer.com
                 </a>
               </div>
+
+              {/* Gentle nudge toward the longer details page */}
+              <div style={{ marginTop: 36, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
+                <p style={{ margin: "0 0 16px", color: "rgba(213,193,170,0.6)", fontSize: 17, lineHeight: 1.6 }}>
+                  Want to speed things up? Add a few business details so we can prep your spot faster.
+                </p>
+                <a className="btn ghost" href="/reserve-details">
+                  Add your business details →
+                </a>
+              </div>
             </div>
           ) : (
             /* ── Normal form view ── */
@@ -222,15 +232,6 @@ export default function ContactForm() {
                   />
                 </div>
                 <div className="fgroup">
-                  <label>Phone</label>
-                  <input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
-                <div className="fgroup">
                   <label>Email</label>
                   <input
                     type="email"
@@ -240,52 +241,12 @@ export default function ContactForm() {
                   />
                 </div>
                 <div className="fgroup">
-                  <label>Website / Instagram</label>
+                  <label>Phone (optional)</label>
                   <input
-                    type="text"
-                    value={formData.website}
-                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />
-                </div>
-                <div className="fgroup">
-                  <label>Business Type</label>
-                  <select
-                    required
-                    value={formData.businessType}
-                    onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                  >
-                    <option value="">Select type...</option>
-                    <option value="Restaurant">Restaurant</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Service">Service</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Real Estate">Real Estate</option>
-                    <option value="Professional">Professional</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div className="fgroup">
-                  <label>Industry Category</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g., Coffee Shop, Plumbing, Yoga Studio"
-                    value={formData.industryCategory}
-                    onChange={(e) => setFormData({ ...formData, industryCategory: e.target.value })}
-                  />
-                </div>
-                <div className="fgroup">
-                  <label>How many mailings?</label>
-                  <select
-                    required
-                    value={formData.mailings}
-                    onChange={(e) => setFormData({ ...formData, mailings: e.target.value })}
-                  >
-                    <option value="">Select option...</option>
-                    <option value="Just the next one">Just the next one</option>
-                    <option value="2-3 in a row">2-3 in a row</option>
-                    <option value="Not sure yet">Not sure yet</option>
-                  </select>
                 </div>
                 <div className="fgroup">
                   <label>Preferred Areas (select all that apply)</label>
@@ -303,7 +264,7 @@ export default function ContactForm() {
                   </div>
                 </div>
                 <div className="fgroup">
-                  <label>Anything else we should know?</label>
+                  <label>Anything else? (optional)</label>
                   <textarea
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
