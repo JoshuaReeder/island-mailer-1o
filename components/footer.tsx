@@ -80,6 +80,7 @@ export default function Footer({ variant = "full", showMauiAreasLink = false }: 
           <div>
             <h4>Navigation</h4>
             <a href="/">Home</a>
+            <a href="/products">Products &amp; Services</a>
             <a href="/#pricing">Pricing</a>
             <a href="/#faq">FAQ</a>
             <a href="/#contact">Apply</a>
