@@ -353,25 +353,46 @@ export default function Home() {
 
       {/* ================= PRICING ================= */}
       <section className="bg-navy2 shimmer" id="pricing">
-        <div className="container narrow">
+        <div className="container">
           <div className="sec-divider">◆</div>
-          <h2>Simple, flat-rate pricing</h2>
-          <p className="sec-sub">16 ad spaces. Up to 10,000 homes. One flat price.</p>
+          <h2>Choose your mailer</h2>
+          <p className="sec-sub">Two ways to land in local mailboxes — both premium, both with up to 16 ad spaces (8 per side). Start hyper-local, or cover the whole community.</p>
           <div className="sec-body">
-            <div className="price-card">
-              <div className="price">$800</div>
-              <p className="price-sub">per ad space, per mailing</p>
-              <p className="price-note">Up to 10,000 local homes - Design, printing &amp; postage included</p>
-              <ul className="check-list">
-                <li><span>16 total ad spaces (8 per side of the 9×12 card)</span></li>
-                <li><span>One business per industry per mailing</span></li>
-                <li><span>Custom island mailer ad design included</span></li>
-                <li><span>Print, postage, and USPS handling included</span></li>
-                <li><span>Targeted local advertisement</span></li>
-                <li><span>No long-term contracts—book a single mailer or multiple in a row</span></li>
-              </ul>
-              <a className="btn" href="#contact">Check Availability</a>
+            <div className="mailer-grid">
+
+              <div className="mailer-card">
+                <div className="mailer-name">Hyper-Local Mailer</div>
+                <div className="mailer-size">6.5″ × 12″ · one neighborhood</div>
+                <div className="mini-card hl"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span></div>
+                <p className="mini-cap">8 ad spaces per side — 16 total (front + back)</p>
+                <div className="mailer-stats">
+                  <div className="ms"><b>2,500</b><span>local homes</span></div>
+                  <div className="ms"><b>up to 16</b><span>ad spaces</span></div>
+                  <div className="ms"><b>~10¢</b><span>per home</span></div>
+                </div>
+                <p className="mailer-best"><b>Best for:</b> testing a new offer, tighter budgets, and reaching one specific neighborhood.</p>
+                <div className="mailer-price"><span className="amt">$250</span><span className="per">per ad space, per mailing</span></div>
+                <a className="btn" href="#contact">Check Availability</a>
+              </div>
+
+              <div className="mailer-card flagship">
+                <div className="mailer-badge">Most reach</div>
+                <div className="mailer-name">Signature Mailer</div>
+                <div className="mailer-size">9″ × 12″ · whole community</div>
+                <div className="mini-card sig"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span></div>
+                <p className="mini-cap">8 ad spaces per side — 16 total (front + back)</p>
+                <div className="mailer-stats">
+                  <div className="ms"><b>10,000</b><span>local homes</span></div>
+                  <div className="ms"><b>up to 16</b><span>ad spaces</span></div>
+                  <div className="ms"><b>~8¢</b><span>per home</span></div>
+                </div>
+                <p className="mailer-best"><b>Best for:</b> maximum visibility, established businesses, and the lowest cost per home.</p>
+                <div className="mailer-price"><span className="amt">$800</span><span className="per">per ad space, per mailing</span></div>
+                <a className="btn" href="#contact">Check Availability</a>
+              </div>
+
             </div>
+            <p className="sec-sub" style={{ marginTop: "var(--gap-s)" }}>Every mailer includes custom ad design, print, postage &amp; USPS delivery — one business per industry, no long-term contracts. <a href="/products" style={{ color: "var(--gold-bright)", fontWeight: 800 }}>Compare all products &amp; services →</a></p>
           </div>
         </div>
       </section>
