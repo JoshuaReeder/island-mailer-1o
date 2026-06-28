@@ -10,89 +10,67 @@ export const metadata: Metadata = {
   description: config.hubMetaDesc,
 }
 
-/* Big Island ≈ large rounded triangle, north up. Regions placed to match real
-   geography: North/South Kohala (NW), Hamakua (N coast), Hilo (E),
-   Puna (SE), Ka'u (S point), North Kona (W), South Kona (SW). */
 const BigIslandMap = (
   <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of the Big Island divided into seven Island Mailer areas">
-    <ellipse cx="450" cy="320" rx="400" ry="270" fill="rgba(22,66,104,.25)" />
-    {/* rounded-triangle Big Island silhouette: north point near Kohala, broad east
-        (Hilo/Puna) side, south point (Ka'u/South Point), west (Kona) coast */}
+    <ellipse cx="450" cy="320" rx="380" ry="250" fill="rgba(22,66,104,.25)" />
     <path
-      d="M 430,90
-         C 500,96 560,128 612,178
-         C 672,234 724,300 752,372
-         C 776,434 770,492 720,520
-         C 672,546 604,548 540,544
-         C 470,540 404,548 344,532
-         C 280,514 224,476 196,418
-         C 170,364 172,300 200,244
-         C 230,184 282,138 344,110
-         C 372,98 402,90 430,90 Z"
+      d="M389.7,507.2 C393.8,505.2 398.6,500.7 400.7,497.0 C401.6,495.5 403.3,493.9 404.5,493.6 C407.2,493.0 408.7,491.0 408.8,488.3 C408.8,485.7 411.6,481.0 416.0,476.5 C419.2,473.1 419.4,472.4 419.6,467.7 C419.7,462.0 420.4,460.9 429.0,451.8 C433.9,446.6 434.9,446.1 441.8,444.7 C444.2,444.3 446.0,442.9 453.6,435.7 C455.4,433.9 457.4,432.5 458.1,432.5 C458.7,432.5 459.9,431.7 460.7,430.7 C461.6,429.8 463.1,429.0 464.1,429.0 C468.0,429.0 473.0,425.8 474.8,422.3 C475.8,420.4 477.4,418.6 478.4,418.3 C479.4,417.9 481.7,416.4 483.5,414.8 C488.6,410.1 496.4,408.4 501.7,410.9 C510.7,415.0 524.8,411.7 539.7,402.1 C543.2,399.9 547.1,397.9 548.2,397.8 C549.4,397.7 550.8,397.1 551.5,396.7 C552.1,396.2 554.1,395.3 555.9,394.7 C562.4,392.6 569.8,388.4 573.9,384.5 C576.2,382.3 579.9,378.8 582.1,376.7 C584.3,374.5 587.6,372.0 589.4,371.1 C594.7,368.4 611.4,352.3 611.4,349.9 C611.4,349.1 612.1,346.4 613.0,344.1 C615.0,338.9 613.7,336.3 608.1,334.5 C606.4,334.0 604.4,333.0 603.7,332.5 C602.9,331.9 601.4,331.2 600.2,330.9 C593.0,329.2 577.5,316.2 578.4,312.7 C578.8,311.0 578.5,310.6 575.7,309.8 C569.9,308.2 569.3,307.0 569.3,297.8 C569.3,286.0 565.8,279.2 559.9,279.2 C557.8,279.2 555.5,278.9 555.0,278.5 C554.4,278.2 552.3,278.7 550.2,279.7 C548.2,280.8 546.6,281.5 546.6,281.4 C546.6,281.3 545.9,281.5 545.1,281.8 C541.6,283.2 540.8,280.8 541.2,270.0 C541.4,264.4 541.3,259.7 540.9,259.4 C540.6,259.2 540.9,257.1 541.6,254.8 C543.2,249.1 542.1,245.5 537.5,241.8 C535.6,240.3 533.3,237.7 532.4,236.0 C531.5,234.3 529.5,231.5 527.9,229.9 C522.9,224.7 516.3,218.7 515.5,218.7 C515.1,218.7 513.2,217.2 511.4,215.3 C509.5,213.4 507.6,211.8 507.1,211.8 C506.6,211.8 505.3,211.2 504.2,210.3 C503.1,209.5 500.2,207.3 497.8,205.4 C492.5,201.3 489.4,199.6 484.8,198.1 C482.9,197.5 479.6,195.9 477.3,194.6 C475.0,193.2 470.3,190.8 466.9,189.1 C463.5,187.5 459.2,185.2 457.3,184.2 C453.0,181.7 441.7,177.2 435.0,175.3 C432.1,174.5 429.2,173.5 428.3,173.1 C427.5,172.7 426.3,172.4 425.6,172.4 C424.9,172.4 422.9,171.7 421.2,170.9 C418.4,169.5 417.9,169.5 414.3,170.9 C410.1,172.4 408.2,172.0 406.1,169.1 C405.4,168.2 403.6,167.0 401.9,166.4 C400.3,165.7 397.2,163.6 395.1,161.6 C391.1,157.8 386.7,155.2 384.4,155.2 C383.6,155.2 383.0,154.8 383.0,154.4 C383.0,154.0 381.7,153.2 380.1,152.6 C376.2,151.3 372.7,148.2 372.7,145.9 C372.7,144.9 372.4,144.0 372.0,144.0 C371.6,144.0 370.2,143.1 369.0,141.9 C366.2,139.3 362.0,137.0 361.3,137.7 C361.0,138.0 358.5,137.0 355.7,135.6 C346.4,131.0 337.3,130.0 333.2,133.1 C329.4,136.0 325.7,149.3 327.1,155.0 C327.6,156.7 328.2,160.3 328.5,162.9 C329.2,169.0 331.3,175.4 333.8,179.4 C334.9,181.2 335.8,182.8 335.8,183.0 C335.8,183.1 337.4,185.0 339.3,187.1 C345.8,194.0 348.0,198.9 347.3,204.7 C346.8,209.7 343.9,214.4 341.3,214.4 C340.7,214.4 339.7,215.3 339.2,216.3 C338.7,217.4 336.5,219.8 334.5,221.7 C332.4,223.6 330.6,225.9 330.4,226.9 C330.3,227.9 329.3,229.8 328.3,231.3 C327.2,232.8 326.4,234.5 326.4,235.2 C326.4,235.9 325.2,237.7 323.8,239.3 C322.4,240.9 321.2,242.9 321.2,243.7 C321.2,245.9 319.7,246.6 314.7,246.6 C310.4,246.6 310.1,246.8 306.1,251.2 C301.8,255.9 295.0,262.9 291.1,266.6 C289.3,268.2 288.7,269.8 288.3,273.9 C288.0,276.8 287.2,279.7 286.5,280.4 C285.5,281.6 285.5,282.1 287.0,283.8 C287.9,284.9 288.6,286.9 288.6,288.3 C288.6,289.6 288.9,290.8 289.3,291.0 C291.3,291.8 294.5,297.3 293.7,298.7 C292.6,300.7 293.6,304.5 295.2,304.5 C297.6,304.5 304.9,309.3 304.9,310.9 C304.9,311.1 306.1,313.7 307.4,316.7 C308.8,319.7 310.1,323.9 310.3,326.0 C310.5,328.1 311.2,331.0 311.7,332.4 C312.3,333.9 312.6,336.4 312.3,338.2 C311.9,340.4 312.2,341.7 313.1,342.7 C313.9,343.4 314.6,345.1 314.8,346.6 C315.2,349.7 315.9,350.9 317.3,350.9 C319.6,350.9 321.2,354.0 321.7,359.7 C322.1,362.9 322.6,365.5 323.0,365.5 C324.4,365.5 326.2,370.4 325.3,371.9 C324.7,373.0 324.9,374.0 326.2,375.7 C328.6,378.9 331.8,390.0 331.2,392.7 C330.9,393.9 330.5,397.8 330.3,401.4 C330.1,405.0 329.5,409.1 329.0,410.5 C328.5,411.8 327.9,415.7 327.7,419.0 C327.6,422.4 327.0,426.2 326.5,427.6 C326.0,428.9 325.5,431.7 325.5,433.7 C325.5,435.8 325.1,437.8 324.6,438.1 C324.0,438.4 323.9,439.7 324.2,441.3 C324.4,442.7 324.3,445.3 323.8,447.1 C322.5,451.8 324.4,458.4 328.9,465.2 C330.8,468.2 332.4,471.3 332.4,472.1 C332.4,475.2 339.2,478.4 351.3,481.1 C353.2,481.6 359.4,485.8 363.5,489.5 C365.3,491.1 367.8,492.2 371.2,492.9 C375.7,493.9 384.8,502.5 384.8,505.9 C384.8,509.3 385.4,509.5 389.7,507.2 Z"
       fill="rgba(163,124,79,.10)"
       stroke="#C29A63"
       strokeWidth="2.5"
       strokeLinejoin="round"
     />
-    <g stroke="#A37C4F" strokeWidth="1.6" strokeDasharray="6 8" fill="none" opacity=".82">
-      <path d="M 455,330 L 430,120" />
-      <path d="M 455,330 L 620,200" />
-      <path d="M 455,330 L 720,360" />
-      <path d="M 455,330 L 640,500" />
-      <path d="M 455,330 L 420,535" />
-      <path d="M 455,330 L 235,415" />
-      <path d="M 455,330 L 220,260" />
+    <g stroke="#A37C4F" strokeWidth="1.8" strokeDasharray="7 9" fill="none" opacity=".8">
+      <path d="M 446,330 L 372,206" />
+      <path d="M 446,330 L 500,224" />
+      <path d="M 446,330 L 540,315" />
+      <path d="M 446,330 L 505,402" />
+      <path d="M 446,330 L 418,440" />
+      <path d="M 446,330 L 352,386" />
+      <path d="M 446,330 L 346,300" />
     </g>
-    {/* SOUTH KOHALA (NW) */}
     <a href="/south-kohala-hawaii-advertising" aria-label="South Kohala - Big Island">
-      <ellipse className="hot" cx="392" cy="172" rx="104" ry="52" />
-      <circle className="pin" cx="392" cy="140" r="5" />
-      <text className="lbl" x="392" y="174">South Kohala</text>
-      <text className="sub" x="392" y="196">WAIMEA · KOHALA COAST</text>
+      <ellipse className="hot" cx="368" cy="216" rx="80" ry="50" />
+      <circle className="pin" cx="368" cy="186" r="5" />
+      <text className="lbl" x="368" y="218">South Kohala</text>
+      <text className="sub" x="368" y="240">WAIMEA · KOHALA COAST</text>
     </a>
-    {/* HAMAKUA (N coast) */}
     <a href="/hamakua-hawaii-advertising" aria-label="Hamakua - Big Island">
-      <ellipse className="hot" cx="582" cy="222" rx="96" ry="46" />
-      <circle className="pin" cx="582" cy="192" r="5" />
-      <text className="lbl" x="582" y="224">Hamakua</text>
-      <text className="sub" x="582" y="246">HONOKAA · WAIPIO</text>
+      <ellipse className="hot" cx="502" cy="238" rx="72" ry="44" />
+      <circle className="pin" cx="502" cy="210" r="5" />
+      <text className="lbl" x="502" y="240">Hamakua</text>
+      <text className="sub" x="502" y="262">HONOKAA · WAIPIO</text>
     </a>
-    {/* HILO (E) */}
     <a href="/hilo-hawaii-advertising" aria-label="Hilo - Big Island">
-      <ellipse className="hot" cx="688" cy="360" rx="78" ry="78" />
-      <circle className="pin" cx="688" cy="318" r="5" />
-      <text className="lbl" x="688" y="360">Hilo</text>
-      <text className="sub" x="688" y="384">HILO · KEAAU</text>
+      <ellipse className="hot" cx="548" cy="322" rx="66" ry="58" />
+      <circle className="pin" cx="548" cy="292" r="5" />
+      <text className="lbl" x="548" y="324">Hilo</text>
+      <text className="sub" x="548" y="347">HILO · KEAAU</text>
     </a>
-    {/* PUNA (SE) */}
     <a href="/puna-hawaii-advertising" aria-label="Puna - Big Island">
-      <ellipse className="hot" cx="612" cy="490" rx="92" ry="52" />
-      <circle className="pin" cx="612" cy="456" r="5" />
-      <text className="lbl" x="612" y="492">Puna</text>
-      <text className="sub" x="612" y="516">PAHOA · VOLCANO</text>
+      <ellipse className="hot" cx="512" cy="414" rx="66" ry="50" />
+      <circle className="pin" cx="512" cy="384" r="5" />
+      <text className="lbl" x="512" y="416">Puna</text>
+      <text className="sub" x="512" y="439">PAHOA · VOLCANO</text>
     </a>
-    {/* KA'U (S point) */}
     <a href="/kaau-hawaii-advertising" aria-label="Ka'u - Big Island">
-      <ellipse className="hot" cx="420" cy="498" rx="92" ry="48" />
-      <circle className="pin" cx="420" cy="466" r="5" />
-      <text className="lbl" x="420" y="500">Ka&apos;u</text>
-      <text className="sub" x="420" y="524">NAALEHU · PAHALA</text>
+      <ellipse className="hot" cx="414" cy="454" rx="82" ry="44" />
+      <circle className="pin" cx="414" cy="426" r="5" />
+      <text className="lbl" x="414" y="456">Ka&apos;u</text>
+      <text className="sub" x="414" y="479">NAALEHU · PAHALA</text>
     </a>
-    {/* SOUTH KONA (SW) */}
     <a href="/south-kona-hawaii-advertising" aria-label="South Kona - Big Island">
-      <ellipse className="hot" cx="262" cy="410" rx="78" ry="64" />
-      <circle className="pin" cx="262" cy="370" r="5" />
-      <text className="lbl" x="262" y="412">South Kona</text>
-      <text className="sub" x="262" y="436">KEALAKEKUA · HONAUNAU</text>
+      <ellipse className="hot" cx="342" cy="392" rx="72" ry="52" />
+      <circle className="pin" cx="342" cy="360" r="5" />
+      <text className="lbl" x="342" y="394">South Kona</text>
+      <text className="sub" x="342" y="417">KEALAKEKUA · HONAUNAU</text>
     </a>
-    {/* NORTH KONA (W) */}
     <a href="/north-kona-hawaii-advertising" aria-label="North Kona - Big Island">
-      <ellipse className="hot" cx="250" cy="262" rx="80" ry="58" />
-      <circle className="pin" cx="250" cy="222" r="5" />
-      <text className="lbl" x="250" y="264">North Kona</text>
-      <text className="sub" x="250" y="288">KAILUA-KONA · HOLUALOA</text>
+      <ellipse className="hot" cx="334" cy="300" rx="66" ry="54" />
+      <circle className="pin" cx="334" cy="266" r="5" />
+      <text className="lbl" x="334" y="300">North Kona</text>
+      <text className="sub" x="334" y="323">KAILUA-KONA · HOLUALOA</text>
     </a>
-    {/* compass */}
     <g opacity=".7">
       <circle cx="845" cy="78" r="26" fill="none" stroke="#A37C4F" strokeWidth="1.5" />
       <path d="M845,60 L851,82 L845,77 L839,82 Z" fill="#C29A63" />
