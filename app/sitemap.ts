@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/advertise", priority: 0.9, changeFrequency: "monthly" as const },
     { path: "/products", priority: 0.9, changeFrequency: "monthly" as const },
     { path: "/local-offers", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/local-reps", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/maui", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/north-shore-maui-advertising", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/central-maui-advertising", priority: 0.8, changeFrequency: "monthly" as const },

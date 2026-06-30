@@ -7,7 +7,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Island Mailer | Support Local. Live Hawaii.",
   description:
-    "Island Mailer puts your business on a premium 9×12 postcard mailed to up to 10,000 Maui homes. One business per industry. Design, print & postage included for $800.",
+    "Island Mailer puts your business on a premium 9×12 postcard mailed to up to 10,000 Maui homes. One business per industry. Design, print & postage all included — far less than a solo mailer campaign.",
   formatDetection: {
     telephone: false,
   },
