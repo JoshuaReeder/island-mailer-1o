@@ -20,7 +20,7 @@ const meta: ArticleMeta = {
     },
     {
       q: "How much does a shared mailer cost on Maui?",
-      a: "Island Mailer is $800 flat per ad space for up to 10,000 local Maui homes, with design, printing, and postage included and only one business per industry per mailer.",
+      a: "Island Mailer is one flat per-ad-space rate for up to 10,000 local Maui homes — a fraction of a solo mailer, with design, printing, and postage included and only one business per industry per mailer.",
     },
   ],
 }
@@ -77,7 +77,7 @@ export default function Page() {
       <p>
         This is the model behind Island Mailer. Your business gets one ad space on a premium 9×12 shared
         postcard mailed to up to 10,000 local Maui homes — design, printing, and postage included — for
-        $800 flat. And because we run only one business per industry per mailer, you're never sharing the
+        one flat per-ad-space rate. And because we run only one business per industry per mailer, you're never sharing the
         card with a direct competitor.
       </p>
 
