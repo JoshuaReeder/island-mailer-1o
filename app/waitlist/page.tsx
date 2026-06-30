@@ -26,7 +26,7 @@ const WHY = [
   },
   {
     h: "Lock in launch pricing",
-    p: "Waitlist businesses get first pick of ad space at our flat $800 rate — one business per industry, so your category stays yours.",
+    p: "Waitlist businesses get first pick of ad space at our flat per-space rate — one business per industry, so your category stays yours.",
   },
   {
     h: "Help bring it to your town",
