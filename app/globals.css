@@ -801,6 +801,36 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .mailer-price .amt { font-size: calc(var(--h1) * 0.95); font-weight: 800; color: var(--gold-bright); line-height: 1; }
 .mailer-price .per { color: var(--sand); font-size: var(--text); }
 .mailer-card .btn { margin-top: var(--gap-s); }
+
+/* ===== P4: simplified products comparison ===== */
+.compare-wrap { max-width: 760px; margin: var(--gap-m) auto 0; }
+.compare-visual { display: flex; align-items: flex-end; justify-content: center; gap: clamp(28px, 7vw, 64px); }
+.compare-visual .cmp-card { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; margin: 0; }
+.compare-visual figcaption { color: var(--cream); font-weight: 800; font-size: var(--text); letter-spacing: .3px; }
+.compare-visual .cmp-sig figcaption { color: var(--gold-bright); }
+.compare-visual .cmp-paper { position: relative; border-radius: 10px; border: 2px solid var(--gold); background: linear-gradient(160deg, rgba(163,124,79,.22), rgba(31,39,53,.6)); box-shadow: 0 22px 60px rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; }
+/* drawn to relative scale: width ∝ inches, both 12in tall.
+   Hyper-Local 6.5×12 vs Signature 9×12. Heights match; widths differ. */
+.compare-visual .cmp-paper.hl  { width: clamp(78px, 22vw, 122px);  height: clamp(144px, 41vw, 226px); }
+.compare-visual .cmp-paper.sig { width: clamp(108px, 30vw, 170px); height: clamp(144px, 41vw, 226px); border-color: var(--gold-bright); box-shadow: 0 26px 70px rgba(0,0,0,.5), 0 0 50px rgba(163,124,79,.14); }
+.compare-visual .cmp-dims { color: var(--cream); font-weight: 800; font-size: clamp(12px, 2.4vw, 15px); text-align: center; padding: 0 6px; text-shadow: 0 2px 10px rgba(0,0,0,.5); }
+.compare-visual .cmp-flag { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; white-space: nowrap; box-shadow: 0 8px 22px rgba(163,124,79,.45); z-index: 2; }
+
+.compare-table { margin: var(--gap-m) auto 0; border: 1.5px solid rgba(194,154,99,.4); border-radius: 18px; overflow: hidden; background: rgba(245,244,239,.04); }
+.compare-table .ct-row { display: grid; grid-template-columns: 1.05fr 1fr 1fr; align-items: center; }
+.compare-table .ct-row + .ct-row { border-top: 1px solid rgba(194,154,99,.18); }
+.compare-table .ct-row > * { padding: 14px 14px; font-size: calc(var(--text) * 0.92); color: var(--sand); text-align: center; }
+.compare-table .ct-row > [role="rowheader"] { text-align: left; color: rgba(213,193,170,.85); font-weight: 700; }
+.compare-table .ct-head { background: rgba(31,39,53,.55); }
+.compare-table .ct-head > * { color: var(--cream); font-weight: 800; font-size: var(--text); padding-top: 16px; padding-bottom: 16px; }
+.compare-table .ct-best { color: var(--gold-bright); font-weight: 800; }
+.compare-table .ct-head .ct-best { color: var(--gold-bright); }
+.compare-note { text-align: center; color: rgba(213,193,170,.85); font-size: calc(var(--text) * 0.85); margin: 18px auto 0; }
+.compare-cta { display: flex; justify-content: center; margin-top: var(--gap-s); }
+.compare-cta .btn { max-width: 420px; }
+@media (max-width: 420px) {
+  .compare-table .ct-row > * { padding: 12px 8px; font-size: calc(var(--text) * 0.82); }
+}
 .mailer-foot { margin: var(--gap-m) auto 0; max-width: 780px; text-align: center; border: 1.5px dashed rgba(213,193,170,.4); border-radius: 24px; padding: var(--card-pad); }
 .mailer-foot h3 { color: var(--cream); font-size: var(--h3); }
 .mailer-foot p { color: var(--sand); margin-top: 16px; font-size: var(--text); line-height: 1.6; max-width: 620px; margin-left: auto; margin-right: auto; }
@@ -824,17 +854,20 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
    ===================================================================== */
 
 /* Hero copy tuning for the resident home (reuses .hero/.logo-lockup/.overlay) */
-.home-resident .hero { position: relative; min-height: 100svh; min-height: min(100svh, 920px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 24px 140px; }
-@media (min-width: 768px) { .home-resident .hero { min-height: 92svh; min-height: max(720px, 92svh); padding-bottom: 180px; } }
-/* show more of the vertical waterfall frame and keep the falls in view at the bottom transition */
-.home-resident .hero video { object-fit: cover; object-position: center bottom; }
-.home-resident .hero .hero-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 1; pointer-events: none;
-  background: linear-gradient(180deg, rgba(31,39,53,0) 0%, rgba(31,39,53,.35) 45%, rgba(245,244,239,.55) 80%, var(--cream) 100%); }
+/* P1: taller hero so the lower portion of the video (water + waterfall) shows before the transition */
+.home-resident .hero { position: relative; min-height: 104svh; min-height: min(104svh, 1040px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 24px 168px; }
+@media (min-width: 768px) { .home-resident .hero { min-height: 115svh; min-height: max(860px, 115svh); padding-bottom: 220px; } }
+/* anchor the BOTTOM of the video to the bottom of the section so the falls/water stay in view at the transition */
+.home-resident .hero video { object-fit: cover; object-position: 50% 100%; }
+/* P2: fade the hero DOWN into the dark below-hero band (no bright cream band, no hard line) */
+.home-resident .hero .hero-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 260px; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(31,39,53,0) 0%, rgba(31,39,53,.42) 52%, rgba(31,39,53,.82) 82%, var(--navy) 100%); }
 .home-resident .hero .content { padding-top: 0; display: flex; flex-direction: column; align-items: center; max-width: 900px; }
-.home-resident .hero h1 { margin-top: 40px; font-size: clamp(34px, 6vw, 68px); line-height: 1.06; max-width: 880px; }
-.home-resident .hero h1 .accent { color: var(--gold-bright); }
-.home-resident .hero h1 .h1b { display: block; font-size: clamp(19px, 2.8vw, 32px); font-weight: 700; color: var(--sand); margin-top: 20px; }
-.home-resident .hero .subhead { margin-top: 28px; font-size: clamp(17px, 2.2vw, 21px); max-width: 620px; }
+.home-resident .hero h1 { margin-top: 40px; font-size: clamp(38px, 6.4vw, 74px); line-height: 1.04; max-width: 900px; }
+.home-resident .hero h1 .accent { color: var(--gold-bright); display: block; }
+.home-resident .hero h1 .h1line2 { display: block; color: var(--cream); }
+.home-resident .hero .hero-eyebrow { margin-top: 18px; color: var(--gold-bright); font-weight: 800; letter-spacing: 1.5px; font-size: clamp(14px, 2vw, 19px); text-shadow: 0 2px 14px rgba(0,0,0,.5); }
+.home-resident .hero .subhead { margin-top: 22px; font-size: clamp(17px, 2.2vw, 21px); max-width: 640px; }
 .home-resident .hero .ctas { margin-top: 36px; gap: 16px; }
 .home-resident .hero .micro { margin-top: 24px; }
 .home-resident .hero .micro .biz-link { color: var(--gold-bright); font-weight: 800; }
@@ -870,19 +903,26 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .home-resident .optin { background: linear-gradient(160deg, rgba(163,124,79,.2), rgba(31,39,53,.4)); border: 1.5px solid var(--gold); border-radius: 28px; max-width: 840px; margin: 0 auto; padding: 36px 22px; text-align: center; position: relative; z-index: 2; backdrop-filter: blur(3px); }
 @media (min-width: 768px) { .home-resident .optin { padding: 48px 40px; } }
 .home-resident .optin .fine { margin-top: 16px; color: var(--sand); font-size: 13px; }
-/* ===== P2: LIGHT, AIRY BAND directly below the hero (rests the eye after the dark video) ===== */
-.home-resident .lightband { position: relative; background: linear-gradient(180deg, #F5F4EF 0%, #F3F1EA 55%, #EDE7DC 100%); padding-top: 200px; padding-bottom: 200px; }
-@media (min-width: 768px) { .home-resident .lightband { padding-top: 248px; padding-bottom: 248px; } }
-/* soft fade INTO the next dark section so the light band flows on cleanly */
-.home-resident .lightband::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 200px; pointer-events: none; background: linear-gradient(180deg, rgba(237,231,220,0) 0%, rgba(38,47,64,.18) 70%, var(--navy) 100%); }
-.home-resident .optin.light { background: #fffdf9; border: 1.5px solid rgba(163,124,79,.5); box-shadow: 0 30px 90px rgba(31,39,53,.14), 0 0 0 1px rgba(163,124,79,.06); backdrop-filter: none; padding: 48px 24px; }
-@media (min-width: 768px) { .home-resident .optin.light { padding: 64px 48px; } }
-.home-resident .optin.light .im-pill { background: rgba(163,124,79,.12); border-color: var(--gold); color: #6b4f2e; }
-.home-resident .optin.light h2 { color: var(--navy); }
-.home-resident .optin.light .lead { color: #4a4640; }
-.home-resident .optin.light .fine { color: #7a756c; }
-.home-resident .optin.light .optin-form input { background: #fff; border: 1.5px solid rgba(163,124,79,.45); color: var(--navy); }
-.home-resident .optin.light .optin-form input::placeholder { color: rgba(31,39,53,.45); }
+/* ===== P2: DARK, FLOWING BAND directly below the hero =====
+   The eye glides straight out of the dark video into this deep-navy band — no bright
+   cream break, no hard line. A soft gradient at the top continues the hero hand-off and
+   a matching one at the bottom carries into the next section. */
+.home-resident .lightband { position: relative; background:
+  radial-gradient(120% 80% at 50% 0%, rgba(163,124,79,.12) 0%, rgba(163,124,79,0) 55%),
+  linear-gradient(180deg, var(--navy) 0%, #20293a 42%, #232d40 100%);
+  padding-top: 150px; padding-bottom: 168px; }
+@media (min-width: 768px) { .home-resident .lightband { padding-top: 188px; padding-bottom: 196px; } }
+/* top hand-off: blends seamlessly with the hero-fade above */
+.home-resident .lightband::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 160px; pointer-events: none; background: linear-gradient(180deg, var(--navy) 0%, rgba(31,39,53,0) 100%); }
+/* bottom hand-off into the next (navy) section */
+.home-resident .lightband::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 140px; pointer-events: none; background: linear-gradient(180deg, rgba(35,45,64,0) 0%, var(--navy) 100%); }
+/* the opt-in card on the dark band: gentle gold-on-navy glass, high-contrast text */
+.home-resident .optin.dark { background: linear-gradient(160deg, rgba(163,124,79,.18), rgba(31,39,53,.55)); border: 1.5px solid var(--gold); box-shadow: 0 30px 90px rgba(0,0,0,.45), 0 0 60px rgba(163,124,79,.10); backdrop-filter: blur(4px); padding: 48px 24px; }
+@media (min-width: 768px) { .home-resident .optin.dark { padding: 64px 48px; } }
+.home-resident .optin.dark .im-pill { background: rgba(163,124,79,.25); border-color: var(--gold); color: var(--cream); }
+.home-resident .optin.dark h2 { color: var(--cream); }
+.home-resident .optin.dark .lead { color: var(--sand); }
+.home-resident .optin.dark .fine { color: rgba(213,193,170,.85); }
 
 .optin-form { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; align-items: stretch; max-width: 480px; margin-left: auto; margin-right: auto; }
 .optin-form input { min-height: 60px; background: rgba(31,39,53,.85); border: 1.5px solid rgba(213,193,170,.4); border-radius: 14px; color: var(--cream); font-size: 17px; padding: 0 18px; width: 100%; }
@@ -976,6 +1016,17 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .home-resident .acitem .pin { color: var(--gold-bright); }
 .home-resident .acitem.add { color: var(--gold-bright); font-weight: 700; }
 .home-resident .ac-powered { font-size: 11px; color: rgba(213,193,170,.5); margin-top: 8px; text-align: right; }
+/* ===== P3: nominate multi-add UI ===== */
+.home-resident .nom-staged { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-direction: column; gap: 10px; }
+.home-resident .nom-chip { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(163,124,79,.14); border: 1.5px solid rgba(194,154,99,.5); border-radius: 14px; padding: 12px 16px; }
+.home-resident .nom-chip-name { display: flex; align-items: center; gap: 10px; color: var(--cream); font-weight: 700; font-size: 15px; }
+.home-resident .nom-chip-name .pin { filter: none; }
+.home-resident .nom-chip-x { background: transparent; border: none; color: rgba(213,193,170,.8); font-size: 15px; cursor: pointer; line-height: 1; padding: 6px; border-radius: 8px; flex-shrink: 0; }
+.home-resident .nom-chip-x:hover { color: var(--gold-bright); background: rgba(245,244,239,.06); }
+.home-resident .nom-add-btn { margin-top: 16px; background: transparent; border: 1.5px dashed rgba(194,154,99,.6); color: var(--gold-bright); font-weight: 800; font-size: 15px; border-radius: 999px; padding: 12px 22px; cursor: pointer; transition: all .2s; width: auto; }
+.home-resident .nom-add-btn:hover { background: rgba(163,124,79,.14); border-color: var(--gold-bright); }
+.home-resident .optin-done .nom-again { margin-top: 22px; width: auto; min-width: 0; padding: 14px 26px; }
+.home-resident .btn.ghost.nom-again { background: transparent; border: 1.5px solid var(--gold); color: var(--gold-bright); }
 
 /* RESIDENT CTA */
 .home-resident .rcta { text-align: center; }
@@ -1214,3 +1265,12 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
     rgba(31,39,53,.46) 40%,
     rgba(31,39,53,.62) 100%);
 }
+/* reps hero: a photo hero (no video) — keep it a sensible, on-brand height
+   rather than inheriting the very tall resident video-hero min-height */
+.reps-page .reps-hero { min-height: 78svh; min-height: min(78svh, 760px); padding-top: 110px; padding-bottom: 96px; }
+@media (min-width: 768px) { .reps-page .reps-hero { min-height: 70svh; min-height: max(620px, 70svh); padding-bottom: 110px; } }
+.reps-page .reps-hero .content { position: relative; z-index: 2; }
+.reps-page .reps-hero h1 { margin-top: 24px; }
+.reps-page .reps-hero h1 .accent { color: var(--gold-bright); display: block; }
+.reps-page .reps-hero h1 .h1b { display: block; font-size: clamp(18px, 2.6vw, 28px); font-weight: 700; color: var(--sand); margin-top: 16px; }
+.reps-page .reps-hero .crumb a { color: var(--gold-bright); }

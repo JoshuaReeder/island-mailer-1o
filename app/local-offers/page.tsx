@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   description:
     "Browse and save the local deals from the businesses on your Island Mailer postcard, then redeem them around Maui. July mailer coming up next — get notified.",
   alternates: { canonical: "/local-offers" },
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com/local-offers",
+    title: "Local Offers | Island Mailer — Support Local. Live Hawaii.",
+    description:
+      "Browse and save the local deals from the businesses on your Island Mailer postcard, then redeem them around Maui.",
+  },
 }
 
 export default function LocalOffersPage() {
