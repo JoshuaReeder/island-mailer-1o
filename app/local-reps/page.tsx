@@ -3,6 +3,7 @@ import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import AmbassadorForm from "@/components/ambassador-form"
 import { localRepsJsonLd, jsonLdScript } from "@/lib/jsonld"
+import RevealInit from "@/components/reveal-init"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 /* Maui scenes proven to render live on the site (same Wikimedia Special:FilePath
@@ -55,6 +56,7 @@ export default function LocalRepsPage() {
   return (
     <div className="min-h-screen home-resident reps-page" style={{ background: "var(--navy)" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(localRepsJsonLd())} />
+      <RevealInit />
       {/* HERO — warm, light, community feel */}
       <div className="hero reps-hero" id="top">
         <div className="bgi" style={{ position: "absolute", inset: 0, backgroundImage: `url('${HERO_IMG}')`, backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
