@@ -107,7 +107,7 @@ export default function Page() {
         </a>{" "}
         Or for the bigger picture on reaching residents, see our{" "}
         <a href="/resources/advertise-to-locals-on-maui">2026 guide to advertising to locals on Maui</a>.
-        When you're ready, <a href="/#contact">check availability for your area</a> — or{" "}
+        When you're ready, <a href="/advertise#contact">check availability for your area</a> — or{" "}
         <a href="/waitlist">join the waitlist</a> if we haven't reached your town yet.
       </p>
     </ArticleLayout>
