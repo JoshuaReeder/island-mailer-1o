@@ -261,6 +261,31 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ================= CHOOSE YOUR PATH ================= */}
+      <section className="bg-navy2 shimmer" id="choose-path">
+        <div className="container">
+          <div className="sec-divider">◆</div>
+          <h2>Welcome to Island Mailer</h2>
+          <p className="sec-sub">Two ways in — whether you live here or you run a local business.</p>
+          <div className="sec-body">
+            <div className="paths">
+              <div className="path-card resident">
+                <span className="path-label">Live here?</span>
+                <h3>Find &amp; save local offers</h3>
+                <p>Every deal from the businesses on your Island Mailer — in one place. Save the ones you love and redeem them around the island.</p>
+                <a className="btn" href="/local-offers">See Local Offers →</a>
+              </div>
+              <div className="path-card business">
+                <span className="path-label">Own a local business?</span>
+                <h3>Get on the mailer</h3>
+                <p>Put your business in front of up to 10,000 local homes. Reserve an ad space on the community mailer for your area.</p>
+                <a className="btn ghost" href="#pricing">Advertise With Us →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ================= THE 9x12 POSTCARD ================= */}
       <section className="bg-navy2 shimmer">
         <div className="container">

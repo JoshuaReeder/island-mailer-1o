@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" as const },
     { path: "/products", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/local-offers", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/maui", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/north-shore-maui-advertising", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/central-maui-advertising", priority: 0.8, changeFrequency: "monthly" as const },
