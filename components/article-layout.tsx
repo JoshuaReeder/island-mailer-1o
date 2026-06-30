@@ -62,7 +62,7 @@ export default function ArticleLayout({
                 Get your business on a premium 9×12 postcard — <b>$800 flat, one business per industry</b>,
                 design, print &amp; postage included.
               </p>
-              <a className="btn" href="/#contact">Check Availability →</a>
+              <a className="btn" href="/advertise#contact">Check Availability →</a>
               <div className="contact-lines">
                 <p>
                   Not in an active area yet?{" "}

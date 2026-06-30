@@ -105,7 +105,7 @@ export default function Page() {
         resident-targeted postcard is one of the cleanest ways to reach the locals who become regulars. The
         trick is making it affordable enough to do consistently. That's the whole idea behind Island
         Mailer. If your customers live here,{" "}
-        <a href="/#contact">check availability for your area</a> — or if Island Mailer isn't in your
+        <a href="/advertise#contact">check availability for your area</a> — or if Island Mailer isn't in your
         neighborhood yet, <a href="/waitlist">join the waitlist</a> and we'll let you know when it is.
       </p>
       <p>

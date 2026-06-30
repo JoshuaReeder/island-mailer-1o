@@ -81,10 +81,12 @@ export default function Footer({ variant = "full", showMauiAreasLink = false }: 
             <h4>Navigation</h4>
             <a href="/">Home</a>
             <a href="/local-offers">Local Offers</a>
+            <a href="/#optin">Join the List</a>
+            <a href="/advertise">Get Featured</a>
             <a href="/products">Products &amp; Services</a>
-            <a href="/#pricing">Pricing</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contact">Apply</a>
+            <a href="/advertise#pricing">Pricing</a>
+            <a href="/advertise#faq">FAQ</a>
+            <a href="/advertise#contact">Apply</a>
             <a href="/waitlist">Waitlist</a>
             <a href="/resources">Resources</a>
           </div>

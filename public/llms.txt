@@ -1,9 +1,23 @@
 # Island Mailer
 
-> Island Mailer is a Hawaiʻi local direct-mail advertising service. We place local
-> businesses on a premium 9×12 EDDM-style shared postcard that is mailed to up to
-> 10,000 local Maui homes. One flat price of $800 per ad space includes design,
-> printing, and postage. Only one business per industry runs on each mailer.
+> Island Mailer is a two-sided Hawaiʻi local platform. For RESIDENTS, it's a free
+> way to discover, save, and redeem exclusive deals from locally loved businesses —
+> delivered to your mailbox each month and saved on your phone (resident home at /,
+> deals at /local-offers). For BUSINESSES, it's a local direct-mail advertising
+> service that places businesses on a premium 9×12 EDDM-style shared postcard mailed
+> to up to 10,000 local Maui homes (business hub at /advertise). One flat price of
+> $800 per ad space includes design, printing, and postage. Only one business per
+> industry runs on each mailer.
+
+## Site Structure (two-sided)
+- Resident side: the home page (/) is resident-first — "Hawaii's best local deals,
+  delivered to your mailbox and inbox" — with an email opt-in, a mailer showcase,
+  how-it-works, and a "nominate a local favorite" form. Local Offers lives at
+  /local-offers.
+- Business side: all advertiser content (pitch, the 9×12 postcard, pricing for the
+  Signature and Hyper-Local mailers, how-it-works, FAQ, About, and the apply/contact
+  form) lives at /advertise. Product details are at /products. Island and area pages
+  cover the geographies served.
 
 ## What Island Mailer Is
 - A shared (co-op) direct-mail advertising mailer for Hawaiʻi small businesses.
@@ -41,9 +55,11 @@
   Maui reservation form.
 
 ## Key Pages
-- Home / overview & application: https://islandmailer.com/
-- Pricing & details: https://islandmailer.com/#pricing
-- FAQ: https://islandmailer.com/#faq
+- Home (resident-first): https://islandmailer.com/
+- Local Offers (for residents): https://islandmailer.com/local-offers
+- Advertise / business hub & application: https://islandmailer.com/advertise
+- Pricing & details: https://islandmailer.com/advertise#pricing
+- FAQ: https://islandmailer.com/advertise#faq
 - All Maui areas: https://islandmailer.com/maui
 - All Kauai areas: https://islandmailer.com/kauai
 - All Oahu areas: https://islandmailer.com/oahu

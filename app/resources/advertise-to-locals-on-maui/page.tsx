@@ -128,7 +128,7 @@ export default function Page() {
         and{" "}
         <a href="/resources/eddm-vs-shared-mailer-maui">EDDM vs. Shared Mailer</a> to see how the math works
         out. Or if you're ready to reach your neighbors,{" "}
-        <a href="/#contact">check availability</a> for your area today.
+        <a href="/advertise#contact">check availability</a> for your area today.
       </p>
     </ArticleLayout>
   )

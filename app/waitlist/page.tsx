@@ -97,7 +97,7 @@ export default function WaitlistPage() {
                 Island Mailer is live across Maui — <b>North Shore, Central, West Side, South Side, and Upcountry</b>.
                 If you&apos;re here, you can reserve your spot today.
               </p>
-              <a className="btn" href="/#contact">Check Availability →</a>
+              <a className="btn" href="/advertise#contact">Check Availability →</a>
               <div className="contact-lines">
                 <p>Or call/text us: <a href="tel:8088086245">(808) 808-6245</a></p>
                 <p>Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></p>
