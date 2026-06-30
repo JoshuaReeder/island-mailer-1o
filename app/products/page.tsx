@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
+import PricingReveal from "@/components/pricing-reveal"
 
 export const metadata: Metadata = {
   title: "Products & Services | Island Mailer — Local Direct Mail in Hawaii",
   description:
-    "Island Mailer's community mailers: the 9×12 Signature Mailer (up to 10,000 homes, $800/space) and the 6.5×12 Hyper-Local Mailer (2,500 homes, $250/space). Plus custom direct mail, EDDM, solo & campaign mailers, design and print.",
+    "Island Mailer's community mailers: the 9×12 Signature Mailer reaches up to 10,000 local homes and the 6.5×12 Hyper-Local Mailer reaches ~2,500 homes — for a fraction of a solo direct-mail campaign. Design, print & postage included, one business per category. Plus custom direct mail, EDDM, solo & campaign mailers, design and print.",
 }
 
 const cells = "ABCDEFGH".split("")
@@ -71,11 +72,10 @@ export default function ProductsPage() {
                   <li><span>Custom ad design, print &amp; postage included</span></li>
                   <li><span>No long-term contracts</span></li>
                 </ul>
-                <div className="mailer-price">
-                  <span className="amt">$250</span>
-                  <span className="per">per ad space, per mailing</span>
-                </div>
-                <a className="btn" href="/advertise#contact">Check Availability</a>
+                <p className="mailer-best" style={{ marginTop: "auto" }}>
+                  <b>Reach:</b> ~2,500 nearby homes for less than the cost of a stamp per home.
+                </p>
+                <a className="btn" href="#pricing-reveal">See Pricing</a>
               </div>
 
               <div className="mailer-card flagship">
@@ -112,17 +112,72 @@ export default function ProductsPage() {
                   <li><span>Custom ad design, print &amp; postage included</span></li>
                   <li><span>No long-term contracts</span></li>
                 </ul>
-                <div className="mailer-price">
-                  <span className="amt">$800</span>
-                  <span className="per">per ad space, per mailing</span>
-                </div>
-                <a className="btn" href="/advertise#contact">Check Availability</a>
+                <p className="mailer-best" style={{ marginTop: "auto" }}>
+                  <b>Reach:</b> up to 10,000 local homes for less than the cost of a stamp per home.
+                </p>
+                <a className="btn" href="#pricing-reveal">See Pricing</a>
               </div>
 
             </div>
           </div>
         </div>
       </section>
+
+      {/* ===== VALUE FRAMING + GATED PRICING ===== */}
+      <section className="bg-navy home-resident" id="pricing-reveal">
+        <div className="container">
+          <div className="sec-divider">◆</div>
+          <h2>A fraction of a solo direct-mail campaign</h2>
+          <p className="lead">
+            A solo mailer campaign often runs <b>$5,000&ndash;$10,000+</b> once you add design, print and postage. On
+            Island Mailer you share that cost with other local businesses &mdash; and still land in every mailbox.
+          </p>
+          <div className="value-grid">
+            <div className="value-card">
+              <div className="vbig">Up to 10,000</div>
+              <div className="vlbl">local homes reached &mdash; or ~2,500 with the Hyper-Local</div>
+            </div>
+            <div className="value-card">
+              <div className="vbig">&lt; a stamp</div>
+              <div className="vlbl">per home &mdash; design, print &amp; postage all included</div>
+            </div>
+            <div className="value-card">
+              <div className="vbig">1 per category</div>
+              <div className="vlbl">your industry is exclusively yours, no long-term contracts</div>
+            </div>
+          </div>
+          <div style={{ marginTop: 44 }}>
+            <PricingReveal source="pricing-interest-products" />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== MAUI PHOTO BAND ===== */}
+      <div
+        className="home-resident"
+        style={{
+          position: "relative",
+          minHeight: 360,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          backgroundImage:
+            "url('https://commons.wikimedia.org/wiki/Special:FilePath/Kihei_coast.jpg?width=1800')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(20,28,40,.74), rgba(20,28,40,.66))" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 760, padding: "56px 24px" }}>
+          <h2 style={{ color: "var(--cream)", fontSize: "clamp(26px,4vw,42px)", fontWeight: 800, textShadow: "0 3px 20px rgba(0,0,0,.6)" }}>
+            Real homes. Real neighbors. Real reach.
+          </h2>
+          <p style={{ color: "var(--cream)", fontSize: "clamp(17px,2.4vw,20px)", marginTop: 18, textShadow: "0 2px 14px rgba(0,0,0,.6)" }}>
+            Your offer lands in mailboxes across the community — then lives on inside Local Offers, where locals are already looking.
+          </p>
+        </div>
+      </div>
 
       {/* ===== Custom direct mail (services) ===== */}
       <section className="bg-navy">

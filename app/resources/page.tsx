@@ -72,7 +72,7 @@ export default function ResourcesPage() {
           <div className="sec-body">
             <div className="cta-card">
               <p className="big">
-                Island Mailer reaches up to <b>10,000 local Maui homes</b> for $800 flat — design, print &amp;
+                Island Mailer reaches up to <b>10,000 local Maui homes</b> for one flat per-ad-space rate — design, print &amp;
                 postage included.
               </p>
               <a className="btn" href="/advertise#contact">Check Availability →</a>

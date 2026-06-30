@@ -63,6 +63,8 @@ export default function Footer({ variant = "full", showMauiAreasLink = false }: 
             <a href="/waitlist" style={{ color: "var(--gold-bright)", textDecoration: "none" }}>Waitlist</a>
             {" "}·{" "}
             <a href="/resources" style={{ color: "var(--gold-bright)", textDecoration: "none" }}>Resources</a>
+            {" "}·{" "}
+            <a href="/local-reps" style={{ color: "rgba(213,193,170,.7)", textDecoration: "none", fontSize: "0.92em" }}>Local Reps</a>
           </p>
         </div>
       </footer>
@@ -89,6 +91,7 @@ export default function Footer({ variant = "full", showMauiAreasLink = false }: 
             <a href="/advertise#contact">Apply</a>
             <a href="/waitlist">Waitlist</a>
             <a href="/resources">Resources</a>
+            <a href="/local-reps" style={{ opacity: 0.72, fontSize: "0.92em" }}>Local Reps</a>
           </div>
           <div>
             <h4>Areas We Serve</h4>

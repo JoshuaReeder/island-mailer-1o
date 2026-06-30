@@ -59,7 +59,7 @@ export default function ArticleLayout({
           <div className="sec-body">
             <div className="cta-card">
               <p className="big">
-                Get your business on a premium 9×12 postcard — <b>$800 flat, one business per industry</b>,
+                Get your business on a premium 9×12 postcard — <b>one business per industry, everything included</b>,
                 design, print &amp; postage included.
               </p>
               <a className="btn" href="/advertise#contact">Check Availability →</a>

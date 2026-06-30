@@ -16,7 +16,7 @@ const meta: ArticleMeta = {
     },
     {
       q: "Is direct mail too expensive for a small business?",
-      a: "Running your own solo mailer can be costly once you add design, printing, and postage. A shared postcard like Island Mailer spreads those costs across multiple businesses — $800 flat for up to 10,000 local Maui homes, everything included.",
+      a: "Running your own solo mailer can be costly once you add design, printing, and postage. A shared postcard like Island Mailer spreads those costs across multiple businesses — one flat per-ad-space rate for up to 10,000 local Maui homes, everything included.",
     },
     {
       q: "How do I know if direct mail is right for my Maui business?",
@@ -72,7 +72,7 @@ export default function Page() {
       <p>
         A shared mailer puts several local businesses on one large postcard and splits the design, print,
         and postage across all of them. You get the reach of a big mailing for a fraction of the solo cost.
-        With Island Mailer, that's $800 flat for up to 10,000 local Maui homes — design, printing, and
+        With Island Mailer, that's one flat per-ad-space rate for up to 10,000 local Maui homes — design, printing, and
         postage all included, with one business per industry so you're never sharing the card with a
         competitor.
       </p>

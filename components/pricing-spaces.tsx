@@ -17,8 +17,8 @@ export default function PricingSpaces({ onReserve }: PricingSpacesProps) {
 
         <div className="gradient-navy-warm rounded-3xl p-10 lg:p-14 border-gradient-gold shadow-2xl mb-12">
           <div className="text-center mb-10">
-            <div className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gradient-gold mb-4">$800</div>
-            <p className="text-xl sm:text-2xl text-sand">per ad space, per mailing</p>
+            <div className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gradient-gold mb-4">One flat rate</div>
+            <p className="text-xl sm:text-2xl text-sand">per ad space, per mailing — ask for the rate card</p>
             <p className="text-lg text-sand/80 mt-2">Up to 10,000 local homes - Design, printing & postage included</p>
           </div>
 
