@@ -89,6 +89,7 @@ export default function FloatingMenu() {
         </button>
         <div className="nav-panel">
           <a href="/" onClick={close}>Home</a>
+          <a href="/local-offers" onClick={close}>Local Offers</a>
           <a href="/products" onClick={close}>Products &amp; Services</a>
           <a href="/#pricing" onClick={close}>Pricing</a>
           <a href="/#faq" onClick={close}>FAQ</a>
