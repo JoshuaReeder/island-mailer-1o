@@ -10,8 +10,8 @@
 > industry runs on each mailer.
 
 ## Site Structure (two-sided)
-- Resident side: the home page (/) is resident-first — "Hawaii's best local deals,
-  delivered to your mailbox and inbox" — with an email opt-in, a mailer showcase,
+- Resident side: the home page (/) is resident-first — "Hawaii's Largest Exclusive
+  Offers, flowing right to your mailbox" — with an email opt-in, a mailer showcase,
   how-it-works, and a "nominate a local favorite" form. Local Offers lives at
   /local-offers.
 - Business side: all advertiser content (pitch, the 9×12 postcard, pricing for the
