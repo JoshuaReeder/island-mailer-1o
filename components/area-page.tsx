@@ -1,5 +1,6 @@
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
+import AreaLeadForm from "@/components/area-lead-form"
 import type { AreaData } from "@/lib/area-data"
 import { areaJsonLd, expansionAreaJsonLd, jsonLdScript } from "@/lib/jsonld"
 
@@ -12,7 +13,7 @@ export default function AreaPage({ area }: { area: AreaData }) {
 
   const contactHref = isExpansion
     ? `/waitlist?island=${encodeURIComponent(islandKey)}&area=${encodeURIComponent(area.tag)}`
-    : `/?area=${encodeURIComponent(area.query)}#contact`
+    : "#reserve"
 
   const heroBtnLabel = isExpansion ? `Join the ${islandLabel} Waitlist` : "Check Availability"
   const sectionBtnLabel = isExpansion ? "Join the Waitlist" : "Check Availability"
@@ -69,6 +70,13 @@ export default function AreaPage({ area }: { area: AreaData }) {
           <div className="sec-body">
             <div className="price-card">
               <p className="price-head">One flat rate. Everything handled.</p>
+              {!isExpansion && (
+                <p className="fine" style={{ marginBottom: "var(--gap-s)" }}>
+                  Available as the <b>Signature Mailer</b> (9×12, up to {homesText} homes, $800/space) or the{" "}
+                  <b>Hyper-Local Mailer</b> (6.5×12, ~2,500 homes, $250/space).{" "}
+                  <a href="/products" style={{ color: "var(--gold-bright)", fontWeight: 700, textDecoration: "none" }}>Compare both →</a>
+                </p>
+              )}
               <ul className="check-list">
                 <li><span><b>Your ad on a premium 9×12 postcard</b> mailed to up to {homesText} local homes</span></li>
                 <li><span><b>One business per industry</b> - your category, exclusively yours</span></li>
@@ -119,21 +127,31 @@ export default function AreaPage({ area }: { area: AreaData }) {
       </section>
 
       {/* ================= RESERVE CTA ================= */}
-      <section className="bg-navy2 shimmer">
+      <section className="bg-navy2 shimmer" id="reserve">
         <div className="container narrow">
           <div className="sec-divider">◆</div>
           <h2>{area.reserveHeading}</h2>
           <div className="sec-body">
-            <div className="cta-card">
-              <p className="big">
-                {area.ctaBig.pre}<b>{area.ctaBig.bold}</b>{area.ctaBig.post}
-              </p>
-              <a className="btn" href={contactHref}>{reserveBtnLabel}</a>
-              <div className="contact-lines">
-                <p>Or call/text us: <a href="tel:8088086245">(808) 808-6245</a></p>
-                <p>Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></p>
+            {isExpansion ? (
+              <div className="cta-card">
+                <p className="big">
+                  {area.ctaBig.pre}<b>{area.ctaBig.bold}</b>{area.ctaBig.post}
+                </p>
+                <a className="btn" href={contactHref}>{reserveBtnLabel}</a>
+                <div className="contact-lines">
+                  <p>Or call/text us: <a href="tel:8088086245">(808) 808-6245</a></p>
+                  <p>Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></p>
+                </div>
               </div>
-            </div>
+            ) : (
+              <>
+                <AreaLeadForm area={area.query} areaLabel={area.tag} />
+                <div className="contact-lines" style={{ textAlign: "center", marginTop: "var(--gap-s)" }}>
+                  <p>Prefer to talk? Call or text <a href="tel:8088086245">(808) 808-6245</a></p>
+                  <p>Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
