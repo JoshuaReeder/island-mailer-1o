@@ -8,7 +8,6 @@ import NominateForm from "@/components/nominate-form"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
-const KIHEI = "https://commons.wikimedia.org/wiki/Special:FilePath/Kihei_coast.jpg?width=1800"
 const IAO = "https://commons.wikimedia.org/wiki/Special:FilePath/Iao_Valley_panorama_cropped.jpg?width=2200"
 
 const AD_TILES: { icon: string; cat: string; offer: string }[] = [
@@ -48,9 +47,22 @@ export default function HomeResident() {
     const vid = videoRef.current
     if (!vid) return
     const tryPlay = () => {
+      try {
+        vid.playbackRate = 0.55
+      } catch {
+        /* noop */
+      }
       const p = vid.play()
       if (p) p.catch(() => {})
     }
+    const onMeta = () => {
+      try {
+        vid.playbackRate = 0.55
+      } catch {
+        /* noop */
+      }
+    }
+    vid.addEventListener("loadedmetadata", onMeta)
     tryPlay()
     const onVis = () => {
       if (!document.hidden) tryPlay()
@@ -59,6 +71,7 @@ export default function HomeResident() {
     const evs: (keyof WindowEventMap)[] = ["touchstart", "click", "scroll"]
     evs.forEach((ev) => window.addEventListener(ev, tryPlay, { once: true, passive: true }))
     return () => {
+      vid.removeEventListener("loadedmetadata", onMeta)
       document.removeEventListener("visibilitychange", onVis)
       evs.forEach((ev) => window.removeEventListener(ev, tryPlay))
     }
@@ -118,14 +131,13 @@ export default function HomeResident() {
           <div className="bottom-pad" />
         </div>
         <div className="scroll-cue resident-cue">↓</div>
+        <div className="hero-fade" aria-hidden />
       </div>
 
-      {/* ================= EMAIL OPT-IN (over Maui coast) ================= */}
-      <section className="bgimg" id="optin">
-        <div className="bgi" style={{ backgroundImage: `url('${KIHEI}')` }} />
-        <div className="bgov" />
+      {/* ================= EMAIL OPT-IN (light, airy — rests the eye after the dark video) ================= */}
+      <section className="lightband" id="optin">
         <div className="container">
-          <div className="optin reveal">
+          <div className="optin light reveal">
             <span className="im-pill">July mailer coming up next</span>
             <h2>Be first to the local deals</h2>
             <p className="lead">

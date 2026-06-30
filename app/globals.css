@@ -824,7 +824,12 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
    ===================================================================== */
 
 /* Hero copy tuning for the resident home (reuses .hero/.logo-lockup/.overlay) */
-.home-resident .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 24px 96px; }
+.home-resident .hero { position: relative; min-height: 100svh; min-height: min(100svh, 920px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 120px 24px 140px; }
+@media (min-width: 768px) { .home-resident .hero { min-height: 92svh; min-height: max(720px, 92svh); padding-bottom: 180px; } }
+/* show more of the vertical waterfall frame and keep the falls in view at the bottom transition */
+.home-resident .hero video { object-fit: cover; object-position: center bottom; }
+.home-resident .hero .hero-fade { position: absolute; left: 0; right: 0; bottom: 0; height: 220px; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(31,39,53,0) 0%, rgba(31,39,53,.35) 45%, rgba(245,244,239,.55) 80%, var(--cream) 100%); }
 .home-resident .hero .content { padding-top: 0; display: flex; flex-direction: column; align-items: center; max-width: 900px; }
 .home-resident .hero h1 { margin-top: 40px; font-size: clamp(34px, 6vw, 68px); line-height: 1.06; max-width: 880px; }
 .home-resident .hero h1 .accent { color: var(--gold-bright); }
@@ -865,6 +870,20 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .home-resident .optin { background: linear-gradient(160deg, rgba(163,124,79,.2), rgba(31,39,53,.4)); border: 1.5px solid var(--gold); border-radius: 28px; max-width: 840px; margin: 0 auto; padding: 36px 22px; text-align: center; position: relative; z-index: 2; backdrop-filter: blur(3px); }
 @media (min-width: 768px) { .home-resident .optin { padding: 48px 40px; } }
 .home-resident .optin .fine { margin-top: 16px; color: var(--sand); font-size: 13px; }
+/* ===== P2: LIGHT, AIRY BAND directly below the hero (rests the eye after the dark video) ===== */
+.home-resident .lightband { position: relative; background: linear-gradient(180deg, #F5F4EF 0%, #F3F1EA 55%, #EDE7DC 100%); padding-top: 200px; padding-bottom: 200px; }
+@media (min-width: 768px) { .home-resident .lightband { padding-top: 248px; padding-bottom: 248px; } }
+/* soft fade INTO the next dark section so the light band flows on cleanly */
+.home-resident .lightband::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 200px; pointer-events: none; background: linear-gradient(180deg, rgba(237,231,220,0) 0%, rgba(38,47,64,.18) 70%, var(--navy) 100%); }
+.home-resident .optin.light { background: #fffdf9; border: 1.5px solid rgba(163,124,79,.5); box-shadow: 0 30px 90px rgba(31,39,53,.14), 0 0 0 1px rgba(163,124,79,.06); backdrop-filter: none; padding: 48px 24px; }
+@media (min-width: 768px) { .home-resident .optin.light { padding: 64px 48px; } }
+.home-resident .optin.light .im-pill { background: rgba(163,124,79,.12); border-color: var(--gold); color: #6b4f2e; }
+.home-resident .optin.light h2 { color: var(--navy); }
+.home-resident .optin.light .lead { color: #4a4640; }
+.home-resident .optin.light .fine { color: #7a756c; }
+.home-resident .optin.light .optin-form input { background: #fff; border: 1.5px solid rgba(163,124,79,.45); color: var(--navy); }
+.home-resident .optin.light .optin-form input::placeholder { color: rgba(31,39,53,.45); }
+
 .optin-form { margin-top: 26px; display: flex; flex-direction: column; gap: 12px; align-items: stretch; max-width: 480px; margin-left: auto; margin-right: auto; }
 .optin-form input { min-height: 60px; background: rgba(31,39,53,.85); border: 1.5px solid rgba(213,193,170,.4); border-radius: 14px; color: var(--cream); font-size: 17px; padding: 0 18px; width: 100%; }
 .optin-form input::placeholder { color: rgba(213,193,170,.6); }
@@ -1139,3 +1158,59 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .reps-page .rep-bullet p { color: var(--sand); font-size: 16px; margin: 0; }
 .reps-page .rep-do { display: grid; gap: 18px; grid-template-columns: 1fr; margin: 36px auto 0; max-width: 920px; }
 @media (min-width: 780px) { .reps-page .rep-do { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ===================================================================
+   P3 — LOCAL OFFERS: ZIP GATE + MAILER-PROPORTIONED PLACEHOLDER SLOTS
+   =================================================================== */
+
+/* Mailer slots — one printed side = 2 col × 4 row block of ad spaces. */
+.mailer-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 720px; margin: 40px auto 0; }
+@media (min-width: 768px) { .mailer-slots { gap: 18px; } }
+.slot-card { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; min-height: 150px; padding: 22px 16px; border-radius: 18px; border: 1.5px dashed rgba(194,154,99,.5); background: linear-gradient(165deg, rgba(38,47,64,.85), rgba(26,35,48,.85)); min-width: 0; }
+@media (min-width: 768px) { .slot-card { min-height: 180px; } }
+.slot-card .slot-num { position: absolute; top: 10px; left: 12px; width: 24px; height: 24px; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: var(--gold-bright); border: 1px solid rgba(194,154,99,.5); background: rgba(16,21,30,.6); }
+.slot-card .slot-ic { font-size: 30px; }
+.slot-card .slot-cat { font-size: 15px; font-weight: 800; color: var(--cream); line-height: 1.2; }
+.slot-card .slot-status { font-size: 11.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-bright); opacity: .85; }
+
+/* Gate wrapper: blur + dim the slots until a valid ZIP dissolves the overlay. */
+.gate-wrap { position: relative; }
+.gate-wrap .mailer-slots { filter: blur(7px); opacity: .55; transform: scale(.99); transition: filter .6s ease, opacity .6s ease, transform .6s ease; pointer-events: none; }
+.gate-wrap.open .mailer-slots { filter: none; opacity: 1; transform: none; pointer-events: auto; }
+.gate-wrap.dissolving .mailer-slots { filter: none; opacity: 1; transform: none; }
+
+.gate-overlay { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; padding: 16px; transition: opacity .55s ease, transform .55s ease; }
+.gate-wrap.dissolving .gate-overlay { opacity: 0; transform: scale(1.04); pointer-events: none; }
+.gate-card { width: 100%; max-width: 460px; text-align: center; background: linear-gradient(160deg, rgba(163,124,79,.2), rgba(31,39,53,.86)); border: 1.5px solid var(--gold); border-radius: 24px; padding: 32px 22px; box-shadow: 0 28px 80px rgba(0,0,0,.5), 0 0 56px rgba(163,124,79,.14); backdrop-filter: blur(6px); }
+@media (min-width: 768px) { .gate-card { padding: 40px 36px; } }
+.gate-card .gate-pill { display: inline-block; background: rgba(163,124,79,.28); border: 1.5px solid var(--gold); color: var(--cream); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; font-size: 11px; padding: 7px 16px; border-radius: 999px; margin-bottom: 16px; }
+.gate-card h3 { font-size: clamp(20px, 3.2vw, 26px); font-weight: 800; color: var(--cream); line-height: 1.2; }
+.gate-card .gate-sub { color: var(--sand); font-size: 15px; margin-top: 12px; }
+.gate-card .gate-row { margin-top: 22px; display: flex; flex-direction: column; gap: 12px; }
+.gate-card .gate-row input { min-height: 60px; background: rgba(31,39,53,.9); border: 1.5px solid rgba(213,193,170,.45); border-radius: 14px; color: var(--cream); font-size: 18px; letter-spacing: 2px; text-align: center; padding: 0 18px; width: 100%; }
+.gate-card .gate-row input::placeholder { color: rgba(213,193,170,.55); letter-spacing: 1px; }
+.gate-card .gate-row .btn { width: 100%; max-width: none; margin: 0; }
+.gate-card .gate-err { color: #f6b6a0; font-size: 14px; margin: 14px 0 0; }
+@media (min-width: 560px) {
+  .gate-card .gate-row { flex-direction: row; }
+  .gate-card .gate-row input { flex: 1; }
+  .gate-card .gate-row .btn { width: auto; min-width: 160px; }
+}
+
+.offers-note { text-align: center; margin: 18px auto 0; color: var(--sand); font-size: 15px; }
+.offers-note a { color: var(--gold-bright); font-weight: 800; text-decoration: none; }
+
+.offers-optin { max-width: 560px; margin: 44px auto 0; text-align: center; background: var(--navy2); border: 1.5px solid rgba(194,154,99,.3); border-radius: 22px; padding: 28px 22px; }
+.offers-optin .offers-optin-h { color: var(--cream); font-weight: 800; font-size: 18px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gate-wrap .mailer-slots, .gate-overlay { transition: none !important; }
+}
+
+/* ===== P5: LOCAL REPS — warm, light, community-feel hero overlay ===== */
+.reps-page .reps-hero .overlay.reps-overlay {
+  background: linear-gradient(180deg,
+    rgba(31,39,53,.58) 0%,
+    rgba(31,39,53,.46) 40%,
+    rgba(31,39,53,.62) 100%);
+}

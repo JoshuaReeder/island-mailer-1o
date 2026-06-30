@@ -14,7 +14,6 @@ const GROUPS: NavGroup[] = [
       { label: "Local Offers", href: "/local-offers", primary: true },
       { label: "Join the Mailing List", href: "/#optin" },
       { label: "Nominate a Favorite", href: "/#nominate" },
-      { label: "Become a Local Rep", href: "/local-reps" },
     ],
   },
   {

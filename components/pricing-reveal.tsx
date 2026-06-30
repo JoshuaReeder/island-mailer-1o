@@ -8,7 +8,7 @@ import { useState } from "react"
  *
  * The actual rate numbers live ONLY inside this component and are shown
  * after the visitor submits their email. They are intentionally NOT in any
- * public page copy, metadata, or SEO text. On submit we POST to /api/subscribe
+ * public page copy, metadata, or SEO text. On submit we POST to /api/pricing
  * with source "pricing-interest" and reveal the rates inline immediately
  * (no waiting). The note tells them we've also emailed the full rate card.
  */
@@ -55,7 +55,7 @@ export default function PricingReveal({ source = "pricing-interest" }: PricingRe
     // Reveal immediately - don't make them wait on the network.
     setRevealed(true)
     try {
-      await fetch("/api/subscribe", {
+      await fetch("/api/pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, source }),
