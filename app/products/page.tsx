@@ -2,18 +2,26 @@ import type { Metadata } from "next"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import PricingReveal from "@/components/pricing-reveal"
+import { productsJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export const metadata: Metadata = {
   title: "Products & Services | Island Mailer — Local Direct Mail in Hawaii",
   description:
     "Island Mailer's community mailers: the 9×12 Signature Mailer reaches up to 10,000 local homes and the 6.5×12 Hyper-Local Mailer reaches ~2,500 homes — for a fraction of a solo direct-mail campaign. Design, print & postage included, one business per category. Plus custom direct mail, EDDM, solo & campaign mailers, design and print.",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com/products",
+    title: "Products & Services | Island Mailer — Local Direct Mail in Hawaii",
+    description:
+      "Two community mailers: the 9×12 Signature (up to 10,000 homes) and the 6.5×12 Hyper-Local (~2,500 homes). Design, print & postage included, one business per category.",
+  },
 }
-
-const cells = "ABCDEFGH".split("")
 
 export default function ProductsPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(productsJsonLd())} />
       <div className="hero area">
         <p className="crumb">
           <a href="/">Island Mailer</a> · Products &amp; Services
@@ -27,97 +35,68 @@ export default function ProductsPage() {
         <a className="btn" href="#mailers">See the mailers</a>
       </div>
 
-      {/* ===== Community mailers ===== */}
+      {/* ===== Community mailers — simplified visual comparison (P4) ===== */}
       <section className="bg-navy2 shimmer" id="mailers">
         <div className="container">
           <div className="sec-divider">◆</div>
           <h2>Our community mailers</h2>
           <p className="sec-sub">
-            Both are shared mailers — your ad joins up to 15 other local businesses, one per industry, with 8 ad spaces per
-            side (16 total).
+            Two sizes, one simple idea: a premium shared postcard with your ad alongside other local businesses — one
+            per category, 8 ad spaces per side (16 total). Pick the reach that fits.
           </p>
-          <div className="sec-body">
-            <div className="mailer-grid">
 
-              <div className="mailer-card">
-                <div className="mailer-name">Hyper-Local Mailer</div>
-                <div className="mailer-size">6.5″ × 12″ · one neighborhood</div>
-                <div className="mini-card hl">
-                  {cells.map((c) => (
-                    <span key={c}>{c}</span>
-                  ))}
+          <div className="compare-wrap">
+            {/* proportional size drawings */}
+            <div className="compare-visual" aria-hidden="true">
+              <figure className="cmp-card cmp-hl">
+                <div className="cmp-paper hl">
+                  <span className="cmp-dims">6.5&Prime; × 12&Prime;</span>
                 </div>
-                <p className="mini-cap">8 ad spaces per side — 16 total (front + back)</p>
-                <div className="mailer-stats">
-                  <div className="ms">
-                    <b>2,500</b>
-                    <span>local homes</span>
-                  </div>
-                  <div className="ms">
-                    <b>up to 16</b>
-                    <span>ad spaces</span>
-                  </div>
-                  <div className="ms">
-                    <b>~10¢</b>
-                    <span>per home</span>
-                  </div>
+                <figcaption>Hyper-Local</figcaption>
+              </figure>
+              <figure className="cmp-card cmp-sig">
+                <span className="cmp-flag">Most reach</span>
+                <div className="cmp-paper sig">
+                  <span className="cmp-dims">9&Prime; × 12&Prime;</span>
                 </div>
-                <p className="mailer-best">
-                  <b>Best for:</b> testing a new offer, tighter budgets, and reaching one specific neighborhood.
-                </p>
-                <ul className="check-list">
-                  <li><span>16 total ad spaces (8 per side of the 6.5×12 card)</span></li>
-                  <li><span>Mails to ~2,500 nearby homes</span></li>
-                  <li><span>One business per industry per mailing</span></li>
-                  <li><span>Custom ad design, print &amp; postage included</span></li>
-                  <li><span>No long-term contracts</span></li>
-                </ul>
-                <p className="mailer-best" style={{ marginTop: "auto" }}>
-                  <b>Reach:</b> ~2,500 nearby homes for less than the cost of a stamp per home.
-                </p>
-                <a className="btn" href="#pricing-reveal">See Pricing</a>
+                <figcaption>Signature</figcaption>
+              </figure>
+            </div>
+
+            {/* aligned spec table */}
+            <div className="compare-table" role="table" aria-label="Mailer comparison">
+              <div className="ct-row ct-head" role="row">
+                <span role="columnheader" />
+                <span role="columnheader">Hyper-Local</span>
+                <span role="columnheader" className="ct-best">Signature</span>
               </div>
-
-              <div className="mailer-card flagship">
-                <div className="mailer-badge">Most reach</div>
-                <div className="mailer-name">Signature Mailer</div>
-                <div className="mailer-size">9″ × 12″ · whole community</div>
-                <div className="mini-card sig">
-                  {cells.map((c) => (
-                    <span key={c}>{c}</span>
-                  ))}
-                </div>
-                <p className="mini-cap">8 ad spaces per side — 16 total (front + back)</p>
-                <div className="mailer-stats">
-                  <div className="ms">
-                    <b>10,000</b>
-                    <span>local homes</span>
-                  </div>
-                  <div className="ms">
-                    <b>up to 16</b>
-                    <span>ad spaces</span>
-                  </div>
-                  <div className="ms">
-                    <b>~8¢</b>
-                    <span>per home</span>
-                  </div>
-                </div>
-                <p className="mailer-best">
-                  <b>Best for:</b> maximum visibility, established businesses, and the lowest cost per home.
-                </p>
-                <ul className="check-list">
-                  <li><span>16 total ad spaces (8 per side of the 9×12 card)</span></li>
-                  <li><span>Mails to up to 10,000 local homes</span></li>
-                  <li><span>One business per industry per mailing</span></li>
-                  <li><span>Custom ad design, print &amp; postage included</span></li>
-                  <li><span>No long-term contracts</span></li>
-                </ul>
-                <p className="mailer-best" style={{ marginTop: "auto" }}>
-                  <b>Reach:</b> up to 10,000 local homes for less than the cost of a stamp per home.
-                </p>
-                <a className="btn" href="#pricing-reveal">See Pricing</a>
+              <div className="ct-row" role="row">
+                <span role="rowheader">Size</span>
+                <span role="cell">6.5&Prime; × 12&Prime;</span>
+                <span role="cell" className="ct-best">9&Prime; × 12&Prime;</span>
               </div>
+              <div className="ct-row" role="row">
+                <span role="rowheader">Reach</span>
+                <span role="cell">~2,500 mailboxes</span>
+                <span role="cell" className="ct-best">up to 10,000 mailboxes</span>
+              </div>
+              <div className="ct-row" role="row">
+                <span role="rowheader">Ad spaces</span>
+                <span role="cell">16 (8 per side)</span>
+                <span role="cell" className="ct-best">16 (8 per side)</span>
+              </div>
+              <div className="ct-row" role="row">
+                <span role="rowheader">Exclusivity</span>
+                <span role="cell">1 per category</span>
+                <span role="cell" className="ct-best">1 per category</span>
+              </div>
+            </div>
 
+            <p className="compare-note">
+              Both shared mailers — design, print &amp; postage included, no long-term contracts.
+            </p>
+            <div className="compare-cta">
+              <a className="btn" href="#pricing-reveal">See Pricing</a>
             </div>
           </div>
         </div>
