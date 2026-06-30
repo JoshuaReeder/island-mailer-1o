@@ -66,14 +66,14 @@ export default function AreaPage({ area }: { area: AreaData }) {
       <section className="bg-navy2 shimmer">
         <div className="container narrow">
           <div className="sec-divider">◆</div>
-          <h2>What&apos;s Included - For Just $800</h2>
+          <h2>What&apos;s Included</h2>
           <div className="sec-body">
             <div className="price-card">
               <p className="price-head">One flat rate. Everything handled.</p>
               {!isExpansion && (
                 <p className="fine" style={{ marginBottom: "var(--gap-s)" }}>
-                  Available as the <b>Signature Mailer</b> (9×12, up to {homesText} homes, $800/space) or the{" "}
-                  <b>Hyper-Local Mailer</b> (6.5×12, ~2,500 homes, $250/space).{" "}
+                  Available as the <b>Signature Mailer</b> (9×12, up to {homesText} homes) or the{" "}
+                  <b>Hyper-Local Mailer</b> (6.5×12, ~2,500 homes) — for a fraction of a solo mailer campaign.{" "}
                   <a href="/products" style={{ color: "var(--gold-bright)", fontWeight: 700, textDecoration: "none" }}>Compare both →</a>
                 </p>
               )}

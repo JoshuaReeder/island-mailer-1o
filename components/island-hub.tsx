@@ -103,7 +103,7 @@ export default function IslandHub({ config, areas, map }: IslandHubProps) {
           <div className="sec-body">
             <div className="cta-card">
               <p className="big">
-                Every area: <b>16 ad spaces, one business per industry, $800 flat</b> — design, print &amp; postage
+                Every area: <b>16 ad spaces, one business per industry</b> — design, print &amp; postage
                 included.
               </p>
               <a className="btn" href={waitlistHref}>{heroBtn} →</a>

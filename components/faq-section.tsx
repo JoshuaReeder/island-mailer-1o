@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "How much does it cost?",
     answer:
-      "Island Mailer uses a simple flat-rate price of $800 per ad spot for each mailer campaign.\nThis gives your business exposure to thousands of local households without the cost of mailing your own individual postcard.",
+      "Island Mailer uses a simple flat per-ad-space rate for each mailer campaign — a fraction of what a solo mailer costs once you add design, print and postage. Ask us for the current rate card.\nThis gives your business exposure to thousands of local households without the cost of mailing your own individual postcard.",
   },
   {
     question: "What is included?",

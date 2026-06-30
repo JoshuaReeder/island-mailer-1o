@@ -21,6 +21,25 @@ const AD_TILES: { icon: string; cat: string; offer: string }[] = [
   { icon: "🌮", cat: "Food Truck", offer: "Free side" },
 ]
 
+const CATEGORIES: { icon: string; label: string }[] = [
+  { icon: "🍕", label: "Pizza" },
+  { icon: "🍦", label: "Ice Cream" },
+  { icon: "☕", label: "Coffee" },
+  { icon: "🥐", label: "Café" },
+  { icon: "🍰", label: "Bakery" },
+  { icon: "🍣", label: "Sushi Bar" },
+  { icon: "🍹", label: "Happy Hour" },
+  { icon: "🌿", label: "Health" },
+  { icon: "💆", label: "Spa" },
+  { icon: "✂️", label: "Salon" },
+  { icon: "🏋️", label: "Fitness" },
+  { icon: "🛍️", label: "Boutique" },
+  { icon: "🔧", label: "Home Services" },
+  { icon: "🚗", label: "Auto" },
+  { icon: "🤿", label: "Activities" },
+  { icon: "🐾", label: "Pet" },
+]
+
 export default function HomeResident() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -107,7 +126,7 @@ export default function HomeResident() {
         <div className="bgov" />
         <div className="container">
           <div className="optin reveal">
-            <span className="im-pill">Our first mailer drops this July</span>
+            <span className="im-pill">July mailer coming up next</span>
             <h2>Be first to the local deals</h2>
             <p className="lead">
               Join the Island Mailer list and you&apos;ll be the first to know the moment a new mailer lands in your
@@ -125,15 +144,22 @@ export default function HomeResident() {
           <div className="im-txt reveal">
             <div className="sec-divider">◆</div>
             <h2>What is Island Mailer?</h2>
-            <p>
+            <p className="cat-lead">
               It&apos;s your island&apos;s community mailer — a big, beautiful postcard packed with exclusive offers from
               local businesses, delivered right to your mailbox. Scan the QR code and it all comes to life on your phone:
               browse every offer, save your favorites, and redeem them around the islands.
             </p>
-            <p className="genres">
-              Think: your favorite <b>local ice cream shop, pizza joint, café, boutique, home services, salon, food
-              truck</b> — and more.
+            <p className="cat-lead" style={{ marginTop: 22 }}>
+              Think of all your favorite local spots — in one place:
             </p>
+          </div>
+          <div className="cat-grid reveal">
+            {CATEGORIES.map((c) => (
+              <div className="cat-chip" key={c.label}>
+                <span className="cat-ic" aria-hidden>{c.icon}</span>
+                <span className="cat-lbl">{c.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
