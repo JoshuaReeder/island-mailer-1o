@@ -307,6 +307,88 @@ export function islandHubJsonLd(opts: {
   }
 }
 
+export function productsJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      ORGANIZATION,
+      {
+        "@type": ["Service", "Product"],
+        "@id": `${BASE}/products#service`,
+        name: "Island Mailer Community Mailers",
+        description:
+          "Two shared community mailers in Hawaii: the 9×12 Signature Mailer reaches up to 10,000 local homes and the 6.5×12 Hyper-Local Mailer reaches ~2,500 homes. Design, print & postage included, one business per category.",
+        url: `${BASE}/products`,
+        serviceType: "Local direct mail advertising",
+        provider: { "@id": `${BASE}/#organization` },
+        areaServed: areaServedMaui,
+        offers: [
+          {
+            "@type": "Offer",
+            name: "Signature Mailer (9×12)",
+            description: "9×12 shared postcard mailed to up to 10,000 local homes — one ad space.",
+            price: "800",
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+          },
+          {
+            "@type": "Offer",
+            name: "Hyper-Local Mailer (6.5×12)",
+            description: "6.5×12 shared postcard mailed to ~2,500 nearby homes — one ad space.",
+            price: "250",
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+          },
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${BASE}/products#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+          { "@type": "ListItem", position: 2, name: "Products & Services", item: `${BASE}/products` },
+        ],
+      },
+    ],
+  }
+}
+
+export function localRepsJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      ORGANIZATION,
+      {
+        "@type": "JobPosting",
+        "@id": `${BASE}/local-reps#role`,
+        title: "Local Island Mailer Rep",
+        description:
+          "Be the friendly local face of Island Mailer in your Hawaii town — introduce Island Mailer to local business owners, help them get featured and supported, and be the local point of contact. A compensated, people-first role.",
+        employmentType: "CONTRACTOR",
+        hiringOrganization: { "@id": `${BASE}/#organization` },
+        jobLocationType: "TELECOMMUTE",
+        applicantLocationRequirements: { "@type": "AdministrativeArea", name: "Hawaii" },
+        url: `${BASE}/local-reps`,
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${BASE}/local-reps#webpage`,
+        name: "Become a Local Island Mailer Rep",
+        url: `${BASE}/local-reps`,
+        isPartOf: { "@type": "WebSite", name: "Island Mailer", url: BASE },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${BASE}/local-reps#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+          { "@type": "ListItem", position: 2, name: "Local Reps", item: `${BASE}/local-reps` },
+        ],
+      },
+    ],
+  }
+}
+
 export function jsonLdScript(data: unknown) {
   return { __html: JSON.stringify(data) }
 }
