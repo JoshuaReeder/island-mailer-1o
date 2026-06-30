@@ -2,17 +2,27 @@ import type { Metadata } from "next"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import AmbassadorForm from "@/components/ambassador-form"
+import { localRepsJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
-/* Warm, light, community-feel Maui scenes (Wikimedia, public). */
-const HERO_IMG = "https://commons.wikimedia.org/wiki/Special:FilePath/Paia_Maui.jpg?width=1800"
-const SUPPORT_IMG = "https://commons.wikimedia.org/wiki/Special:FilePath/Makawao_town_Maui.jpg?width=1600"
+/* Maui scenes proven to render live on the site (same Wikimedia Special:FilePath
+   URLs used on the home page + products page — Iao Valley + Kihei coast).
+   The earlier Paia/Makawao filenames 404'd, so we reuse the known-good ones. */
+const HERO_IMG = "https://commons.wikimedia.org/wiki/Special:FilePath/Iao_Valley_panorama_cropped.jpg?width=2200"
+const SUPPORT_IMG = "https://commons.wikimedia.org/wiki/Special:FilePath/Kihei_coast.jpg?width=1800"
 
 export const metadata: Metadata = {
   title: "Become a Local Island Mailer Rep | Island Mailer",
   description:
     "Be the friendly local face of Island Mailer in your area — build genuine rapport with local business owners, help them get featured and supported, and represent your town. A compensated, people-first role. Apply today.",
   alternates: { canonical: "/local-reps" },
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com/local-reps",
+    title: "Become a Local Island Mailer Rep | Island Mailer",
+    description:
+      "Be the friendly local face of Island Mailer in your town — help local businesses get featured and supported. A compensated, people-first role.",
+  },
 }
 
 const WHAT_REPS_DO = [
@@ -44,6 +54,7 @@ const GREAT_FIT = [
 export default function LocalRepsPage() {
   return (
     <div className="min-h-screen home-resident reps-page" style={{ background: "var(--navy)" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(localRepsJsonLd())} />
       {/* HERO — warm, light, community feel */}
       <div className="hero reps-hero" id="top">
         <div className="bgi" style={{ position: "absolute", inset: 0, backgroundImage: `url('${HERO_IMG}')`, backgroundSize: "cover", backgroundPosition: "center", zIndex: 0 }} />
