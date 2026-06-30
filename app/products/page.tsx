@@ -75,7 +75,7 @@ export default function ProductsPage() {
                   <span className="amt">$250</span>
                   <span className="per">per ad space, per mailing</span>
                 </div>
-                <a className="btn" href="/#contact">Check Availability</a>
+                <a className="btn" href="/advertise#contact">Check Availability</a>
               </div>
 
               <div className="mailer-card flagship">
@@ -116,7 +116,7 @@ export default function ProductsPage() {
                   <span className="amt">$800</span>
                   <span className="per">per ad space, per mailing</span>
                 </div>
-                <a className="btn" href="/#contact">Check Availability</a>
+                <a className="btn" href="/advertise#contact">Check Availability</a>
               </div>
 
             </div>
@@ -148,7 +148,7 @@ export default function ProductsPage() {
                 <span>Design &amp; print</span>
                 <span>Branded materials</span>
               </div>
-              <a className="btn" href="/#contact" style={{ marginTop: "var(--gap-s)" }}>
+              <a className="btn" href="/advertise#contact" style={{ marginTop: "var(--gap-s)" }}>
                 Request a Quote
               </a>
             </div>
@@ -167,7 +167,7 @@ export default function ProductsPage() {
                 Tell us your business and the area you want to reach — we&apos;ll recommend the best fit and check
                 availability for your industry.
               </p>
-              <a className="btn" href="/#contact">Check Availability</a>
+              <a className="btn" href="/advertise#contact">Check Availability</a>
               <div className="contact-lines">
                 <p>
                   Or call/text us: <a href="tel:8088086245">(808) 808-6245</a>
