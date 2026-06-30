@@ -17,9 +17,9 @@ export async function POST(request: Request) {
       notes,
     } = body
 
-    if (!name || !businessName || !phone || !email || !businessType || !industryCategory || !mailings) {
+    if (!name || !businessName || !email) {
       return NextResponse.json(
-        { success: false, error: "Please fill in all required fields." },
+        { success: false, error: "Please fill in your name, business name, and email." },
         { status: 400 }
       )
     }
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
         from: "Island Mailer <aloha@mail.islandmailer.com>",
         to: notificationRecipients,
         replyTo: email,
-        subject: `🔔 New Lead: ${businessName} — ${industryCategory}`,
+        subject: `🔔 New Lead: ${businessName}${industryCategory ? " — " + industryCategory : ""}`,
         html: `<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
