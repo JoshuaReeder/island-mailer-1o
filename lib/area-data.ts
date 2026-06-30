@@ -42,6 +42,7 @@ const LINKS = {
 export const areas: Record<string, AreaData> = {
   "north-shore": {
     slug: "north-shore-maui-advertising",
+    homesEstimate: 9471,
     title: "North Shore Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Reach up to 10,000 North Shore Maui homes with a premium 9×12 postcard. Island Mailer puts your Pā'ia or Haʻikū business in front of local residents - design, print & postage included for $800.",
@@ -81,6 +82,7 @@ export const areas: Record<string, AreaData> = {
   },
   central: {
     slug: "central-maui-advertising",
+    homesEstimate: 10000,
     title: "Central Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Advertise your Central Maui business to thousands of local homes. Island Mailer delivers a premium 9×12 postcard to Kahului and Wailuku residents - $800 flat, design and postage included.",
@@ -123,6 +125,7 @@ export const areas: Record<string, AreaData> = {
   },
   west: {
     slug: "west-maui-advertising",
+    homesEstimate: 8000,
     title: "West Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Advertise your West Maui business to local residents in Lahaina, Kāʻanapali, and Nāpili. Island Mailer's 9×12 postcard reaches up to 10,000 homes - $800 flat, everything included.",
@@ -165,6 +168,7 @@ export const areas: Record<string, AreaData> = {
   },
   south: {
     slug: "south-maui-advertising",
+    homesEstimate: 9000,
     title: "South Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Reach Kīhei, Wailea, and Mākena residents with your ad on a premium 9×12 postcard. Island Mailer delivers direct mail advertising for South Maui businesses - $800 flat, everything included.",
@@ -207,6 +211,7 @@ export const areas: Record<string, AreaData> = {
   },
   upcountry: {
     slug: "upcountry-maui-advertising",
+    homesEstimate: 7000,
     title: "Upcountry Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Reach Makawao, Kula, and Pukalani residents with Island Mailer's premium 9×12 postcard. Local advertising for Upcountry Maui businesses - $800 flat, design, print & postage included.",
