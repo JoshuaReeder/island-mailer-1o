@@ -166,7 +166,7 @@ export default function AreaPage({ area }: { area: AreaData }) {
             {area.crossLinks.map((link) => (
               <a key={link.href} href={link.href}>{link.label}</a>
             ))}
-            <a href="/#pricing">Pricing &amp; Details</a>
+            <a href="/advertise#pricing">Pricing &amp; Details</a>
             {isExpansion && <a href={`/waitlist?island=${encodeURIComponent(islandKey)}`}>Waitlist</a>}
           </div>
           <p className="map-note" style={{ marginTop: "var(--gap-s)" }}>
