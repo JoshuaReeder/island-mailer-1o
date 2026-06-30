@@ -113,11 +113,12 @@ export default function HomeResident() {
             <span className="tag-fix" />
           </div>
           <h1>
-            <span className="accent">Hawaii&apos;s</span> best local deals
-            <span className="h1b">delivered to your mailbox and inbox</span>
+            <span className="accent">Hawaii&apos;s Largest</span>
+            <span className="h1line2">Exclusive Offers</span>
           </h1>
+          <p className="hero-eyebrow">— Flowing right to your mailbox —</p>
           <p className="subhead">
-            Exclusive offers from the local businesses you love — in your mailbox each month, and saved right on your
+            Best Local Deals from the local businesses you love — in your mailbox each month, and saved right on your
             phone. Discover new spots, save money, and support local.
           </p>
           <div className="ctas">
@@ -137,7 +138,7 @@ export default function HomeResident() {
       {/* ================= EMAIL OPT-IN (light, airy — rests the eye after the dark video) ================= */}
       <section className="lightband" id="optin">
         <div className="container">
-          <div className="optin light reveal">
+          <div className="optin dark reveal">
             <span className="im-pill">July mailer coming up next</span>
             <h2>Be first to the local deals</h2>
             <p className="lead">
