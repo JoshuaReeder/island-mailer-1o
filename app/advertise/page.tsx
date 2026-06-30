@@ -6,7 +6,7 @@ import { homeJsonLd, jsonLdScript } from "@/lib/jsonld"
 export const metadata: Metadata = {
   title: "Advertise on Island Mailer — Get Your Business Featured | Hawaii Direct Mail",
   description:
-    "Get your business featured on Island Mailer's premium 9×12 postcard, mailed to up to 10,000 local Hawaii homes. One business per industry. Design, print & postage included for $800.",
+    "Get your business featured on Island Mailer's premium 9×12 postcard, mailed to up to 10,000 local Hawaii homes. One business per industry. Design, print & postage all included — a fraction of a solo direct-mail campaign.",
   alternates: { canonical: "/advertise" },
   openGraph: {
     type: "website",
