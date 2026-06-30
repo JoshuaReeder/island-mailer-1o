@@ -75,7 +75,7 @@ export default function ResourcesPage() {
                 Island Mailer reaches up to <b>10,000 local Maui homes</b> for $800 flat — design, print &amp;
                 postage included.
               </p>
-              <a className="btn" href="/#contact">Check Availability →</a>
+              <a className="btn" href="/advertise#contact">Check Availability →</a>
               <div className="contact-lines">
                 <p>
                   Not in an active area yet?{" "}
