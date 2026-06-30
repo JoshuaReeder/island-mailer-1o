@@ -56,6 +56,30 @@ const localBusinessService = () => ({
   },
 })
 
+/* Resident-first home: Organization + WebSite (with search action). */
+export function residentHomeJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      ORGANIZATION,
+      {
+        "@type": "WebSite",
+        "@id": `${BASE}/#website`,
+        url: BASE,
+        name: "Island Mailer",
+        description:
+          "Hawaii's best local deals — delivered to your mailbox and inbox. Browse and save offers from locally loved businesses, then redeem them around the islands.",
+        publisher: { "@id": `${BASE}/#organization` },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${BASE}/local-offers?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+    ],
+  }
+}
+
 export function homeJsonLd(faq: { q: string; a: string[] }[]) {
   return {
     "@context": "https://schema.org",
