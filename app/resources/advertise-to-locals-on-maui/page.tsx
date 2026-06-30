@@ -16,7 +16,7 @@ const meta: ArticleMeta = {
     },
     {
       q: "How much should a small Maui business spend on advertising?",
-      a: "There's no single number, but the goal is consistency you can sustain. A shared direct-mail postcard like Island Mailer is $800 flat for up to 10,000 local homes, which lets you commit to repeat exposure without a five-figure ad budget.",
+      a: "There's no single number, but the goal is consistency you can sustain. A shared direct-mail postcard like Island Mailer is one flat per-ad-space rate for up to 10,000 local homes, which lets you commit to repeat exposure without a five-figure ad budget.",
     },
     {
       q: "Why is reaching locals harder on Maui than on the mainland?",
@@ -116,7 +116,7 @@ export default function Page() {
       <p>
         Island Mailer was built specifically for this problem. We put your business on a premium 9×12
         shared postcard mailed to up to 10,000 local Maui homes, with design, printing, and postage
-        included for $800 flat — and only one business per industry, so your category is yours alone. It's
+        included — and only one business per industry, so your category is yours alone. It's
         resident-targeted, it's affordable enough to run consistently, and it's impossible to ignore in the
         mailbox.
       </p>
