@@ -65,6 +65,44 @@ export async function POST(request: Request) {
 </body></html>`,
       })
 
+      // Friendly confirmation to the applicant
+      try {
+        await resend.emails.send({
+          from: "Island Mailer <aloha@mail.islandmailer.com>",
+          to: [email],
+          replyTo: "aloha@islandmailer.com",
+          subject: `Mahalo for your interest! 🤝 — Island Mailer`,
+          html: `<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#0f1923;font-family:'Helvetica Neue',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0f1923;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr><td style="background:linear-gradient(135deg,#1F2735 0%,#2a3547 100%);border-radius:16px 16px 0 0;padding:40px 32px;text-align:center;border-bottom:2px solid #A37C4F;">
+          <p style="margin:0 0 4px;color:#A37C4F;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;">Island Mailer</p>
+          <h1 style="margin:12px 0 8px;color:#F5F4EF;font-size:28px;font-weight:700;">Mahalo, ${name}! 🤝</h1>
+          <p style="margin:0;color:#D5C1AA;font-size:16px;">We got your Local Rep interest.</p>
+        </td></tr>
+        <tr><td style="background:#A37C4F;padding:14px 32px;text-align:center;">
+          <p style="margin:0;color:#1F2735;font-size:14px;font-weight:700;letter-spacing:1px;">Support Local. Live Hawaii.</p>
+        </td></tr>
+        <tr><td style="background:#1F2735;padding:36px 32px;">
+          <p style="margin:0 0 20px;color:#F5F4EF;font-size:16px;line-height:1.6;">Thanks for raising your hand to represent Island Mailer in <strong style="color:#A37C4F;">${areaText}</strong>. We&apos;ll reach out with details if it&apos;s a good fit.</p>
+          <p style="margin:0;color:#D5C1AA;font-size:14px;line-height:1.6;">Questions in the meantime? Just reply, or reach us at <a href="mailto:aloha@islandmailer.com" style="color:#A37C4F;">aloha@islandmailer.com</a>.</p>
+        </td></tr>
+        <tr><td style="background:#0f1923;border-radius:0 0 16px 16px;padding:24px;text-align:center;border-top:1px solid rgba(163,124,79,0.2);">
+          <p style="margin:0 0 4px;color:#F5F4EF;font-size:14px;font-weight:600;">Island Mailer</p>
+          <p style="margin:0;"><a href="https://islandmailer.com" style="color:rgba(163,124,79,0.5);font-size:11px;text-decoration:none;">islandmailer.com</a></p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`,
+        })
+      } catch (err) {
+        console.error("[island-mailer] Ambassador confirmation failed (non-fatal):", err)
+      }
+
       console.log("[island-mailer] Ambassador interest email sent for:", name)
     }
 
