@@ -10,7 +10,7 @@ export const FAQ_ITEMS: { q: string; a: string[] }[] = [
   {
     q: "How much does it cost?",
     a: [
-      "Island Mailer uses a simple flat-rate price of $800 per ad spot for each mailer campaign.",
+      "Island Mailer uses a simple flat per-ad-space rate for each mailer campaign — a fraction of what a solo mailer costs. Reach out for the current rate card.",
       "This gives your business exposure to thousands of local households without the cost of mailing your own individual postcard.",
     ],
   },

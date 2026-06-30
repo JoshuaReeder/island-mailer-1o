@@ -39,7 +39,7 @@ const localBusinessService = () => ({
   "@id": `${BASE}/#service`,
   name: "Island Mailer",
   description:
-    "Island Mailer puts local businesses on a premium 9×12 shared postcard mailed to up to 10,000 Maui homes. One business per industry. Design, print & postage included for $800 flat.",
+    "Island Mailer puts local businesses on a premium 9×12 shared postcard mailed to up to 10,000 Maui homes. One business per industry. Design, print & postage included — a fraction of a solo direct-mail campaign.",
   url: BASE,
   telephone: "+1-808-808-6245",
   email: "aloha@islandmailer.com",
@@ -109,7 +109,7 @@ export function mauiJsonLd() {
         "@id": `${BASE}/maui#service`,
         name: "Island Mailer — Maui Direct Mail Advertising",
         description:
-          "Local direct-mail advertising across all of Maui: North Shore, Central, West Side, South Side, and Upcountry. Premium 9×12 shared postcard, $800 flat per ad space.",
+          "Local direct-mail advertising across all of Maui: North Shore, Central, West Side, South Side, and Upcountry. Premium 9×12 shared postcard, one flat per-ad-space rate.",
         url: `${BASE}/maui`,
         serviceType: "Local direct mail advertising",
         provider: { "@id": `${BASE}/#organization` },
