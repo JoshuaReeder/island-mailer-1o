@@ -66,7 +66,7 @@ export default function MauiPage() {
           Island Mailer divides Maui into five local market areas so your ad lands in the neighborhoods that matter
           most to your business. Pick your home area — or reach more than one.
         </p>
-        <a className="btn" href="/#contact">Check Availability</a>
+        <a className="btn" href="/advertise#contact">Check Availability</a>
       </div>
 
       {/* ================= ISLAND MAP ================= */}
@@ -195,7 +195,7 @@ export default function MauiPage() {
                 </div>
               </a>
             ))}
-            <a className="area-card" href="/#contact">
+            <a className="area-card" href="/advertise#contact">
               <div
                 className="ac-img"
                 style={{
@@ -232,7 +232,7 @@ export default function MauiPage() {
                 Every area: <b>16 ad spaces, one business per industry, $800 flat</b> — design, print &amp; postage
                 included.
               </p>
-              <a className="btn" href="/#contact">Check Availability →</a>
+              <a className="btn" href="/advertise#contact">Check Availability →</a>
               <div className="contact-lines">
                 <p>Or call/text us: <a href="tel:8088086245">(808) 808-6245</a></p>
                 <p>Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></p>
