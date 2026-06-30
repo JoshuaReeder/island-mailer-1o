@@ -66,7 +66,9 @@ export default function FloatingMenu() {
           ✕
         </button>
         <div className="nav-inner">
-          <img className="nav-logo" src={REVERSED_LOGO} alt="Island Mailer" />
+          <a className="nav-logo-link" href="/" onClick={close} aria-label="Go to Island Mailer home">
+            <img className="nav-logo" src={REVERSED_LOGO} alt="Island Mailer" />
+          </a>
           {GROUPS.map((g) => (
             <div className="nav-group" key={g.label}>
               <div className="nav-label">{g.label}</div>
