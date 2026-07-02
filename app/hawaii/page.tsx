@@ -8,6 +8,14 @@ const areas = config.areaSlugs.map((s) => bigIslandAreas[s])
 export const metadata: Metadata = {
   title: config.hubTitle,
   description: config.hubMetaDesc,
+  alternates: { canonical: "/hawaii" },
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com/hawaii",
+    title: config.hubTitle,
+    description: config.hubMetaDesc,
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
+  },
 }
 
 const BigIslandMap = (
