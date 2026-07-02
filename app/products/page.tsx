@@ -46,20 +46,41 @@ export default function ProductsPage() {
           </p>
 
           <div className="compare-wrap">
-            {/* proportional size drawings */}
-            <div className="compare-visual" aria-hidden="true">
-              <figure className="cmp-card cmp-hl">
-                <div className="cmp-paper hl">
-                  <span className="cmp-dims">6.5&Prime; × 12&Prime;</span>
+            {/* v18: big horizontal mailer showcase — drawn to true scale (both a full 12″ wide) */}
+            <p className="msh-lead">
+              These aren&apos;t coupons in an envelope. Both mailers are a <b>full 12 inches wide</b> — a giant,
+              premium card that fills the mailbox and can&apos;t be missed. That dashed outline? That&apos;s a
+              standard postcard, <b>for scale</b>.
+            </p>
+            <div className="mailer-showcase">
+              <figure className="msh-item is-sig">
+                <span className="msh-flag">Most reach</span>
+                <div className="msh-paper sig">
+                  <span className="msh-eyebrow">A full foot wide</span>
+                  <span className="msh-dims">
+                    12&Prime; × 9&Prime;
+                    <small>4&#215; the size of a standard postcard</small>
+                  </span>
+                  <span className="msh-ghost">standard postcard<br />6&Prime; × 4&Prime;</span>
                 </div>
-                <figcaption>Hyper-Local</figcaption>
+                <figcaption className="msh-caption">
+                  <b>Signature</b>
+                  <span>up to 10,000 local homes</span>
+                </figcaption>
               </figure>
-              <figure className="cmp-card cmp-sig">
-                <span className="cmp-flag">Most reach</span>
-                <div className="cmp-paper sig">
-                  <span className="cmp-dims">9&Prime; × 12&Prime;</span>
+              <figure className="msh-item">
+                <div className="msh-paper hl">
+                  <span className="msh-eyebrow">Same width, neighborhood focus</span>
+                  <span className="msh-dims">
+                    12&Prime; × 6.5&Prime;
+                    <small>~3&#215; the size of a standard postcard</small>
+                  </span>
+                  <span className="msh-ghost">standard postcard<br />6&Prime; × 4&Prime;</span>
                 </div>
-                <figcaption>Signature</figcaption>
+                <figcaption className="msh-caption">
+                  <b>Hyper-Local</b>
+                  <span>~2,500 nearby homes</span>
+                </figcaption>
               </figure>
             </div>
 
@@ -72,8 +93,8 @@ export default function ProductsPage() {
               </div>
               <div className="ct-row" role="row">
                 <span role="rowheader">Size</span>
-                <span role="cell">6.5&Prime; × 12&Prime;</span>
-                <span role="cell" className="ct-best">9&Prime; × 12&Prime;</span>
+                <span role="cell">12&Prime; × 6.5&Prime;</span>
+                <span role="cell" className="ct-best">12&Prime; × 9&Prime;</span>
               </div>
               <div className="ct-row" role="row">
                 <span role="rowheader">Reach</span>
