@@ -1,7 +1,7 @@
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import AreaLeadForm from "@/components/area-lead-form"
-import type { AreaData } from "@/lib/area-data"
+import { spotStatus, type AreaData } from "@/lib/area-data"
 import { areaJsonLd, expansionAreaJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export default function AreaPage({ area }: { area: AreaData }) {
@@ -21,10 +21,15 @@ export default function AreaPage({ area }: { area: AreaData }) {
   const homes = area.homesEstimate ?? 10000
   const homesText = homes.toLocaleString("en-US")
 
-  // B1 scarcity — "X of 16 ad spaces open" (only shown for live Maui areas with data)
-  const spotsTotal = area.spotsTotal ?? 0
-  const spotsOpen = Math.max(0, spotsTotal - (area.spotsReserved ?? 0))
-  const showSpots = !isExpansion && spotsTotal > 0
+  // B1 scarcity (v18) — status word only, never counts
+  const status = spotStatus(area)
+  const showSpots = !isExpansion && (area.spotsTotal ?? 0) > 0
+  const spotsLine =
+    status === "full"
+      ? `The next ${area.tag} mailer is full — join the waitlist and we'll hold your category for the next drop`
+      : status === "almost-full"
+        ? `Almost full — just a few categories left for the next ${area.tag} mailer. One business per category, exclusively yours.`
+        : `Ad space is available for the next ${area.tag} mailer — one business per category, exclusively yours`
 
   const breadcrumb = isExpansion ? (
     <p className="crumb">
@@ -150,7 +155,7 @@ export default function AreaPage({ area }: { area: AreaData }) {
                   letterSpacing: "0.04em",
                 }}
               >
-                {spotsOpen} of {spotsTotal} ad spaces open for the next {area.tag} mailer — one business per category
+                {spotsLine}
               </span>
             </p>
           )}
