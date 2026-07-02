@@ -28,6 +28,14 @@ const meta: ArticleMeta = {
 export const metadata: Metadata = {
   title: `${meta.headline} | Island Mailer`,
   description: meta.description,
+  alternates: { canonical: `/resources/${meta.slug}` },
+  openGraph: {
+    type: "article",
+    url: `https://islandmailer.com/resources/${meta.slug}`,
+    title: meta.headline,
+    description: meta.description,
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
+  },
 }
 
 export default function Page() {

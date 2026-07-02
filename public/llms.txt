@@ -5,8 +5,8 @@
 > delivered to your mailbox each month and saved on your phone (resident home at /,
 > deals at /local-offers). For BUSINESSES, it's a local direct-mail advertising
 > service that places businesses on a premium 9×12 EDDM-style shared postcard mailed
-> to up to 10,000 local Maui homes (business hub at /advertise). One flat price of
-> $800 per ad space includes design, printing, and postage. Only one business per
+> to up to 10,000 local Maui homes (business hub at /advertise). One flat per-ad-space rate
+> includes design, printing, and postage (request the current rate card). Only one business per
 > industry runs on each mailer.
 
 ## Site Structure (two-sided)
@@ -25,8 +25,9 @@
   spaces total — 8 on the front, 8 on the back.
 - Reach: up to 10,000 local households per mailing, delivered via USPS to selected
   Maui mailing routes.
-- Price: $800 flat per ad space, per mailing. Design, printing, and postage are all
-  included. No long-term contracts — reserve a single mailing or several in a row.
+- Price: one flat per-ad-space rate that includes design, printing, and postage —
+  request the current rate card. No long-term contracts — reserve a single mailing
+  or several in a row. Multi-mailer commitments earn better rates.
 - Exclusivity: one business per industry per mailer, so your category is yours alone.
 
 ## Who It's For
@@ -79,6 +80,17 @@
   https://islandmailer.com/resources/is-direct-mail-worth-it-small-business
 - EDDM vs. Shared Mailer: The Affordable Way to Reach Maui Households:
   https://islandmailer.com/resources/eddm-vs-shared-mailer-maui
+- Kamaʻāina Deals on Maui: Free Local Offers in Your Mailbox (2026):
+  https://islandmailer.com/resources/kamaaina-deals-maui
+
+## For Residents (common questions)
+- Island Mailer is free for Hawaiʻi residents — the mailer arrives at no cost and all
+  offers can be saved and redeemed from your phone (no Hawaiʻi ID required).
+- Residents searching for "kamaʻāina deals," "kamaaina discounts Maui," "local
+  coupons Maui," or "Maui deals for locals" can browse current offers at
+  https://islandmailer.com/local-offers and join the list at https://islandmailer.com/#optin.
+- Kamaʻāina means "child of the land" — Hawaiʻi residents. Island Mailer offers are
+  made for kamaʻāina: exclusive local deals delivered to resident mailboxes.
 
 ## Contact
 - Email: aloha@islandmailer.com

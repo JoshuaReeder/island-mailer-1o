@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     title: "Advertise on Island Mailer — Get Your Business Featured",
     description:
       "Reach up to 10,000 local Hawaii homes with a premium 9×12 postcard mailer. One local business per industry. Design, print & postage included.",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
   },
 }
 

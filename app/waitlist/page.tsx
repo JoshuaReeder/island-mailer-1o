@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   title: "Join the Waitlist | Island Mailer — Support Local. Live Hawaii.",
   description:
     "Island Mailer is expanding across Maui and the Hawaiian Islands. Join the waitlist to get notified first, lock in launch pricing, and help bring affordable local direct-mail advertising to your town.",
+  alternates: { canonical: "/waitlist" },
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com/waitlist",
+    title: "Join the Waitlist | Island Mailer — Support Local. Live Hawaii.",
+    description:
+      "Island Mailer is expanding across Maui and the Hawaiian Islands. Join the waitlist to get notified first, lock in launch pricing, and help bring affordable local direct-mail advertising to your town.",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
+  },
 }
 
 const WAITLIST_JSONLD = {

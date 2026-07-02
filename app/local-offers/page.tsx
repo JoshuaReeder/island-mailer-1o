@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     title: "Local Offers | Island Mailer — Support Local. Live Hawaii.",
     description:
       "Browse and save the local deals from the businesses on your Island Mailer postcard, then redeem them around Maui.",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
   },
 }
 

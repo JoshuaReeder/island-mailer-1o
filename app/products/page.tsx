@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Products & Services | Island Mailer — Local Direct Mail in Hawaii",
     description:
       "Two community mailers: the 9×12 Signature (up to 10,000 homes) and the 6.5×12 Hyper-Local (~2,500 homes). Design, print & postage included, one business per category.",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
   },
 }
 

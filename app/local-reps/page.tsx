@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     title: "Become a Local Island Mailer Rep | Island Mailer",
     description:
       "Be the friendly local face of Island Mailer in your town — help local businesses get featured and supported. A compensated, people-first role.",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
   },
 }
 

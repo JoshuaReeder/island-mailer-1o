@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   title: "Maui Advertising Areas | Island Mailer — Support Local. Live Hawaii.",
   description:
     "Island Mailer serves all of Maui: North Shore, Central, West Side, South Side, and Upcountry. See the island map, explore each area, and reserve your 9×12 postcard ad space.",
+  alternates: { canonical: "/maui" },
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com/maui",
+    title: "Maui Advertising Areas | Island Mailer — Support Local. Live Hawaii.",
+    description:
+      "Island Mailer serves all of Maui: North Shore, Central, West Side, South Side, and Upcountry. See the island map, explore each area, and reserve your 9×12 postcard ad space.",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
+  },
 }
 
 const AREA_CARDS = [

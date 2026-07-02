@@ -27,6 +27,7 @@ const ORGANIZATION = {
   email: "aloha@islandmailer.com",
   telephone: "+1-808-808-6245",
   slogan: "Support Local. Live Hawaii.",
+  sameAs: ["https://www.instagram.com/islandmailer"],
   logo: {
     "@type": "ImageObject",
     url: `${BASE}/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png`,
@@ -49,8 +50,6 @@ const localBusinessService = () => ({
   areaServed: areaServedMaui,
   offers: {
     "@type": "Offer",
-    price: "800",
-    priceCurrency: "USD",
     description: "One ad space on the Island Mailer 9×12 postcard — design, print & postage included.",
     availability: "https://schema.org/InStock",
   },
@@ -75,6 +74,52 @@ export function residentHomeJsonLd() {
           target: `${BASE}/local-offers?q={search_term_string}`,
           "query-input": "required name=search_term_string",
         },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${BASE}/#resident-faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is Island Mailer?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Island Mailer is your island's community mailer — a premium 9×12 postcard packed with exclusive offers from locally loved businesses, delivered free to Maui mailboxes each month. Scan the QR code to browse every offer, save your favorites, and redeem them around the island.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is Island Mailer free for residents?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes — Island Mailer is always free for residents. The mailer arrives in your mailbox at no cost, and joining the email list for early access to new offers is free too.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I redeem the local offers?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Scan the QR code on your Island Mailer postcard, browse the offers for your area, save the ones you love, and show your phone at the business to redeem.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Are these kamaʻāina deals?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Island Mailer offers are made for kamaʻāina — the people who live here. Local Maui businesses share exclusive offers delivered straight to resident mailboxes, so locals can discover trusted neighborhood spots and save money while supporting the local economy.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Which areas of Maui get the Island Mailer?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Island Mailer serves all five Maui market areas: North Shore (Pāʻia, Haʻikū), Central (Kahului, Wailuku), West Side (Lahaina, Kāʻanapali), South Side (Kīhei, Wailea), and Upcountry (Makawao, Kula, Pukalani). Kauai, Oahu, and Big Island are coming soon.",
+            },
+          },
+        ],
       },
     ],
   }
@@ -116,8 +161,6 @@ export function mauiJsonLd() {
         areaServed: areaServedMaui,
         offers: {
           "@type": "Offer",
-          price: "800",
-          priceCurrency: "USD",
           availability: "https://schema.org/InStock",
         },
       },
@@ -147,8 +190,6 @@ export function areaJsonLd(opts: {
         areaServed: { "@type": "Place", name: opts.region },
         offers: {
           "@type": "Offer",
-          price: "800",
-          priceCurrency: "USD",
           availability: "https://schema.org/InStock",
         },
       },
@@ -228,8 +269,6 @@ export function expansionAreaJsonLd(opts: {
         areaServed: { "@type": "Place", name: opts.region },
         offers: {
           "@type": "Offer",
-          price: "800",
-          priceCurrency: "USD",
           availability: "https://schema.org/PreOrder",
         },
       },
@@ -281,8 +320,6 @@ export function islandHubJsonLd(opts: {
         areaServed,
         offers: {
           "@type": "Offer",
-          price: "800",
-          priceCurrency: "USD",
           availability: "https://schema.org/PreOrder",
         },
       },
@@ -327,8 +364,6 @@ export function productsJsonLd() {
             "@type": "Offer",
             name: "Signature Mailer (9×12)",
             description: "9×12 shared postcard mailed to up to 10,000 local homes — one ad space.",
-            price: "800",
-            priceCurrency: "USD",
             availability: "https://schema.org/InStock",
           },
           {
