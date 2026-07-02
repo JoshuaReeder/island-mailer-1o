@@ -6,11 +6,9 @@ import { localRepsJsonLd, jsonLdScript } from "@/lib/jsonld"
 import RevealInit from "@/components/reveal-init"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
-/* Maui scenes proven to render live on the site (same Wikimedia Special:FilePath
-   URLs used on the home page + products page — Iao Valley + Kihei coast).
-   The earlier Paia/Makawao filenames 404'd, so we reuse the known-good ones. */
-const HERO_IMG = "https://commons.wikimedia.org/wiki/Special:FilePath/Iao_Valley_panorama_cropped.jpg?width=2200"
-const SUPPORT_IMG = "https://commons.wikimedia.org/wiki/Special:FilePath/Kihei_coast.jpg?width=1800"
+/* Self-hosted (v17) — were Wikimedia hotlinks; see PHOTO-CREDITS.md */
+const HERO_IMG = "/images/iao-valley-panorama.jpg"
+const SUPPORT_IMG = "/images/kihei-coast.jpg"
 
 export const metadata: Metadata = {
   title: "Become a Local Island Mailer Rep | Island Mailer",

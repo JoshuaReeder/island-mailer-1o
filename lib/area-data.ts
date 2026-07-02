@@ -27,6 +27,10 @@ export interface AreaData {
   islandSlug?: string
   /** Estimated households for "up to X local homes" copy. */
   homesEstimate?: number
+  /** B1 scarcity — total ad spaces per mailing (16 = 8 front + 8 back). */
+  spotsTotal?: number
+  /** B1 scarcity — spaces already reserved for the NEXT mailer. Update as spots sell. */
+  spotsReserved?: number
 }
 
 const PAIA_IMG = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-giDBybwI37gwn0qdjSDN7dZhdT7yvC.png"
@@ -43,6 +47,8 @@ export const areas: Record<string, AreaData> = {
   "north-shore": {
     slug: "north-shore-maui-advertising",
     homesEstimate: 9471,
+    spotsTotal: 16,
+    spotsReserved: 0,
     title: "North Shore Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Reach up to 10,000 North Shore Maui homes with a premium 9×12 postcard. Island Mailer puts your Pā'ia or Haʻikū business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
@@ -83,6 +89,8 @@ export const areas: Record<string, AreaData> = {
   central: {
     slug: "central-maui-advertising",
     homesEstimate: 10000,
+    spotsTotal: 16,
+    spotsReserved: 0,
     title: "Central Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Advertise your Central Maui business to thousands of local homes. Island Mailer delivers a premium 9×12 postcard to Kahului and Wailuku residents - everything included — far less than a solo mailer.",
@@ -126,6 +134,8 @@ export const areas: Record<string, AreaData> = {
   west: {
     slug: "west-maui-advertising",
     homesEstimate: 8000,
+    spotsTotal: 16,
+    spotsReserved: 0,
     title: "West Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Advertise your West Maui business to local residents in Lahaina, Kāʻanapali, and Nāpili. Island Mailer's 9×12 postcard reaches up to 10,000 homes - one flat per-ad-space rate, everything included.",
@@ -169,6 +179,8 @@ export const areas: Record<string, AreaData> = {
   south: {
     slug: "south-maui-advertising",
     homesEstimate: 9000,
+    spotsTotal: 16,
+    spotsReserved: 0,
     title: "South Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Reach Kīhei, Wailea, and Mākena residents with your ad on a premium 9×12 postcard. Island Mailer delivers direct mail advertising for South Maui businesses - one flat per-ad-space rate, everything included.",
@@ -212,6 +224,8 @@ export const areas: Record<string, AreaData> = {
   upcountry: {
     slug: "upcountry-maui-advertising",
     homesEstimate: 7000,
+    spotsTotal: 16,
+    spotsReserved: 0,
     title: "Upcountry Maui Advertising for Local Businesses | Island Mailer",
     description:
       "Reach Makawao, Kula, and Pukalani residents with Island Mailer's premium 9×12 postcard. Local advertising for Upcountry Maui businesses - design, print & postage included — a fraction of a solo mailer.",

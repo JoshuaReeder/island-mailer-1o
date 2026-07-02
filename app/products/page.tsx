@@ -142,7 +142,7 @@ export default function ProductsPage() {
           justifyContent: "center",
           textAlign: "center",
           backgroundImage:
-            "url('https://commons.wikimedia.org/wiki/Special:FilePath/Kihei_coast.jpg?width=1800')",
+            "url('/images/kihei-coast.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

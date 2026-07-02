@@ -21,6 +21,11 @@ export default function AreaPage({ area }: { area: AreaData }) {
   const homes = area.homesEstimate ?? 10000
   const homesText = homes.toLocaleString("en-US")
 
+  // B1 scarcity — "X of 16 ad spaces open" (only shown for live Maui areas with data)
+  const spotsTotal = area.spotsTotal ?? 0
+  const spotsOpen = Math.max(0, spotsTotal - (area.spotsReserved ?? 0))
+  const showSpots = !isExpansion && spotsTotal > 0
+
   const breadcrumb = isExpansion ? (
     <p className="crumb">
       <a href="/">Island Mailer</a> · <a href={`/${islandSlug}`}>{islandLabel}</a> · Areas We Serve
@@ -131,6 +136,24 @@ export default function AreaPage({ area }: { area: AreaData }) {
         <div className="container narrow">
           <div className="sec-divider">◆</div>
           <h2>{area.reserveHeading}</h2>
+          {showSpots && (
+            <p className="spots-open" style={{ textAlign: "center", margin: "18px 0 0" }}>
+              <span
+                style={{
+                  display: "inline-block",
+                  background: "rgba(163,124,79,0.14)",
+                  border: "1px solid rgba(163,124,79,0.4)",
+                  borderRadius: 999,
+                  padding: "10px 26px",
+                  color: "var(--gold-bright)",
+                  fontWeight: 800,
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {spotsOpen} of {spotsTotal} ad spaces open for the next {area.tag} mailer — one business per category
+              </span>
+            </p>
+          )}
           <div className="sec-body">
             {isExpansion ? (
               <div className="cta-card">

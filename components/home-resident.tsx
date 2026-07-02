@@ -5,10 +5,12 @@ import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import EmailOptin from "@/components/email-optin"
 import NominateForm from "@/components/nominate-form"
+import CategoryIcon from "@/components/icons"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
-const IAO = "https://commons.wikimedia.org/wiki/Special:FilePath/Iao_Valley_panorama_cropped.jpg?width=2200"
+/* Self-hosted (v17) — was a Wikimedia hotlink; see PHOTO-CREDITS.md */
+const IAO = "/images/iao-valley-panorama.jpg"
 
 const AD_TILES: { icon: string; cat: string; offer: string }[] = [
   { icon: "🍕", cat: "Local Pizza", offer: "Buy 1 get 1" },
@@ -169,7 +171,7 @@ export default function HomeResident() {
           <div className="cat-grid reveal">
             {CATEGORIES.map((c) => (
               <div className="cat-chip" key={c.label}>
-                <span className="cat-ic" aria-hidden>{c.icon}</span>
+                <span className="cat-ic" aria-hidden><CategoryIcon name={c.label} size={28} /></span>
                 <span className="cat-lbl">{c.label}</span>
               </div>
             ))}
@@ -190,7 +192,7 @@ export default function HomeResident() {
             <div className="postcard" aria-hidden="true">
               {AD_TILES.map((t) => (
                 <div className="adtile" key={t.cat}>
-                  <div className="ai">{t.icon}</div>
+                  <div className="ai"><CategoryIcon name={t.cat} size={18} /></div>
                   <div className="ac">{t.cat}</div>
                   <div className="ao">{t.offer}</div>
                 </div>
