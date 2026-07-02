@@ -36,8 +36,14 @@ function rateCardHtml(): string {
               <p style="margin:0;color:#F5F4EF;font-size:19px;font-weight:800;">Signature Mailer · 9″ × 12″</p>
               <p style="margin:4px 0 0;color:#D5C1AA;font-size:13px;">Up to 10,000 local homes</p>
             </td></tr>
-            <tr><td style="background:#ffffff;padding:18px 22px;text-align:center;">
-              <p style="margin:0;color:#1F2735;font-size:30px;font-weight:800;">$800<span style="font-size:14px;font-weight:600;color:#7a756c;"> / ad space</span></p>
+            <tr><td style="background:#ffffff;padding:18px 22px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="text-align:center;padding:4px;width:33%;"><p style="margin:0;color:#7a756c;font-size:12px;font-weight:700;">1 mailer</p><p style="margin:4px 0 0;color:#1F2735;font-size:24px;font-weight:800;">$800</p></td>
+                  <td style="text-align:center;padding:4px;width:34%;background:#faf3e8;border-radius:10px;"><p style="margin:0;color:#A37C4F;font-size:12px;font-weight:800;">3–5 mailers ★</p><p style="margin:4px 0 0;color:#1F2735;font-size:24px;font-weight:800;">$600<span style="font-size:12px;font-weight:600;color:#7a756c;">/ea</span></p></td>
+                  <td style="text-align:center;padding:4px;width:33%;"><p style="margin:0;color:#7a756c;font-size:12px;font-weight:700;">6+ mailers</p><p style="margin:4px 0 0;color:#1F2735;font-size:24px;font-weight:800;">$500<span style="font-size:12px;font-weight:600;color:#7a756c;">/ea</span></p></td>
+                </tr>
+              </table>
             </td></tr>
           </table>
           <table width="100%" cellpadding="0" cellspacing="0" style="border:1.5px solid #d9cdba;border-radius:14px;overflow:hidden;">
@@ -45,8 +51,14 @@ function rateCardHtml(): string {
               <p style="margin:0;color:#F5F4EF;font-size:19px;font-weight:800;">Hyper-Local Mailer · 6.5″ × 12″</p>
               <p style="margin:4px 0 0;color:#D5C1AA;font-size:13px;">~2,500 nearby homes</p>
             </td></tr>
-            <tr><td style="background:#ffffff;padding:18px 22px;text-align:center;">
-              <p style="margin:0;color:#1F2735;font-size:30px;font-weight:800;">$250<span style="font-size:14px;font-weight:600;color:#7a756c;"> / ad space</span></p>
+            <tr><td style="background:#ffffff;padding:18px 22px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="text-align:center;padding:4px;width:33%;"><p style="margin:0;color:#7a756c;font-size:12px;font-weight:700;">1 mailer</p><p style="margin:4px 0 0;color:#1F2735;font-size:24px;font-weight:800;">$250</p></td>
+                  <td style="text-align:center;padding:4px;width:34%;background:#faf3e8;border-radius:10px;"><p style="margin:0;color:#A37C4F;font-size:12px;font-weight:800;">3–5 mailers ★</p><p style="margin:4px 0 0;color:#1F2735;font-size:24px;font-weight:800;">$220<span style="font-size:12px;font-weight:600;color:#7a756c;">/ea</span></p></td>
+                  <td style="text-align:center;padding:4px;width:33%;"><p style="margin:0;color:#7a756c;font-size:12px;font-weight:700;">6+ mailers</p><p style="margin:4px 0 0;color:#1F2735;font-size:24px;font-weight:800;">$180<span style="font-size:12px;font-weight:600;color:#7a756c;">/ea</span></p></td>
+                </tr>
+              </table>
             </td></tr>
           </table>
         </td></tr>
@@ -54,7 +66,8 @@ function rateCardHtml(): string {
           <div style="background:#F5F4EF;border-radius:12px;padding:22px 24px;">
             <p style="margin:0 0 10px;color:#A37C4F;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;">Why it's a deal</p>
             <p style="margin:0 0 8px;color:#3f3b35;font-size:14px;line-height:1.6;">A solo direct-mail campaign typically runs <strong>$5,000–$10,000</strong>. On a shared Island Mailer you reach the same homes for a fraction of that — because neighbors split the cost.</p>
-            <p style="margin:0;color:#3f3b35;font-size:14px;line-height:1.6;">Design, printing &amp; postage are all included, and only one business per category gets in — so your spot is exclusively yours.</p>
+            <p style="margin:0 0 8px;color:#3f3b35;font-size:14px;line-height:1.6;">Design, printing &amp; postage are all included, and only one business per category gets in — your spot is 100% exclusive, no competitors on your mailer.</p>
+            <p style="margin:0;color:#3f3b35;font-size:14px;line-height:1.6;"><strong>★ Commit to 3+ mailings (within 12 months) and the per-mailing rate drops on every one.</strong> Repetition is where direct mail wins — by the third mailer, your offer is a familiar face in the household.</p>
           </div>
         </td></tr>
         <tr><td style="padding:0 32px 36px;text-align:center;">

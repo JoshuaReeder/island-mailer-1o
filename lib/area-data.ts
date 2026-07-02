@@ -33,6 +33,28 @@ export interface AreaData {
   spotsReserved?: number
 }
 
+/*
+ * Public-facing availability status (v18): we NEVER show counts publicly —
+ * only a status word. Thresholds: 0 open = "full", 1–3 open = "almost-full",
+ * otherwise "available".
+ */
+export type SpotStatus = "available" | "almost-full" | "full"
+
+export function spotStatus(area: AreaData): SpotStatus {
+  const total = area.spotsTotal ?? 0
+  if (total === 0) return "available"
+  const open = Math.max(0, total - (area.spotsReserved ?? 0))
+  if (open === 0) return "full"
+  if (open <= 3) return "almost-full"
+  return "available"
+}
+
+export const SPOT_STATUS_LABEL: Record<SpotStatus, string> = {
+  available: "Available",
+  "almost-full": "Almost full",
+  full: "Full — waitlist",
+}
+
 const PAIA_IMG = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-giDBybwI37gwn0qdjSDN7dZhdT7yvC.png"
 
 const LINKS = {

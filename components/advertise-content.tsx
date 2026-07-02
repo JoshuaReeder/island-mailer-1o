@@ -8,16 +8,20 @@ import FloatingMenu from "@/components/floating-menu"
 import SiteHeader from "@/components/site-header"
 import { FAQ_ITEMS } from "@/lib/advertise-faq"
 import PricingReveal from "@/components/pricing-reveal"
-import { areas } from "@/lib/area-data"
+import { areas, spotStatus, SPOT_STATUS_LABEL } from "@/lib/area-data"
 
 /* ── B1: per-area availability (spots data lives in lib/area-data.ts) ── */
 const MAUI_AREA_KEYS = ["north-shore", "central", "west", "south", "upcountry"] as const
 const AVAILABILITY = MAUI_AREA_KEYS.map((k) => {
   const a = areas[k]
-  const total = a?.spotsTotal ?? 0
-  const open = Math.max(0, total - (a?.spotsReserved ?? 0))
-  return { label: a?.tag ?? k, href: `/${a?.slug ?? ""}`, open, total }
-}).filter((a) => a.total > 0)
+  const status = a ? spotStatus(a) : ("available" as const)
+  return {
+    label: a?.tag ?? k,
+    href: a && status === "full" ? "/waitlist" : `/${a?.slug ?? ""}`,
+    status,
+    statusLabel: SPOT_STATUS_LABEL[status],
+  }
+}).filter((a, i) => (areas[MAUI_AREA_KEYS[i]]?.spotsTotal ?? 0) > 0)
 
 /* Booking link (Cal.com etc). Hidden until NEXT_PUBLIC_BOOKING_URL is set in Vercel. */
 const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL
@@ -287,8 +291,9 @@ export default function AdvertiseContent() {
               {AVAILABILITY.length > 0 && (
                 <div style={{ marginTop: 44 }}>
                   <p className="sec-sub" style={{ marginBottom: 18 }}>
-                    <b style={{ color: "var(--gold-bright)" }}>Current availability</b> — first-come, first-served, one
-                    business per category:
+                    <b style={{ color: "var(--gold-bright)" }}>Current availability</b> — first-come, first-served.
+                    One business per category means your spot is <b style={{ color: "var(--gold-bright)" }}>100% exclusive</b> —
+                    no competitors on your mailer:
                   </p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
                     {AVAILABILITY.map((a) => (
@@ -309,8 +314,14 @@ export default function AdvertiseContent() {
                         }}
                       >
                         {a.label}
-                        <span style={{ color: "var(--gold-bright)", fontWeight: 800 }}>
-                          {a.open}/{a.total} open
+                        <span
+                          style={{
+                            color: a.status === "full" ? "var(--sand)" : "var(--gold-bright)",
+                            fontWeight: 800,
+                            opacity: a.status === "full" ? 0.75 : 1,
+                          }}
+                        >
+                          {a.statusLabel}
                         </span>
                       </a>
                     ))}
