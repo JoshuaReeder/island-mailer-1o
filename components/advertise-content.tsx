@@ -8,6 +8,19 @@ import FloatingMenu from "@/components/floating-menu"
 import SiteHeader from "@/components/site-header"
 import { FAQ_ITEMS } from "@/lib/advertise-faq"
 import PricingReveal from "@/components/pricing-reveal"
+import { areas } from "@/lib/area-data"
+
+/* ── B1: per-area availability (spots data lives in lib/area-data.ts) ── */
+const MAUI_AREA_KEYS = ["north-shore", "central", "west", "south", "upcountry"] as const
+const AVAILABILITY = MAUI_AREA_KEYS.map((k) => {
+  const a = areas[k]
+  const total = a?.spotsTotal ?? 0
+  const open = Math.max(0, total - (a?.spotsReserved ?? 0))
+  return { label: a?.tag ?? k, href: `/${a?.slug ?? ""}`, open, total }
+}).filter((a) => a.total > 0)
+
+/* Booking link (Cal.com etc). Hidden until NEXT_PUBLIC_BOOKING_URL is set in Vercel. */
+const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL
 
 /* ── Postcard front/back tabs ── */
 function PostcardTabs() {
@@ -270,6 +283,40 @@ export default function AdvertiseContent() {
                   <div className="vlbl">your industry is exclusively yours &mdash; no long-term contracts</div>
                 </div>
               </div>
+              {/* ── B1: live availability by area ── */}
+              {AVAILABILITY.length > 0 && (
+                <div style={{ marginTop: 44 }}>
+                  <p className="sec-sub" style={{ marginBottom: 18 }}>
+                    <b style={{ color: "var(--gold-bright)" }}>Current availability</b> — first-come, first-served, one
+                    business per category:
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }}>
+                    {AVAILABILITY.map((a) => (
+                      <a
+                        key={a.label}
+                        href={a.href}
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 10,
+                          background: "rgba(163,124,79,0.12)",
+                          border: "1px solid rgba(163,124,79,0.4)",
+                          borderRadius: 999,
+                          padding: "12px 22px",
+                          color: "var(--cream)",
+                          textDecoration: "none",
+                          fontWeight: 700,
+                        }}
+                      >
+                        {a.label}
+                        <span style={{ color: "var(--gold-bright)", fontWeight: 800 }}>
+                          {a.open}/{a.total} open
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div style={{ marginTop: 44 }}>
                 <PricingReveal source="pricing-interest-advertise" />
               </div>
@@ -336,6 +383,13 @@ export default function AdvertiseContent() {
       {/* ================= CONTACT ================= */}
       <section className="bg-navy" id="contact">
         <div className="container narrow">
+          {BOOKING_URL && (
+            <div style={{ textAlign: "center", marginBottom: 40 }}>
+              <a className="btn ghost" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                Prefer to talk it through? Book a quick intro call →
+              </a>
+            </div>
+          )}
           <ContactForm />
         </div>
       </section>

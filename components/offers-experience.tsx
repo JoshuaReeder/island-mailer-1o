@@ -6,6 +6,7 @@ import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import EmailOptin from "@/components/email-optin"
 import type { MailerData } from "@/lib/offers-data"
+import CategoryIcon from "@/components/icons"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
@@ -233,7 +234,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
               {PLACEHOLDER_SLOTS.map((slot) => (
                 <div className="slot-card" key={slot.n}>
                   <span className="slot-num">{slot.n}</span>
-                  <span className="slot-ic" aria-hidden>{slot.icon}</span>
+                  <span className="slot-ic" aria-hidden><CategoryIcon name={slot.cat} size={34} /></span>
                   <span className="slot-cat">{slot.cat}</span>
                   <span className="slot-status">Offer coming soon</span>
                 </div>
