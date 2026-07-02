@@ -1274,3 +1274,6 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .reps-page .reps-hero h1 .accent { color: var(--gold-bright); display: block; }
 .reps-page .reps-hero h1 .h1b { display: block; font-size: clamp(18px, 2.6vw, 28px); font-weight: 700; color: var(--sand); margin-top: 16px; }
 .reps-page .reps-hero .crumb a { color: var(--gold-bright); }
+
+/* v17 — Island Mailer gold line-icon set (components/icons.tsx) */
+.im-ic svg { width: 100%; height: 100%; display: block; }
