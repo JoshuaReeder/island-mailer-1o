@@ -6,9 +6,24 @@ export const metadata: Metadata = {
   title: "Resources & Local Advertising Guides | Island Mailer (Maui)",
   description:
     "Practical guides for Maui small businesses: how to advertise to local residents, whether direct mail is still worth it, and how a shared mailer compares to EDDM. Real, useful, Maui-specific advice.",
+  alternates: { canonical: "/resources" },
+  openGraph: {
+    type: "website",
+    url: "https://islandmailer.com/resources",
+    title: "Resources & Local Advertising Guides | Island Mailer (Maui)",
+    description:
+      "Practical guides for Maui small businesses: how to advertise to local residents, whether direct mail is still worth it, and how a shared mailer compares to EDDM. Real, useful, Maui-specific advice.",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
+  },
 }
 
 const ARTICLES = [
+  {
+    href: "/resources/kamaaina-deals-maui",
+    tag: "For Residents",
+    h: "Kamaʻāina Deals on Maui: Free Local Offers in Your Mailbox (2026)",
+    p: "Living here shouldn't mean paying visitor prices. Where kamaʻāina find real local deals — and how Island Mailer delivers them free to your mailbox.",
+  },
   {
     href: "/resources/advertise-to-locals-on-maui",
     tag: "Local Marketing",
