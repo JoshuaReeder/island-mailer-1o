@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import EmailOptin from "@/components/email-optin"
@@ -43,6 +43,14 @@ const CATEGORIES: { icon: string; label: string }[] = [
 
 export default function HomeResident() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  /* Perf: only load the background video on larger screens that aren't asking
+     for reduced motion. Mobile gets the lightweight poster image instead. */
+  const [showVideo, setShowVideo] = useState(false)
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 768px)")
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)")
+    if (wide.matches && !reduced.matches) setShowVideo(true)
+  }, [])
 
   /* video autoplay hardening (ported from the existing home) */
   useEffect(() => {
@@ -77,7 +85,7 @@ export default function HomeResident() {
       document.removeEventListener("visibilitychange", onVis)
       evs.forEach((ev) => window.removeEventListener(ev, tryPlay))
     }
-  }, [])
+  }, [showVideo])
 
   /* scroll-reveal via IntersectionObserver (respects reduced motion via CSS) */
   useEffect(() => {
@@ -105,9 +113,26 @@ export default function HomeResident() {
     <div className="min-h-screen home-resident" style={{ background: "var(--navy)" }}>
       {/* ================= HERO (resident) ================= */}
       <div className="hero" id="top">
-        <video ref={videoRef} autoPlay muted loop playsInline preload="auto">
-          <source src="/videos/IM%20Website%20Background%20video%20of%20Hawaii%20Waterfall.mp4" type="video/mp4" />
-        </video>
+        <img
+          className="hero-poster"
+          src="/images/hero-waterfall-poster.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+        />
+        {showVideo && (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/images/hero-waterfall-poster.jpg"
+          >
+            <source src="/videos/hero-waterfall-720.mp4" type="video/mp4" />
+          </video>
+        )}
         <div className="overlay" />
         <div className="content">
           <div className="logo-lockup">
@@ -120,8 +145,8 @@ export default function HomeResident() {
           </h1>
           <p className="hero-eyebrow">— Flowing right to your mailbox —</p>
           <p className="subhead">
-            Best Local Deals from the local businesses you love — in your mailbox each month, and saved right on your
-            phone. Discover new spots, save money, and support local.
+            The best local deals for kamaʻāina — from the businesses you love, in your mailbox each month, and saved
+            right on your phone. Discover new spots, save money, and support local.
           </p>
           <div className="ctas">
             <a className="btn" href="/local-offers">See Local Offers</a>
