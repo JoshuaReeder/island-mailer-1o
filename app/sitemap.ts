@@ -42,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/kaau-hawaii-advertising", priority: 0.75, changeFrequency: "monthly" as const },
     { path: "/resources", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/resources/advertise-to-locals-on-maui", priority: 0.6, changeFrequency: "monthly" as const },
+    { path: "/resources/kamaaina-deals-maui", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/resources/is-direct-mail-worth-it-small-business", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/resources/eddm-vs-shared-mailer-maui", priority: 0.6, changeFrequency: "monthly" as const },
   ]
