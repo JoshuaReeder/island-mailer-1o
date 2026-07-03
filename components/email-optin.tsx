@@ -3,6 +3,12 @@
 import type React from "react"
 import { useState } from "react"
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 interface EmailOptinProps {
   source?: string
   /** "panel" = the big card opt-in (default); "footer" = compact inline row */
@@ -32,6 +38,16 @@ export default function EmailOptin({ source = "home", variant = "panel" }: Email
       })
       const result = await res.json()
       if (res.ok && result.success) {
+        // Fire GA4 form_submit event on successful waitlist signup
+        try {
+          window.gtag?.("event", "form_submit", {
+            form_id: "waitlist",
+            form_name: "Email Waitlist",
+            source: source,
+          })
+        } catch {
+          /* noop */
+        }
         setDone(true)
         setEmail("")
         setName("")
