@@ -21,6 +21,10 @@ const HAWAII_CENTER = { latitude: 20.7984, longitude: -156.3319 }
 const HAWAII_RADIUS_M = 500000
 
 export async function GET(request: Request) {
+  // v21: rate limit protects the Google Places API quota/key
+  const guard = guardRequest(request, { bucket: "places", limit: 120 })
+  if (guard.blocked) return guard.blocked
+
   const { searchParams } = new URL(request.url)
   const q = (searchParams.get("q") || "").trim()
 
