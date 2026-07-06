@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
+import { resourcesJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export const metadata: Metadata = {
   title: "Resources & Local Advertising Guides | Island Mailer (Maui)",
@@ -47,6 +48,7 @@ const ARTICLES = [
 export default function ResourcesPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(resourcesJsonLd(ARTICLES))} />
       {/* ================= COMPACT HERO ================= */}
       <div className="hero area">
         <div className="overlay" />

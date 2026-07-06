@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
+import { mauiJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export const metadata: Metadata = {
   title: "Maui Advertising Areas | Island Mailer — Support Local. Live Hawaii.",
@@ -63,6 +64,7 @@ const AREA_CARDS = [
 export default function MauiPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(mauiJsonLd())} />
       {/* ================= MAUI HERO ================= */}
       <div className="hero area">
         <div className="overlay" />
