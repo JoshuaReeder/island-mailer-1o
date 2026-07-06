@@ -25,6 +25,7 @@ export default function WaitlistForm({ defaultIsland = "", defaultArea = "" }: W
     businessName: "",
     island: defaultIsland,
     area: defaultArea,
+    website: "", // honeypot — hidden from users, bots fill it
   })
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState<{ type: "error"; text: string } | null>(null)
@@ -141,6 +142,17 @@ export default function WaitlistForm({ defaultIsland = "", defaultArea = "" }: W
         </div>
       )}
       <form onSubmit={handleSubmit}>
+        {/* Honeypot field — invisible to humans, bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.website}
+            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+          />
+        </div>
         <div className="fgroup">
           <label>Name</label>
           <input
