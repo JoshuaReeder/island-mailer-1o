@@ -4,6 +4,7 @@ import type React from "react"
 import { useState } from "react"
 
 export default function AmbassadorForm() {
+  const [hp, setHp] = useState("")
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [area, setArea] = useState("")
@@ -24,7 +25,7 @@ export default function AmbassadorForm() {
       const res = await fetch("/api/ambassador", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), area, why }),
+        body: JSON.stringify({ name: name.trim(), email: email.trim(), area, why, im_hp: hp }),
       })
       const result = await res.json()
       if (res.ok && result.success) {
@@ -51,6 +52,10 @@ export default function AmbassadorForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+        {/* Honeypot — invisible to humans; bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
       <label htmlFor="amb-name">Your name</label>
       <input
         id="amb-name"

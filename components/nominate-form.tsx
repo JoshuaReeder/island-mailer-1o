@@ -22,6 +22,7 @@ interface Suggestion {
    field gracefully behaves as a plain free-text input that still submits. */
 
 export default function NominateForm() {
+  const [hp, setHp] = useState("")
   const [businessName, setBusinessName] = useState("")
   const [note, setNote] = useState("")
   const [email, setEmail] = useState("")
@@ -78,7 +79,7 @@ export default function NominateForm() {
     const res = await fetch("/api/nominate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ businessName: n.businessName, note: n.note, email }),
+      body: JSON.stringify({ businessName: n.businessName, note: n.note, email, im_hp: hp }),
     })
     const result = await res.json()
     if (!(res.ok && result.success)) {
@@ -159,6 +160,10 @@ export default function NominateForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+        {/* Honeypot — invisible to humans; bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
       {staged.length > 0 && (
         <ul className="nom-staged" aria-label="Businesses you've added">
           {staged.map((n, i) => (

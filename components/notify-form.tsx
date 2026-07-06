@@ -3,6 +3,7 @@
 import { useState } from "react"
 
 export default function NotifyForm() {
+  const [hp, setHp] = useState("")
   const [form, setForm] = useState({ name: "", email: "" })
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
@@ -17,6 +18,7 @@ export default function NotifyForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          website: hp,
           name: form.name,
           email: form.email,
           island: "Maui",
@@ -46,6 +48,10 @@ export default function NotifyForm() {
 
   return (
     <form className="form-card" onSubmit={submit}>
+        {/* Honeypot — waitlist API checks the `website` field */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
       <div className="fgroup">
         <label>Name</label>
         <input value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} required autoComplete="name" />

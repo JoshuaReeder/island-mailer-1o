@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 const AREA_OPTIONS = ["Central", "Upcountry", "South", "West", "North Shore"]
 
 export default function ContactForm() {
+  const [hp, setHp] = useState("")
   const [formData, setFormData] = useState({
     name: "",
     businessName: "",
@@ -50,7 +51,7 @@ export default function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, im_hp: hp }),
       })
       const result = await response.json()
       console.log("[v0] API response:", result)
@@ -213,6 +214,10 @@ export default function ContactForm() {
                 </div>
               )}
               <form onSubmit={handleSubmit}>
+        {/* Honeypot — invisible to humans; bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
                 <div className="fgroup">
                   <label>Name</label>
                   <input

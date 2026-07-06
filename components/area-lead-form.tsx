@@ -3,6 +3,7 @@
 import { useState } from "react"
 
 export default function AreaLeadForm({ area, areaLabel }: { area: string; areaLabel: string }) {
+  const [hp, setHp] = useState("")
   const [form, setForm] = useState({ name: "", businessName: "", email: "", phone: "", notes: "" })
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState<{ name: string } | null>(null)
@@ -19,7 +20,7 @@ export default function AreaLeadForm({ area, areaLabel }: { area: string; areaLa
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, areas: [area] }),
+        body: JSON.stringify({ ...form, areas: [area], im_hp: hp }),
       })
       const json = await res.json()
       if (res.ok && json.success) {
@@ -54,6 +55,10 @@ export default function AreaLeadForm({ area, areaLabel }: { area: string; areaLa
 
   return (
     <form className="form-card" onSubmit={submit}>
+        {/* Honeypot — invisible to humans; bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
       <p className="price-head" style={{ marginBottom: "var(--gap-s)" }}>
         Check availability for {areaLabel}
       </p>

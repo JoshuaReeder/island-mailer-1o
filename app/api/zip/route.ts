@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { guardRequest } from "@/lib/form-guard"
 
 /*
  * /api/zip — logs every ZIP-code lookup from the Local Offers gate.
@@ -25,6 +26,9 @@ export function areaForZip(zip: string): string {
 
 export async function POST(request: Request) {
   try {
+    const guard = guardRequest(request, { bucket: "zip", limit: 12 })
+    if (guard.blocked) return guard.blocked
+
     const body = await request.json().catch(() => ({}))
     const zip = typeof body.zip === "string" ? body.zip.trim() : ""
     const area = areaForZip(zip)

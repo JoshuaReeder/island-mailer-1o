@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { guardRequest } from "@/lib/form-guard"
+import { upsertHubSpotContact } from "@/lib/hubspot"
 
 /*
  * /api/pricing — pricing-interest lead.
@@ -89,12 +91,19 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => ({}))
     const email = typeof body.email === "string" ? body.email.trim() : ""
     const source = typeof body.source === "string" ? body.source : "pricing-interest"
+    const im_hp = typeof body.im_hp === "string" ? body.im_hp : ""
+
+    const guard = guardRequest(request, { bucket: "pricing", limit: 4, honeypot: im_hp, email, fakeSuccessMessage: "Rate card sent" })
+    if (guard.blocked) return guard.blocked
 
     if (!email) {
       return NextResponse.json({ success: false, error: "Please enter your email." }, { status: 400 })
     }
 
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
+
+    // v21: CRM upsert — pricing interest is a HOT business lead
+    void upsertHubSpotContact({ email, form: "Pricing Reveal", notes: source })
 
     // ─── Emails (best-effort, never blocks success) ───────────────────────────
     if (process.env.RESEND_API_KEY) {

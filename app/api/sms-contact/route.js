@@ -1,5 +1,6 @@
 // app/api/sms-contact/route.js
 import { NextResponse } from "next/server";
+import { guardRequest } from "@/lib/form-guard";
 
 const OPENPHONE_API_KEY   = process.env.OPENPHONE_API_KEY;
 const OPENPHONE_FROM_NUMBER = process.env.OPENPHONE_FROM_NUMBER;
@@ -20,6 +21,8 @@ function isValidUSPhone(digits) {
 export async function POST(request) {
   try {
     const body = await request.json();
+    const guard = guardRequest(request, { bucket: "sms", limit: 3, honeypot: body?.im_hp });
+    if (guard.blocked) return guard.blocked;
     const rawPhone = (body.phone ?? "").replace(/\D/g, "");
     if (!rawPhone) return NextResponse.json({ error: "Phone number is required." }, { status: 400 });
     if (!isValidUSPhone(rawPhone)) return NextResponse.json({ error: "Please provide a valid 10-digit US phone number." }, { status: 400 });
