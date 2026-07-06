@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { createHash } from "crypto"
 
 // ─── Rate Limiting (in-memory, resets on cold start) ─────────────────────────
 const rateLimitMap = new Map<string, number[]>()
@@ -51,7 +52,45 @@ export async function POST(request: Request) {
     // Return fake 200 success so bots don't retry.
     if (website && String(website).trim().length > 0) {
       console.log("[island-mailer] Honeypot triggered — bot submission blocked")
-      return NextResponse.json({ success: true, message: "Waitlist signup successful" })
+  
+    // ─── HubSpot CRM Contact (non-blocking upsert) ────────────────────────────
+    if (process.env.HUBSPOT_API_KEY) {
+      try {
+        const nameParts = String(name).trim().split(/\s+/)
+        const firstName = nameParts[0] ?? ""
+        const lastName = nameParts.slice(1).join(" ") || ""
+        await fetch("https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.HUBSPOT_API_KEY}`,
+          },
+          body: JSON.stringify({
+            inputs: [{
+              idProperty: "email",
+              id: email,
+              properties: {
+                email,
+                firstname: firstName,
+                lastname: lastName,
+                phone: phone || "",
+                company: businessName || "",
+                hs_lead_status: "NEW",
+                lifecyclestage: "lead",
+                island_mailer_waitlist: "true",
+                island_mailer_island: island,
+                island_mailer_area: area || "",
+              },
+            }],
+          }),
+        })
+        console.log("[island-mailer] HubSpot contact upserted for:", email)
+      } catch (err) {
+        console.error("[island-mailer] HubSpot contact upsert error (non-fatal):", err)
+      }
+    }
+
+    return NextResponse.json({ success: true, message: "Waitlist signup successful" })
     }
 
     // ─── Required Fields ─────────────────────────────────────────────────────
@@ -80,6 +119,11 @@ export async function POST(request: Request) {
     }
 
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
+    const source = request.headers.get("referer") || request.headers.get("origin") || "direct"
+    const userAgent = request.headers.get("user-agent") || ""
+    const ipHash = ip !== "unknown"
+      ? createHash("sha256").update(ip).digest("hex")
+      : "unknown"
 
     const row = (label: string, value?: string) =>
       value
@@ -200,14 +244,17 @@ ${row("Submitted", timestamp)}
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: name,
-          email: email,
+          name,
+          email,
           phone: phone || "",
           businessName: businessName || "",
-          island: island,
+          island,
           area: area || "",
           leadSource: "Waitlist",
-          timestamp: timestamp,
+          timestamp,
+          source,
+          userAgent,
+          ip_hash: ipHash,
         }),
       }).catch((err) => console.error("[island-mailer] Waitlist Sheets logging failed (non-fatal):", err))
     }
