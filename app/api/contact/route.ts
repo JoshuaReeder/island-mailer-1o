@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { guardRequest } from "@/lib/form-guard"
+import { upsertHubSpotContact } from "@/lib/hubspot"
 
 export async function POST(request: Request) {
   try {
@@ -15,7 +17,12 @@ export async function POST(request: Request) {
       mailings,
       areas,
       notes,
+      im_hp,
     } = body
+
+    // v21 guard: honeypot + rate limit + email validation
+    const guard = guardRequest(request, { bucket: "contact", limit: 3, honeypot: im_hp, email, fakeSuccessMessage: "Application submitted successfully" })
+    if (guard.blocked) return guard.blocked
 
     if (!name || !businessName || !email) {
       return NextResponse.json(
@@ -25,6 +32,13 @@ export async function POST(request: Request) {
     }
 
     const areasText = Array.isArray(areas) && areas.length > 0 ? areas.join(", ") : "Not specified"
+
+    // v21: CRM upsert (HubSpot now; GHL later — see lib/hubspot.ts)
+    void upsertHubSpotContact({
+      email, name, phone, company: businessName,
+      form: "Advertiser Contact", area: areasText,
+      notes: [industryCategory, businessType, notes].filter(Boolean).join(" | "),
+    })
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
 
     // ─── Email Notifications ──────────────────────────────────────────────────
