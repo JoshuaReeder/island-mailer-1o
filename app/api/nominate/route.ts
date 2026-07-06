@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { guardRequest } from "@/lib/form-guard"
+import { upsertHubSpotContact } from "@/lib/hubspot"
 
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { businessName, note, email } = body
+    const { businessName, note, email, im_hp } = body
+
+    const guard = guardRequest(request, { bucket: "nominate", limit: 6, honeypot: im_hp, email: typeof email === "string" && email ? email : undefined, fakeSuccessMessage: "Nomination received" })
+    if (guard.blocked) return guard.blocked
 
     if (!businessName) {
       return NextResponse.json(
@@ -16,6 +21,11 @@ export async function POST(request: Request) {
     const noteText = note || ""
     const emailText = email || ""
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
+
+    // v21: CRM upsert — the nominating resident (when they left an email)
+    if (emailText) {
+      void upsertHubSpotContact({ email: emailText, form: "Nomination", notes: `Nominated: ${businessName}${noteText ? " — " + noteText : ""}`, lifecycle: "subscriber" })
+    }
 
     // ─── Email Notification ───────────────────────────────────────────────────
     if (process.env.RESEND_API_KEY) {
