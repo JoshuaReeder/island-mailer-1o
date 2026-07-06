@@ -37,6 +37,7 @@ const EMPTY = {
 }
 
 export default function IntakeForm() {
+  const [hp, setHp] = useState("")
   const [data, setData] = useState({ ...EMPTY })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -56,7 +57,7 @@ export default function IntakeForm() {
       const res = await fetch("/api/intake", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, im_hp: hp }),
       })
       const result = await res.json()
       if (res.ok && result.success) {
@@ -110,6 +111,10 @@ export default function IntakeForm() {
         </div>
       )}
       <form onSubmit={handleSubmit}>
+        {/* Honeypot — invisible to humans; bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
         <h3 style={{ color: "var(--gold-bright)", letterSpacing: "0.14em", textTransform: "uppercase", fontSize: 15, margin: "0 0 18px" }}>
           1 · Your business
         </h3>

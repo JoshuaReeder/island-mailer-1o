@@ -37,6 +37,7 @@ interface PricingRevealProps {
 
 export default function PricingReveal({ source = "pricing-interest" }: PricingRevealProps) {
   const [email, setEmail] = useState("")
+  const [hp, setHp] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [revealed, setRevealed] = useState(false)
   const [dissolving, setDissolving] = useState(false)
@@ -57,7 +58,7 @@ export default function PricingReveal({ source = "pricing-interest" }: PricingRe
       await fetch("/api/pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source }),
+        body: JSON.stringify({ email, source, im_hp: hp }),
       })
     } catch {
       /* non-blocking — pricing is already revealed */
@@ -121,6 +122,10 @@ export default function PricingReveal({ source = "pricing-interest" }: PricingRe
         {!revealed && (
           <div className="pr-gate-overlay" role="dialog" aria-label="Enter your email to see pricing">
             <form className="pr-gate-card" onSubmit={handleSubmit}>
+        {/* Honeypot — invisible to humans; bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
               <span className="gate-pill">Ad-Space Pricing</span>
               <h4>See it appear right here</h4>
               <p>One email &mdash; the blur dissolves and your rates are on screen.</p>

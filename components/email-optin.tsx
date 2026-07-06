@@ -18,6 +18,7 @@ interface EmailOptinProps {
 export default function EmailOptin({ source = "home", variant = "panel" }: EmailOptinProps) {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
+  const [hp, setHp] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [done, setDone] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -34,7 +35,7 @@ export default function EmailOptin({ source = "home", variant = "panel" }: Email
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name, source }),
+        body: JSON.stringify({ email, name, source, im_hp: hp }),
       })
       const result = await res.json()
       if (res.ok && result.success) {
@@ -75,6 +76,10 @@ export default function EmailOptin({ source = "home", variant = "panel" }: Email
 
   return (
     <form className={`optin-form${variant === "footer" ? " footer" : ""}`} onSubmit={handleSubmit}>
+        {/* Honeypot — invisible to humans; bots fill it and get silently rejected */}
+        <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+          <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+        </div>
       {variant === "panel" && (
         <input
           type="text"

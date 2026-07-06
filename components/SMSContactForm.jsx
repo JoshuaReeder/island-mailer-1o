@@ -14,6 +14,7 @@ function isValidPhone(value) {
 }
 
 export default function SMSContactForm() {
+  const [hp, setHp] = useState("");
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -34,7 +35,7 @@ export default function SMSContactForm() {
       const res = await fetch("/api/sms-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone: phone.replace(/\D/g, "") }),
+        body: JSON.stringify({ phone: phone.replace(/\D/g, ""), im_hp: hp }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -61,6 +62,9 @@ export default function SMSContactForm() {
         ) : (
           <>
             <form className="phone-row" onSubmit={handleSubmit} noValidate>
+              <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+                <input type="text" name="im_hp" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} />
+              </div>
               <input
                 type="tel"
                 value={phone}
