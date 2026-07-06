@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { guardRequest } from "@/lib/form-guard"
 
 /*
  * Lightweight tracking endpoint for the Local Offers experience.
@@ -8,6 +9,9 @@ import { NextResponse } from "next/server"
  */
 export async function POST(request: Request) {
   try {
+    const guard = guardRequest(request, { bucket: "track", limit: 120 })
+    if (guard.blocked) return guard.blocked
+
     const body = await request.json().catch(() => ({}))
     const event = typeof body.event === "string" ? body.event : "unknown"
     const offerId = typeof body.offerId === "string" ? body.offerId : ""
