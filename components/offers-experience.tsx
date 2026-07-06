@@ -167,7 +167,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
             {data.monthLabel}
           </span>
           <h1>
-            <span className="accent">{revealed ? `${areaLabel} ` : "Your area's "}</span>local offers
+            <span className="accent">{revealed ? `${areaLabel} ` : "Your area's "}</span>local offers,{" "}
             <span className="h1b">scan the mailer QR, save your favorites, redeem around {data.island}</span>
           </h1>
           <p className="subhead">
