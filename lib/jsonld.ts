@@ -424,6 +424,41 @@ export function localRepsJsonLd() {
   }
 }
 
+export function resourcesJsonLd(articles: { href: string; h: string; p: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      ORGANIZATION,
+      {
+        "@type": "CollectionPage",
+        "@id": `${BASE}/resources#webpage`,
+        name: "Resources & Local Advertising Guides",
+        url: `${BASE}/resources`,
+        isPartOf: { "@type": "WebSite", name: "Island Mailer", url: BASE },
+        about:
+          "Local advertising and direct-mail guides for Maui small businesses and residents.",
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: articles.map((a, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `${BASE}${a.href}`,
+            name: a.h,
+          })),
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${BASE}/resources#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+          { "@type": "ListItem", position: 2, name: "Resources", item: `${BASE}/resources` },
+        ],
+      },
+    ],
+  }
+}
+
 export function jsonLdScript(data: unknown) {
   return { __html: JSON.stringify(data) }
 }
