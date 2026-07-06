@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { createHash } from "crypto"
+import { upsertHubSpotContact } from "@/lib/hubspot"
 
 // ─── Rate Limiting (in-memory, resets on cold start) ─────────────────────────
 const rateLimitMap = new Map<string, number[]>()
@@ -52,45 +53,8 @@ export async function POST(request: Request) {
     // Return fake 200 success so bots don't retry.
     if (website && String(website).trim().length > 0) {
       console.log("[island-mailer] Honeypot triggered — bot submission blocked")
-  
-    // ─── HubSpot CRM Contact (non-blocking upsert) ────────────────────────────
-    if (process.env.HUBSPOT_API_KEY) {
-      try {
-        const nameParts = String(name).trim().split(/\s+/)
-        const firstName = nameParts[0] ?? ""
-        const lastName = nameParts.slice(1).join(" ") || ""
-        await fetch("https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.HUBSPOT_API_KEY}`,
-          },
-          body: JSON.stringify({
-            inputs: [{
-              idProperty: "email",
-              id: email,
-              properties: {
-                email,
-                firstname: firstName,
-                lastname: lastName,
-                phone: phone || "",
-                company: businessName || "",
-                hs_lead_status: "NEW",
-                lifecyclestage: "lead",
-                island_mailer_waitlist: "true",
-                island_mailer_island: island,
-                island_mailer_area: area || "",
-              },
-            }],
-          }),
-        })
-        console.log("[island-mailer] HubSpot contact upserted for:", email)
-      } catch (err) {
-        console.error("[island-mailer] HubSpot contact upsert error (non-fatal):", err)
-      }
-    }
-
-    return NextResponse.json({ success: true, message: "Waitlist signup successful" })
+      // Fake success so bots don't retry. Nothing is processed or stored.
+      return NextResponse.json({ success: true, message: "Waitlist signup successful" })
     }
 
     // ─── Required Fields ─────────────────────────────────────────────────────
@@ -124,6 +88,17 @@ export async function POST(request: Request) {
     const ipHash = ip !== "unknown"
       ? createHash("sha256").update(ip).digest("hex")
       : "unknown"
+
+    // ─── HubSpot CRM Contact (v21: real submissions only — bug fixed; was inside the honeypot branch) ───
+    void upsertHubSpotContact({
+      email,
+      name,
+      phone,
+      company: businessName,
+      form: "Waitlist",
+      island,
+      area,
+    })
 
     const row = (label: string, value?: string) =>
       value
