@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { guardRequest } from "@/lib/form-guard"
+import { upsertHubSpotContact } from "@/lib/hubspot"
 
 /*
  * /api/intake — Advertiser Intake (B2, the data spine seed).
@@ -30,6 +32,9 @@ export async function POST(request: Request) {
       notes,
     } = body
 
+    const guard = guardRequest(request, { bucket: "intake", limit: 4, honeypot: body.im_hp, email, fakeSuccessMessage: "Intake submitted successfully" })
+    if (guard.blocked) return guard.blocked
+
     if (!businessName || !contactName || !email || !offerHeadline) {
       return NextResponse.json(
         { success: false, error: "Please fill in your business name, your name, email, and your offer." },
@@ -40,6 +45,14 @@ export async function POST(request: Request) {
     const areasText = Array.isArray(areas) && areas.length > 0 ? areas.join(", ") : "Not specified"
     const monthsText = Array.isArray(months) && months.length > 0 ? months.join(", ") : "Not specified"
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
+
+    // v21: CRM upsert — confirmed advertiser = opportunity
+    void upsertHubSpotContact({
+      email, name: contactName, phone, company: businessName,
+      form: "Advertiser Intake", area: areasText,
+      notes: `${offerHeadline}${category ? " | " + category : ""} | ${monthsText}`,
+      lifecycle: "opportunity",
+    })
 
     const row = (label: string, value?: string, link?: string) =>
       value
