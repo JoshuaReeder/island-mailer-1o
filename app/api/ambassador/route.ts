@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { guardRequest } from "@/lib/form-guard"
+import { upsertHubSpotContact } from "@/lib/hubspot"
 
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, area, why } = body
+    const { name, email, area, why, im_hp } = body
+
+    const guard = guardRequest(request, { bucket: "ambassador", limit: 3, honeypot: im_hp, email, fakeSuccessMessage: "Application received" })
+    if (guard.blocked) return guard.blocked
 
     if (!name || !email) {
       return NextResponse.json(
@@ -16,6 +21,9 @@ export async function POST(request: Request) {
     const areaText = area || "Not specified"
     const whyText = why || ""
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
+
+    // v21: CRM upsert — Local Rep applicant
+    void upsertHubSpotContact({ email, name, form: "Local Rep", area: areaText, notes: whyText })
 
     // ─── Email Notification ───────────────────────────────────────────────────
     if (process.env.RESEND_API_KEY) {
