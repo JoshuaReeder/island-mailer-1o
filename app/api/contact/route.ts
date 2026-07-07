@@ -34,11 +34,11 @@ export async function POST(request: Request) {
     const areasText = Array.isArray(areas) && areas.length > 0 ? areas.join(", ") : "Not specified"
 
     // v21: CRM upsert (HubSpot now; GHL later — see lib/hubspot.ts)
-    void upsertHubSpotContact({
+    await upsertHubSpotContact({
       email, name, phone, company: businessName,
       form: "Advertiser Contact", area: areasText,
       notes: [industryCategory, businessType, notes].filter(Boolean).join(" | "),
-      createDeal: true, // v23: advertiser application → deal in "New Lead"
+      createDeal: true, // v23: advertiser application → deal in "New Lead" (awaited: deal chain must finish before the lambda freezes)
     })
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
 
