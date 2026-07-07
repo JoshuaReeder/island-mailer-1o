@@ -38,6 +38,7 @@ export async function POST(request: Request) {
       email, name, phone, company: businessName,
       form: "Advertiser Contact", area: areasText,
       notes: [industryCategory, businessType, notes].filter(Boolean).join(" | "),
+      createDeal: true, // v23: advertiser application → deal in "New Lead"
     })
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
 
