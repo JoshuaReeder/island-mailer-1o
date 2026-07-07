@@ -52,6 +52,7 @@ export async function POST(request: Request) {
       form: "Advertiser Intake", area: areasText,
       notes: `${offerHeadline}${category ? " | " + category : ""} | ${monthsText}`,
       lifecycle: "opportunity",
+      createDeal: true, // v23: intake = highest intent → deal in "New Lead"
     })
 
     const row = (label: string, value?: string, link?: string) =>
