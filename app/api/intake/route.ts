@@ -47,12 +47,12 @@ export async function POST(request: Request) {
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
 
     // v21: CRM upsert — confirmed advertiser = opportunity
-    void upsertHubSpotContact({
+    await upsertHubSpotContact({
       email, name: contactName, phone, company: businessName,
       form: "Advertiser Intake", area: areasText,
       notes: `${offerHeadline}${category ? " | " + category : ""} | ${monthsText}`,
       lifecycle: "opportunity",
-      createDeal: true, // v23: intake = highest intent → deal in "New Lead"
+      createDeal: true, // v23: intake = highest intent → deal in "New Lead" (awaited: deal chain must finish before the lambda freezes)
     })
 
     const row = (label: string, value?: string, link?: string) =>
