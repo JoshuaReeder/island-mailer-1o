@@ -139,7 +139,7 @@ export default function LatestDrop() {
             <div className="ld-row">{top.map(renderSlot)}</div>
             {side === 1 ? (
               <div className="ld-mid">
-                <img src="/images/horizontal-20im-20logo.svg" alt="Island Mailer — Support Local. Live Hawaii." className="ld-midlogo" />
+                <img src="/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png" alt="Island Mailer — Support Local. Live Hawaii." className="ld-midlogo" />
                 <div className="ld-addr">
                   <span className="ld-bx">Aloha<br />Local Resident</span>
                   <span className="ld-bx">Postage</span>
