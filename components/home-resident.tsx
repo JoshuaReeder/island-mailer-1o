@@ -6,6 +6,8 @@ import FloatingMenu from "@/components/floating-menu"
 import EmailOptin from "@/components/email-optin"
 import NominateForm from "@/components/nominate-form"
 import CategoryIcon from "@/components/icons"
+import LatestDrop from "@/components/latest-drop"
+import PhonePill from "@/components/phone-pill"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
@@ -111,6 +113,14 @@ export default function HomeResident() {
 
   return (
     <div className="min-h-screen home-resident" style={{ background: "var(--navy)" }}>
+      {/* ================= TOP BAR (v24: logo + vanity phone pill) ================= */}
+      <div className="home-topbar">
+        <a className="tb-logo" href="/" aria-label="Island Mailer home">
+          <img src="/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png" alt="Island Mailer" />
+        </a>
+        <PhonePill />
+      </div>
+
       {/* ================= HERO (resident) ================= */}
       <div className="hero" id="top">
         <img
@@ -166,7 +176,7 @@ export default function HomeResident() {
       <section className="lightband" id="optin">
         <div className="container">
           <div className="optin dark reveal">
-            <span className="im-pill">July mailer coming up next</span>
+            <span className="im-pill">August mailer coming up next</span>
             <h2>Be first to the local deals</h2>
             <p className="lead">
               Join the Island Mailer list and you&apos;ll be the first to know the moment a new mailer lands in your
@@ -204,38 +214,8 @@ export default function HomeResident() {
         </div>
       </section>
 
-      {/* ================= BIG MAILER SHOWCASE ================= */}
-      <section className="shimmer">
-        <div className="container">
-          <h2 className="reveal">The biggest mail in your box</h2>
-          <p className="lead reveal">
-            A premium 9″×12″ postcard — bigger than anything else in your mailbox — with up to 16 local businesses, each
-            giving a real offer to redeem while it lasts.
-          </p>
-          <div className="mailerstage reveal">
-            <span className="sizebadge">9″ × 12″ · actual size</span>
-            <div className="postcard" aria-hidden="true">
-              {AD_TILES.map((t) => (
-                <div className="adtile" key={t.cat}>
-                  <div className="ai"><CategoryIcon name={t.cat} size={18} /></div>
-                  <div className="ac">{t.cat}</div>
-                  <div className="ao">{t.offer}</div>
-                </div>
-              ))}
-              <div className="adtile empty">
-                <div className="ai">＋</div>
-                <div className="ac">Your Business</div>
-                <div className="ao">Get featured</div>
-              </div>
-            </div>
-          </div>
-          <div className="mchips reveal">
-            <div className="mchip"><b>Up to 16</b> local offers</div>
-            <div className="mchip"><b>One</b> business per category</div>
-            <div className="mchip"><b>Redeem</b> while they last</div>
-          </div>
-        </div>
-      </section>
+      {/* ================= THE LATEST DROP (v24 interactive lookbook — replaces the static showcase) ================= */}
+      <LatestDrop />
 
       {/* ================= HOW IT WORKS ================= */}
       <section>
@@ -247,8 +227,8 @@ export default function HomeResident() {
             <div className="fstep reveal">
               <div className="fic">📬</div>
               <span className="fn">Step 1</span>
-              <h3>Get the mailer</h3>
-              <p>It lands in your mailbox, packed with local offers.</p>
+              <h3>Open mailbox</h3>
+              <p>Your Island Mailer is waiting — packed with exclusive local offers.</p>
             </div>
             <div className="fstep reveal">
               <div className="fic">📱</div>
@@ -259,8 +239,8 @@ export default function HomeResident() {
             <div className="fstep reveal">
               <div className="fic">🎟️</div>
               <span className="fn">Step 3</span>
-              <h3>Redeem local</h3>
-              <p>Show your phone at the business and enjoy.</p>
+              <h3>Show &amp; redeem</h3>
+              <p>Show your phone at the business and enjoy — while supporting local.</p>
             </div>
           </div>
         </div>
@@ -333,10 +313,10 @@ export default function HomeResident() {
         <div className="container">
           <div className="bizwrap reveal">
             <p className="bizeyebrow">For Local Business Owners</p>
-            <h2>Want your business featured?</h2>
+            <h2>Looking to feature your local business?</h2>
             <p className="bz">
-              Get in front of thousands of local households on your island&apos;s community mailer — and inside Local
-              Offers, where locals are already looking.
+              The card above is shared by a small circle of local businesses — and <b style={{ color: "var(--gold-bright)" }}>only
+              one per category</b> makes each issue. When the spot is yours, your competitor&apos;s isn&apos;t.
             </p>
             <details className="acc">
               <summary>
@@ -348,7 +328,10 @@ export default function HomeResident() {
                 <li>Choose your reach and area — no long-term contracts</li>
               </ul>
             </details>
-            <a className="btn" href="/advertise">Get Your Business Featured →</a>
+            <a className="btn" href="/advertise">See How It Works →</a>
+            <p style={{ marginTop: 18, color: "var(--sand)", fontSize: 16 }}>
+              Or just call or text us — <a href="tel:8088086245" style={{ color: "var(--gold-bright)", fontWeight: 800, textDecoration: "none" }}>808-808-MAIL</a>
+            </p>
           </div>
         </div>
       </section>

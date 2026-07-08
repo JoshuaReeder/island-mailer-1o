@@ -176,7 +176,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
           </p>
           <div className="ctas">
             <a className="btn" href="#offers">See the Offers</a>
-            <a className="btn ghost" href="#optin">July mailer coming up next →</a>
+            <a className="btn ghost" href="#optin">August mailer coming up next →</a>
           </div>
         </div>
       </div>
@@ -223,7 +223,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
 
           {revealed && (
             <p className="offers-note reveal">
-              Offers for your area drop with the July mailer —{" "}
+              Offers for your area drop with the August mailer —{" "}
               <a href="#optin">get notified</a>.
             </p>
           )}
@@ -281,7 +281,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
       <section className="bg-navy2" id="optin">
         <div className="container">
           <div className="optin reveal">
-            <span className="im-pill">July mailer coming up next</span>
+            <span className="im-pill">August mailer coming up next</span>
             <h2>Never miss the next drop</h2>
             <p className="lead">
               Get a heads-up the moment fresh offers land in your area each month — free for residents, always.

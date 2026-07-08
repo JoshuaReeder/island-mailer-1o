@@ -69,8 +69,8 @@ export default function PricingReveal({ source = "pricing-interest" }: PricingRe
 
   return (
     <div className="pricing-reveal pr-wide">
-      <p className="pr-eyebrow">Ad-space pricing</p>
-      <h3>{revealed ? "Here's what a featured spot costs" : "Your pricing is right here"}</h3>
+      <p className="pr-eyebrow">Current ad-space pricing</p>
+      <h3>{revealed ? "Today's rates for a featured spot" : "Your current pricing is right here"}</h3>
       <p className="pr-sub">
         {revealed ? (
           <>
@@ -140,7 +140,7 @@ export default function PricingReveal({ source = "pricing-interest" }: PricingRe
                   autoComplete="email"
                 />
                 <button className="btn" type="submit" disabled={isLoading}>
-                  {isLoading ? "One sec…" : "Reveal Pricing"}
+                  {isLoading ? "One sec…" : "Reveal Current Pricing"}
                 </button>
               </div>
               {error && (
@@ -156,7 +156,7 @@ export default function PricingReveal({ source = "pricing-interest" }: PricingRe
 
       {revealed && (
         <>
-          <p className="pr-emailed">&#128231; We&apos;ve also emailed you the full rate card.</p>
+          <p className="pr-emailed">&#128231; We&apos;ve also emailed you the current rate card.</p>
           <div className="pr-cta">
             <a className="btn" href="#contact">Check Availability for Your Category</a>
           </div>

@@ -9,7 +9,7 @@ import type React from "react"
 import { useState } from "react"
 
 const AREA_OPTIONS = ["North Shore", "Central", "West", "South", "Upcountry"]
-const MONTH_OPTIONS = ["July", "August", "September", "Every month"]
+const MONTH_OPTIONS = ["August", "September", "October", "Every month"]
 const CATEGORY_OPTIONS = [
   "Restaurant", "Pizza", "Café & Coffee", "Bakery", "Sweets & Treats", "Food Truck",
   "Happy Hour", "Health", "Spa & Wellness", "Salon & Beauty", "Fitness",

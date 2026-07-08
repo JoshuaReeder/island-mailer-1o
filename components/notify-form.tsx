@@ -40,7 +40,7 @@ export default function NotifyForm() {
       <div className="form-card" style={{ textAlign: "center" }}>
         <h3 style={{ color: "var(--cream)", fontSize: "var(--h3)" }}>You&apos;re on the list! 🤙🏾</h3>
         <p style={{ color: "var(--sand)", marginTop: "var(--gap-xs)", fontSize: "var(--text)", lineHeight: 1.6 }}>
-          We&apos;ll email you the moment Local Offers go live for your area — starting with the July mailer.
+          We&apos;ll email you the moment Local Offers go live for your area — starting with the August mailer.
         </p>
       </div>
     )
