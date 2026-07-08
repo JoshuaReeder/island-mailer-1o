@@ -21,6 +21,8 @@ export interface HubSpotLead {
   form: string
   island?: string
   area?: string
+  /** v24: resident home ZIP — lands in HubSpot standard `zip` (Postal Code) for segmentation */
+  zip?: string
   notes?: string
   /** lifecyclestage: "subscriber" for residents, "lead" (default) for businesses, "opportunity" for intake */
   lifecycle?: string
@@ -110,6 +112,7 @@ export async function upsertHubSpotContact(lead: HubSpotLead): Promise<void> {
     ...(lastname && { lastname }),
     ...(lead.phone && { phone: lead.phone }),
     ...(lead.company && { company: lead.company }),
+    ...(lead.zip && { zip: lead.zip }),
     hs_lead_status: "NEW",
     lifecyclestage: lead.lifecycle ?? "lead",
   }

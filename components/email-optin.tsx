@@ -18,6 +18,7 @@ interface EmailOptinProps {
 export default function EmailOptin({ source = "home", variant = "panel" }: EmailOptinProps) {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
+  const [zip, setZip] = useState("")
   const [hp, setHp] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [done, setDone] = useState(false)
@@ -35,7 +36,7 @@ export default function EmailOptin({ source = "home", variant = "panel" }: Email
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name, source, im_hp: hp }),
+        body: JSON.stringify({ email, name, zip, source, im_hp: hp }),
       })
       const result = await res.json()
       if (res.ok && result.success) {
@@ -52,6 +53,7 @@ export default function EmailOptin({ source = "home", variant = "panel" }: Email
         setDone(true)
         setEmail("")
         setName("")
+        setZip("")
       } else {
         setError(result.error || "Something went wrong. Please try again.")
       }
@@ -98,6 +100,19 @@ export default function EmailOptin({ source = "home", variant = "panel" }: Email
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         autoComplete="email"
+      />
+      <input
+        className="optin-zip"
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        maxLength={5}
+        aria-label="Home ZIP code (optional)"
+        placeholder="ZIP (optional)"
+        title="Optional - so we can tell you when a mailer drops in YOUR area"
+        value={zip}
+        onChange={(e) => setZip(e.target.value.replace(/[^0-9]/g, ""))}
+        autoComplete="postal-code"
       />
       <button className="btn" type="submit" disabled={isLoading}>
         {isLoading ? "Joining…" : "Join the List"}

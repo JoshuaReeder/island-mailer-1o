@@ -33,10 +33,10 @@ function PostcardTabs() {
     <>
       <div className="tabs">
         <button className={`tab${side === "front" ? " active" : ""}`} onClick={() => setSide("front")}>
-          Front (A–H)
+          Side One (A–H)
         </button>
         <button className={`tab${side === "back" ? " active" : ""}`} onClick={() => setSide("back")}>
-          Back (I–P)
+          Side Two (I–P)
         </button>
       </div>
       <div className="postcard-stage">
@@ -171,6 +171,22 @@ export default function AdvertiseContent() {
         </div>
       </div>
 
+      {/* ================= v24: THE FIVE-STEP PATH ================= */}
+      <section className="bg-navy" id="how-to-get-featured">
+        <div className="container">
+          <div className="sec-divider">◆</div>
+          <h2>Getting featured is simple</h2>
+          <p className="sec-sub">Five easy steps from first look to first mailboxes.</p>
+          <div className="sec-body fly-steps">
+            <div className="fly-step"><div className="num">1</div><h3>See the virtual mailer</h3><p>Explore the interactive card residents receive — and the exact spot that could be yours.</p></div>
+            <div className="fly-step"><div className="num">2</div><h3>Pick your area</h3><p>North Shore, Central, West, South or Upcountry — wherever your customers might live.</p></div>
+            <div className="fly-step"><div className="num">3</div><h3>Unlock current pricing</h3><p>Enter your email and today&apos;s rates appear instantly — the current rate card lands in your inbox too.</p></div>
+            <div className="fly-step"><div className="num">4</div><h3>Claim your category</h3><p>One business per category, first-come first-served — then it&apos;s exclusively yours.</p></div>
+            <div className="fly-step"><div className="num">5</div><h3>We handle the rest</h3><p>Design, print, postage, delivery — and your offer goes live on the digital mailer too.</p></div>
+          </div>
+        </div>
+      </section>
+
       {/* ================= THE 9x12 POSTCARD ================= */}
       <section className="bg-navy2 shimmer">
         <div className="container">
@@ -180,12 +196,12 @@ export default function AdvertiseContent() {
             <PostcardTabs />
             <div className="next-mailer plain">
               <div className="month-deck" aria-label="Upcoming Island Mailer campaigns">
-                <div className="deck-card peek c3"><span className="deck-month">September</span></div>
-                <div className="deck-card peek c2"><span className="deck-month">August</span></div>
+                <div className="deck-card peek c3"><span className="deck-month">October</span></div>
+                <div className="deck-card peek c2"><span className="deck-month">September</span></div>
                 <div className="deck-card front c1">
                   <div className="label">Next Mailer</div>
-                  <div className="date">July</div>
-                  <div className="deck-when">Reserving now — in mailboxes late July</div>
+                  <div className="date">August</div>
+                  <div className="deck-when">Reserving now — in mailboxes late August</div>
                 </div>
               </div>
               <p className="deck-cadence">A fresh Island Mailer every month.</p>

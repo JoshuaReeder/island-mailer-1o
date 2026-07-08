@@ -286,7 +286,7 @@ export default function ContactForm() {
           )}
         </div>
         <div className="talk-story">
-          <h3>Prefer to talk story first?</h3>
+          <h3>Prefer to talk story first? Call or text us.</h3>
           <p>
             Call or text us at <a href="tel:8088086245">(808) 808-6245</a>
           </p>

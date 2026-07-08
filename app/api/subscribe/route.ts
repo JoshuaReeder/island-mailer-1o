@@ -2,11 +2,13 @@ import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { guardRequest } from "@/lib/form-guard"
 import { upsertHubSpotContact } from "@/lib/hubspot"
+import { areaForZip } from "@/app/api/zip/route"
 
 export async function POST(request: Request) {
   try {
     const body = await request.json()
     const { email, name, source, im_hp } = body
+    const zip = typeof body.zip === "string" && /^\d{5}$/.test(body.zip.trim()) ? body.zip.trim() : ""
 
     const guard = guardRequest(request, { bucket: "subscribe", limit: 5, honeypot: im_hp, email, fakeSuccessMessage: "Subscribed successfully" })
     if (guard.blocked) return guard.blocked
@@ -19,8 +21,17 @@ export async function POST(request: Request) {
     const nameText = name || ""
     const timestamp = new Date().toLocaleString("en-US", { timeZone: "Pacific/Honolulu" })
 
-    // v21: CRM upsert — residents join as subscribers
-    void upsertHubSpotContact({ email, name: nameText, form: "Mailing List", notes: sourceText, lifecycle: "subscriber" })
+    // v21: CRM upsert — residents join as subscribers (v24: + ZIP → area segmentation)
+    const zipArea = zip ? areaForZip(zip) : ""
+    void upsertHubSpotContact({
+      email,
+      name: nameText,
+      form: "Mailing List",
+      notes: sourceText + (zip ? " | zip " + zip : ""),
+      lifecycle: "subscriber",
+      area: zipArea && zipArea !== "your area" ? zipArea : undefined,
+      zip: zip || undefined,
+    })
 
     // ─── Email Notifications ──────────────────────────────────────────────────
     if (process.env.RESEND_API_KEY) {
