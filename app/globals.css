@@ -1352,7 +1352,7 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .ld-row { display:grid; grid-template-columns:repeat(4,1fr); gap:2.4%; flex:1; }
 .ld-mid { display:flex; align-items:center; justify-content:space-between; gap:3%; padding:2.4% 1%; min-height:16%; }
 .ld-mid.slim { justify-content:space-between; }
-.ld-midlogo { height:clamp(24px,5.8vw,50px); border-radius:4px; }
+.ld-midlogo { height:clamp(40px,9vw,84px); width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
 .ld-addr { display:flex; gap:10px; align-items:center; }
 .ld-bx { border:1px solid rgba(194,154,99,.7); border-radius:4px; color:var(--sand); font-size:clamp(6.5px,1.1vw,10px); font-weight:700; letter-spacing:1.4px; text-align:center; padding:1em 1.3em; text-transform:uppercase; line-height:1.5; }
 .ld-qrhint { color:var(--gold-bright); font-weight:800; font-size:clamp(9px,1.5vw,14px); letter-spacing:.5px; }
