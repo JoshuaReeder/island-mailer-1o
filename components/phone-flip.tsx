@@ -8,7 +8,7 @@ export default function PhoneFlip() {
         .im-phone { font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: clamp(32px, 8vw, 52px); font-weight: 800; color: #F5F4EF; display: inline-flex; align-items: center; gap: 1px; line-height: 1; letter-spacing: -0.02em; text-decoration: none; }
         .im-phone:hover { opacity: 0.85; }
         .im-prefix { color: #D5C1AA; margin-right: 0.05em; font-variant-numeric: tabular-nums; }
-        .im-fw { display: inline-block; height: 1.25em; line-height: 1.25em; overflow: hidden; vertical-align: bottom; }
+        .im-fw { display: inline-block; width: 0.85em; height: 1.25em; line-height: 1.25em; overflow: hidden; vertical-align: bottom; }
         .im-fc { display: flex; flex-direction: column; animation: imFlipLoop 6s cubic-bezier(0.85, 0, 0.15, 1) infinite; }
         .im-fc span { display: block; height: 1.25em; text-align: center; font-variant-numeric: tabular-nums; color: #F5F4EF; }
         .im-fc span.im-gold { color: #A37C4F; }

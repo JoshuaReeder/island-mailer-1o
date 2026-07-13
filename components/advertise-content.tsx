@@ -6,6 +6,7 @@ import SMSContactForm from "@/components/SMSContactForm"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import SiteHeader from "@/components/site-header"
+import PhonePill from "@/components/phone-pill"
 import { FAQ_ITEMS } from "@/lib/advertise-faq"
 import PricingReveal from "@/components/pricing-reveal"
 import { areas, spotStatus, SPOT_STATUS_LABEL } from "@/lib/area-data"
@@ -149,6 +150,7 @@ export default function AdvertiseContent() {
           </div>
           <div className="reserve-wrap container">
             <a className="btn" href="#contact">Reserve Your Spot</a>
+            <div className="adv-hero-phone"><PhonePill /><span className="adv-phone-note">Call or text — talk story with us first.</span></div>
             <div className="scroll-cue">↓</div>
           </div>
           <h1>Advertise on Island Mailer — Local Postcard Advertising Across Maui</h1>

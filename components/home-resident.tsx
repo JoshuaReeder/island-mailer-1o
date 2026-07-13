@@ -7,7 +7,6 @@ import EmailOptin from "@/components/email-optin"
 import NominateForm from "@/components/nominate-form"
 import CategoryIcon from "@/components/icons"
 import LatestDrop from "@/components/latest-drop"
-import PhonePill from "@/components/phone-pill"
 
 const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
@@ -118,7 +117,7 @@ export default function HomeResident() {
         <a className="tb-logo" href="/" aria-label="Island Mailer home">
           <img src="/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png" alt="Island Mailer" />
         </a>
-        <PhonePill />
+        <a className="tb-bizlink" href="/advertise">Feature Your Business →</a>
       </div>
 
       {/* ================= HERO (resident) ================= */}

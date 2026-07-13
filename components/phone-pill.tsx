@@ -14,7 +14,7 @@ export default function PhonePill() {
         .im-pillbtn:hover { background:rgba(163,124,79,.24); box-shadow:0 8px 32px rgba(0,0,0,.4), 0 0 34px rgba(163,124,79,.3); }
         .im-pillbtn svg { width:17px; height:17px; flex:none; }
         .im-pillbtn .pfix { color:var(--cream); font-variant-numeric:tabular-nums; }
-        .im-pillbtn .pfw { display:inline-block; height:1.2em; line-height:1.2em; overflow:hidden; vertical-align:bottom; }
+        .im-pillbtn .pfw { display:inline-block; width:0.82em; height:1.2em; line-height:1.2em; overflow:hidden; vertical-align:bottom; }
         .im-pillbtn .pfc { display:flex; flex-direction:column; animation:imPillFlip 6s cubic-bezier(0.85,0,0.15,1) infinite; }
         .im-pillbtn .pfc span { display:block; height:1.2em; text-align:center; font-variant-numeric:tabular-nums; color:var(--cream); }
         .im-pillbtn .pfc span.g { color:var(--gold-bright); }
