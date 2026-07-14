@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
+import MauiInteractiveMap from "@/components/maui-interactive-map"
+import { MAUI_OUTLINE, MAUI_HERO_VIEWBOX } from "@/lib/maui-outline"
 import { mauiJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export const metadata: Metadata = {
@@ -66,7 +68,17 @@ export default function MauiPage() {
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(mauiJsonLd())} />
       {/* ================= MAUI HERO ================= */}
-      <div className="hero area">
+      <div className="hero area maui-hero2">
+        <div className="mh2-contour" aria-hidden="true" />
+        <svg className="mh2-isle" viewBox={MAUI_HERO_VIEWBOX} aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="isleGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="rgba(163,124,79,.28)" />
+              <stop offset="1" stopColor="rgba(163,124,79,.04)" />
+            </linearGradient>
+          </defs>
+          <path d={MAUI_OUTLINE} fill="url(#isleGrad)" stroke="rgba(201,163,107,.8)" strokeWidth="2.5" />
+        </svg>
         <div className="overlay" />
         <p className="crumb">
           <a href="/">Island Mailer</a> · Areas We Serve
@@ -87,102 +99,7 @@ export default function MauiPage() {
           <h2>How We Divide the Island</h2>
           <p className="sec-sub">Tap an area on the map to explore its page.</p>
           <div className="sec-body maui-map-wrap">
-            <svg
-              viewBox="0 0 900 600"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Map of Maui divided into five Island Mailer areas"
-            >
-              {/* ocean glow */}
-              <ellipse cx="470" cy="310" rx="445" ry="260" fill="rgba(22,66,104,.25)" />
-              {/* Maui island silhouette (north up): West Maui Mountains lobe, Kahului Bay,
-                  central isthmus, Māʻalaea Bay, and the larger Haleakalā lobe out to Hana */}
-              <path
-                d="M 232,142
-                   C 258,132 286,140 305,162
-                   C 330,180 348,200 352,226
-                   C 356,252 368,268 392,272
-                   C 398,284 402,290 414,288
-                   C 428,272 446,258 472,246
-                   C 520,224 575,208 632,204
-                   C 700,200 762,212 805,242
-                   C 830,260 844,280 840,302
-                   C 834,338 812,376 776,410
-                   C 740,444 696,468 648,478
-                   C 600,488 560,486 530,472
-                   C 516,482 502,480 496,466
-                   C 484,470 474,464 472,452
-                   C 458,432 450,408 448,384
-                   C 446,362 438,346 416,340
-                   C 404,348 392,348 382,340
-                   C 352,352 318,354 286,344
-                   C 232,330 184,300 162,258
-                   C 146,224 152,186 178,162
-                   C 194,148 212,148 232,142 Z"
-                fill="rgba(163,124,79,.10)"
-                stroke="#C29A63"
-                strokeWidth="2.5"
-                strokeLinejoin="round"
-              />
-              {/* dashed area dividers */}
-              <g stroke="#A37C4F" strokeWidth="1.8" strokeDasharray="7 9" fill="none" opacity=".85">
-                <path d="M 330,180 C 340,235 338,290 320,340" />
-                <path d="M 460,252 C 466,300 462,345 450,388" />
-                <path d="M 462,278 C 590,256 715,262 836,300" />
-                <path d="M 458,360 C 510,400 555,438 596,474" />
-              </g>
-              {/* WEST SIDE */}
-              <a href="/west-maui-advertising" aria-label="West Side - Maui">
-                <ellipse className="hot" cx="245" cy="245" rx="95" ry="92" />
-                <circle className="pin" cx="245" cy="200" r="5" />
-                <text className="lbl" x="245" y="245">West Side</text>
-                <text className="sub" x="245" y="270">LAHAINA · KĀʻANAPALI</text>
-              </a>
-              {/* CENTRAL */}
-              <a href="/central-maui-advertising" aria-label="Central - Maui">
-                <ellipse className="hot" cx="398" cy="308" rx="52" ry="74" />
-                <circle className="pin" cx="398" cy="262" r="5" />
-                <text className="lbl" x="398" y="305">Central</text>
-                <text className="sub" x="398" y="330">KAHULUI · WAILUKU</text>
-              </a>
-              {/* NORTH SHORE */}
-              <a href="/north-shore-maui-advertising" aria-label="North Shore - Maui">
-                <ellipse className="hot" cx="645" cy="238" rx="170" ry="44" />
-                <circle className="pin" cx="645" cy="210" r="5" />
-                <text className="lbl" x="645" y="240">North Shore</text>
-                <text className="sub" x="645" y="264">PĀʻIA · HAʻIKŪ · KUʻAU</text>
-              </a>
-              {/* UPCOUNTRY */}
-              <a href="/upcountry-maui-advertising" aria-label="Upcountry - Maui">
-                <ellipse className="hot" cx="650" cy="368" rx="150" ry="80" />
-                <circle className="pin" cx="650" cy="324" r="5" />
-                <text className="lbl" x="650" y="368">Upcountry</text>
-                <text className="sub" x="650" y="393">MAKAWAO · KULA · PUKALANI</text>
-              </a>
-              {/* SOUTH SIDE */}
-              <a href="/south-maui-advertising" aria-label="South Side - Maui">
-                <ellipse className="hot" cx="490" cy="420" rx="82" ry="58" />
-                <circle className="pin" cx="490" cy="385" r="5" />
-                <text className="lbl" x="490" y="422">South Side</text>
-                <text className="sub" x="490" y="446">KĪHEI · WAILEA · MĀKENA</text>
-              </a>
-              {/* compass */}
-              <g opacity=".7">
-                <circle cx="845" cy="78" r="26" fill="none" stroke="#A37C4F" strokeWidth="1.5" />
-                <path d="M845,60 L851,82 L845,77 L839,82 Z" fill="#C29A63" />
-                <text
-                  x="845"
-                  y="123"
-                  textAnchor="middle"
-                  fill="#D5C1AA"
-                  fontSize="13"
-                  letterSpacing="2"
-                  fontFamily="-apple-system, sans-serif"
-                >
-                  N
-                </text>
-              </g>
-            </svg>
+            <MauiInteractiveMap />
             <p className="map-note">Simplified area map — mailing routes are confirmed per campaign.</p>
           </div>
         </div>
