@@ -18,10 +18,10 @@ export default function PhonePill() {
         .im-pillbtn .pfw { display:inline-block; height:1.2em; line-height:1.2em; overflow:hidden; vertical-align:bottom; animation-duration:6s; animation-timing-function:cubic-bezier(0.85,0,0.15,1); animation-iteration-count:infinite; }
         .im-pillbtn .pw1 { animation-name:pColM; } .im-pillbtn .pw2 { animation-name:pColA; animation-delay:.12s; }
         .im-pillbtn .pw3 { animation-name:pColI; animation-delay:.24s; } .im-pillbtn .pw4 { animation-name:pColL; animation-delay:.36s; }
-        @keyframes pColM { 0%,35% { width:.66em; } 45%,90% { width:1.02em; } 100% { width:.66em; } }
-        @keyframes pColA { 0%,35% { width:.66em; } 45%,90% { width:.8em; } 100% { width:.66em; } }
-        @keyframes pColI { 0%,35% { width:.66em; } 45%,90% { width:.42em; } 100% { width:.66em; } }
-        @keyframes pColL { 0%,35% { width:.66em; } 45%,90% { width:.72em; } 100% { width:.66em; } }
+        @keyframes pColM { 0%,35% { width:.714em; } 45%,90% { width:.932em; } 100% { width:.714em; } }
+        @keyframes pColA { 0%,35% { width:.671em; } 45%,90% { width:.767em; } 100% { width:.671em; } }
+        @keyframes pColI { 0%,35% { width:.716em; } 45%,90% { width:.35em; } 100% { width:.716em; } }
+        @keyframes pColL { 0%,35% { width:.693em; } 45%,90% { width:.619em; } 100% { width:.693em; } }
         .im-pillbtn .pfc { display:flex; flex-direction:column; animation:imPillFlip 6s cubic-bezier(0.85,0,0.15,1) infinite; }
         .im-pillbtn .pfc span { display:block; height:1.2em; text-align:center; font-variant-numeric:tabular-nums; color:var(--cream); }
         .im-pillbtn .pfc span.g { color:var(--gold-bright); }
