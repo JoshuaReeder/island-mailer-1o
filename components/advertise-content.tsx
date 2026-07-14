@@ -6,7 +6,7 @@ import SMSContactForm from "@/components/SMSContactForm"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import SiteHeader from "@/components/site-header"
-import PhonePill from "@/components/phone-pill"
+import AdvertiseHero from "@/components/advertise-hero"
 import { FAQ_ITEMS } from "@/lib/advertise-faq"
 import PricingReveal from "@/components/pricing-reveal"
 import { areas, spotStatus, SPOT_STATUS_LABEL } from "@/lib/area-data"
@@ -140,38 +140,7 @@ export default function AdvertiseContent() {
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
       <SiteHeader onReserve={scrollToContact} />
 
-      {/* ================= HERO ================= */}
-      <div className="hero" id="top">
-        <div className="overlay" />
-        <div className="content">
-          <div className="logo-lockup">
-            <img src={LOGO} alt="Island Mailer — Support Local. Live Hawaii." />
-            <span className="tag-fix" />
-          </div>
-          <div className="reserve-wrap container">
-            <a className="btn" href="#contact">Reserve Your Spot</a>
-            <div className="adv-hero-phone"><PhonePill /><span className="adv-phone-note">Call or text — talk story with us first.</span></div>
-            <div className="scroll-cue">↓</div>
-          </div>
-          <h1>Advertise on Island Mailer — Local Postcard Advertising Across Maui</h1>
-          <p className="subhead">
-            Get your business featured on a premium 9&quot;x12&quot; mailbox billboard mailed up to 10,000 local homes —
-            reach Maui residents for just cents per household.
-          </p>
-          <div className="stats">
-            <div className="stat"><b>16 premium ad spaces</b><span>(8 front, 8 back)</span></div>
-            <div className="stat"><b>Up to 10,000 local homes</b><span>per mailing</span></div>
-            <div className="stat"><b>One local business</b><span>per industry</span></div>
-            <div className="stat"><b>Design, printing &amp; postage</b><span>all included</span></div>
-          </div>
-          <div className="ctas">
-            <a className="btn" href="#contact">Claim Your Spot</a>
-            <a className="btn ghost" href="#pricing">View Pricing and Details</a>
-          </div>
-          <p className="micro">No long-term contracts. First-come, first-served by industry.</p>
-          <div className="bottom-pad" />
-        </div>
-      </div>
+      <AdvertiseHero />
 
       {/* ================= v24: THE FIVE-STEP PATH ================= */}
       <section className="bg-navy" id="how-to-get-featured">
