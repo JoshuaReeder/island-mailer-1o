@@ -5,7 +5,7 @@ import { currentMailer } from "@/lib/offers-data"
 export const metadata: Metadata = {
   title: "Local Offers | Island Mailer — Support Local. Live Hawaii.",
   description:
-    "Browse and save the local deals from the businesses on your Island Mailer postcard, then redeem them around Maui. July mailer coming up next — get notified.",
+    "Browse and save the local deals from the businesses on your Island Mailer postcard, then redeem them around Maui. A fresh mailer drops every month — get notified.",
   alternates: { canonical: "/local-offers" },
   openGraph: {
     type: "website",
@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
   },
 }
+
+export const revalidate = 86400 // roll the issue month automatically
 
 export default function LocalOffersPage() {
   return (
