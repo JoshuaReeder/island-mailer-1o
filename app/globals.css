@@ -723,7 +723,7 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .vanity { font-size: calc(var(--text-lg) * 1.15); color: var(--cream); font-weight: 800; letter-spacing: 2px; }
 .vanity .numwrap { white-space: nowrap; display: inline-block; }
 .vanity small { display: block; color: var(--sand); font-weight: 400; margin-top: 10px; font-size: calc(var(--text)*0.85); letter-spacing: normal; }
-.flip { display: inline-grid; vertical-align: bottom; perspective: 300px; }
+.flip { display: inline-grid; justify-items: center; width: 0.82em; vertical-align: bottom; perspective: 300px; }
 .flip b, .flip i { grid-area: 1 / 1; font-style: normal; font-weight: 800; backface-visibility: hidden; }
 .flip b { animation: faceMail 7s ease-in-out infinite; }
 .flip i { color: var(--gold-bright); animation: faceNum 7s ease-in-out infinite; }
