@@ -14,7 +14,14 @@ export default function PhonePill() {
         .im-pillbtn:hover { background:rgba(163,124,79,.24); box-shadow:0 8px 32px rgba(0,0,0,.4), 0 0 34px rgba(163,124,79,.3); }
         .im-pillbtn svg { width:17px; height:17px; flex:none; }
         .im-pillbtn .pfix { color:var(--cream); font-variant-numeric:tabular-nums; }
-        .im-pillbtn .pfw { display:inline-block; width:0.82em; height:1.2em; line-height:1.2em; overflow:hidden; vertical-align:bottom; }
+        .im-pillbtn .pnum { display:inline-flex; align-items:center; gap:0; }
+        .im-pillbtn .pfw { display:inline-block; height:1.2em; line-height:1.2em; overflow:hidden; vertical-align:bottom; animation-duration:6s; animation-timing-function:cubic-bezier(0.85,0,0.15,1); animation-iteration-count:infinite; }
+        .im-pillbtn .pw1 { animation-name:pColM; } .im-pillbtn .pw2 { animation-name:pColA; animation-delay:.12s; }
+        .im-pillbtn .pw3 { animation-name:pColI; animation-delay:.24s; } .im-pillbtn .pw4 { animation-name:pColL; animation-delay:.36s; }
+        @keyframes pColM { 0%,35% { width:.66em; } 45%,90% { width:1.02em; } 100% { width:.66em; } }
+        @keyframes pColA { 0%,35% { width:.66em; } 45%,90% { width:.8em; } 100% { width:.66em; } }
+        @keyframes pColI { 0%,35% { width:.66em; } 45%,90% { width:.42em; } 100% { width:.66em; } }
+        @keyframes pColL { 0%,35% { width:.66em; } 45%,90% { width:.72em; } 100% { width:.66em; } }
         .im-pillbtn .pfc { display:flex; flex-direction:column; animation:imPillFlip 6s cubic-bezier(0.85,0,0.15,1) infinite; }
         .im-pillbtn .pfc span { display:block; height:1.2em; text-align:center; font-variant-numeric:tabular-nums; color:var(--cream); }
         .im-pillbtn .pfc span.g { color:var(--gold-bright); }
@@ -25,11 +32,7 @@ export default function PhonePill() {
       `}</style>
       <a href="tel:8088086245" className="im-pillbtn" aria-label="Call or text 808-808-6245">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
-        <span className="pfix">(808) 808-</span>
-        <span className="pfw"><span className="pfc pd1"><span>6</span><span className="g">M</span></span></span>
-        <span className="pfw"><span className="pfc pd2"><span>2</span><span className="g">A</span></span></span>
-        <span className="pfw"><span className="pfc pd3"><span>4</span><span className="g">I</span></span></span>
-        <span className="pfw"><span className="pfc pd4"><span>5</span><span className="g">L</span></span></span>
+        <span className="pnum"><span className="pfix">(808)&nbsp;808-</span><span className="pfw pw1"><span className="pfc pd1"><span>6</span><span className="g">M</span></span></span><span className="pfw pw2"><span className="pfc pd2"><span>2</span><span className="g">A</span></span></span><span className="pfw pw3"><span className="pfc pd3"><span>4</span><span className="g">I</span></span></span><span className="pfw pw4"><span className="pfc pd4"><span>5</span><span className="g">L</span></span></span></span>
       </a>
     </>
   )
