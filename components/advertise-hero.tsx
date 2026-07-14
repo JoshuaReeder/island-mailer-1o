@@ -61,9 +61,6 @@ export default function AdvertiseHero() {
 
       <div className="adv2-wrap">
         <div className="adv2-copy">
-          <div className="adv2-logo">
-            <img src={LOGO} alt="Island Mailer — Support Local. Live Hawaii." />
-          </div>
           <h1>
             Your business, in <em>every mailbox</em> that matters.
           </h1>
