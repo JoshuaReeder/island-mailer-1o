@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import PricingReveal from "@/components/pricing-reveal"
+import ProductsShowcaseFx from "@/components/products-showcase-fx"
 import { productsJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export const metadata: Metadata = {
@@ -23,7 +24,9 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--navy)" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(productsJsonLd())} />
-      <div className="hero area">
+      <div className="hero area prod-hero2">
+        <div className="ph2-horizon" aria-hidden="true" />
+        <div className="ph2-rays" aria-hidden="true" />
         <p className="crumb">
           <a href="/">Island Mailer</a> · Products &amp; Services
         </p>
@@ -34,6 +37,10 @@ export default function ProductsPage() {
           an ad space, we handle the design, print, postage and delivery. Choose the reach that fits your goals and budget.
         </p>
         <a className="btn" href="#mailers">See the mailers</a>
+        <div className="ph2-duo" aria-hidden="true">
+          <div className="d1"><i /><em>Signature · 12″×9″</em></div>
+          <div className="d2"><i /><em>Hyper-Local · 12″×6.5″</em></div>
+        </div>
       </div>
 
       {/* ===== Community mailers — simplified visual comparison (P4) ===== */}
@@ -46,6 +53,7 @@ export default function ProductsPage() {
             per category, 8 ad spaces per side (16 total). Pick the reach that fits.
           </p>
 
+          <ProductsShowcaseFx />
           <div className="compare-wrap">
             {/* v18: big horizontal mailer showcase — drawn to true scale (both a full 12″ wide) */}
             <p className="msh-lead">
