@@ -227,12 +227,14 @@ const NORTH_SHORE_OFFERS: Offer[] = [
   },
 ]
 
+import { currentIssueMonth } from "@/lib/issue-month"
+
 /* The "current mailer" shown by default on /local-offers */
 export const currentMailer: MailerData = {
   code: "maui-north-shore-2026-07",
   island: "Maui",
   area: "North Shore",
-  monthLabel: "July 2026",
+  monthLabel: currentIssueMonth().label,
   offers: NORTH_SHORE_OFFERS,
 }
 
@@ -244,7 +246,7 @@ export const mailers: Record<string, MailerData> = {
     code: "maui-south-2026-07",
     island: "Maui",
     area: "South Maui",
-    monthLabel: "July 2026",
+    monthLabel: currentIssueMonth().label,
     offers: NORTH_SHORE_OFFERS,
   },
 }
