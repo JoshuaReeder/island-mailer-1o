@@ -723,15 +723,15 @@ footer { background: #141a24; padding: var(--gap-m) 0 var(--gap-s); }
 .vanity { font-size: calc(var(--text-lg) * 1.15); color: var(--cream); font-weight: 800; letter-spacing: 2px; }
 .vanity .numwrap { white-space: nowrap; display: inline-block; }
 .vanity small { display: block; color: var(--sand); font-weight: 400; margin-top: 10px; font-size: calc(var(--text)*0.85); letter-spacing: normal; }
-.flip { display: inline-grid; justify-items: center; vertical-align: bottom; perspective: 300px; animation-duration: 7s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+.flip { display: inline-grid; grid-template-columns: 100%; justify-items: center; vertical-align: bottom; perspective: 300px; animation-duration: 7s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
 .flip:nth-of-type(1) { animation-name: imColM; }
 .flip:nth-of-type(2) { animation-name: imColA; animation-delay: .15s; }
 .flip:nth-of-type(3) { animation-name: imColI; animation-delay: .3s; }
 .flip:nth-of-type(4) { animation-name: imColL; animation-delay: .45s; }
-@keyframes imColM { 0%, 38% { width: 1.02em; } 46%, 88% { width: .68em; } 96%, 100% { width: 1.02em; } }
-@keyframes imColA { 0%, 38% { width: .8em; } 46%, 88% { width: .68em; } 96%, 100% { width: .8em; } }
-@keyframes imColI { 0%, 38% { width: .42em; } 46%, 88% { width: .68em; } 96%, 100% { width: .42em; } }
-@keyframes imColL { 0%, 38% { width: .72em; } 46%, 88% { width: .68em; } 96%, 100% { width: .72em; } }
+@keyframes imColM { 0%, 38% { width: .951em; } 46%, 88% { width: .744em; } 96%, 100% { width: .951em; } }
+@keyframes imColA { 0%, 38% { width: .791em; } 46%, 88% { width: .696em; } 96%, 100% { width: .791em; } }
+@keyframes imColI { 0%, 38% { width: .358em; } 46%, 88% { width: .742em; } 96%, 100% { width: .358em; } }
+@keyframes imColL { 0%, 38% { width: .629em; } 46%, 88% { width: .719em; } 96%, 100% { width: .629em; } }
 .flip b, .flip i { grid-area: 1 / 1; font-style: normal; font-weight: 800; backface-visibility: hidden; }
 .flip b { animation: faceMail 7s ease-in-out infinite; }
 .flip i { color: var(--gold-bright); animation: faceNum 7s ease-in-out infinite; }
