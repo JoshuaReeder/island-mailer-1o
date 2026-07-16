@@ -77,16 +77,22 @@ export default function RootLayout({
         />
         <Script id="ga4-init" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TQFPZ3K0JK');
-          `}
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TQFPZ3K0JK');
+`}
         </Script>
         <Script
           id="hs-script-loader"
           strategy="afterInteractive"
           src="https://js-na2.hs-scripts.com/246430880.js"
+        />
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6a585241c9f31412b25c7cb7"
+          strategy="afterInteractive"
         />
       </body>
     </html>
