@@ -93,7 +93,7 @@ gtag('config', 'G-TQFPZ3K0JK');
         <Script
           src="https://widgets.leadconnectorhq.com/loader.js"
           data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6a585241c9f31412b25c7cb7"
+          data-widget-id="6a5865d4c9f31412b25eb897"
           strategy="afterInteractive"
         />
       </body>
