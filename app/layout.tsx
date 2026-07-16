@@ -69,8 +69,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background">
       <body className={`font-sans antialiased`}>
-        {/* A2P-STRIP 2026-07-15 (temporary) — hide all lead-capture fields site-wide during A2P review; the GHL chat widget now loads only on /text. Remove this style block to restore forms. */}
-        <style dangerouslySetInnerHTML={{ __html: `form,input[type="tel"],input[type="email"],input[type="text"],input[type="number"],textarea,select{display:none!important}` }} />
         {children}
         <Analytics />
         <Script
