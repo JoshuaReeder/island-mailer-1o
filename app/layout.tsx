@@ -69,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background">
       <body className={`font-sans antialiased`}>
-        {/* A2P-STRIP 2026-07-15 (temporary) — hide all lead-capture fields site-wide during A2P review; the GHL chat widget (iframe) is unaffected. Remove this style block to restore forms. */}
+        {/* A2P-STRIP 2026-07-15 (temporary) — hide all lead-capture fields site-wide during A2P review; the GHL chat widget now loads only on /text. Remove this style block to restore forms. */}
         <style dangerouslySetInnerHTML={{ __html: `form,input[type="tel"],input[type="email"],input[type="text"],input[type="number"],textarea,select{display:none!important}` }} />
         {children}
         <Analytics />
@@ -89,12 +89,6 @@ gtag('config', 'G-TQFPZ3K0JK');
           id="hs-script-loader"
           strategy="afterInteractive"
           src="https://js-na2.hs-scripts.com/246430880.js"
-        />
-        <Script
-          src="https://widgets.leadconnectorhq.com/loader.js"
-          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6a5865d4c9f31412b25eb897"
-          strategy="afterInteractive"
         />
       </body>
     </html>
