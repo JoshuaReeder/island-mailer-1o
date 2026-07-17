@@ -1,5 +1,5 @@
 /*
- * ghl.ts (v29.1 — GHL cutover, doc 18 Phase 4; env refresh) — GoHighLevel contact upsert +
+ * ghl.ts (v29.2 — GHL cutover, doc 18 Phase 4; clean rebuild) — GoHighLevel contact upsert +
  * dedup-safe opportunity creation for all website lead forms.
  *
  * Mirrors the lib/hubspot.ts contract exactly: never throws, always resolves,
