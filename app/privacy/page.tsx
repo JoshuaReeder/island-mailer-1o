@@ -15,7 +15,7 @@ export default function Privacy() {
       <h2>Sharing</h2>
       <p>We do not sell your personal information. We share it only with service providers who help us operate (e.g., our CRM and printer, i Can Print That) and only as needed to deliver our services.</p>
       <h2>Contact</h2>
-      <p>Island Mailer · 674 Loina Pl, Paia, HI 96779 · <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a> · (808) 808-6245</p>
+      <p>Island Mailer · <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a> · (808) 808-6245</p>
     </main>
   )
 }
