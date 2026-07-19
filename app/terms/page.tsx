@@ -12,7 +12,7 @@ export default function Terms() {
       <h2>Payments</h2>
       <p>Advertising is invoiced per the agreed rate. A spot is confirmed when payment is received.</p>
       <h2>Contact</h2>
-      <p>Island Mailer · 674 Loina Pl, Paia, HI 96779 · <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a> · (808) 808-6245</p>
+      <p>Island Mailer · <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a> · (808) 808-6245</p>
     </main>
   )
 }
