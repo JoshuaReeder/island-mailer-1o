@@ -1,8 +1,16 @@
 /*
- * form-guard.ts (v21) — shared bot/spam protection for ALL form APIs.
+ * form-guard.ts (v30) — shared bot/spam protection for ALL form APIs.
  * Mirrors the protections first shipped on /api/waitlist (Jul 5) so every
  * endpoint behaves the same:
  *   1. Honeypot: hidden field bots fill → fake 200 success, nothing processed.
+ *   1b. v30 JS-proof token: lead-form routes require the `x-im-tk` header that
+ *       only our page JS mints (see the "im-tk" script in app/layout.tsx).
+ *       Direct-POST bots never run page JS → fake 200 success, nothing
+ *       processed. Token = "<t36>.<djb2(t36+salt)36>" minted once per page
+ *       load; server accepts sig-valid tokens aged 3s–30d (instant submits
+ *       fail the dwell check; humans never hit the ceiling). Utility buckets
+ *       (track/zip/places) skip this — only routes passing honeypot/email opts
+ *       are treated as lead forms.
  *   2. Rate limiting per IP per route bucket (in-memory; per serverless
  *      instance, i.e. a soft limit — upgrade to KV if spam escalates).
  *   3. Email format validation + disposable-domain blocklist.
@@ -25,6 +33,26 @@ export const DISPOSABLE_DOMAINS = new Set([
   "tempinbox.com", "mailnesia.com", "maildrop.cc", "getnada.com", "zetmail.com",
   "mailtemp.net", "temp-mail.io", "tmail.io", "moakt.com", "getairmail.com",
 ])
+
+/* v30 — must stay byte-identical to the hash in app/layout.tsx "im-tk" script. */
+function djb2(s: string): number {
+  let h = 5381
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0
+  return h >>> 0
+}
+
+export function verifyImToken(raw: string | null): boolean {
+  if (!raw) return false
+  const parts = raw.split(".")
+  if (parts.length !== 2) return false
+  const [t36, sig] = parts
+  if (!t36 || !sig) return false
+  if (djb2(t36 + "aloha-8083").toString(36) !== sig) return false
+  const t = parseInt(t36, 36)
+  if (!Number.isFinite(t)) return false
+  const age = Date.now() - t
+  return age >= 3000 && age <= 30 * 24 * 60 * 60 * 1000
+}
 
 export interface GuardMeta {
   ip: string
@@ -78,6 +106,19 @@ export function guardRequest(request: Request, opts: GuardOptions): GuardResult 
   // 1. Honeypot — fake success so bots don't retry; nothing gets processed.
   if (typeof opts.honeypot === "string" && opts.honeypot.trim().length > 0) {
     console.log(`[island-mailer] Honeypot triggered on ${opts.bucket} — bot blocked`)
+    return {
+      blocked: NextResponse.json({
+        success: true,
+        message: opts.fakeSuccessMessage ?? "Submitted successfully",
+      }),
+      meta,
+    }
+  }
+
+  // 1b. v30 JS-proof token — lead forms only (routes that wire honeypot/email).
+  const isLeadForm = opts.honeypot !== undefined || opts.email !== undefined
+  if (isLeadForm && !verifyImToken(request.headers.get("x-im-tk"))) {
+    console.log(`[island-mailer] Token check failed on ${opts.bucket} — bot blocked (no page JS / instant submit)`)
     return {
       blocked: NextResponse.json({
         success: true,
