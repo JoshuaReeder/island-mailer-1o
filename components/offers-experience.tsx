@@ -1,14 +1,12 @@
 "use client"
 
 import type React from "react"
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import EmailOptin from "@/components/email-optin"
 import type { MailerData } from "@/lib/offers-data"
 import CategoryIcon from "@/components/icons"
-
-const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png"
 
 declare global {
   interface Window {
@@ -36,15 +34,15 @@ function areaLabelForZip(zip: string): string {
 /* Mailer-proportioned placeholder slots — one printed side of the 9×12 mailer
    is a 2-col × 4-row block of ad spaces (8 slots), shown in printed order.
    NO real business identities — advertisers aren't locked yet. */
-const PLACEHOLDER_SLOTS: { n: number; icon: string; cat: string }[] = [
-  { n: 1, icon: "🍕", cat: "Restaurant" },
-  { n: 2, icon: "☕", cat: "Café & Coffee" },
-  { n: 3, icon: "🍦", cat: "Sweets & Treats" },
-  { n: 4, icon: "💆", cat: "Spa & Wellness" },
-  { n: 5, icon: "✂️", cat: "Salon & Beauty" },
-  { n: 6, icon: "🛍️", cat: "Shop & Boutique" },
-  { n: 7, icon: "🔧", cat: "Home Services" },
-  { n: 8, icon: "🤿", cat: "Activities & Fun" },
+const PLACEHOLDER_SLOTS: { n: number; cat: string }[] = [
+  { n: 1, cat: "Restaurant" },
+  { n: 2, cat: "Café & Coffee" },
+  { n: 3, cat: "Sweets & Treats" },
+  { n: 4, cat: "Spa & Wellness" },
+  { n: 5, cat: "Salon & Beauty" },
+  { n: 6, cat: "Shop & Boutique" },
+  { n: 7, cat: "Home Services" },
+  { n: 8, cat: "Activities & Fun" },
 ]
 
 /* GA4 + lightweight server beacon. Never blocks the UI. */
@@ -150,37 +148,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
   )
 
   return (
-    <div className="min-h-screen home-resident offers-page" style={{ background: "var(--navy)" }}>
-      {/* HERO */}
-      <div className="hero" id="top">
-        <div className="overlay" />
-        <div className="content">
-          <div className="logo-lockup">
-            <img src={LOGO} alt="Island Mailer — Support Local. Live Hawaii." />
-            <span className="tag-fix" />
-          </div>
-          <p className="crumb" style={{ marginTop: 24 }}>
-            <a href="/">Island Mailer</a> · Local Offers
-          </p>
-          <span className="month-pill" style={{ marginTop: 8 }}>
-            {revealed ? `${areaLabel} · ` : ""}
-            {data.monthLabel}
-          </span>
-          <h1>
-            <span className="accent">{revealed ? `${areaLabel} ` : "Your area's "}</span>local offers,{" "}
-            <span className="h1b">scan the mailer QR, save your favorites, redeem around {data.island}</span>
-          </h1>
-          <p className="subhead">
-            Every offer from the local businesses on your Island Mailer — gathered in one spot. Save the ones you love,
-            then show your phone to redeem.
-          </p>
-          <div className="ctas">
-            <a className="btn" href="#offers">See the Offers</a>
-            <a className="btn ghost" href="#optin">August mailer coming up next →</a>
-          </div>
-        </div>
-      </div>
-
+    <div className="min-h-screen home-resident offers-page" id="top" style={{ background: "var(--navy)" }}>
       {/* HOW IT WORKS (animated flow) */}
       <section>
         <div className="container">
@@ -189,19 +157,25 @@ export default function OffersExperience({ data }: { data: MailerData }) {
           <div className="flow">
             <div className="flowline" aria-hidden />
             <div className="fstep reveal">
-              <div className="fic">📬</div>
+              <div className="fic" aria-hidden>
+                <svg viewBox="0 0 24 24"><path d="M4 10c0-3 2.5-5 6-5h4c3.5 0 6 2 6 5v8H4ZM4 18h16M8 21v-3M16 21v-3M20 8l1.5-.5" /></svg>
+              </div>
               <span className="fn">Step 1</span>
               <h3>Get the mailer &amp; scan</h3>
               <p>Scan the QR on your Island Mailer postcard — every offer opens right on your phone.</p>
             </div>
             <div className="fstep reveal">
-              <div className="fic">🔖</div>
+              <div className="fic" aria-hidden>
+                <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z" /></svg>
+              </div>
               <span className="fn">Step 2</span>
               <h3>Browse &amp; save</h3>
               <p>Tap the star to save the deals you want. They stay here, ready when you need them.</p>
             </div>
             <div className="fstep reveal">
-              <div className="fic">🤝</div>
+              <div className="fic" aria-hidden>
+                <svg viewBox="0 0 24 24"><path d="M12 21C7 17 4 13.5 4 9.8 4 7 6 5 8.5 5c1.4 0 2.7.7 3.5 1.8C12.8 5.7 14.1 5 15.5 5 18 5 20 7 20 9.8c0 3.7-3 7.2-8 11.2Z" /></svg>
+              </div>
               <span className="fn">Step 3</span>
               <h3>Show &amp; redeem</h3>
               <p>Get the code, show your phone at the local business, and enjoy — while supporting local.</p>
@@ -223,7 +197,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
 
           {revealed && (
             <p className="offers-note reveal">
-              Offers for your area drop with the August mailer —{" "}
+              Offers for your area drop with the fall mailers —{" "}
               <a href="#optin">get notified</a>.
             </p>
           )}
@@ -244,7 +218,7 @@ export default function OffersExperience({ data }: { data: MailerData }) {
             {!revealed && (
               <div className="gate-overlay" role="dialog" aria-label="Enter your ZIP code">
                 <form className="gate-card" onSubmit={handleZipSubmit}>
-                  <span className="gate-pill">📍 Local Offers</span>
+                  <span className="gate-pill">Local Offers</span>
                   <h3>Enter your home ZIP code to see this area&apos;s offers.</h3>
                   <p className="gate-sub">We&apos;ll show the ad slots for your Island Mailer area.</p>
                   <div className="gate-row">
@@ -277,14 +251,85 @@ export default function OffersExperience({ data }: { data: MailerData }) {
         </div>
       </section>
 
+      {/* AREAS — five local markets (fall series) */}
+      <section className="bg-navy2" id="areas">
+        <div className="container">
+          <div className="sec-divider">◆</div>
+          <h2 className="reveal">One island. Five local markets.</h2>
+          <p className="lead reveal">
+            Seasonal mailers featuring trusted local businesses and offers for Maui households — starting North Shore,
+            then rolling across the island. Sign up and we&apos;ll tell you when yours is next.
+          </p>
+          <div className="fallgrid">
+            <div className="fallcard live reveal">
+              <h3>North Shore</h3>
+              <p>PĀʻIA · HAʻIKŪ · KUʻAU</p>
+              <span className="falllbl">FALL MAILERS</span>
+              <span className="fallmonths">September ~ October ~ November</span>
+              <span className="fallst">Coming Soon</span>
+            </div>
+            <div className="fallcard reveal">
+              <h3>Central</h3>
+              <p>KAHULUI · WAILUKU</p>
+              <a className="fallst" href="#optin">Sign Up Now</a>
+            </div>
+            <div className="fallcard reveal">
+              <h3>Upcountry</h3>
+              <p>MAKAWAO · KULA · PUKALANI</p>
+              <a className="fallst" href="#optin">Sign Up Now</a>
+            </div>
+            <div className="fallcard reveal">
+              <h3>South Side</h3>
+              <p>KĪHEI · WAILEA · MĀKENA</p>
+              <a className="fallst" href="#optin">Sign Up Now</a>
+            </div>
+            <div className="fallcard reveal">
+              <h3>West Side</h3>
+              <p>LAHAINA · KĀʻANAPALI</p>
+              <a className="fallst" href="#optin">Sign Up Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INSIDE EVERY MAILER */}
+      <section id="inside">
+        <div className="container">
+          <div className="sec-divider">◆</div>
+          <h2 className="reveal">Why neighbors keep it on the counter</h2>
+          <div className="insgrid">
+            <div className="inscard reveal">
+              <span className="insbig">16</span>
+              <h3>Hand-picked local businesses</h3>
+              <p>One per category — restaurants, salons, home services, activities and more. The good ones.</p>
+            </div>
+            <div className="inscard reveal">
+              <span className="insbig">100%</span>
+              <h3>Real-value offers</h3>
+              <p>Every spot on the card carries a genuine offer — not filler. If it&apos;s on the mailer, it&apos;s worth your time.</p>
+            </div>
+            <div className="inscard reveal">
+              <span className="insbig">1</span>
+              <h3>QR to everything</h3>
+              <p>Scan once and every offer is on your phone — save your favorites, show &amp; redeem around Maui.</p>
+            </div>
+          </div>
+          <div className="reveal" style={{ marginTop: 48, display: "flex", justifyContent: "center" }}>
+            <a className="btn" href="#optin">Get the Offers</a>
+          </div>
+        </div>
+      </section>
+
       {/* EMAIL OPT-IN */}
       <section className="bg-navy2" id="optin">
         <div className="container">
           <div className="optin reveal">
-            <span className="im-pill">August mailer coming up next</span>
-            <h2>Never miss the next drop</h2>
+            <span className="im-pill">Fall Local Deals — Coming Soon</span>
+            <h2>Never miss the deals</h2>
             <p className="lead">
-              Get a heads-up the moment fresh offers land in your area each month — free for residents, always.
+              Island Mailer is preparing our next series of local deals, offers, and featured Maui businesses for
+              households across the island. Sign up and we&apos;ll tell you the moment fall mailers land in (or near)
+              your area.
             </p>
             <EmailOptin source="local-offers" />
             <p className="fine">No spam, just local deals. Unsubscribe anytime.</p>
