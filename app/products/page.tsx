@@ -90,7 +90,7 @@ export default function ProductsPage() {
                   className="msh-paper hl"
                   style={{
                     backgroundImage:
-                      "linear-gradient(rgba(20,28,40,.62), rgba(20,28,40,.82)), url('/images/mailer/side-two-fall.webp')",
+                      "linear-gradient(rgba(20,28,40,.62), rgba(20,28,40,.82)), url('/images/mailer/hyper-local-fall.webp')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
