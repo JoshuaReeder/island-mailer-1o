@@ -27,31 +27,36 @@ const AVAILABILITY = MAUI_AREA_KEYS.map((k) => {
 /* Booking link (Cal.com etc). Hidden until NEXT_PUBLIC_BOOKING_URL is set in Vercel. */
 const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL
 
-/* ── Postcard front/back tabs ── */
+/* ── Postcard Side One / Side Two tabs (real fall card artwork) ── */
 function PostcardTabs() {
   const [side, setSide] = useState<"front" | "back">("front")
   return (
     <>
       <div className="tabs">
         <button className={`tab${side === "front" ? " active" : ""}`} onClick={() => setSide("front")}>
-          Side One (A–H)
+          Side One
         </button>
         <button className={`tab${side === "back" ? " active" : ""}`} onClick={() => setSide("back")}>
-          Side Two (I–P)
+          Side Two
         </button>
       </div>
       <div className="postcard-stage">
         <div className="postcard-3d">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FRONT%208%20Gold%20on%20Navy-EdKtbmAI0oK519d63uOWFOq9Unh3bw.png"
-            alt="Island Mailer 9×12 postcard front — navy background"
+            src="/images/mailer/side-one-fall.webp"
+            alt="Island Mailer 9×12 fall card — Side One with 8 featured local offers"
             style={{ display: side === "front" ? "block" : "none" }}
           />
-          <div className="postcard-back" style={{ display: side === "back" ? "grid" : "none" }}>
-            <div>I</div><div>J</div><div>K</div><div>L</div><div>M</div><div>N</div><div>O</div><div>P</div>
-          </div>
+          <img
+            src="/images/mailer/side-two-fall.webp"
+            alt="Island Mailer 9×12 fall card — Side Two with 8 more featured local offers"
+            style={{ display: side === "back" ? "block" : "none" }}
+          />
         </div>
       </div>
+      <p className="sec-sub" style={{ marginTop: 14, fontSize: 14, opacity: 0.8 }}>
+        Sample offers shown — the fall lineup is being reserved now.
+      </p>
     </>
   )
 }
@@ -167,15 +172,15 @@ export default function AdvertiseContent() {
             <PostcardTabs />
             <div className="next-mailer plain">
               <div className="month-deck" aria-label="Upcoming Island Mailer campaigns">
-                <div className="deck-card peek c3"><span className="deck-month">October</span></div>
-                <div className="deck-card peek c2"><span className="deck-month">September</span></div>
+                <div className="deck-card peek c3"><span className="deck-month">November</span></div>
+                <div className="deck-card peek c2"><span className="deck-month">October</span></div>
                 <div className="deck-card front c1">
-                  <div className="label">Next Mailer</div>
-                  <div className="date">August</div>
-                  <div className="deck-when">Reserving now — in mailboxes late August</div>
+                  <div className="label">Now Reserving</div>
+                  <div className="date">Fall Mailers</div>
+                  <div className="deck-when">September · October · November — first drop lands in September</div>
                 </div>
               </div>
-              <p className="deck-cadence">A fresh Island Mailer every month.</p>
+              <p className="deck-cadence">A three-mailer fall series — one reservation keeps you in mailboxes all season.</p>
               <p>Limited spots available. Reserve your space on the most visible mail in local neighborhoods.</p>
               <a className="btn" href="#contact">Reserve Your Spot</a>
             </div>

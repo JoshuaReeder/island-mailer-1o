@@ -1,38 +1,17 @@
 "use client"
 
 /*
- * LatestDrop (v24) — the interactive digital lookbook on the homepage.
- * Mirrors the REAL print card: Side One = 4 slots / logo+address+postage band /
- * 4 slots (A–H). Side Two = I–P with a slim QR strip. 3D pointer tilt,
- * scroll-driven entrance, and a Y-flip when switching sides.
- * Offers below are GENERIC SAMPLES (no business names) until the real
- * August lineup locks — swap via lib/offers-data when ready (doc 07).
+ * LatestDrop (v32) — the interactive lookbook on the homepage, now showing the
+ * REAL 9×12 fall card artwork (Side One / Side Two images). Keeps the 3D
+ * pointer tilt, scroll-driven entrance, and the Y-flip when switching sides.
+ * Fall-series framing; sample offers shown until the real lineup locks (doc 07).
  */
 import { useEffect, useRef, useState } from "react"
-import CategoryIcon from "@/components/icons"
 
-interface Slot { letter: string; cat: string; offer: string; your?: boolean }
-
-const SIDE_ONE: Slot[] = [
-  { letter: "A", cat: "Restaurant", offer: "Buy one entrée, get one 50% off" },
-  { letter: "B", cat: "Café & Coffee", offer: "Free pastry with any large coffee" },
-  { letter: "C", cat: "Sweets & Treats", offer: "Buy-one-get-one shave ice" },
-  { letter: "D", cat: "Spa & Wellness", offer: "$25 off your first massage" },
-  { letter: "E", cat: "Salon & Beauty", offer: "20% off your first visit" },
-  { letter: "F", cat: "Shop & Boutique", offer: "15% off any one item" },
-  { letter: "G", cat: "Home Services", offer: "$75 off any service call" },
-  { letter: "H", cat: "Activities & Fun", offer: "Keiki free with paying adult" },
-]
-const SIDE_TWO: Slot[] = [
-  { letter: "I", cat: "Fitness", offer: "First week free" },
-  { letter: "J", cat: "Bakery", offer: "Free coffee with any dozen" },
-  { letter: "K", cat: "Auto", offer: "Free car wash with any service" },
-  { letter: "L", cat: "Pet", offer: "Free nail trim with grooming" },
-  { letter: "M", cat: "Health", offer: "New-patient special" },
-  { letter: "N", cat: "Happy Hour", offer: "2-for-1 pau hana pupus" },
-  { letter: "O", cat: "Home Services", offer: "Free estimate + 10% off" },
-  { letter: "P", cat: "Your Business", offer: "This spot could be yours", your: true },
-]
+const SIDES = {
+  1: { src: "/images/mailer/side-one-fall.webp", alt: "Island Mailer 9×12 fall card — Side One with 8 featured local offers" },
+  2: { src: "/images/mailer/side-two-fall.webp", alt: "Island Mailer 9×12 fall card — Side Two with 8 more featured local offers" },
+} as const
 
 export default function LatestDrop() {
   const [side, setSide] = useState<1 | 2>(1)
@@ -96,24 +75,6 @@ export default function LatestDrop() {
     }
   }, [flipping])
 
-  const slots = side === 1 ? SIDE_ONE : SIDE_TWO
-  const top = slots.slice(0, 4)
-  const bottom = slots.slice(4)
-
-  const renderSlot = (s: Slot) => (
-    <a
-      className={`ld-slot${s.your ? " your" : ""}`}
-      key={s.letter}
-      href={s.your ? "/advertise" : "/local-offers"}
-      aria-label={s.your ? "Get your business featured" : `${s.cat}: ${s.offer}`}
-    >
-      <span className="ld-lt">{s.letter}</span>
-      <CategoryIcon name={s.your ? "offer" : s.cat} size={30} />
-      <span className="ld-cat">{s.cat}</span>
-      <span className="ld-offer">{s.offer}</span>
-    </a>
-  )
-
   return (
     <section className="shimmer" id="latest-drop">
       <div className="container">
@@ -121,41 +82,32 @@ export default function LatestDrop() {
         <h2 className="reveal">The Latest Drop</h2>
         <p className="lead reveal">
           One beautiful card. Sixteen local businesses. Yours to browse the moment it lands — in the mailbox and right
-          here. The August issue is taking shape now.
+          here. The fall series is taking shape now.
         </p>
 
         <div className="ld-issuebar reveal">
-          <span className="ld-ichip now">📬 August Issue · North Shore — reserving now</span>
-          <span className="ld-ichip dim">September · up next</span>
+          <span className="ld-ichip now">Fall Mailers · North Shore — reserving now</span>
+          <span className="ld-ichip dim">September · October · November</span>
         </div>
 
         <div className="ld-tabs reveal">
-          <button className={`ld-tab${side === 1 ? " on" : ""}`} onClick={() => switchSide(1)}>Side One · A–H</button>
-          <button className={`ld-tab${side === 2 ? " on" : ""}`} onClick={() => switchSide(2)}>Side Two · I–P</button>
+          <button className={`ld-tab${side === 1 ? " on" : ""}`} onClick={() => switchSide(1)}>Side One</button>
+          <button className={`ld-tab${side === 2 ? " on" : ""}`} onClick={() => switchSide(2)}>Side Two</button>
         </div>
 
         <div className="ld-stage reveal" ref={stageRef}>
-          <div className="ld-card" ref={cardRef}>
-            <div className="ld-row">{top.map(renderSlot)}</div>
-            {side === 1 ? (
-              <div className="ld-mid">
-                <img src="/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20transparent.png" alt="Island Mailer — Support Local. Live Hawaii." className="ld-midlogo" />
-                <div className="ld-addr">
-                  <span className="ld-bx">Aloha<br />Local Resident</span>
-                  <span className="ld-bx">Postage</span>
-                </div>
-              </div>
-            ) : (
-              <div className="ld-mid slim">
-                <span className="ld-qrhint">⿻ One QR — every offer, saved right on your phone</span>
-                <span className="ld-tag">Support Local. Live Hawaii.</span>
-              </div>
-            )}
-            <div className="ld-row">{bottom.map(renderSlot)}</div>
+          <div className="ld-card" ref={cardRef} style={{ padding: 0, overflow: "hidden" }}>
+            <a href="/local-offers" aria-label="Browse the full issue in Local Offers" style={{ position: "absolute", inset: 0, display: "block" }}>
+              <img
+                src={SIDES[side].src}
+                alt={SIDES[side].alt}
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </a>
           </div>
         </div>
 
-        <p className="ld-fine reveal">Sample offers shown — the August lineup is being reserved now.</p>
+        <p className="ld-fine reveal">Sample offers shown — the fall lineup is being reserved now.</p>
 
         <div className="ld-areas reveal">
           <p>One island, five areas — find yours:</p>
