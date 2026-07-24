@@ -1,48 +1,33 @@
 /*
- * mailbox-moment.css (v31) — styles for the /local-offers "Mailbox Moment"
- * scroll hero (approved mockup v28.3) + the Fall areas / inside sections.
- * All selectors namespaced (mm-*, m-*, fall*, ins*) — verified no collisions
- * with globals.css before shipping.
+ * mailbox-moment.css (v32) — /local-offers "Mailbox Moment" scroll hero.
+ * Brand-only scene: navy + gold, mailbox is the sole focus; the REAL 9×12
+ * fall card (Side One/Side Two images) emerges, fills the screen, flips,
+ * and docks. Also styles the Fall areas / inside sections used by
+ * offers-experience.tsx. Selectors namespaced — no globals.css collisions.
  */
 
 /* ============ stage ============ */
 .mm-stage { position:relative; height:340vh; background:var(--navy2,#141C28); }
 .mm-sticky { position:sticky; top:0; height:100vh; overflow:hidden; }
 
-/* ============ bright Maui sky ============ */
+/* ============ brand navy scene ============ */
 .mm-sky { position:absolute; inset:0; background:
-  linear-gradient(180deg, #6FAFCB 0%, #8FC4DC 22%, #B8DCE8 42%, #E8E9D8 58%, #F2E8C9 63%, #DDE4CC 64%, #C8DCC0 100%); }
-.mm-sun { position:absolute; left:22%; top:24%; width:52vmin; height:52vmin; transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(255,248,228,.95) 0%, rgba(245,232,196,.55) 22%, rgba(238,215,160,.22) 46%, transparent 70%);
-  filter:blur(2px); }
-.mm-rays { position:absolute; left:22%; top:24%; width:120vmax; height:120vmax; transform:translate(-50%,-50%); opacity:.08;
+  radial-gradient(120% 90% at 30% 8%, #2C3A54 0%, #1F2735 48%, #10161F 100%); }
+.mm-aur { position:absolute; width:60vmax; height:60vmax; border-radius:50%; filter:blur(70px); opacity:.5; pointer-events:none; }
+.mm-aur.a1 { left:-12vmax; top:32%; background:radial-gradient(circle, rgba(163,124,79,.22) 0%, transparent 65%); animation:mmAur 22s ease-in-out infinite alternate; }
+.mm-aur.a2 { right:-14vmax; top:-10%; background:radial-gradient(circle, rgba(201,163,107,.16) 0%, transparent 65%); animation:mmAur 27s ease-in-out infinite alternate-reverse; }
+@keyframes mmAur { from { transform:translateY(0) scale(1); } to { transform:translateY(-6vh) scale(1.12); } }
+.mm-rays { position:absolute; left:50%; top:42%; width:120vmax; height:120vmax; transform:translate(-50%,-50%); opacity:.05;
   background:conic-gradient(from 0deg, transparent 0 14deg, rgba(201,163,107,.5) 17deg, transparent 21deg 40deg, rgba(201,163,107,.4) 44deg, transparent 48deg 74deg, rgba(201,163,107,.45) 78deg, transparent 82deg 110deg, rgba(201,163,107,.4) 114deg, transparent 118deg 150deg, rgba(201,163,107,.45) 154deg, transparent 158deg 190deg, rgba(201,163,107,.4) 194deg, transparent 198deg 230deg, rgba(201,163,107,.45) 234deg, transparent 238deg 272deg, rgba(201,163,107,.4) 276deg, transparent 280deg 316deg, rgba(201,163,107,.45) 320deg, transparent 324deg 360deg);
   animation:mmRaysTurn 90s linear infinite; }
 @keyframes mmRaysTurn { to { transform:translate(-50%,-50%) rotate(360deg); } }
-.mote { position:absolute; width:5px; height:5px; border-radius:50%; background:#FFF6DE; opacity:.5; filter:blur(1px); animation:mmDrift linear infinite; pointer-events:none; }
-@keyframes mmDrift { 0% { transform:translateY(105vh); opacity:0; } 12% { opacity:.5; } 88% { opacity:.4; } 100% { transform:translateY(-8vh) translateX(8vw); opacity:0; } }
-.petal { position:absolute; top:-4vh; pointer-events:none; animation:mmPetalFall linear infinite; }
-.petal svg { width:22px; height:22px; }
-@keyframes mmPetalFall { 0% { transform:translateY(-4vh) translateX(0) rotate(0deg); opacity:0; } 8% { opacity:.9; } 90% { opacity:.85; } 100% { transform:translateY(106vh) translateX(-14vw) rotate(300deg); opacity:0; } }
-.bfly { position:absolute; pointer-events:none; animation:mmBflyPath 16s ease-in-out infinite; }
-.bfly svg { width:26px; height:26px; animation:mmBflyFlap .5s ease-in-out infinite alternate; }
-@keyframes mmBflyPath { 0%,100% { transform:translate(0,0); } 25% { transform:translate(7vw,-5vh); } 50% { transform:translate(2vw,-9vh); } 75% { transform:translate(-5vw,-4vh); } }
-@keyframes mmBflyFlap { from { transform:scaleX(1); } to { transform:scaleX(.55); } }
-.mm-vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 90% at 50% 46%, transparent 58%, rgba(15,23,20,.4) 100%); }
+.mote { position:absolute; width:5px; height:5px; border-radius:50%; background:var(--gold-bright,#C9A36B); opacity:.32; filter:blur(1px); animation:mmDrift linear infinite; pointer-events:none; }
+@keyframes mmDrift { 0% { transform:translateY(105vh); opacity:0; } 12% { opacity:.34; } 88% { opacity:.28; } 100% { transform:translateY(-8vh) translateX(8vw); opacity:0; } }
+.mm-vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(120% 90% at 50% 46%, transparent 55%, rgba(8,12,18,.6) 100%); }
 .mm-grain { position:absolute; inset:0; opacity:.05; pointer-events:none; z-index:9; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E"); }
 
-/* ============ neighborhood scene ============ */
-.mm-hood { position:absolute; inset:0; pointer-events:none; }
-.mm-hood svg { position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:max(100vw, 178vh); height:auto; display:block; }
-.frond { transform-box:fill-box; transform-origin:0% 50%; animation:mmSway 7s ease-in-out infinite; }
-.frond.f2 { animation-duration:8.4s; animation-delay:-2s; }
-.frond.f3 { animation-duration:9.2s; animation-delay:-4s; }
-@keyframes mmSway { 0%,100% { transform:rotate(0deg); } 50% { transform:rotate(2.2deg); } }
-.winGlow { animation:mmWinFlk 6s ease-in-out infinite; }
-@keyframes mmWinFlk { 0%,100% { opacity:.9; } 50% { opacity:.72; } }
-
-/* ============ mailbox ============ */
-.mm-box { position:absolute; left:50%; top:44%; width:clamp(340px, 48vmin, 520px); aspect-ratio:460/600; transform:translate(-50%,-40%); will-change:transform,filter,opacity; }
+/* ============ mailbox (sole focus) ============ */
+.mm-box { position:absolute; left:50%; top:44%; width:clamp(340px, 50vmin, 540px); aspect-ratio:460/600; transform:translate(-50%,-40%); will-change:transform,filter,opacity; }
 .mm-box svg.layer { position:absolute; inset:0; width:100%; height:100%; }
 .mbx-back { z-index:1; }
 .mbx-front { z-index:4; pointer-events:none; }
@@ -50,36 +35,23 @@
 .mm-door { position:absolute; inset:0; transform-origin:50% 100%; will-change:transform; }
 .mm-door svg { width:100%; height:100%; display:block; }
 
-/* ============ the 9x12 (real Side One template) ============ */
-.mm-mailer { position:absolute; z-index:2; left:50%; top:44%; width:560px; aspect-ratio:12/9; margin-left:-280px; margin-top:-210px; will-change:transform; }
+/* ============ the REAL 9×12 card ============ */
+.mm-mailer { position:absolute; z-index:2; left:50%; top:44%; width:560px; aspect-ratio:12/9; margin-left:-280px; margin-top:-210px; will-change:transform; perspective:1600px; }
 .mm-mailer.front { z-index:6; }
 .m-float { width:100%; height:100%; }
 .mm-mailer.docked .m-float { animation:mmFloat 7s ease-in-out infinite; }
 @keyframes mmFloat { 0%,100% { transform:translateY(0) rotate(0deg); } 50% { transform:translateY(-12px) rotate(.5deg); } }
-.m-face { position:relative; width:100%; height:100%; border-radius:10px; border:1.5px solid rgba(201,163,107,.9);
-  background:linear-gradient(148deg,#26334B 0%,#1B2534 55%,#161E2C 100%);
-  box-shadow:0 42px 110px rgba(0,0,0,.6), 0 0 70px rgba(163,124,79,.14); }
-.m-face::after { content:""; position:absolute; inset:0; border-radius:10px; background:linear-gradient(115deg, transparent 38%, rgba(245,244,239,.13) 50%, transparent 62%); background-size:230% 100%; animation:mmGlint 8s ease-in-out infinite; pointer-events:none; }
+.m-flip { position:relative; width:100%; height:100%; transform-style:preserve-3d; will-change:transform; }
+.m-side { position:absolute; inset:0; border-radius:12px; overflow:hidden; backface-visibility:hidden; border:1.5px solid rgba(201,163,107,.9);
+  box-shadow:0 42px 110px rgba(0,0,0,.6), 0 0 70px rgba(163,124,79,.16); background:#161E2C; }
+.m-side img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.m-backside { transform:rotateY(180deg); }
+.m-glint { position:absolute; inset:0; background:linear-gradient(115deg, transparent 38%, rgba(245,244,239,.16) 50%, transparent 62%); background-size:230% 100%; animation:mmGlint 8s ease-in-out infinite; pointer-events:none; }
 @keyframes mmGlint { 0%,58%,100% { background-position:210% 0; } 80% { background-position:-70% 0; } }
-.m-pill { position:absolute; top:-13px; right:5%; z-index:2; background:linear-gradient(135deg,#B08954,#A37C4F); color:#fff; font-weight:700; font-size:9.5px; letter-spacing:.18em; padding:7px 16px; border-radius:999px; box-shadow:0 8px 22px rgba(163,124,79,.5); white-space:nowrap; }
-.m-grid { position:absolute; inset:4.6% 4.2%; display:grid; grid-template-rows:1fr .30fr 1fr; gap:3.6%; }
-.m-row { display:grid; grid-template-columns:repeat(4,1fr); gap:3.2%; }
-.m-slot { position:relative; border:1px solid rgba(213,193,170,.42); border-radius:7px; background:rgba(20,28,40,.55); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; padding:5% 4%; }
-.m-slot small { position:absolute; top:5px; left:7px; font-size:6.5px; letter-spacing:.08em; color:rgba(213,193,170,.55); font-weight:600; }
-.m-slot svg { width:22px; height:22px; stroke:var(--gold-bright,#C9A36B); stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
-.m-slot b { font-weight:700; font-size:8.5px; letter-spacing:.1em; color:var(--cream,#F5F4EF); text-align:center; line-height:1.4; }
-.m-slot em { font-style:normal; font-weight:700; font-size:7.5px; letter-spacing:.04em; color:var(--gold-bright,#C9A36B); text-align:center; line-height:1.45; }
-.m-mid { display:grid; grid-template-columns:.72fr 1.55fr .9fr; gap:3.2%; align-items:stretch; }
-.m-logo { display:flex; align-items:center; justify-content:flex-start; padding-left:2%; }
-.m-logo img { max-height:96%; max-width:92%; object-fit:contain; filter:drop-shadow(0 3px 10px rgba(0,0,0,.4)); }
-.m-aloha { border:1px solid rgba(213,193,170,.5); border-radius:6px; display:flex; align-items:center; justify-content:center; }
-.m-aloha b { font-weight:700; font-size:9px; letter-spacing:.22em; color:var(--sand,#D5C1AA); text-align:center; line-height:1.7; }
-.m-postage { border:1px solid rgba(213,193,170,.5); border-radius:6px; display:flex; align-items:center; justify-content:center; }
-.m-postage b { font-weight:700; font-size:8px; letter-spacing:.24em; color:rgba(213,193,170,.8); }
 
 /* ============ chip + cue + copy ============ */
 .mm-chip { position:absolute; z-index:7; left:50%; top:9%; transform:translateX(-50%); background:var(--gold,#A37C4F); color:#fff; font-weight:700; font-size:13px; letter-spacing:.14em; padding:11px 22px; border-radius:999px; box-shadow:0 12px 34px rgba(163,124,79,.5); white-space:nowrap; }
-.mm-cue { position:absolute; z-index:7; left:50%; bottom:4.5%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; color:#FFF9EC; font-size:12.5px; letter-spacing:.3em; font-weight:600; text-transform:uppercase; text-shadow:0 1px 10px rgba(15,25,20,.75); }
+.mm-cue { position:absolute; z-index:7; left:50%; bottom:4.5%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--sand,#D5C1AA); font-size:12.5px; letter-spacing:.3em; font-weight:600; text-transform:uppercase; }
 .mm-cue svg { width:22px; height:22px; stroke:var(--gold-bright,#C9A36B); stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; animation:mmCueBob 1.8s ease-in-out infinite; }
 @keyframes mmCueBob { 0%,100% { transform:translateY(0); opacity:.9; } 50% { transform:translateY(7px); opacity:.5; } }
 
@@ -92,18 +64,24 @@
 .mm-benefits svg { width:19px; height:19px; stroke:var(--gold-bright,#C9A36B); stroke-width:1.7; fill:none; stroke-linecap:round; stroke-linejoin:round; flex:0 0 auto; }
 .mm-ctas { display:flex; gap:16px; flex-wrap:wrap; }
 
+/* ============ MOBILE — designed, not squeezed ============ */
 @media (max-width:980px){
-  .mm-box { width:clamp(280px, 84vmin, 420px); }
-  .mm-copy { left:50%; top:auto; bottom:4vh; transform:translate(-50%,0); width:92vw; text-align:center; }
-  .mm-copy .mm-lead { margin-left:auto; margin-right:auto; font-size:17.5px; }
-  .mm-copy h1 { font-size:clamp(30px,7.4vw,44px); margin-top:16px; }
-  .mm-benefits { justify-content:center; }
-  .mm-benefits span { font-size:12.5px; padding:8px 13px; }
-  .mm-ctas { justify-content:center; }
-  .mm-ctas .btn { min-height:66px; padding:0 30px; font-size:16px; }
+  .mm-box { width:clamp(300px, 94vmin, 470px); }
+  .mm-chip { top:6.5%; font-size:11px; padding:9px 16px; letter-spacing:.12em; }
+  .mm-copy { left:50%; top:auto; bottom:2.6vh; transform:translate(-50%,0); width:min(94vw, 560px); text-align:center;
+    background:rgba(16,22,31,.6); border:1px solid rgba(201,163,107,.28); border-radius:22px; padding:20px 18px 18px;
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+  .mm-copy .im-pill { font-size:10.5px; padding:6px 13px; }
+  .mm-copy h1 { font-size:clamp(26px,6.8vw,36px); margin:12px 0 10px; }
+  .mm-copy .mm-lead { margin:0 auto 14px; font-size:14.5px; line-height:1.5; max-width:460px; }
+  .mm-benefits { justify-content:center; gap:7px; margin-bottom:16px; }
+  .mm-benefits span { font-size:11.5px; padding:6px 11px; gap:6px; }
+  .mm-benefits svg { width:15px; height:15px; }
+  .mm-ctas { gap:10px; }
+  .mm-ctas .btn { flex:1 1 42%; min-height:56px; padding:0 18px; font-size:14.5px; }
 }
 
-/* short viewports: compress so CTAs never clip */
+/* short desktop viewports: compress so CTAs never clip */
 @media (max-height:840px) and (min-width:981px){
   .mm-copy { top:49%; }
   .mm-copy .im-pill { font-size:11px; padding:7px 16px; letter-spacing:.22em; }
@@ -118,23 +96,23 @@
   .mm-benefits { display:none; }
   .mm-copy h1 { font-size:clamp(24px,2.8vw,32px); }
 }
-@media (max-height:600px) and (max-width:980px){
+@media (max-height:640px) and (max-width:980px){
   .mm-benefits { display:none; }
-  .mm-copy h1 { font-size:clamp(22px,5.5vw,28px); margin-top:10px; }
-  .mm-copy .mm-lead { font-size:14px; margin-bottom:14px; }
-  .mm-ctas .btn { min-height:50px; padding:0 22px; font-size:13.5px; }
+  .mm-copy h1 { font-size:clamp(22px,5.5vw,28px); margin-top:8px; }
+  .mm-copy .mm-lead { font-size:13px; margin-bottom:12px; }
+  .mm-ctas .btn { min-height:48px; font-size:13px; }
 }
 
 @media (prefers-reduced-motion: reduce){
   .mm-stage { height:auto; }
   .mm-sticky { position:relative; height:100vh; }
   .mm-cue { display:none; }
-  .frond, .winGlow, .petal, .bfly, .mote { animation:none; }
+  .mote, .mm-aur, .m-glint { animation:none; }
 }
 .mm-static .mm-stage { height:100vh; }
 .mm-static .mm-copy { opacity:1; }
 
-/* ============ Fall areas strip ============ */
+/* ============ Fall areas strip (offers-experience) ============ */
 .fallgrid { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:56px; }
 @media (max-width:1000px){ .fallgrid { grid-template-columns:1fr; } }
 .fallcard { border:1.5px solid rgba(163,124,79,.4); border-radius:18px; background:var(--navy,#1F2735); padding:30px 22px; text-align:center; transition:transform .3s, border-color .3s, box-shadow .3s; display:flex; flex-direction:column; align-items:center; }
@@ -156,5 +134,5 @@ a.fallst:hover { background:var(--gold,#A37C4F); color:#fff; border-color:var(--
 .inscard h3 { font-size:20px; margin-bottom:10px; }
 .inscard p { color:var(--sand,#D5C1AA); font-size:15.5px; }
 
-/* how-it-works step icons (replaced emoji with gold line icons) */
+/* how-it-works step icons (gold line icons) */
 .fic svg { width:30px; height:30px; stroke:var(--gold-bright,#C9A36B); stroke-width:1.7; fill:none; stroke-linecap:round; stroke-linejoin:round; }
