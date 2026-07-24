@@ -64,7 +64,15 @@ export default function ProductsPage() {
             <div className="mailer-showcase">
               <figure className="msh-item is-sig">
                 <span className="msh-flag">Most reach</span>
-                <div className="msh-paper sig">
+                <div
+                  className="msh-paper sig"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(rgba(20,28,40,.62), rgba(20,28,40,.82)), url('/images/mailer/side-one-fall.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
                   <span className="msh-eyebrow">A full foot wide</span>
                   <span className="msh-dims">
                     12&Prime; × 9&Prime;
@@ -78,7 +86,15 @@ export default function ProductsPage() {
                 </figcaption>
               </figure>
               <figure className="msh-item">
-                <div className="msh-paper hl">
+                <div
+                  className="msh-paper hl"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(rgba(20,28,40,.62), rgba(20,28,40,.82)), url('/images/mailer/side-two-fall.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
                   <span className="msh-eyebrow">Same width, neighborhood focus</span>
                   <span className="msh-dims">
                     12&Prime; × 6.5&Prime;
