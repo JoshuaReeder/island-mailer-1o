@@ -121,7 +121,7 @@ export default async function PayPage({
         </div>
 
         <h1 className="pay-h1">
-          Your spot is held.
+          Your spot is temporarily held.
           <br />
           Let&rsquo;s make it official.
         </h1>
@@ -210,9 +210,6 @@ export default async function PayPage({
                 <div>
                   <div style={{ fontSize: 18, fontWeight: 600, color: "#A37C4F" }}>
                     Advertising Credit Promo
-                  </div>
-                  <div style={{ fontSize: 15, color: "#6E7687", marginTop: 5 }}>
-                    A gift from us &mdash; not a discount, added value.
                   </div>
                 </div>
                 <div
