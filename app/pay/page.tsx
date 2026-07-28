@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 /* Live GHL payment link. Swap the host to pay.islandmailer.com once the
    CNAME (pay -> sites.ludicrous.cloud) has propagated and verified. */
-const CHECKOUT_URL = "https://link.msgsndr.com/payment-link/6a676b977b99151a54040ab6"
+const CHECKOUT_URL = "https://pay.islandmailer.com/reserve"
 
 const LOGO = "/images/island-mailer-logo-vertical-light.png"
 
