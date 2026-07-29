@@ -372,7 +372,7 @@ export const kauaiAreas: Record<string, AreaData> = {
   },
   "north-shore": {
     slug: "north-shore-kauai-advertising",
-    title: "North Shore Kauai Advertising for Local Businesses | Island Mailer",
+    title: "North Shore Kauai Advertising | Island Mailer",
     description:
       "Reach up to 3,300 North Shore Kauai homes with a premium 9×12 postcard. Island Mailer puts your Hanalei or Princeville business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "North Shore",
@@ -410,7 +410,7 @@ export const kauaiAreas: Record<string, AreaData> = {
   },
   "south-shore": {
     slug: "south-shore-kauai-advertising",
-    title: "South Shore Kauai Advertising for Local Businesses | Island Mailer",
+    title: "South Shore Kauai Advertising | Island Mailer",
     description:
       "Reach up to 5,000 South Shore Kauai homes with a premium 9×12 postcard. Island Mailer puts your Poipu or Koloa business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "South Shore",
@@ -448,7 +448,7 @@ export const kauaiAreas: Record<string, AreaData> = {
   },
   "west-side": {
     slug: "west-side-kauai-advertising",
-    title: "West Side Kauai Advertising for Local Businesses | Island Mailer",
+    title: "West Side Kauai Advertising | Island Mailer",
     description:
       "Reach up to 4,100 West Side Kauai homes with a premium 9×12 postcard. Island Mailer puts your Waimea or Hanapepe business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "West Side",
@@ -486,7 +486,7 @@ export const kauaiAreas: Record<string, AreaData> = {
   },
   lihue: {
     slug: "lihue-kauai-advertising",
-    title: "Lihue Kauai Advertising for Local Businesses | Island Mailer",
+    title: "Lihue Kauai Advertising | Island Mailer",
     description:
       "Reach up to 6,800 Lihue Kauai homes with a premium 9×12 postcard. Island Mailer puts your Lihue business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Lihue",
@@ -528,7 +528,7 @@ export const kauaiAreas: Record<string, AreaData> = {
 export const oahuAreas: Record<string, AreaData> = {
   "north-shore": {
     slug: "north-shore-oahu-advertising",
-    title: "North Shore Oahu Advertising for Local Businesses | Island Mailer",
+    title: "North Shore Oahu Advertising | Island Mailer",
     description:
       "Reach up to 7,500 North Shore Oahu homes with a premium 9×12 postcard. Island Mailer puts your Haleiwa or Kahuku business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "North Shore",
@@ -566,7 +566,7 @@ export const oahuAreas: Record<string, AreaData> = {
   },
   windward: {
     slug: "windward-oahu-advertising",
-    title: "Windward Oahu Advertising for Local Businesses | Island Mailer",
+    title: "Windward Oahu Advertising | Island Mailer",
     description:
       "Reach up to 24,800 Windward Oahu homes with a premium 9×12 postcard. Island Mailer puts your Kailua or Kaneohe business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Windward",
@@ -604,7 +604,7 @@ export const oahuAreas: Record<string, AreaData> = {
   },
   central: {
     slug: "central-oahu-advertising",
-    title: "Central Oahu Advertising for Local Businesses | Island Mailer",
+    title: "Central Oahu Advertising | Island Mailer",
     description:
       "Reach up to 25,200 Central Oahu homes with a premium 9×12 postcard. Island Mailer puts your Mililani or Wahiawa business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Central",
@@ -642,7 +642,7 @@ export const oahuAreas: Record<string, AreaData> = {
   },
   leeward: {
     slug: "leeward-oahu-advertising",
-    title: "Leeward Oahu Advertising for Local Businesses | Island Mailer",
+    title: "Leeward Oahu Advertising | Island Mailer",
     description:
       "Reach up to 40,000 Leeward Oahu homes with a premium 9×12 postcard. Island Mailer puts your Kapolei or Ewa Beach business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Leeward",
@@ -680,7 +680,7 @@ export const oahuAreas: Record<string, AreaData> = {
   },
   honolulu: {
     slug: "honolulu-oahu-advertising",
-    title: "Honolulu Advertising for Local Businesses | Island Mailer",
+    title: "Honolulu Advertising | Island Mailer",
     description:
       "Reach up to 60,000 Honolulu homes with a premium 9×12 postcard. Island Mailer puts your Honolulu business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Honolulu",
@@ -722,7 +722,7 @@ export const oahuAreas: Record<string, AreaData> = {
 export const bigIslandAreas: Record<string, AreaData> = {
   hilo: {
     slug: "hilo-hawaii-advertising",
-    title: "Hilo Big Island Advertising for Local Businesses | Island Mailer",
+    title: "Hilo Big Island Advertising | Island Mailer",
     description:
       "Reach up to 17,200 Hilo homes with a premium 9×12 postcard. Island Mailer puts your Hilo or Keaau business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Hilo",
@@ -760,7 +760,7 @@ export const bigIslandAreas: Record<string, AreaData> = {
   },
   hamakua: {
     slug: "hamakua-hawaii-advertising",
-    title: "Hamakua Big Island Advertising for Local Businesses | Island Mailer",
+    title: "Hamakua Big Island Advertising | Island Mailer",
     description:
       "Reach up to 2,600 Hamakua Coast homes with a premium 9×12 postcard. Island Mailer puts your Honokaa or Waipio business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Hamakua",
@@ -798,7 +798,7 @@ export const bigIslandAreas: Record<string, AreaData> = {
   },
   "south-kohala": {
     slug: "south-kohala-hawaii-advertising",
-    title: "South Kohala Big Island Advertising for Local Businesses | Island Mailer",
+    title: "South Kohala Big Island Advertising | Island Mailer",
     description:
       "Reach up to 7,000 South Kohala homes with a premium 9×12 postcard. Island Mailer puts your Waimea or Kohala Coast business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "South Kohala",
@@ -836,7 +836,7 @@ export const bigIslandAreas: Record<string, AreaData> = {
   },
   "north-kona": {
     slug: "north-kona-hawaii-advertising",
-    title: "North Kona Big Island Advertising for Local Businesses | Island Mailer",
+    title: "North Kona Big Island Advertising | Island Mailer",
     description:
       "Reach up to 15,300 North Kona homes with a premium 9×12 postcard. Island Mailer puts your Kailua-Kona business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "North Kona",
@@ -874,7 +874,7 @@ export const bigIslandAreas: Record<string, AreaData> = {
   },
   "south-kona": {
     slug: "south-kona-hawaii-advertising",
-    title: "South Kona Big Island Advertising for Local Businesses | Island Mailer",
+    title: "South Kona Big Island Advertising | Island Mailer",
     description:
       "Reach up to 4,000 South Kona homes with a premium 9×12 postcard. Island Mailer puts your Kealakekua or Captain Cook business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "South Kona",
@@ -912,7 +912,7 @@ export const bigIslandAreas: Record<string, AreaData> = {
   },
   puna: {
     slug: "puna-hawaii-advertising",
-    title: "Puna Big Island Advertising for Local Businesses | Island Mailer",
+    title: "Puna Big Island Advertising | Island Mailer",
     description:
       "Reach up to 18,100 Puna homes with a premium 9×12 postcard. Island Mailer puts your Pahoa or Keaau business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Puna",
@@ -950,7 +950,7 @@ export const bigIslandAreas: Record<string, AreaData> = {
   },
   kaau: {
     slug: "kaau-hawaii-advertising",
-    title: "Ka'u Big Island Advertising for Local Businesses | Island Mailer",
+    title: "Ka'u Big Island Advertising | Island Mailer",
     description:
       "Reach up to 3,400 Ka'u homes with a premium 9×12 postcard. Island Mailer puts your Naalehu or Pahala business in front of local residents - design, print & postage included — a fraction of a solo direct-mail campaign.",
     query: "Ka'u",
