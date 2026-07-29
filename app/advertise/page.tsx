@@ -4,14 +4,14 @@ import { FAQ_ITEMS } from "@/lib/advertise-faq"
 import { homeJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export const metadata: Metadata = {
-  title: "Advertise in Maui Hawaii | Direct Mail & EDDM Postcards | Island Mailer",
+  title: "Advertise in Maui — Direct Mail & EDDM Postcards | Island Mailer",
   description:
     "Reach Maui households with Island Mailer's 9x12 direct mail postcards. Hawaii's locally-owned EDDM co-op mailer for small businesses. Get your business featured today — aloha@islandmailer.com",
   alternates: { canonical: "/advertise" },
   openGraph: {
     type: "website",
     url: "https://islandmailer.com/advertise",
-    title: "Advertise in Maui Hawaii | Direct Mail & EDDM Postcards | Island Mailer",
+    title: "Advertise in Maui — Direct Mail & EDDM Postcards | Island Mailer",
     description:
       "Reach Maui households with Island Mailer's 9x12 direct mail postcards. Hawaii's locally-owned EDDM co-op mailer for small businesses.",
     images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],
