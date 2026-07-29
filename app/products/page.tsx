@@ -6,14 +6,14 @@ import ProductsShowcaseFx from "@/components/products-showcase-fx"
 import { productsJsonLd, jsonLdScript } from "@/lib/jsonld"
 
 export const metadata: Metadata = {
-  title: "Products & Services | Island Mailer — Local Direct Mail in Hawaii",
+  title: "Print & Direct Mail Products | Island Mailer Hawaii",
   description:
     "Island Mailer's community mailers: the 9×12 Signature Mailer reaches up to 10,000 local homes and the 6.5×12 Hyper-Local Mailer reaches ~2,500 homes — for a fraction of a solo direct-mail campaign. Design, print & postage included, one business per category. Plus custom direct mail, EDDM, solo & campaign mailers, design and print.",
   alternates: { canonical: "/products" },
   openGraph: {
     type: "website",
     url: "https://islandmailer.com/products",
-    title: "Products & Services | Island Mailer — Local Direct Mail in Hawaii",
+    title: "Print & Direct Mail Products | Island Mailer Hawaii",
     description:
       "Two community mailers: the 9×12 Signature (up to 10,000 homes) and the 6.5×12 Hyper-Local (~2,500 homes). Design, print & postage included, one business per category.",
     images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Island Mailer – Support Local. Live Hawaii." }],

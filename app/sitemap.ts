@@ -40,6 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/south-kona-hawaii-advertising", priority: 0.75, changeFrequency: "monthly" as const },
     { path: "/puna-hawaii-advertising", priority: 0.75, changeFrequency: "monthly" as const },
     { path: "/kaau-hawaii-advertising", priority: 0.75, changeFrequency: "monthly" as const },
+    { path: "/privacy", priority: 0.2, changeFrequency: "yearly" as const },
+    { path: "/terms", priority: 0.2, changeFrequency: "yearly" as const },
     { path: "/resources", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/resources/advertise-to-locals-on-maui", priority: 0.6, changeFrequency: "monthly" as const },
     { path: "/resources/kamaaina-deals-maui", priority: 0.7, changeFrequency: "monthly" as const },
