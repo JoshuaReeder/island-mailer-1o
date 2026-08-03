@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Island Mailer",
     images: [
       {
-        url: "/images/website%20OG%20Logo%20Image%20for%20share%20preview.png",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Island Mailer – Support Local. Live Hawaii.",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Island Mailer | Support Local. Live Hawaii.",
     description:
       "Reach up to 10,000 Maui households with a premium 9×12 postcard mailer. One local business per industry.",
-    images: ["/images/website%20OG%20Logo%20Image%20for%20share%20preview.png"],
+    images: ["/images/og-image.png"],
   },
   icons: {
     /* v33: single strong brand badge (official icon lockup, gold on navy) at
@@ -52,7 +52,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   themeColor: "#1F2735",
 }
 
@@ -78,17 +77,6 @@ export default function RootLayout({
                                                                   gtag('config', 'G-TQFPZ3K0JK');
                                                                             `}
                 </Script>
-        <Script
-          id="hs-script-loader"
-          strategy="afterInteractive"
-          src="https://js-na2.hs-scripts.com/246430880.js"
-        />
-        {/* v33: Vercel Speed Insights (script install — no package/lockfile change) */}
-        <Script
-          id="vercel-speed-insights"
-          strategy="afterInteractive"
-          src="/_vercel/speed-insights/script.js"
-        />
         {/* v30 form-guard: mint the JS-proof token and attach it to every
             same-origin /api/ fetch. Server side: verifyImToken in
             lib/form-guard.ts (djb2 + salt must stay identical). Direct-POST
@@ -97,6 +85,12 @@ export default function RootLayout({
         <Script id="im-tk" strategy="afterInteractive">
           {`(function(){var t=Date.now().toString(36);function h(s){var x=5381;for(var i=0;i<s.length;i++)x=((x<<5)+x+s.charCodeAt(i))>>>0;return x>>>0}var k=t+"."+h(t+"aloha-8083").toString(36);var f=window.fetch;window.fetch=function(u,o){try{var s=typeof u==="string"?u:((u&&u.url)||"");if(s.indexOf("/api/")===0||s.indexOf(location.origin+"/api/")===0){o=o||{};var hd=new Headers(o.headers||(typeof u!=="string"&&u.headers)||undefined);hd.set("x-im-tk",k);o.headers=hd}}catch(e){}return f.call(this,u,o)}})();`}
         </Script>
+        {/* v33: Vercel Speed Insights (script install — no package/lockfile change) */}
+        <Script
+          id="vercel-speed-insights"
+          strategy="afterInteractive"
+          src="/_vercel/speed-insights/script.js"
+        />
       </body>
     </html>
   )
