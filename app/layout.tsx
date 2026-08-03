@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Island Mailer",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "/images/website%20OG%20Logo%20Image%20for%20share%20preview.png",
         width: 1200,
         height: 630,
         alt: "Island Mailer – Support Local. Live Hawaii.",
@@ -34,23 +34,17 @@ export const metadata: Metadata = {
     title: "Island Mailer | Support Local. Live Hawaii.",
     description:
       "Reach up to 10,000 Maui households with a premium 9×12 postcard mailer. One local business per industry.",
-    images: ["/images/og-image.png"],
+    images: ["/images/website%20OG%20Logo%20Image%20for%20share%20preview.png"],
   },
   icons: {
+    /* v33: single strong brand badge (official icon lockup, gold on navy) at
+       Google-friendly sizes — replaces the tiny 32px light/dark pair Google
+       was rendering poorly in search results. */
     icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
+    shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
 }
@@ -58,6 +52,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
   themeColor: "#1F2735",
 }
 
@@ -83,6 +78,17 @@ export default function RootLayout({
                                                                   gtag('config', 'G-TQFPZ3K0JK');
                                                                             `}
                 </Script>
+        <Script
+          id="hs-script-loader"
+          strategy="afterInteractive"
+          src="https://js-na2.hs-scripts.com/246430880.js"
+        />
+        {/* v33: Vercel Speed Insights (script install — no package/lockfile change) */}
+        <Script
+          id="vercel-speed-insights"
+          strategy="afterInteractive"
+          src="/_vercel/speed-insights/script.js"
+        />
         {/* v30 form-guard: mint the JS-proof token and attach it to every
             same-origin /api/ fetch. Server side: verifyImToken in
             lib/form-guard.ts (djb2 + salt must stay identical). Direct-POST
