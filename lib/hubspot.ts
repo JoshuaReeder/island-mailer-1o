@@ -1,23 +1,19 @@
 /*
- * hubspot.ts (v29 — GHL cutover shim, doc 18 Phase 4)
+ * hubspot.ts (Aug 3 2026 — GHL ONLY, dual-write removed)
  *
  * Every website form still imports { upsertHubSpotContact } from this file —
- * that contract is unchanged. During the HubSpot → GoHighLevel transition this
- * shim DUAL-WRITES every lead:
- *   1. GoHighLevel (lib/ghl.ts) — the new system of record
- *   2. Legacy HubSpot (lib/hubspot-legacy.ts) — safety net, zero lead loss
+ * that contract is unchanged (file name is historical). HubSpot is RETIRED:
+ * leads are written ONLY to GoHighLevel (lib/ghl.ts), the system of record.
  *
- * Phase 5 (after GHL verification window): delete the legacy call + file,
- * or simply revert this file to cut back to HubSpot instantly.
+ * The v29 dual-write safety net (lib/hubspot-legacy.ts) is no longer called.
+ * hubspot-legacy.ts can be deleted at final HubSpot account closure.
  */
 
 import { upsertGHLContact, type CrmLead } from "./ghl"
-import { upsertHubSpotContact as legacyHubSpotUpsert } from "./hubspot-legacy"
 
 export type HubSpotLead = CrmLead
 
 export async function upsertHubSpotContact(lead: HubSpotLead): Promise<void> {
-  // Both implementations never throw; run in parallel, await both (Vercel
-  // lambdas freeze fire-and-forget work — v23 lesson, always await).
-  await Promise.all([upsertGHLContact(lead), legacyHubSpotUpsert(lead)])
+  // Never throws; always await (Vercel lambdas freeze fire-and-forget work).
+  await upsertGHLContact(lead)
 }
