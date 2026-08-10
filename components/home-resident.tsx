@@ -361,7 +361,7 @@ export default function HomeResident() {
             </details>
             <a className="btn" href="/advertise">See How It Works →</a>
             <p style={{ marginTop: 18, color: "var(--sand)", fontSize: 16 }}>
-              Or just call or text us — <a href="tel:8088086245" style={{ color: "var(--gold-bright)", fontWeight: 800, textDecoration: "none" }}>808-808-MAIL</a>
+              Or just call or text us — <a href="tel:8087077393" style={{ color: "var(--gold-bright)", fontWeight: 800, textDecoration: "none" }}>(808) 707-7393</a>
             </p>
           </div>
         </div>
