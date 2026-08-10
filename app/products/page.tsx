@@ -250,7 +250,7 @@ export default function ProductsPage() {
               <a className="btn" href="/advertise#contact">Check Availability</a>
               <div className="contact-lines">
                 <p>
-                  Or call/text us: <a href="tel:8088086245">(808) 808-6245</a>
+                  Or call/text us: <a href="tel:8087077393">(808) 707-7393</a>
                 </p>
                 <p>
                   Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a>
