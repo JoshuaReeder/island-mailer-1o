@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type ReactElement } from "react"
 import Footer from "@/components/footer"
 import FloatingMenu from "@/components/floating-menu"
 import EmailOptin from "@/components/email-optin"
@@ -12,6 +12,38 @@ const LOGO = "/images/primary-20vertical-20island-20mailer-20logo-20gold-20on-20
 
 /* Self-hosted (v17) — was a Wikimedia hotlink; see PHOTO-CREDITS.md */
 const IAO = "/images/iao-valley-panorama.jpg"
+
+/* UI pass (Aug 3): gold line icons replace the emoji in "Three steps" and
+   "Community" (locked rule: no emoji in UI — gold line icons only).
+   Same 48×48 thin-stroke style as components/icons.tsx. */
+const P = { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
+const GOLD_IC: Record<string, ReactElement> = {
+  mailbox: (
+    <svg viewBox="0 0 48 48" {...P}><path d="M9 30 V21 a 10 10 0 0 1 10-10 h10 a 10 10 0 0 1 10 10 v9 H9 Z" /><path d="M24 30 v10 M17 40 h14" /><path d="M32 11 V4 h7 v7" /><path d="M16 21 h8" /></svg>
+  ),
+  scan: (
+    <svg viewBox="0 0 48 48" {...P}><rect x="15" y="5" width="18" height="38" rx="4" /><path d="M22 9 h4" /><rect x="20" y="17" width="4" height="4" /><rect x="26" y="17" width="4" height="4" /><rect x="20" y="25" width="4" height="4" /><path d="M26 27 h4 M28 25 v4" /><path d="M22 37 h4" /></svg>
+  ),
+  ticket: (
+    <svg viewBox="0 0 48 48" {...P}><path d="M6 16 H42 V22 a 4 4 0 0 0 0 8 V36 H6 V30 a 4 4 0 0 0 0-8 Z" /><path d="M29 16 v20" strokeDasharray="2.5 4" /></svg>
+  ),
+  palm: (
+    <svg viewBox="0 0 48 48" {...P}><path d="M22 44 c1-9 1-16 3-22" /><path d="M25 20 C 18 13, 10 13, 6 19" /><path d="M25 20 C 20 11, 12 9, 8 12" /><path d="M25 20 C 32 13, 40 13, 43 19" /><path d="M25 20 C 30 11, 38 9, 42 12" /><circle cx="23" cy="23" r="2" /><circle cx="27.5" cy="22" r="2" /><path d="M14 44 h17" /></svg>
+  ),
+  neighbors: (
+    <svg viewBox="0 0 48 48" {...P}><circle cx="17" cy="17" r="5" /><circle cx="31" cy="17" r="5" /><path d="M7 39 c0-7 4.5-12 10-12 c3 0 5.5 1.5 7 4" /><path d="M24 39 c0-7 4.5-12 10-12 s10 5 10 12" /></svg>
+  ),
+  flower: (
+    <svg viewBox="0 0 48 48" {...P}><path d="M24 20 c-4-4-4-10 0-13 c4 3 4 9 0 13 Z" /><path d="M24 20 c-4-4-4-10 0-13 c4 3 4 9 0 13 Z" transform="rotate(72 24 24)" /><path d="M24 20 c-4-4-4-10 0-13 c4 3 4 9 0 13 Z" transform="rotate(144 24 24)" /><path d="M24 20 c-4-4-4-10 0-13 c4 3 4 9 0 13 Z" transform="rotate(216 24 24)" /><path d="M24 20 c-4-4-4-10 0-13 c4 3 4 9 0 13 Z" transform="rotate(288 24 24)" /><circle cx="24" cy="24" r="3.5" /></svg>
+  ),
+}
+function GoldIcon({ name, size = 34 }: { name: keyof typeof GOLD_IC; size?: number }) {
+  return (
+    <span aria-hidden style={{ display: "inline-flex", width: size, height: size, color: "var(--gold-bright, #c9a06a)" }}>
+      {GOLD_IC[name]}
+    </span>
+  )
+}
 
 const AD_TILES: { icon: string; cat: string; offer: string }[] = [
   { icon: "🍕", cat: "Local Pizza", offer: "Buy 1 get 1" },
@@ -175,11 +207,11 @@ export default function HomeResident() {
       <section className="lightband" id="optin">
         <div className="container">
           <div className="optin dark reveal">
-            <span className="im-pill">August mailer coming up next</span>
+            <span className="im-pill">Fall local deals — coming soon</span>
             <h2>Be first to the local deals</h2>
             <p className="lead">
               Join the Island Mailer list and you&apos;ll be the first to know the moment a new mailer lands in your
-              area — fresh offers from locally loved businesses, every month.
+              area — fresh offers from locally loved businesses, all season long.
             </p>
             <EmailOptin source="home-hero" />
             <p className="fine">No spam, just local deals. Unsubscribe anytime.</p>
@@ -224,19 +256,19 @@ export default function HomeResident() {
           <div className="flow">
             <div className="flowline" aria-hidden />
             <div className="fstep reveal">
-              <div className="fic">📬</div>
+              <div className="fic"><GoldIcon name="mailbox" /></div>
               <span className="fn">Step 1</span>
               <h3>Open mailbox</h3>
               <p>Your Island Mailer is waiting — packed with exclusive local offers.</p>
             </div>
             <div className="fstep reveal">
-              <div className="fic">📱</div>
+              <div className="fic"><GoldIcon name="scan" /></div>
               <span className="fn">Step 2</span>
               <h3>Scan &amp; save</h3>
               <p>Scan the QR to see every offer and save your favorites.</p>
             </div>
             <div className="fstep reveal">
-              <div className="fic">🎟️</div>
+              <div className="fic"><GoldIcon name="ticket" /></div>
               <span className="fn">Step 3</span>
               <h3>Show &amp; redeem</h3>
               <p>Show your phone at the business and enjoy — while supporting local.</p>
@@ -262,17 +294,17 @@ export default function HomeResident() {
           <p className="lead reveal">Every time you choose local, you&apos;re investing in the place we call home.</p>
           <div className="cards">
             <div className="card reveal">
-              <div className="ic">🌴</div>
+              <div className="ic"><GoldIcon name="palm" size={30} /></div>
               <h3>Keep it on-island</h3>
               <p>Your dollars stay here in the islands, circulating through Hawaii&apos;s local economy instead of leaving for the mainland.</p>
             </div>
             <div className="card reveal">
-              <div className="ic">🤝</div>
+              <div className="ic"><GoldIcon name="neighbors" size={30} /></div>
               <h3>Help your neighbors thrive</h3>
               <p>Behind every offer is a local family, a dream, and jobs for people in your community.</p>
             </div>
             <div className="card reveal">
-              <div className="ic">🌺</div>
+              <div className="ic"><GoldIcon name="flower" size={30} /></div>
               <h3>Discover your town&apos;s gems</h3>
               <p>Find the small spots with the most aloha — the ones that make our neighborhoods special.</p>
             </div>
