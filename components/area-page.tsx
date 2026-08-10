@@ -167,7 +167,7 @@ export default function AreaPage({ area }: { area: AreaData }) {
                 </p>
                 <a className="btn" href={contactHref}>{reserveBtnLabel}</a>
                 <div className="contact-lines">
-                  <p>Or call/text us: <a href="tel:8088086245">(808) 808-6245</a></p>
+                  <p>Or call/text us: <a href="tel:8087077393">(808) 707-7393</a></p>
                   <p>Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></p>
                 </div>
               </div>
@@ -175,7 +175,7 @@ export default function AreaPage({ area }: { area: AreaData }) {
               <>
                 <AreaLeadForm area={area.query} areaLabel={area.tag} />
                 <div className="contact-lines" style={{ textAlign: "center", marginTop: "var(--gap-s)" }}>
-                  <p>Prefer to talk? Call or text <a href="tel:8088086245">(808) 808-6245</a></p>
+                  <p>Prefer to talk? Call or text <a href="tel:8087077393">(808) 707-7393</a></p>
                   <p>Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a></p>
                 </div>
               </>
