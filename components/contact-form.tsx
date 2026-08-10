@@ -166,7 +166,7 @@ export default function ContactForm() {
 
                 {/* Tap-to-call block — full width, easy to tap on mobile */}
                 <a
-                  href="tel:+18088086245"
+                  href="tel:+18087077393"
                   style={{
                     display: "block",
                     background: "rgba(163,124,79,0.12)",
@@ -178,7 +178,7 @@ export default function ContactForm() {
                   }}
                 >
                   <span style={{ color: "#A37C4F", fontSize: 28, fontWeight: 700, display: "block", letterSpacing: "0.03em" }}>
-                    808-808-6245
+                    808-707-7393
                   </span>
                   <span style={{ color: "rgba(163,124,79,0.55)", fontSize: 16, letterSpacing: "0.15em", display: "block", marginTop: 4 }}>
                     808-808-MAIL
@@ -288,7 +288,7 @@ export default function ContactForm() {
         <div className="talk-story">
           <h3>Prefer to talk story first? Call or text us.</h3>
           <p>
-            Call or text us at <a href="tel:8088086245">(808) 808-6245</a>
+            Call or text us at <a href="tel:8087077393">(808) 707-7393</a>
           </p>
           <p>
             Email: <a href="mailto:aloha@islandmailer.com">aloha@islandmailer.com</a>
